@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "It's not a CRM. It's an Autonomous Revenue Brain.",
+    "subtitle": "It's not a CRM. It's an Autonomous Revenue Brain.",
+    "description": "Prospecting, customer follow-ups and opportunity tracking are automated directly from WhatsApp and Slack by an integrated intelligence. SymbiozAI turns every interaction into concrete actions: qualification, follow-ups, documentation, reporting... Your revenue engine runs continuously, without manual input.",
+    "quote": "We believe the next generation of companies won't just use AI, they'll be built with it. Natively. Structurally. Intelligently."
+  },
+  "form": {
+    "placeholder": "Enter your email",
+    "button": "Join the waitlist",
+    "joining": "Joining...",
+    "success": "You're on the list!",
+    "error": "Something went wrong. Please try again.",
+    "validation": {
+      "required": "Email is required",
+      "invalid": "Please enter a valid email address"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "For inquiries, please email us at:",
+    "backToHome": "Back to Home"
+  },
+  "status": {
+    "title": "System Status",
+    "description": "This page displays the current system status",
+    "generalStatus": "General Status",
+    "systemOperational": "System operational",
+    "lastCheck": "Last check:",
+    "systemInfo": "System Information",
+    "environment": "Environment",
+    "connectionStatus": "Connection Status",
+    "online": "Online",
+    "offline": "Offline",
+    "platform": "Platform",
+    "resolution": "Resolution",
+    "refresh": "Refresh"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "contact": "Contact",
+    "status": "Status",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "error": {
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, the page you are looking for does not exist."
+    },
+    "generic": {
+      "title": "An Error Occurred",
+      "description": "Sorry, an unexpected error has occurred."
+    },
+    "tryAgain": "Try Again",
+    "backToHome": "Back to Home"
+  }
+}

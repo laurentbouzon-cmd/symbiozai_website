@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background: #fff;
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Styles pour le formulaire Tally */
+.tally-form-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Personnalisation du bouton Tally */
+:root {
+  --tally-color-primary: #1a237e;
+  --tally-color-button: linear-gradient(to right, #1a237e, #00e5ff);
+}
+
+/* Ajoutons des styles spécifiques pour contrôler l'espacement dans le manifeste */
+.manifesto-section {
+  margin-bottom: 2rem;
+}
+
+.manifesto-title {
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.manifesto-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Ajustements pour les sauts de ligne - MODIFIÉ */
+.manifesto-paragraph br {
+  content: "";
+  display: block;
+  margin-bottom: 0.2rem; /* Espacement minimal après chaque saut de ligne */
+  line-height: inherit; /* Hérite de l'interligne du paragraphe */
+}
+
+/* Double saut de ligne pour créer un paragraphe visuel */
+.manifesto-paragraph br + br {
+  margin-bottom: 0.8rem; /* Espacement réduit pour les doubles sauts de ligne */
+}
+
+/* Styles pour mobile */
+@media (max-width: 640px) {
+  .manifesto-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .manifesto-paragraph {
+    margin-bottom: 0.75rem; /* Espacement uniforme entre paragraphes sur mobile */
+    line-height: 1.5; /* Ajustement de l'interligne pour mobile */
+  }
+
+  /* Assurons-nous que les sauts de ligne ont un espacement cohérent sur mobile */
+  .manifesto-paragraph br {
+    margin-bottom: 0.5rem; /* Espacement uniforme après chaque saut de ligne sur mobile */
+    display: block; /* Garantit que le saut de ligne est traité comme un bloc */
+    content: ""; /* Nécessaire pour que le margin fonctionne correctement */
+  }
+
+  /* Ajustement pour les doubles sauts de ligne */
+  .manifesto-paragraph br + br {
+    margin-bottom: 0.75rem; /* Même espacement que les paragraphes pour uniformité */
+  }
+
+  /* Style spécifique pour le conteneur de paragraphes sur mobile */
+  .mobile-paragraph-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Espacement uniforme entre les paragraphes */
+  }
+
+  /* Annuler l'espacement par défaut pour éviter les doublons */
+  .mobile-paragraph-container .manifesto-paragraph {
+    margin-bottom: 0;
+  }
+}
+
+/* Animation pour l'indicateur de scroll type souris */
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-down 1.5s ease-in-out infinite;
+}

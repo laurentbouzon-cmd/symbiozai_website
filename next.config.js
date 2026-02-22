@@ -1,0 +1,23 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Optimisations pour le référencement
+  poweredByHeader: false, // Supprime l'en-tête X-Powered-By
+  compress: true, // Active la compression gzip
+  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+    domains: ["symbioz.ai"], // Domaines autorisés pour les images
+    formats: ["image/avif", "image/webp"], // Formats d'image modernes
+  },
+  experimental: {
+    scrollRestoration: true, // Restaure la position de défilement
+  },
+}
+
+module.exports = nextConfig

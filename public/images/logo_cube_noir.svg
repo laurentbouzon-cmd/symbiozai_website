@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradDark5a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0A0A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDark5b" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDark5c" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#050505;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(0, -10)">
+    <path d="M 100 50 L 50 80 L 50 140 L 100 170 Z" fill="url(#gradDark5a)" stroke="#0088C2" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="1" stroke-opacity="0.5"/>
+    <path d="M 100 50 L 150 80 L 150 140 L 100 170 Z" fill="url(#gradDark5b)" stroke="#0088C2" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="1" stroke-opacity="0.6"/>
+    <path d="M 100 50 L 50 80 L 100 110 L 150 80 Z" fill="url(#gradDark5c)" stroke="#0088C2" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="1" stroke-opacity="0.7"/>
+    <circle cx="100" cy="110" r="11" fill="#0088C2" opacity="0.9"/>
+    <circle cx="100" cy="110" r="6" fill="#00A8E8"/>
+  </g>
+  
+  <text x="200" y="120" font-family="'SF Pro Display', 'Helvetica Neue', system-ui, -apple-system, sans-serif" font-size="56" font-weight="500" fill="#000000" letter-spacing="-0.3">
+    Symbioz<tspan fill="#0088C2" font-weight="500">AI</tspan>
+  </text>
+</svg>
