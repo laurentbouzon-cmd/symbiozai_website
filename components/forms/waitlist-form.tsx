@@ -30,11 +30,17 @@ export function WaitlistForm() {
     setStatus("loading")
 
     try {
-      // Simuler un délai pour l'expérience utilisateur
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
 
-      // Ici, vous pourriez intégrer Formspree ou un autre service externe
-      // au lieu d'utiliser une API interne
+      const data = await res.json()
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Something went wrong")
+      }
 
       setStatus("success")
       setMessage("✅ You're on the list!")
