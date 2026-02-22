@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { isValidEmail } from "@/lib/utils"
+import { isValidEmail, isProEmail } from "@/lib/utils"
 
 export function WaitlistForm() {
   const [email, setEmail] = useState("")
@@ -24,6 +24,12 @@ export function WaitlistForm() {
     if (!isValidEmail(email)) {
       setStatus("error")
       setMessage("Please enter a valid email address")
+      return
+    }
+
+    if (!isProEmail(email)) {
+      setStatus("error")
+      setMessage("Please use a professional email address")
       return
     }
 

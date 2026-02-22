@@ -1,4 +1,4 @@
-import { isValidEmail } from "@/lib/utils"
+import { isValidEmail, isProEmail } from "@/lib/utils"
 import { notionService } from "@/lib/notion-service"
 
 export async function POST(request) {
@@ -11,6 +11,10 @@ export async function POST(request) {
 
     if (!isValidEmail(email)) {
       return Response.json({ success: false, message: "Invalid email format" }, { status: 400 })
+    }
+
+    if (!isProEmail(email)) {
+      return Response.json({ success: false, message: "Please use a professional email address" }, { status: 400 })
     }
 
     if (!process.env.NOTION_DATABASE_ID) {
