@@ -174,7 +174,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           <div className="mt-12">
             <Link
               href={`/${lang}`}
-              className="group relative inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_30px_rgba(0,229,255,0.4)] overflow-hidden"
+              className="group relative inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_30px_rgba(0,229,255,0.4)] overflow-hidden"
             >
               {/* Glass highlight effect */}
               <span className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/30 to-transparent rounded-t-2xl pointer-events-none" />

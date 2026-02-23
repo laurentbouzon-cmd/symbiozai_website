@@ -61,7 +61,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
                 <p>
                   {section.content}{" "}
                   {index === privacy.sections.length - 1 && (
-                    <a href="mailto:privacy@symbioz.ai" className="text-[#1a237e] hover:underline">
+                    <a href="mailto:privacy@symbioz.ai" className="text-[#0d47a1] hover:underline">
                       privacy@symbioz.ai
                     </a>
                   )}
@@ -73,7 +73,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
           <div className="text-center mt-12">
             <Link
               href={`/${lang}`}
-              className="inline-block px-6 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
             >
               {privacy.backToHome}
             </Link>

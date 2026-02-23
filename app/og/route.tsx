@@ -132,7 +132,7 @@ export async function GET(request: NextRequest) {
                 padding: "10px 24px",
                 borderRadius: "100px",
                 background:
-                  "linear-gradient(135deg, #1a237e 0%, #00e5ff 100%)",
+                  "linear-gradient(135deg, #0d47a1 0%, #00e5ff 100%)",
                 color: "white",
                 fontSize: "18px",
                 fontWeight: 600,
@@ -148,7 +148,7 @@ export async function GET(request: NextRequest) {
                 padding: "10px 24px",
                 borderRadius: "100px",
                 border: "1.5px solid rgba(0,229,255,0.5)",
-                color: "#1a237e",
+                color: "#0d47a1",
                 fontSize: "18px",
                 fontWeight: 500,
               }}
@@ -166,7 +166,7 @@ export async function GET(request: NextRequest) {
             left: 0,
             right: 0,
             height: "5px",
-            background: "linear-gradient(90deg, #1a237e 0%, #00e5ff 100%)",
+            background: "linear-gradient(90deg, #0d47a1 0%, #00e5ff 100%)",
             display: "flex",
           }}
         />

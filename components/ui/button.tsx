@@ -14,7 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
 
     const variants = {
-      primary: "bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white hover:opacity-90",
+      primary: "bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white hover:opacity-90",
       secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
       outline: "border border-gray-300 bg-transparent hover:bg-gray-100",
       ghost: "bg-transparent hover:bg-gray-100",
@@ -66,7 +66,7 @@ function buttonVariants(options?: { variant?: "primary" | "secondary" | "outline
     "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
 
   const variants = {
-    primary: "bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white hover:opacity-90",
+    primary: "bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white hover:opacity-90",
     secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
     outline: "border border-gray-300 bg-transparent hover:bg-gray-100",
     ghost: "bg-transparent hover:bg-gray-100",

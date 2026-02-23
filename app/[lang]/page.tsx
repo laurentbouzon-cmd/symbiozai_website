@@ -246,7 +246,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <div className="order-2 lg:order-1">
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] rounded-full flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] rounded-full flex items-center justify-center text-white flex-shrink-0">
                         <GlassIcon type="bot" size={48} />
                       </div>
                       <div>
@@ -299,7 +299,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <div className="order-1 lg:order-2">
                   <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden max-w-md mx-auto">
                     {/* Chat header */}
-                    <div className="bg-gradient-to-r from-[#1a237e] to-[#0d47a1] px-4 py-3 flex items-center gap-3">
+                    <div className="bg-[#0d47a1] px-4 py-3 flex items-center gap-3">
                       <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                         <GlassIcon type="bot" size={40} />
                       </div>
@@ -363,7 +363,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                           className="bg-transparent outline-none flex-1 text-sm"
                           disabled
                         />
-                        <button className="w-8 h-8 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] rounded-full flex items-center justify-center text-white">
+                        <button className="w-8 h-8 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] rounded-full flex items-center justify-center text-white">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path
                               strokeLinecap="round"
@@ -433,7 +433,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           </section>
 
           {/* Integrations Section */}
-          <section className="py-16 sm:py-20 px-4">
+          <section className="py-16 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-semibold text-center mb-12">
                 {isFr ? "Connecté à vos outils" : "Connected to your tools"}
@@ -454,7 +454,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         unoptimized
                       />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">{integration.name}</span>
+                    <span className="text-sm font-medium text-gray-600">{integration.name}</span>
                   </div>
                 ))}
               </div>

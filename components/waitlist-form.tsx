@@ -57,17 +57,9 @@ export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: strin
     <form onSubmit={handleSubmit} className="w-full">
       <div className="relative max-w-md mx-auto">
         <div
-          className={`flex flex-col sm:flex-row items-center p-1 rounded-2xl transition-all duration-300 ${
-            status === "error" ? "border-red-300/50" : ""
+          className={`glass-form flex flex-col sm:flex-row items-center p-1 rounded-2xl transition-all duration-300 border ${
+            status === "error" ? "border-red-300/50" : "border-[rgba(0,229,255,0.4)]"
           }`}
-          style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            boxShadow:
-              "0 8px 32px rgba(0, 229, 255, 0.15), inset 0 1px 1px rgba(255,255,255,0.8), 0 1px 3px rgba(0,0,0,0.08)",
-            border: "1.5px solid rgba(0, 229, 255, 0.4)",
-          }}
         >
           <input
             id="email-input"
@@ -84,19 +76,9 @@ export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: strin
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full sm:w-auto h-11 px-6 mt-1 sm:mt-0 sm:mr-0.5 font-medium rounded-xl cursor-pointer disabled:opacity-70 transition-all duration-300 min-w-[160px] text-sm whitespace-nowrap text-white relative overflow-hidden group"
-            style={{
-              background: "linear-gradient(135deg, rgba(26, 35, 126, 0.9) 0%, rgba(0, 229, 255, 0.9) 100%)",
-              boxShadow: "0 4px 15px rgba(0, 229, 255, 0.3), inset 0 1px 1px rgba(255,255,255,0.3)",
-            }}
+            className="glass-btn w-full sm:w-auto h-11 px-6 mt-1 sm:mt-0 sm:mr-0.5 font-medium rounded-xl cursor-pointer disabled:opacity-70 transition-all duration-300 min-w-[160px] text-sm whitespace-nowrap text-white relative overflow-hidden group"
           >
-            <span
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
-              }}
-            />
+            <span className="glass-btn-shine absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10">
               {status === "loading" ? (
                 <span className="flex items-center justify-center">

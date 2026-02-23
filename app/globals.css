@@ -37,8 +37,8 @@ body {
 
 /* Personnalisation du bouton Tally */
 :root {
-  --tally-color-primary: #1a237e;
-  --tally-color-button: linear-gradient(to right, #1a237e, #00e5ff);
+  --tally-color-primary: #0d47a1;
+  --tally-color-button: linear-gradient(to right, #0d47a1, #00e5ff);
 }
 
 /* Ajoutons des styles spécifiques pour contrôler l'espacement dans le manifeste */
@@ -123,4 +123,21 @@ body {
 
 .animate-scroll-down {
   animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+/* Glass utility classes */
+.glass-form {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15), inset 0 1px 1px rgba(255,255,255,0.8), 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.glass-btn {
+  background: linear-gradient(135deg, rgba(13, 71, 161, 0.9) 0%, rgba(0, 229, 255, 0.9) 100%);
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3), inset 0 1px 1px rgba(255,255,255,0.3);
+}
+
+.glass-btn-shine {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
 }

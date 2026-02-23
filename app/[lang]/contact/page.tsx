@@ -86,7 +86,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
             <Link
               href={`/${lang}`}
-              className="inline-block px-6 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
             >
               {dictionary.contact.backToHome}
             </Link>

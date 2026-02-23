@@ -34,7 +34,7 @@ export function FooterLanguageSwitcher({
           locale={lang.code}
           className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 overflow-hidden ${
             currentLocale === lang.code
-              ? "bg-gradient-to-br from-[#00e5ff]/80 to-[#1a237e]/80 text-white shadow-[0_4px_20px_rgba(0,229,255,0.3)]"
+              ? "bg-gradient-to-br from-[#00e5ff]/80 to-[#0d47a1]/80 text-white shadow-[0_4px_20px_rgba(0,229,255,0.3)]"
               : "bg-white/50 text-gray-700 hover:bg-white/70 hover:shadow-md"
           }`}
         >
