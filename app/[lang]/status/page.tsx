@@ -49,7 +49,7 @@ export default function StatusPage({ params }: { params: Promise<{ lang: string 
         setEnvStatus(serverEnvStatus)
       } catch (error) {
         console.error("Error collecting system status:", error)
-        setSystemStatus({ error: error.message || "Unknown error" })
+        setSystemStatus({ error: error instanceof Error ? error.message : "Unknown error" })
       } finally {
         setLoading(false)
       }
