@@ -12,8 +12,8 @@ export default function Analytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname && window.gtag) {
-      window.gtag("config", GA_MEASUREMENT_ID, {
+    if (pathname && (window as Window & { gtag?: Function }).gtag) {
+      (window as Window & { gtag: Function }).gtag("config", GA_MEASUREMENT_ID, {
         page_path: pathname + searchParams.toString(),
       })
     }
