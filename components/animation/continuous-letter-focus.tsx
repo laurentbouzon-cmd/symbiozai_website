@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type ElementType } from "react"
+import { createElement, useEffect, useRef, useState } from "react"
 import { throttle } from "lodash"
 
 interface ContinuousLetterFocusProps {
@@ -117,12 +117,9 @@ export function ContinuousLetterFocus({
     })
   }, [scrollY, windowHeight, letters, darkColor, lightColor, focusZoneHeight])
 
-  // Créer l'élément avec le tag approprié
-  const Tag = tag as ElementType
-
   return (
     <div ref={containerRef} className={`continuous-letter-focus ${className}`}>
-      <Tag>{children}</Tag>
+      {createElement(tag, {}, children)}
     </div>
   )
 }

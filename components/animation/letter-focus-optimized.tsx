@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type ElementType } from "react"
+import { createElement, useEffect, useRef, useState } from "react"
 
 interface LetterFocusProps {
   children: string
@@ -65,12 +65,9 @@ export function LetterFocusOptimized({
     </span>
   ))
 
-  // Créer l'élément avec le tag approprié
-  const Tag = tag as ElementType
-
   return (
     <div ref={containerRef} className={`letter-focus-container ${className} ${isVisible ? "is-visible" : ""}`}>
-      <Tag>{letters}</Tag>
+      {createElement(tag, {}, letters)}
     </div>
   )
 }

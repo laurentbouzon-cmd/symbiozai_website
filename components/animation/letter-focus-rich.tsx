@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react"
+import { createElement, useEffect, useRef, useState, type ReactNode } from "react"
 import parse from "html-react-parser"
 
 interface LetterFocusRichProps {
@@ -94,12 +94,9 @@ export function LetterFocusRich({
     return parsed
   }
 
-  // Créer l'élément avec le tag approprié
-  const Tag = tag as ElementType
-
   return (
     <div ref={containerRef} className={`letter-focus-container ${className} ${isVisible ? "is-visible" : ""}`}>
-      <Tag>{processText()}</Tag>
+      {createElement(tag, {}, processText())}
     </div>
   )
 }

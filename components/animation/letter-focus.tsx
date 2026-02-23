@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type ElementType } from "react"
+import { createElement, useEffect, useRef, useState } from "react"
 
 interface LetterFocusProps {
   text: string
@@ -85,13 +85,12 @@ export function LetterFocus({
     }
   }, [letters])
 
-  // Créer l'élément avec le tag approprié
-  const Tag = tag as ElementType
-
   return (
     <div ref={containerRef} className={className}>
-      <Tag>
-        {letters.map((letter, index) => (
+      {createElement(
+        tag,
+        {},
+        letters.map((letter, index) => (
           <span
             key={index}
             className="letter inline-block transition-colors"
@@ -102,8 +101,8 @@ export function LetterFocus({
           >
             {letter.char === " " ? "\u00A0" : letter.char}
           </span>
-        ))}
-      </Tag>
+        ))
+      )}
     </div>
   )
 }
