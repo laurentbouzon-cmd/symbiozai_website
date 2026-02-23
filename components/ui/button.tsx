@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost"
-  size?: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg" | "icon"
   isLoading?: boolean
 }
 
@@ -24,6 +24,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       sm: "h-9 px-3 text-xs",
       md: "h-10 px-4 text-sm",
       lg: "h-11 px-6 text-base",
+      icon: "h-9 w-9",
     }
 
     return (
@@ -56,7 +57,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button"
 
-function buttonVariants(options?: { variant?: "primary" | "secondary" | "outline" | "ghost"; size?: "sm" | "md" | "lg" }) {
+function buttonVariants(options?: { variant?: "primary" | "secondary" | "outline" | "ghost"; size?: "sm" | "md" | "lg" | "icon" }) {
   const variant = options?.variant ?? "primary"
   const size = options?.size ?? "md"
 
@@ -74,6 +75,7 @@ function buttonVariants(options?: { variant?: "primary" | "secondary" | "outline
     sm: "h-9 px-3 text-xs",
     md: "h-10 px-4 text-sm",
     lg: "h-11 px-6 text-base",
+    icon: "h-9 w-9",
   }
 
   return `${baseStyles} ${variants[variant]} ${sizes[size]}`
