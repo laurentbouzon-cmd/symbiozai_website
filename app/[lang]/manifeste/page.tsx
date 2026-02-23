@@ -4,6 +4,8 @@ import { MobileMenu } from "@/components/navigation/mobile-menu"
 import { Logo } from "@/components/ui/logo"
 import { getDictionary } from "@/lib/dictionary"
 
+export { generateMetadata } from "./metadata"
+
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }]
 }
