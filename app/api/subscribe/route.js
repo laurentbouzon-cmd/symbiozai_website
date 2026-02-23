@@ -182,6 +182,19 @@ body{margin:0;padding:0;width:100%!important;height:100%!important;background-co
 </html>`
 }
 
+async function sendSlackNotification(email) {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL
+  if (!webhookUrl) return
+
+  await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      text: `🎉 Nouvelle inscription sur la waitlist : *${email}*`,
+    }),
+  })
+}
+
 async function sendConfirmationEmail(email, lang) {
   const apiKey = process.env.BREVO_API_KEY
   if (!apiKey) return
@@ -228,6 +241,9 @@ export async function POST(request) {
 
     sendConfirmationEmail(email, lang).catch((err) =>
       console.error("Failed to send confirmation email:", err)
+    )
+    sendSlackNotification(email).catch((err) =>
+      console.error("Failed to send Slack notification:", err)
     )
 
     return Response.json({ success: true, message: "Successfully subscribed" })
