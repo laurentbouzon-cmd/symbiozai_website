@@ -57,14 +57,6 @@ export async function GET() {
 
 <!-- Pages de contact -->
 <url>
-  <loc>https://symbioz.ai/contact</loc>
-  <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-  <xhtml:link rel="alternate" hreflang="fr" href="https://symbioz.ai/fr/contact"/>
-  <xhtml:link rel="alternate" hreflang="en" href="https://symbioz.ai/en/contact"/>
-</url>
-<url>
   <loc>https://symbioz.ai/fr/contact</loc>
   <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
   <changefreq>monthly</changefreq>
