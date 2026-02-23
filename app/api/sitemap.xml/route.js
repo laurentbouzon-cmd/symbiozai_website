@@ -101,14 +101,6 @@ export async function GET() {
 
 <!-- Pages de confidentialité -->
 <url>
-  <loc>https://symbioz.ai/privacy</loc>
-  <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.5</priority>
-  <xhtml:link rel="alternate" hreflang="fr" href="https://symbioz.ai/fr/privacy"/>
-  <xhtml:link rel="alternate" hreflang="en" href="https://symbioz.ai/en/privacy"/>
-</url>
-<url>
   <loc>https://symbioz.ai/fr/privacy</loc>
   <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
   <changefreq>monthly</changefreq>
