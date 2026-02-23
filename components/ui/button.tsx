@@ -2,7 +2,7 @@ import type React from "react"
 import { cn } from "@/lib/utils"
 import { forwardRef } from "react"
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost"
   size?: "sm" | "md" | "lg" | "icon"
   isLoading?: boolean
