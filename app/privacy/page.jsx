@@ -1,3 +1,19 @@
+export const metadata = {
+  title: "Privacy Policy - SymbiozAI",
+  description: "Politique de confidentialité de SymbiozAI. Découvrez comment nous collectons et utilisons vos données.",
+  openGraph: {
+    title: "Privacy Policy - SymbiozAI",
+    description: "Politique de confidentialité de SymbiozAI.",
+    url: "https://symbioz.ai/privacy",
+  },
+  alternates: {
+    canonical: "https://symbioz.ai/privacy",
+  },
+  robots: {
+    index: false,
+  },
+}
+
 export default function PrivacyPage() {
   const currentYear = new Date().getFullYear()
 

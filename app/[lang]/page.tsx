@@ -69,20 +69,34 @@ export default function Page({ params }: { params: { lang: string } }) {
   }
 
   // Données structurées pour les moteurs de recherche
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "SymbiozAI",
-    url: "https://symbioz.ai",
-    logo: "https://symbioz.ai/logo.png",
-    description: dictionary.description,
-    sameAs: [],
-    contactPoint: {
-      "@type": "ContactPoint",
-      email: "contact@symbioz.ai",
-      contactType: "customer service",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "SymbiozAI",
+      url: "https://symbioz.ai",
+      logo: "https://symbioz.ai/icon.png",
+      description: dictionary.description,
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "contact@symbioz.ai",
+        contactType: "customer service",
+      },
     },
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "SymbiozAI",
+      url: "https://symbioz.ai",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      description: dictionary.description,
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+      },
+    },
+  ]
 
   const isFr = params.lang === "fr"
 

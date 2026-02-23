@@ -1,3 +1,16 @@
+export const metadata = {
+  title: "Contact - SymbiozAI",
+  description: "Contactez l'équipe SymbiozAI pour toute question sur notre CRM IA-Native.",
+  openGraph: {
+    title: "Contact - SymbiozAI",
+    description: "Contactez l'équipe SymbiozAI pour toute question sur notre CRM IA-Native.",
+    url: "https://symbioz.ai/contact",
+  },
+  alternates: {
+    canonical: "https://symbioz.ai/contact",
+  },
+}
+
 export default function ContactPage() {
   const currentYear = new Date().getFullYear()
 

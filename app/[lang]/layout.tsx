@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     alternates: {
       canonical: `https://symbioz.ai/${params.lang}`,
       languages: {
+        "x-default": "https://symbioz.ai",
         en: "https://symbioz.ai/en",
         fr: "https://symbioz.ai/fr",
       },

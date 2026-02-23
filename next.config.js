@@ -11,9 +11,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
-    domains: ["symbioz.ai"], // Domaines autorisés pour les images
-    formats: ["image/avif", "image/webp"], // Formats d'image modernes
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      { protocol: "https", hostname: "upload.wikimedia.org" },
+      { protocol: "https", hostname: "www.pipedrive.com" },
+      { protocol: "https", hostname: "symbioz.ai" },
+    ],
   },
   experimental: {
     scrollRestoration: true, // Restaure la position de défilement
