@@ -38,7 +38,7 @@ export default function PrivacyPage({ params }: { params: { lang: string } }) {
     <div className="flex flex-col min-h-screen bg-white">
       <header className="flex justify-center items-center py-6 border-b border-gray-100">
         <Link href={`/${params.lang}`}>
-          <Logo size="md" />
+          <Logo size="lg" />
         </Link>
       </header>
 
