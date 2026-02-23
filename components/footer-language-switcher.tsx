@@ -9,7 +9,15 @@ import Link from "next/link"
  * @param {string} [props.className] - Additional CSS classes
  * @returns {JSX.Element} - The language switcher component
  */
-export function FooterLanguageSwitcher({ currentLocale, dictionary, className }) {
+export function FooterLanguageSwitcher({
+  currentLocale,
+  dictionary,
+  className,
+}: {
+  currentLocale: string
+  dictionary?: unknown
+  className?: string
+}) {
   const languages = [
     { code: "en", name: "English" },
     { code: "fr", name: "Français" },
