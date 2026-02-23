@@ -15,7 +15,28 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
   const currentYear = new Date().getFullYear()
   const isFr = params.lang === "fr"
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: isFr
+      ? "Manifeste SymbiozAI - Une nouvelle ère commerciale commence"
+      : "SymbiozAI Manifesto - A new commercial era begins",
+    description: isFr
+      ? "SymbiozAI est le premier CRM entièrement IA-Native. Découvrez notre vision d'un système commercial qui comprend, agit et apprend de manière autonome."
+      : "SymbiozAI is the first fully AI-Native CRM. Discover our vision for a sales system that understands, acts, and learns autonomously.",
+    url: `https://symbioz.ai/${params.lang}/manifeste`,
+    inLanguage: isFr ? "fr-FR" : "en-US",
+    publisher: {
+      "@type": "Organization",
+      name: "SymbiozAI",
+      url: "https://symbioz.ai",
+      logo: "https://symbioz.ai/icon.png",
+    },
+  }
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
       {/* Navigation */}
       <header className="absolute top-0 left-0 right-0 z-10">
@@ -177,5 +198,6 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
         </div>
       </footer>
     </div>
+    </>
   )
 }

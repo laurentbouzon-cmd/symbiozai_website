@@ -71,6 +71,12 @@ export default function Page({ params }: { params: { lang: string } }) {
   const jsonLd = [
     {
       "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "SymbiozAI",
+      url: "https://symbioz.ai",
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       name: "SymbiozAI",
       url: "https://symbioz.ai",

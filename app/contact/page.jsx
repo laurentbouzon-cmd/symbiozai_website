@@ -11,10 +11,25 @@ export const metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact SymbiozAI",
+  url: "https://symbioz.ai/contact",
+  mainEntity: {
+    "@type": "Organization",
+    name: "SymbiozAI",
+    url: "https://symbioz.ai",
+    email: "contact@symbioz.ai",
+  },
+}
+
 export default function ContactPage() {
   const currentYear = new Date().getFullYear()
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-white bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
       <main className="flex-grow flex flex-col px-4 sm:px-6 text-center py-[8vh] sm:py-[10vh]">
         <div className="max-w-3xl mx-auto">
@@ -40,5 +55,6 @@ export default function ContactPage() {
         <p>&copy; {currentYear} SymbiozAI. All rights reserved.</p>
       </footer>
     </div>
+    </>
   )
 }
