@@ -44,6 +44,6 @@ export const config = {
   // Matcher pour les routes qui doivent être traitées par le middleware
   matcher: [
     // Ignorer les fichiers statiques et les API
-    "/((?!api|_next/static|_next/image|favicon\\.ico|favicon\\.svg|images|.*\\.png$|.*\\.svg$).*)",
+    "/((?!api|_next/static|_next/image|favicon\\.ico|favicon\\.svg|sitemap\\.xml|robots\\.txt|images|.*\\.png$|.*\\.svg$).*)",
   ],
 }
