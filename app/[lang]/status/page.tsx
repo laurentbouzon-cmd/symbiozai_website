@@ -1,13 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { use, useState, useEffect } from "react"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
 import { MobileMenu } from "@/components/navigation/mobile-menu"
 import { getDictionary } from "@/lib/dictionary"
 import Link from "next/link"
 
-export default function StatusPage({ params }: { params: { lang: string } }) {
-  const dictionary = getDictionary(params.lang)
+export default function StatusPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = use(params)
+  const dictionary = getDictionary(lang)
   const [systemStatus, setSystemStatus] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [envStatus, setEnvStatus] = useState<any>(null)
@@ -67,15 +68,15 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-end items-center">
             {/* Menu pour mobile */}
-            <MobileMenu lang={params.lang} dictionary={dictionary} />
+            <MobileMenu lang={lang} dictionary={dictionary} />
 
             {/* Menu pour desktop - décalé de 2cm vers la gauche */}
             <nav className="hidden md:flex items-center space-x-10 mr-6 -ml-20">
-              <Link href={`/${params.lang}`} className="text-gray-700 hover:text-gray-900 transition-colors">
-                {params.lang === "fr" ? "Accueil" : "Home"}
+              <Link href={`/${lang}`} className="text-gray-700 hover:text-gray-900 transition-colors">
+                {lang === "fr" ? "Accueil" : "Home"}
               </Link>
-              <Link href={`/${params.lang}/manifeste`} className="text-gray-700 hover:text-gray-900 transition-colors">
-                {params.lang === "fr" ? "Manifeste" : "Manifesto"}
+              <Link href={`/${lang}/manifeste`} className="text-gray-700 hover:text-gray-900 transition-colors">
+                {lang === "fr" ? "Manifeste" : "Manifesto"}
               </Link>
             </nav>
           </div>
@@ -90,21 +91,21 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
           <div className="flex items-center justify-center p-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
             <span className="ml-3 text-lg">
-              {params.lang === "fr" ? "Vérification de l'état du système..." : "Checking system status..."}
+              {lang === "fr" ? "Vérification de l'état du système..." : "Checking system status..."}
             </span>
           </div>
         ) : !systemStatus ? (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            <p className="font-bold">{params.lang === "fr" ? "Erreur" : "Error"}</p>
+            <p className="font-bold">{lang === "fr" ? "Erreur" : "Error"}</p>
             <p>
-              {params.lang === "fr"
+              {lang === "fr"
                 ? "Impossible de collecter les informations système"
                 : "Unable to collect system information"}
             </p>
           </div>
         ) : systemStatus.error ? (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            <p className="font-bold">{params.lang === "fr" ? "Erreur" : "Error"}</p>
+            <p className="font-bold">{lang === "fr" ? "Erreur" : "Error"}</p>
             <p>{systemStatus.error}</p>
           </div>
         ) : (
@@ -117,7 +118,7 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
               </div>
               <p className="text-sm text-gray-600 mt-2">
                 {dictionary.status.lastCheck}{" "}
-                {new Date(systemStatus.system.lastChecked).toLocaleString(params.lang === "fr" ? "fr-FR" : "en-US")}
+                {new Date(systemStatus.system.lastChecked).toLocaleString(lang === "fr" ? "fr-FR" : "en-US")}
               </p>
             </div>
 
@@ -147,7 +148,7 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
 
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
               <h2 className="text-lg font-semibold text-purple-800 mb-2">
-                {params.lang === "fr" ? "Variables d'environnement" : "Environment Variables"}
+                {lang === "fr" ? "Variables d'environnement" : "Environment Variables"}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Variables vérifiées côté serveur */}
@@ -157,10 +158,10 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
                       <p className="text-sm font-medium text-gray-500">{key.toUpperCase()}</p>
                       <p className={value ? "text-green-600" : "text-red-600"}>
                         {value
-                          ? params.lang === "fr"
+                          ? lang === "fr"
                             ? "Configuré"
                             : "Configured"
-                          : params.lang === "fr"
+                          : lang === "fr"
                             ? "Non configuré"
                             : "Not configured"}
                       </p>
@@ -172,8 +173,8 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
         )}
 
         <div className="mt-8 flex space-x-4">
-          <a href={`/${params.lang}`} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-            {params.lang === "fr" ? "Retour à l'accueil" : "Back to Home"}
+          <a href={`/${lang}`} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            {lang === "fr" ? "Retour à l'accueil" : "Back to Home"}
           </a>
           <button
             onClick={() => window.location.reload()}
@@ -190,7 +191,7 @@ export default function StatusPage({ params }: { params: { lang: string } }) {
           &copy; {new Date().getFullYear()} SymbiozAI. {dictionary.footer.copyright}
         </p>
         <div className="mt-3 flex justify-center">
-          <FooterLanguageSwitcher currentLocale={params.lang} dictionary={dictionary} />
+          <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
         </div>
       </footer>
     </div>

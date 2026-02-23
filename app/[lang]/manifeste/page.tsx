@@ -10,10 +10,11 @@ export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }]
 }
 
-export default function ManifestePage({ params }: { params: { lang: string } }) {
-  const dictionary = getDictionary(params.lang)
+export default async function ManifestePage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
   const currentYear = new Date().getFullYear()
-  const isFr = params.lang === "fr"
+  const isFr = lang === "fr"
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -24,7 +25,7 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
     description: isFr
       ? "SymbiozAI est le premier CRM entièrement IA-Native. Découvrez notre vision d'un système commercial qui comprend, agit et apprend de manière autonome."
       : "SymbiozAI is the first fully AI-Native CRM. Discover our vision for a sales system that understands, acts, and learns autonomously.",
-    url: `https://symbioz.ai/${params.lang}/manifeste`,
+    url: `https://symbioz.ai/${lang}/manifeste`,
     inLanguage: isFr ? "fr-FR" : "en-US",
     publisher: {
       "@type": "Organization",
@@ -42,13 +43,13 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
       <header className="absolute top-0 left-0 right-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-end items-center">
-            <MobileMenu lang={params.lang} dictionary={dictionary} />
+            <MobileMenu lang={lang} dictionary={dictionary} />
             <nav className="hidden md:flex items-center space-x-10 mr-6 -ml-20">
-              <Link href={`/${params.lang}`} className="text-black hover:text-gray-900 transition-colors">
+              <Link href={`/${lang}`} className="text-black hover:text-gray-900 transition-colors">
                 {isFr ? "Accueil" : "Home"}
               </Link>
               <Link
-                href={`/${params.lang}/manifeste`}
+                href={`/${lang}/manifeste`}
                 className="text-black font-medium hover:text-gray-900 transition-colors"
               >
                 {isFr ? "Manifeste" : "Manifesto"}
@@ -172,7 +173,7 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
           {/* CTA */}
           <div className="mt-12">
             <Link
-              href={`/${params.lang}`}
+              href={`/${lang}`}
               className="group relative inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_30px_rgba(0,229,255,0.4)] overflow-hidden"
             >
               {/* Glass highlight effect */}
@@ -194,7 +195,7 @@ export default function ManifestePage({ params }: { params: { lang: string } }) 
           &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
         </p>
         <div className="mt-3 flex justify-center">
-          <FooterLanguageSwitcher currentLocale={params.lang} dictionary={dictionary} />
+          <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
         </div>
       </footer>
     </div>

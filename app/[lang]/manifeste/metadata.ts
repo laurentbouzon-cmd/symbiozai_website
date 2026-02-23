@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 
-export function generateMetadata({ params }: { params: { lang: string } }): Metadata {
-  const isEnglish = params.lang === "en"
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === "en"
 
   const title = isEnglish
     ? "SymbiozAI Manifesto - A new commercial era begins"
@@ -16,11 +17,11 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
     openGraph: {
       title,
       description,
-      url: `https://symbioz.ai/${params.lang}/manifeste`,
+      url: `https://symbioz.ai/${lang}/manifeste`,
       siteName: "SymbiozAI",
       images: [
         {
-          url: `/og?lang=${params.lang}`,
+          url: `/og?lang=${lang}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -33,10 +34,10 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
       card: "summary_large_image",
       title,
       description,
-      images: [`/og?lang=${params.lang}`],
+      images: [`/og?lang=${lang}`],
     },
     alternates: {
-      canonical: `https://symbioz.ai/${params.lang}/manifeste`,
+      canonical: `https://symbioz.ai/${lang}/manifeste`,
       languages: {
         "x-default": "https://symbioz.ai/fr/manifeste",
         en: "https://symbioz.ai/en/manifeste",

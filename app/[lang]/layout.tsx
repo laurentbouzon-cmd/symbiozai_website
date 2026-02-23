@@ -10,9 +10,10 @@ export async function generateStaticParams() {
 }
 
 // Générer les métadonnées en fonction de la langue
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const dictionary = getDictionary(params.lang)
-  const isEnglish = params.lang === "en"
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
+  const isEnglish = lang === "en"
 
   return {
     title: `SymbiozAI - ${dictionary.subtitle}`,
@@ -23,11 +24,11 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     openGraph: {
       title: `SymbiozAI - ${dictionary.subtitle}`,
       description: dictionary.description,
-      url: `https://symbioz.ai/${params.lang}`,
+      url: `https://symbioz.ai/${lang}`,
       siteName: "SymbiozAI",
       images: [
         {
-          url: `/og?lang=${params.lang}`,
+          url: `/og?lang=${lang}`,
           width: 1200,
           height: 630,
           alt: `SymbiozAI - ${dictionary.subtitle}`,
@@ -40,10 +41,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       card: "summary_large_image",
       title: `SymbiozAI - ${dictionary.subtitle}`,
       description: dictionary.description,
-      images: [`/og?lang=${params.lang}`],
+      images: [`/og?lang=${lang}`],
     },
     alternates: {
-      canonical: `https://symbioz.ai/${params.lang}`,
+      canonical: `https://symbioz.ai/${lang}`,
       languages: {
         "x-default": "https://symbioz.ai",
         en: "https://symbioz.ai/en",
@@ -55,14 +56,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 
 export default function LocaleLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
-  // Vérifier que la langue est valide
-  const validLang = ["en", "fr"].includes(params.lang) ? params.lang : "en"
-
   return <>{children}</>
-
 }

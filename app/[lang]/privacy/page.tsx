@@ -9,8 +9,9 @@ export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }]
 }
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const isEnglish = params.lang === "en"
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === "en"
 
   return {
     title: isEnglish ? "Privacy Policy - SymbiozAI" : "Politique de confidentialité - SymbiozAI",
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       : "Politique de confidentialité de SymbiozAI. Découvrez comment nous collectons et utilisons vos données.",
     robots: { index: false },
     alternates: {
-      canonical: `https://symbioz.ai/${params.lang}/privacy`,
+      canonical: `https://symbioz.ai/${lang}/privacy`,
       languages: {
         "x-default": "https://symbioz.ai/fr/privacy",
         en: "https://symbioz.ai/en/privacy",
@@ -29,15 +30,16 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   }
 }
 
-export default function PrivacyPage({ params }: { params: { lang: string } }) {
-  const dictionary = getDictionary(params.lang)
+export default async function PrivacyPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
   const currentYear = new Date().getFullYear()
   const privacy = dictionary.privacy
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <header className="flex justify-center items-center py-6 border-b border-gray-100">
-        <Link href={`/${params.lang}`}>
+        <Link href={`/${lang}`}>
           <Logo size="lg" />
         </Link>
       </header>
@@ -70,7 +72,7 @@ export default function PrivacyPage({ params }: { params: { lang: string } }) {
 
           <div className="text-center mt-12">
             <Link
-              href={`/${params.lang}`}
+              href={`/${lang}`}
               className="inline-block px-6 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
             >
               {privacy.backToHome}
@@ -84,7 +86,7 @@ export default function PrivacyPage({ params }: { params: { lang: string } }) {
           &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
         </p>
         <div className="mt-3 flex justify-center">
-          <FooterLanguageSwitcher currentLocale={params.lang} dictionary={dictionary} />
+          <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
         </div>
       </footer>
     </div>

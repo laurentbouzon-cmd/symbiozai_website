@@ -8,9 +8,10 @@ export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }]
 }
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const dictionary = getDictionary(params.lang)
-  const isEnglish = params.lang === "en"
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
+  const isEnglish = lang === "en"
 
   const title = isEnglish ? "Contact - SymbiozAI" : "Contact - SymbiozAI"
   const description = isEnglish
@@ -23,9 +24,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     openGraph: {
       title,
       description,
-      url: `https://symbioz.ai/${params.lang}/contact`,
+      url: `https://symbioz.ai/${lang}/contact`,
       siteName: "SymbiozAI",
-      images: [{ url: `/og?lang=${params.lang}`, width: 1200, height: 630, alt: title }],
+      images: [{ url: `/og?lang=${lang}`, width: 1200, height: 630, alt: title }],
       locale: isEnglish ? "en_US" : "fr_FR",
       type: "website",
     },
@@ -33,10 +34,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       card: "summary_large_image",
       title,
       description,
-      images: [`/og?lang=${params.lang}`],
+      images: [`/og?lang=${lang}`],
     },
     alternates: {
-      canonical: `https://symbioz.ai/${params.lang}/contact`,
+      canonical: `https://symbioz.ai/${lang}/contact`,
       languages: {
         "x-default": "https://symbioz.ai/fr/contact",
         en: "https://symbioz.ai/en/contact",
@@ -59,8 +60,9 @@ const jsonLd = {
   },
 }
 
-export default function ContactPage({ params }: { params: { lang: string } }) {
-  const dictionary = getDictionary(params.lang)
+export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
   const currentYear = new Date().getFullYear()
 
   return (
@@ -83,7 +85,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
             </p>
 
             <Link
-              href={`/${params.lang}`}
+              href={`/${lang}`}
               className="inline-block px-6 py-3 bg-gradient-to-r from-[#1a237e] to-[#00e5ff] text-white font-medium rounded-md hover:opacity-90 transition-all duration-300"
             >
               {dictionary.contact.backToHome}
@@ -96,7 +98,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
             &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
           </p>
           <div className="mt-3 flex justify-center">
-            <FooterLanguageSwitcher currentLocale={params.lang} dictionary={dictionary} />
+            <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
           </div>
         </footer>
       </div>

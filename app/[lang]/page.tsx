@@ -8,8 +8,9 @@ import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 
-export default function Page({ params }: { params: { lang: string } }) {
-  const dictionary = getDictionary(params.lang)
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
   const currentYear = new Date().getFullYear()
 
   // Données structurées pour les moteurs de recherche
@@ -48,7 +49,7 @@ export default function Page({ params }: { params: { lang: string } }) {
     },
   ]
 
-  const isFr = params.lang === "fr"
+  const isFr = lang === "fr"
 
   const missionPillars = [
     {
@@ -183,12 +184,12 @@ export default function Page({ params }: { params: { lang: string } }) {
         <header className="absolute top-0 left-0 right-0 z-10">
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-end items-center">
-              <MobileMenu lang={params.lang} dictionary={dictionary} />
+              <MobileMenu lang={lang} dictionary={dictionary} />
               <nav className="hidden md:flex items-center space-x-10 mr-6 -ml-20">
-                <Link href={`/${params.lang}`} className="text-black hover:text-gray-900 transition-colors">
+                <Link href={`/${lang}`} className="text-black hover:text-gray-900 transition-colors">
                   {isFr ? "Accueil" : "Home"}
                 </Link>
-                <Link href={`/${params.lang}/manifeste`} className="text-black hover:text-gray-900 transition-colors">
+                <Link href={`/${lang}/manifeste`} className="text-black hover:text-gray-900 transition-colors">
                   {isFr ? "Manifeste" : "Manifesto"}
                 </Link>
               </nav>
@@ -219,7 +220,7 @@ export default function Page({ params }: { params: { lang: string } }) {
                 <p className="text-center max-w-3xl">{dictionary.description}</p>
               </div>
 
-              <WaitlistForm form={dictionary.form} lang={params.lang} />
+              <WaitlistForm form={dictionary.form} lang={lang} />
             </div>
 
             <ScrollIndicator />
@@ -474,7 +475,7 @@ export default function Page({ params }: { params: { lang: string } }) {
             &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
           </p>
           <div className="mt-3 flex justify-center">
-            <FooterLanguageSwitcher currentLocale={params.lang} dictionary={dictionary} />
+            <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
           </div>
         </footer>
       </div>
