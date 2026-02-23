@@ -1,6 +1,6 @@
 "use client"
 
-import { createElement, useEffect, useRef, useState, type ReactNode } from "react"
+import { createElement, useEffect, useRef, useState } from "react"
 import parse from "html-react-parser"
 
 interface LetterFocusRichProps {
@@ -87,7 +87,7 @@ export function LetterFocusRich({
             </>
           )
         }
-        return domNode as ReactNode
+        return undefined
       },
     })
 
