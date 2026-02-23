@@ -11,6 +11,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://symbioz.ai"),
   title: "SymbiozAI - Le premier CRM 100% IA-Native. Conçu pour travailler à votre place.",
   description:
     "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés, pilotés depuis WhatsApp et Slack, avec un agent IA intégré.",
