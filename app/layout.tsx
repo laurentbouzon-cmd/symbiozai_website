@@ -2,6 +2,13 @@ import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
 import Script from "next/script"
+import { Inter } from "next/font/google"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "SymbiozAI - Le premier CRM 100% IA-Native. Conçu pour travailler à votre place.",
@@ -61,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={inter.variable}>
       <head>
         <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23000'/%3E%3Cstop offset='100%25' stop-color='%230A0A0A'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230A0A0A'/%3E%3Cstop offset='100%25' stop-color='%23000'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23050505'/%3E%3Cstop offset='100%25' stop-color='%23000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='%23FFF'/%3E%3Cg transform='translate(0,-3) scale(0.32)'%3E%3Cpath d='M100 50L50 80 50 140 100 170Z' fill='url(%23a)' stroke='%230088C2' stroke-width='3' stroke-linejoin='round' opacity='1' stroke-opacity='.7'/%3E%3Cpath d='M100 50L150 80 150 140 100 170Z' fill='url(%23b)' stroke='%230088C2' stroke-width='3' stroke-linejoin='round' opacity='1' stroke-opacity='.8'/%3E%3Cpath d='M100 50L50 80 100 110 150 80Z' fill='url(%23c)' stroke='%230088C2' stroke-width='3' stroke-linejoin='round' opacity='1' stroke-opacity='.9'/%3E%3Ccircle cx='100' cy='110' r='14' fill='%230088C2'/%3E%3Ccircle cx='100' cy='110' r='8' fill='%2300A8E8'/%3E%3C/g%3E%3C/svg%3E" />
       </head>
