@@ -1,4 +1,72 @@
-const dictionaries = {
+export type Locale = "en" | "fr"
+
+export type PrivacySection = {
+  heading: string
+  content: string
+}
+
+export type Dictionary = {
+  subtitle: [string, string]
+  description: string
+  quote: string
+  form: {
+    placeholder: string
+    button: string
+    joining: string
+    success: string
+    error: string
+    validation: {
+      required: string
+      invalid: string
+    }
+  }
+  footer: {
+    copyright: string
+    manifesto: string
+    contact: string
+    status: string
+  }
+  contact: {
+    title: string
+    description: string
+    backToHome: string
+  }
+  apiTest: {
+    title: string
+    apiResponse: string
+    error: string
+    backToHome: string
+  }
+  status: {
+    title: string
+    description: string
+    generalStatus: string
+    systemOperational: string
+    lastCheck: string
+    systemInfo: string
+    environment: string
+    connectionStatus: string
+    online: string
+    offline: string
+    platform: string
+    resolution: string
+    refresh: string
+  }
+  manifesto: {
+    title: string
+    backToHome: string
+  }
+  privacy: {
+    title: string
+    lastUpdated: string
+    backToHome: string
+    sections: PrivacySection[]
+  }
+}
+
+export type FormDictionary = Dictionary["form"]
+
+const dictionaries: Record<Locale, Dictionary> = {
   en: {
     subtitle: ["The 1st European AI-Native CRM.", "It's the ultimate intelligence driving your growth."],
     description:
@@ -140,7 +208,7 @@ const dictionaries = {
         {
           heading: "1. Introduction",
           content:
-            'SymbiozAI ("nous", "notre", ou "nos") s\'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons et partageons des informations vous concernant lorsque vous utilisez notre site web et nos services.',
+            "SymbiozAI (\"nous\", \"notre\", ou \"nos\") s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons et partageons des informations vous concernant lorsque vous utilisez notre site web et nos services.",
         },
         {
           heading: "2. Informations que nous collectons",
@@ -154,18 +222,14 @@ const dictionaries = {
         },
         {
           heading: "4. Nous contacter",
-          content: "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à",
+          content:
+            "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à",
         },
       ],
     },
   },
 }
 
-/**
- * Get dictionary entries for the specified locale
- * @param {string} locale - The locale code (e.g., 'en', 'fr')
- * @returns {Object} - Dictionary entries for the specified locale
- */
-export function getDictionary(locale) {
-  return dictionaries[locale] || dictionaries.en
+export function getDictionary(locale: string): Dictionary {
+  return dictionaries[locale as Locale] ?? dictionaries.en
 }

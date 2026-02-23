@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { getDictionary } from "@/lib/dictionary"
+import type { PrivacySection } from "@/lib/dictionary"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
 import { Logo } from "@/components/ui/logo"
 
@@ -52,7 +53,7 @@ export default function PrivacyPage({ params }: { params: { lang: string } }) {
           </p>
 
           <div className="space-y-8 text-gray-700 leading-relaxed">
-            {privacy.sections.map((section: { heading: string; content: string }, index: number) => (
+            {privacy.sections.map((section: PrivacySection, index: number) => (
               <div key={index}>
                 <h2 className="text-xl font-semibold text-gray-900 mb-3">{section.heading}</h2>
                 <p>

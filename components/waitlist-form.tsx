@@ -1,18 +1,7 @@
 "use client"
 
 import { useState } from "react"
-
-type FormDictionary = {
-  placeholder: string
-  button: string
-  joining: string
-  success: string
-  error: string
-  validation: {
-    required: string
-    invalid: string
-  }
-}
+import type { FormDictionary } from "@/lib/dictionary"
 
 export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: string }) {
   const [email, setEmail] = useState("")
