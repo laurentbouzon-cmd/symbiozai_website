@@ -8,7 +8,6 @@ import { getDictionary } from "@/lib/dictionary"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
 import { MobileMenu } from "@/components/navigation/mobile-menu"
 import { Logo } from "@/components/ui/logo"
-import Head from "next/head"
 import Link from "next/link"
 import { GlassIcon } from "@/components/ui/glass-icon"
 
@@ -227,9 +226,7 @@ export default function Page({ params }: { params: { lang: string } }) {
 
   return (
     <>
-      <Head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      </Head>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
         {/* Barre de navigation transparente avec liens à droite */}
         <header className="absolute top-0 left-0 right-0 z-10">
