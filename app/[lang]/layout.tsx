@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       siteName: "SymbiozAI",
       images: [
         {
-          url: "/og-image.png",
+          url: `/og?lang=${params.lang}`,
           width: 1200,
           height: 630,
           alt: `SymbiozAI - ${dictionary.subtitle}`,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       card: "summary_large_image",
       title: `SymbiozAI - ${dictionary.subtitle}`,
       description: dictionary.description,
-      images: ["/og-image.png"],
+      images: [`/og?lang=${params.lang}`],
     },
     alternates: {
       canonical: `https://symbioz.ai/${params.lang}`,

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "SymbiozAI",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og",
         width: 1200,
         height: 630,
         alt: "SymbiozAI - Le premier CRM 100% IA-Native.",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SymbiozAI - Le premier CRM 100% IA-Native. Conçu pour travailler à votre place.",
     description: "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés.",
-    images: ["/og-image.png"],
+    images: ["/og"],
   },
   robots: {
     index: true,
