@@ -182,6 +182,12 @@ body{margin:0;padding:0;width:100%!important;height:100%!important;background-co
 </html>`
 }
 
+function maskEmail(email) {
+  const [local, domain] = email.split("@")
+  const masked = local[0] + "*".repeat(Math.max(local.length - 2, 1)) + local[local.length - 1]
+  return `${masked}@${domain}`
+}
+
 async function sendSlackNotification(email) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL
   if (!webhookUrl) return
@@ -190,7 +196,7 @@ async function sendSlackNotification(email) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      text: `🎉 Nouvelle inscription sur la waitlist : *${email}*`,
+      text: `🎉 Nouvelle inscription sur la waitlist : *${maskEmail(email)}*`,
     }),
   })
 }
