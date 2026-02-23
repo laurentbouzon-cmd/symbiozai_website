@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import type React from "react"
+import { useEffect, useRef, useState, type ElementType } from "react"
 
 interface LetterFocusProps {
   text: string
@@ -87,7 +86,7 @@ export function LetterFocus({
   }, [letters])
 
   // Créer l'élément avec le tag approprié
-  const Tag = tag as keyof React.JSX.IntrinsicElements
+  const Tag = tag as ElementType
 
   return (
     <div ref={containerRef} className={className}>

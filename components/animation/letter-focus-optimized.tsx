@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ElementType } from "react"
 
 interface LetterFocusProps {
   children: string
@@ -66,7 +66,7 @@ export function LetterFocusOptimized({
   ))
 
   // Créer l'élément avec le tag approprié
-  const Tag = tag as keyof JSX.IntrinsicElements
+  const Tag = tag as ElementType
 
   return (
     <div ref={containerRef} className={`letter-focus-container ${className} ${isVisible ? "is-visible" : ""}`}>

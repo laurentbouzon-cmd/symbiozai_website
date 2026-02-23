@@ -4,10 +4,11 @@ import { useState } from "react"
 import Link from "next/link"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
 import { Logo } from "@/components/ui/logo"
+import type { Dictionary } from "@/lib/dictionary"
 
 interface MobileMenuProps {
   lang: string
-  dictionary: any
+  dictionary: Dictionary
 }
 
 export function MobileMenu({ lang, dictionary }: MobileMenuProps) {
