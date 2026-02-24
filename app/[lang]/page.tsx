@@ -7,6 +7,8 @@ import Link from "next/link"
 import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
+import { ScrollReveal } from "@/components/scroll-reveal"
+import { ChatMockup } from "@/components/chat-mockup"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
@@ -200,12 +202,18 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         {/* Hero Section */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
           <section className="flex flex-col px-4 sm:px-6 text-center min-h-screen justify-center relative">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="flex justify-center">
+            {/* Ambient glow */}
+            <div
+              className="hero-ambient-glow absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(0,229,255,0.1) 0%, rgba(13,71,161,0.05) 40%, transparent 70%)" }}
+            />
+
+            <div className="max-w-3xl mx-auto relative z-10">
+              <h1 className="hero-item flex justify-center" style={{ animationDelay: "0ms" }}>
                 <Logo size="xl" />
               </h1>
 
-              <h2 className="font-normal text-xl md:text-2xl mt-4">
+              <h2 className="hero-item font-normal text-xl md:text-2xl mt-4" style={{ animationDelay: "150ms" }}>
                 {Array.isArray(dictionary.subtitle) ? (
                   <>
                     <span className="block">{dictionary.subtitle[0]}</span>
@@ -216,11 +224,13 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 )}
               </h2>
 
-              <div className="flex flex-col items-center justify-center my-6 sm:my-8 text-gray-600 text-sm sm:text-base md:text-lg">
+              <div className="hero-item flex flex-col items-center justify-center my-6 sm:my-8 text-gray-600 text-sm sm:text-base md:text-lg" style={{ animationDelay: "300ms" }}>
                 <p className="text-center max-w-3xl">{dictionary.description}</p>
               </div>
 
-              <WaitlistForm form={dictionary.form} lang={lang} />
+              <div className="hero-item" style={{ animationDelay: "450ms" }}>
+                <WaitlistForm form={dictionary.form} lang={lang} />
+              </div>
             </div>
 
             <ScrollIndicator />
@@ -229,22 +239,24 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* Maya AI Section */}
           <section className="py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
             <div className="max-w-6xl mx-auto">
-              <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                {isFr ? "Votre nouvelle interface" : "Your new interface"}
-              </p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                {isFr ? "Rencontrez Maya AI" : "Meet Maya AI"}
-              </h3>
-              <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                {isFr
-                  ? "Oubliez les dashboards complexes et les clics interminables. Maya est votre agent IA personnel : elle opère votre croissance par la conversation."
-                  : "Forget complex dashboards and endless clicks. Maya is your personal AI agent that manages your Autonomous Revenue Brain through conversation."}
-              </p>
+              <ScrollReveal>
+                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
+                  {isFr ? "Votre nouvelle interface" : "Your new interface"}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+                  {isFr ? "Rencontrez Maya AI" : "Meet Maya AI"}
+                </h3>
+                <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                  {isFr
+                    ? "Oubliez les dashboards complexes et les clics interminables. Maya est votre agent IA personnel : elle opère votre croissance par la conversation."
+                    : "Forget complex dashboards and endless clicks. Maya is your personal AI agent that manages your Autonomous Revenue Brain through conversation."}
+                </p>
+              </ScrollReveal>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left side - Maya presentation */}
                 <div className="order-2 lg:order-1">
-                  <div className="space-y-6">
+                  <ScrollReveal stagger className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] rounded-full flex items-center justify-center text-white flex-shrink-0">
                         <GlassIcon type="bot" size={48} />
@@ -292,90 +304,40 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
                 </div>
 
                 {/* Right side - Chat mockup */}
                 <div className="order-1 lg:order-2">
-                  <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden max-w-md mx-auto">
-                    {/* Chat header */}
-                    <div className="bg-[#0d47a1] px-4 py-3 flex items-center gap-3">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                        <GlassIcon type="bot" size={40} />
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Maya AI</p>
-                        <p className="text-white/70 text-sm">{isFr ? "En ligne" : "Online"}</p>
-                      </div>
-                    </div>
-
-                    {/* Chat messages */}
-                    <div className="p-4 space-y-4 bg-gray-50 min-h-[300px]">
-                      {/* User message */}
-                      <div className="flex justify-end">
-                        <div className="bg-[#0d47a1] text-white px-4 py-2 rounded-2xl rounded-br-md max-w-[80%]">
-                          <p className="text-sm">
-                            {isFr
-                              ? "Maya, quel est le statut de mes deals cette semaine ?"
-                              : "Maya, what's the status of my deals this week?"}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Maya response */}
-                      <div className="flex justify-start">
-                        <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-md max-w-[85%] shadow-sm">
-                          <p className="text-sm text-gray-800">
-                            {isFr
-                              ? "Cette semaine, vous avez 12 deals actifs pour 45K€ de pipeline. 3 sont en négociation finale, dont TechCorp qui attend votre proposition. Voulez-vous que je prépare le devis ?"
-                              : "This week, you have 12 active deals for $45K in pipeline. 3 are in final negotiation, including TechCorp awaiting your proposal. Want me to prepare the quote?"}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* User response */}
-                      <div className="flex justify-end">
-                        <div className="bg-[#0d47a1] text-white px-4 py-2 rounded-2xl rounded-br-md max-w-[80%]">
-                          <p className="text-sm">
-                            {isFr ? "Oui, et relance les 2 autres" : "Yes, and follow up on the other 2"}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Maya confirmation */}
-                      <div className="flex justify-start">
-                        <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-md max-w-[85%] shadow-sm">
-                          <p className="text-sm text-gray-800">
-                            {isFr
-                              ? "C'est fait. Devis TechCorp généré et relances envoyées à DataFlow et CloudNet. Je vous notifie dès qu'ils répondent."
-                              : "Done. TechCorp quote generated and follow-ups sent to DataFlow and CloudNet. I'll notify you as soon as they respond."}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Chat input */}
-                    <div className="p-3 border-t border-gray-200 bg-white">
-                      <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2">
-                        <input
-                          type="text"
-                          placeholder={isFr ? "Demandez à Maya..." : "Ask Maya..."}
-                          className="bg-transparent outline-none flex-1 text-sm"
-                          disabled
-                        />
-                        <button className="w-8 h-8 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] rounded-full flex items-center justify-center text-white">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 12h14M12 5l7 7-7 7"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <ChatMockup
+                    messages={[
+                      {
+                        type: "user",
+                        text: isFr
+                          ? "Maya, quel est le statut de mes deals cette semaine ?"
+                          : "Maya, what's the status of my deals this week?",
+                      },
+                      {
+                        type: "ai",
+                        text: isFr
+                          ? "Cette semaine, vous avez 12 deals actifs pour 45K€ de pipeline. 3 sont en négociation finale, dont TechCorp qui attend votre proposition. Voulez-vous que je prépare le devis ?"
+                          : "This week, you have 12 active deals for $45K in pipeline. 3 are in final negotiation, including TechCorp awaiting your proposal. Want me to prepare the quote?",
+                      },
+                      {
+                        type: "user",
+                        text: isFr ? "Oui, et relance les 2 autres" : "Yes, and follow up on the other 2",
+                      },
+                      {
+                        type: "ai",
+                        text: isFr
+                          ? "C'est fait. Devis TechCorp généré et relances envoyées à DataFlow et CloudNet. Je vous notifie dès qu'ils répondent."
+                          : "Done. TechCorp quote generated and follow-ups sent to DataFlow and CloudNet. I'll notify you as soon as they respond.",
+                      },
+                    ]}
+                    inputPlaceholder={isFr ? "Demandez à Maya..." : "Ask Maya..."}
+                    agentName="Maya AI"
+                    agentStatus={isFr ? "En ligne" : "Online"}
+                  />
                 </div>
               </div>
             </div>
@@ -384,14 +346,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* Mission Section */}
           <section className="py-16 px-4 sm:px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
-              <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                {isFr ? "Notre mission" : "Our Mission"}
-              </p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                {isFr ? "Une intelligence qui travaille pour vous" : "An intelligence that works for you"}
-              </h3>
+              <ScrollReveal>
+                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
+                  {isFr ? "Notre mission" : "Our Mission"}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                  {isFr ? "Une intelligence qui travaille pour vous" : "An intelligence that works for you"}
+                </h3>
+              </ScrollReveal>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
                 {missionPillars.map((pillar, index) => (
                   <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                     <div className="mb-4">{pillar.icon}</div>
@@ -399,26 +363,28 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                     <p className="text-gray-600">{pillar.description}</p>
                   </div>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Features Section */}
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
-              <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                {isFr ? "Fonctionnalités" : "Features"}
-              </p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                {isFr ? "Tout ce dont vous avez besoin" : "Everything you need"}
-              </h3>
-              <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                {isFr
-                  ? "Des fonctionnalités pensées pour automatiser votre cycle commercial de bout en bout."
-                  : "Features designed to automate your sales cycle from end to end."}
-              </p>
+              <ScrollReveal>
+                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
+                  {isFr ? "Fonctionnalités" : "Features"}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+                  {isFr ? "Tout ce dont vous avez besoin" : "Everything you need"}
+                </h3>
+                <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                  {isFr
+                    ? "Des fonctionnalités pensées pour automatiser votre cycle commercial de bout en bout."
+                    : "Features designed to automate your sales cycle from end to end."}
+                </p>
+              </ScrollReveal>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
                     <div className="flex-shrink-0">{feature.icon}</div>
@@ -428,17 +394,19 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                     </div>
                   </div>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Integrations Section */}
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl md:text-3xl font-semibold text-center mb-12">
-                {isFr ? "Connecté à vos outils" : "Connected to your tools"}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+              <ScrollReveal>
+                <h3 className="text-2xl md:text-3xl font-semibold text-center mb-12">
+                  {isFr ? "Connecté à vos outils" : "Connected to your tools"}
+                </h3>
+              </ScrollReveal>
+              <ScrollReveal stagger className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {integrations.map((integration) => (
                   <div
                     key={integration.name}
@@ -457,15 +425,15 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                     <span className="text-sm font-medium text-gray-600">{integration.name}</span>
                   </div>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Quote Section */}
           <section className="py-16 px-4 sm:px-6">
-            <div className="max-w-3xl mx-auto text-center">
+            <ScrollReveal className="max-w-3xl mx-auto text-center">
               <blockquote className="italic text-xl md:text-2xl text-gray-700">"{dictionary.quote}"</blockquote>
-            </div>
+            </ScrollReveal>
           </section>
         </main>
 
