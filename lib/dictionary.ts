@@ -6,6 +6,8 @@ export type PrivacySection = {
 }
 
 export type Dictionary = {
+  title: string
+  h1: string
   subtitle: [string, string]
   description: string
   quote: string
@@ -68,7 +70,9 @@ export type FormDictionary = Dictionary["form"]
 
 const dictionaries: Record<Locale, Dictionary> = {
   en: {
-    subtitle: ["The 1st European AI-Native CRM.", "It's the ultimate intelligence driving your growth."],
+    title: "SymbiozAI - The 1st European AI-Native CRM",
+    h1: "SymbiozAI - AI-Native CRM for European Scaleups",
+    subtitle: ["The 1st European AI-Native CRM.", "Zero data entry. Auto-piloted pipeline. Recovered deals."],
     description:
       "Prospecting, customer follow-ups and opportunity tracking are automated directly from WhatsApp and Slack by an integrated intelligence. SymbiozAI turns every interaction into concrete actions: qualification, follow-ups, documentation, reporting... Your revenue engine runs continuously, without manual input.",
     quote:
@@ -148,11 +152,13 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
   },
   fr: {
-    subtitle: ["Le 1er CRM AI-Natif Européen.", "L'intelligence ultime qui opère votre croissance."],
+    title: "SymbiozAI - Le CRM qui comprend, décide et agit",
+    h1: "SymbiozAI - CRM AI-Native pour scaleups européennes",
+    subtitle: ["Le CRM qui comprend, décide et agit.", "Zéro saisie. Pipeline piloté. Deals récupérés."],
     description:
-      "La prospection, les relances clients et le suivi des opportunités sont automatisés directement depuis WhatsApp et Slack par une intelligence intégrée. SymbiozAI transforme chaque échange en actions concrètes : qualification, relances, documentation, reporting… Votre dynamique de revenus fonctionne en continu, sans saisie ni pilotage manuel.",
+      "SymbiozAI est un CRM AI-Native. Il capture vos interactions, pilote votre pipeline et exécute les actions commerciales de manière autonome. Vous gardez le contrôle. Le système fait le reste.",
     quote:
-      "Nous croyons que la prochaine génération d'entreprises n'utilisera pas seulement l'IA, elles seront construites avec elle. Nativement. Structurellement. Intelligemment.",
+      "Les entreprises de demain ne se contenteront pas d'utiliser l'IA — elles seront construites avec. Nativement. Structurellement. C'est la conviction qui guide SymbiozAI : un système commercial qui ne documente plus la vente, mais qui la pilote. L'IA n'est pas une couche ajoutée. C'est l'infrastructure. C'est ce que j'aurais voulu avoir quand je vendais.",
     form: {
       placeholder: "Entrez votre email",
       button: "Rejoindre la liste",

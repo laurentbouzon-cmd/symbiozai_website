@@ -16,13 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const isEnglish = lang === "en"
 
   return {
-    title: `SymbiozAI - ${dictionary.subtitle}`,
+    title: dictionary.title,
     description: dictionary.description,
     keywords: isEnglish
-      ? "AI, artificial intelligence, AI agents, automation, productivity, business, innovation"
-      : "IA, intelligence artificielle, agents IA, automatisation, productivité, entreprise, innovation",
+      ? "AI-Native CRM, AI CRM, sales automation, pipeline management, European CRM, AI agents, scaleup"
+      : "CRM IA, CRM AI-Native, automatisation commerciale, pipeline commercial, CRM européen, agents IA, scaleup",
     openGraph: {
-      title: `SymbiozAI - ${dictionary.subtitle}`,
+      title: dictionary.title,
       description: dictionary.description,
       url: `https://symbioz.ai/${lang}`,
       siteName: "SymbiozAI",
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
           url: `/og?lang=${lang}`,
           width: 1200,
           height: 630,
-          alt: `SymbiozAI - ${dictionary.subtitle}`,
+          alt: dictionary.title,
         },
       ],
       locale: isEnglish ? "en_US" : "fr_FR",
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     twitter: {
       card: "summary_large_image",
-      title: `SymbiozAI - ${dictionary.subtitle}`,
+      title: dictionary.title,
       description: dictionary.description,
       images: [`/og?lang=${lang}`],
     },

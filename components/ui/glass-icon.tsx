@@ -14,6 +14,12 @@ import {
   Chrome,
   Bot,
   Sparkles,
+  Clock,
+  TrendingDown,
+  Shield,
+  Globe,
+  Cpu,
+  Unlock,
   type LucideIcon,
 } from "lucide-react"
 
@@ -31,6 +37,12 @@ type IconType =
   | "chrome"
   | "bot"
   | "sparkles"
+  | "clock"
+  | "trending-down"
+  | "shield"
+  | "globe"
+  | "cpu"
+  | "unlock"
 
 interface GlassIconProps {
   type: IconType
@@ -51,6 +63,12 @@ const iconMap: Record<IconType, LucideIcon> = {
   chrome: Chrome,
   bot: Bot,
   sparkles: Sparkles,
+  clock: Clock,
+  "trending-down": TrendingDown,
+  shield: Shield,
+  globe: Globe,
+  cpu: Cpu,
+  unlock: Unlock,
 }
 
 const colorMap: Record<IconType, { bg: string; icon: string; glow: string }> = {
@@ -67,6 +85,12 @@ const colorMap: Record<IconType, { bg: string; icon: string; glow: string }> = {
   chrome: { bg: "from-fuchsia-400/80 to-purple-500/80", icon: "#fff", glow: "shadow-purple-400/40" },
   bot: { bg: "from-indigo-400/80 to-blue-500/80", icon: "#fff", glow: "shadow-blue-400/40" },
   sparkles: { bg: "from-pink-400/80 to-rose-500/80", icon: "#fff", glow: "shadow-rose-400/40" },
+  clock: { bg: "from-orange-400/80 to-red-500/80", icon: "#fff", glow: "shadow-red-400/40" },
+  "trending-down": { bg: "from-red-400/80 to-rose-600/80", icon: "#fff", glow: "shadow-rose-400/40" },
+  shield: { bg: "from-emerald-400/80 to-green-500/80", icon: "#fff", glow: "shadow-green-400/40" },
+  globe: { bg: "from-blue-400/80 to-cyan-500/80", icon: "#fff", glow: "shadow-cyan-400/40" },
+  cpu: { bg: "from-violet-400/80 to-indigo-500/80", icon: "#fff", glow: "shadow-indigo-400/40" },
+  unlock: { bg: "from-teal-400/80 to-emerald-500/80", icon: "#fff", glow: "shadow-emerald-400/40" },
 }
 
 export function GlassIcon({ type, size = 48 }: GlassIconProps) {

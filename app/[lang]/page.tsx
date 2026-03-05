@@ -15,7 +15,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   const dictionary = getDictionary(lang)
   const currentYear = new Date().getFullYear()
 
-  // Données structurées pour les moteurs de recherche
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -53,136 +52,126 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
   const isFr = lang === "fr"
 
-  const missionPillars = [
+  const painPoints = [
     {
-      icon: <GlassIcon type="zap" size={48} />,
-      title: isFr ? "Automatisation totale" : "Total Automation",
+      icon: <GlassIcon type="clock" size={48} />,
+      title: isFr ? "Le temps" : "Time",
+      stat: isFr ? "3 à 5h / semaine" : "3 to 5h / week",
       description: isFr
-        ? "Fini les tâches répétitives. Votre CRM se met à jour seul, vos relances partent automatiquement, vos leads sont qualifiés en temps réel."
-        : "No more repetitive tasks. Your CRM updates itself, follow-ups are sent automatically, leads are qualified in real-time.",
+        ? "Vos commerciaux passent en moyenne 3 à 5 heures par semaine à mettre à jour leur CRM. Ce sont des heures de vente en moins. Un commercial qui saisit est un commercial qui ne vend pas."
+        : "Your salespeople spend an average of 3 to 5 hours per week updating their CRM. That's selling time lost. A rep who's typing is a rep who's not selling.",
     },
     {
-      icon: <GlassIcon type="message" size={48} />,
-      title: isFr ? "Piloté par conversation" : "Conversation-Driven",
+      icon: <GlassIcon type="trending-down" size={48} />,
+      title: isFr ? "Les deals" : "Deals",
+      stat: isFr ? "20 à 30% récupérables" : "20 to 30% recoverable",
       description: isFr
-        ? "Gérez tout depuis WhatsApp ou Slack. Demandez un rapport, lancez une relance, consultez un deal en langage naturel."
-        : "Manage everything from WhatsApp or Slack. Request a report, trigger a follow-up, check a deal in natural language.",
+        ? "Entre 20 et 30% des deals « perdus » ne sont pas perdus - ils sont juste différés. Mais votre CRM les a rangés en « Perdu » et n'en parle plus. Ces deals dorment jusqu'à ce que votre concurrent les réveille."
+        : "20 to 30% of \"lost\" deals aren't actually lost - they're just deferred. But your CRM filed them as \"Lost\" and moved on. They sit dormant until a competitor wakes them up.",
     },
     {
-      icon: <GlassIcon type="chart" size={48} />,
-      title: isFr ? "Intelligence actionnable" : "Actionable Intelligence",
+      icon: <GlassIcon type="bell" size={48} />,
+      title: isFr ? "Les relances" : "Follow-ups",
+      stat: isFr ? "5 deals oubliés" : "5 deals forgotten",
       description: isFr
-        ? "Chaque interaction génère des insights. L'IA identifie les opportunités, anticipe les risques et vous guide vers la prochaine action."
-        : "Every interaction generates insights. AI identifies opportunities, anticipates risks, and guides you to the next action.",
+        ? "Un commercial gère 25 à 40 deals actifs en même temps. Il en oublie 5. Pas par négligence - par volume. Chaque relance oubliée est une fenêtre de décision que vous n'avez pas ouverte."
+        : "A sales rep manages 25 to 40 active deals at once. They forget 5. Not out of carelessness - out of volume. Each missed follow-up is a decision window left closed.",
     },
   ]
 
   const features = [
     {
-      icon: <GlassIcon type="database" size={40} />,
-      title: isFr ? "Enrichissement automatique" : "Auto-enrichment",
+      icon: <GlassIcon type="refresh" size={48} />,
+      title: isFr ? "Zéro saisie" : "Zero data entry",
+      subtitle: isFr ? "Votre CRM se remplit sans vos commerciaux" : "Your CRM fills itself without your sales team",
       description: isFr
-        ? "Contacts et entreprises enrichis automatiquement. Sans outil tiers."
-        : "Contacts and companies enriched automatically. No third-party tool.",
+        ? "Gmail, Google Calendar, LinkedIn - SymbiozAI capture toutes les interactions commerciales automatiquement. Les contacts sont créés. Les deals sont mis à jour. L'historique est complet. Vos commerciaux n'ont plus qu'à vendre."
+        : "Gmail, Google Calendar, LinkedIn - SymbiozAI captures all sales interactions automatically. Contacts are created. Deals are updated. History is complete. Your salespeople just sell.",
     },
     {
-      icon: <GlassIcon type="chrome" size={40} />,
-      title: isFr ? "Import LinkedIn en un clic" : "One-click LinkedIn Import",
+      icon: <GlassIcon type="bell" size={48} />,
+      title: isFr ? "Pipeline vivant" : "Living pipeline",
+      subtitle: isFr ? "Chaque deal a une date de relance. Maya ne l'oublie pas." : "Every deal has a follow-up date. Maya never forgets.",
       description: isFr
-        ? "Extension Chrome pour importer et enrichir vos contacts LinkedIn."
-        : "Chrome extension to import and enrich your LinkedIn contacts.",
+        ? "Le système identifie les deals qui stagnent, calcule le risque de chaque opportunité sur 6 facteurs, et vous alerte avant que ça parte en vrille. Pas de notification parasite - uniquement ce qui compte."
+        : "The system identifies stalling deals, calculates risk on 6 factors, and alerts you before things go sideways. No noise - only what matters.",
     },
     {
-      icon: <GlassIcon type="target" size={40} />,
-      title: isFr ? "Inbound & Outbound intelligent" : "Smart Inbound & Outbound",
+      icon: <GlassIcon type="target" size={48} />,
+      title: isFr ? "Réserve active" : "Active reserve",
+      subtitle: isFr ? "Vos deals perdus deviennent un actif, pas un cimetière" : "Your lost deals become an asset, not a graveyard",
       description: isFr
-        ? "Nurturing et prospection orchestrés pour convertir chaque contact."
-        : "Nurturing and outreach orchestrated to convert every contact.",
+        ? "SymbiozAI classe automatiquement vos deals perdus en P1, P2 ou P3. Il surveille les signaux de réactivation - levée de fonds, nouveau poste, changement de budget. Quand le moment est bon, il vous le dit."
+        : "SymbiozAI automatically classifies lost deals into P1, P2, or P3. It monitors reactivation signals - fundraising, new role, budget change. When the time is right, it tells you.",
     },
     {
-      icon: <GlassIcon type="refresh" size={40} />,
-      title: isFr ? "Synchronisation automatique" : "Auto-sync",
+      icon: <GlassIcon type="chart" size={48} />,
+      title: isFr ? "Pilotage en une question" : "Pipeline in one question",
+      subtitle: isFr ? "L'état de votre pipeline en 5 secondes" : "Your pipeline status in 5 seconds",
       description: isFr
-        ? "Emails, appels, meetings : tout est capturé et centralisé automatiquement."
-        : "Emails, calls, meetings: everything is captured and centralized automatically.",
-    },
-    {
-      icon: <GlassIcon type="users" size={40} />,
-      title: isFr ? "Qualification intelligente" : "Smart Qualification",
-      description: isFr
-        ? "L'IA analyse chaque lead et attribue un score de qualification en temps réel."
-        : "AI analyzes each lead and assigns a qualification score in real-time.",
-    },
-    {
-      icon: <GlassIcon type="file" size={40} />,
-      title: isFr ? "Documentation auto-générée" : "Auto-generated Documentation",
-      description: isFr
-        ? "Comptes-rendus, notes de meeting, résumés de deals : générés sans effort."
-        : "Meeting notes, deal summaries, reports: generated effortlessly.",
-    },
-    {
-      icon: <GlassIcon type="calendar" size={40} />,
-      title: isFr ? "Relances programmées" : "Scheduled Follow-ups",
-      description: isFr
-        ? "L'IA planifie et envoie les relances au moment optimal pour chaque prospect."
-        : "AI schedules and sends follow-ups at the optimal time for each prospect.",
-    },
-    {
-      icon: <GlassIcon type="bell" size={40} />,
-      title: isFr ? "Alertes proactives" : "Proactive Alerts",
-      description: isFr
-        ? "Soyez notifié des deals à risque, des opportunités à saisir et des actions prioritaires."
-        : "Get notified about at-risk deals, hot opportunities, and priority actions.",
-    },
-    {
-      icon: <GlassIcon type="chart" size={40} />,
-      title: isFr ? "Reporting conversationnel" : "Conversational Reporting",
-      description: isFr
-        ? "Demandez vos KPIs en langage naturel. L'IA génère les rapports instantanément."
-        : "Ask for your KPIs in natural language. AI generates reports instantly.",
+        ? "Fin de quarter. Board meeting dans 2 heures. Vous posez la question à Maya. Elle vous sort les chiffres, les deals à risque, les opportunités à accélérer. Pas de dashboard à construire. Juste la réponse."
+        : "End of quarter. Board meeting in 2 hours. You ask Maya. She gives you the numbers, at-risk deals, and opportunities to accelerate. No dashboard to build. Just the answer.",
     },
   ]
 
   const integrations = [
+    { name: "WhatsApp", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" },
+    { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
+    { name: "Gmail", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" },
+    { name: "Google Calendar", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" },
+    { name: "Notion", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" },
+    { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
+    { name: "HubSpot", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg" },
+    { name: "Pipedrive", logo: "https://www.pipedrive.com/favicon.ico" },
+  ]
+
+  const trustBadges = [
     {
-      name: "WhatsApp",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+      icon: <GlassIcon type="globe" size={40} />,
+      title: isFr ? "Hébergé en Europe" : "Hosted in Europe",
+      description: isFr
+        ? "Vos données commerciales ne quittent pas le territoire européen."
+        : "Your sales data never leaves European territory.",
     },
     {
-      name: "Slack",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg",
+      icon: <GlassIcon type="shield" size={40} />,
+      title: isFr ? "RGPD by design" : "GDPR by design",
+      description: isFr
+        ? "Pas un add-on de conformité - une architecture où la confidentialité est structurelle."
+        : "Not a compliance add-on - an architecture where privacy is structural.",
     },
     {
-      name: "Gmail",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg",
+      icon: <GlassIcon type="cpu" size={40} />,
+      title: isFr ? "Architecture AI-Native" : "AI-Native Architecture",
+      description: isFr
+        ? "Construit avec l'IA comme fondation, pas comme ajout. LLM-agnostique par design."
+        : "Built with AI as the foundation, not as an add-on. LLM-agnostic by design.",
     },
     {
-      name: "Google Calendar",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg",
-    },
-    {
-      name: "Notion",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
-    },
-    {
-      name: "Salesforce",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg",
-    },
-    {
-      name: "HubSpot",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg",
-    },
-    {
-      name: "Pipedrive",
-      logo: "https://www.pipedrive.com/favicon.ico",
+      icon: <GlassIcon type="unlock" size={40} />,
+      title: isFr ? "Zéro vendor lock-in" : "Zero vendor lock-in",
+      description: isFr
+        ? "Vos données vous appartiennent. Export complet à tout moment."
+        : "Your data belongs to you. Full export at any time.",
     },
   ]
 
+  const productMetrics = [
+    { value: "38+", label: isFr ? "agents IA - et ce n'est que le début" : "AI agents - and counting", live: true },
+    { value: ">95%", label: isFr ? "de précision sur nos tests" : "accuracy on our test suite", live: false },
+    { value: "< 30 min", label: isFr ? "pour être opérationnel" : "to be operational", live: false },
+    { value: "130+", label: isFr ? "endpoints CRM" : "CRM endpoints", live: false },
+  ]
+
+  // Note: dangerouslySetInnerHTML below is safe — jsonLd is built from
+  // our own static dictionary strings, not from user input.
+  const jsonLdHtml = JSON.stringify(jsonLd)
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
-        {/* Barre de navigation transparente avec liens à droite */}
+        {/* Navigation */}
         <header className="absolute top-0 left-0 right-0 z-10">
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-end items-center">
@@ -202,16 +191,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         {/* Hero Section */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
           <section className="flex flex-col px-4 sm:px-6 text-center min-h-screen justify-center relative">
-            {/* Ambient glow */}
             <div
               className="hero-ambient-glow absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(0,229,255,0.1) 0%, rgba(13,71,161,0.05) 40%, transparent 70%)" }}
             />
 
             <div className="max-w-3xl mx-auto relative z-10">
-              <h1 className="hero-item flex justify-center" style={{ animationDelay: "0ms" }}>
+              <h1 className="sr-only">{dictionary.h1}</h1>
+              <div className="hero-item flex justify-center" style={{ animationDelay: "0ms" }}>
                 <Logo size="xl" />
-              </h1>
+              </div>
 
               <h2 className="hero-item font-normal text-xl md:text-2xl mt-4" style={{ animationDelay: "150ms" }}>
                 {Array.isArray(dictionary.subtitle) ? (
@@ -236,102 +225,142 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <ScrollIndicator />
           </section>
 
-          {/* Maya AI Section */}
+          {/* AI-Native Vision Banner */}
+          <section className="py-8 px-4 sm:px-6 bg-white">
+            <ScrollReveal className="max-w-3xl mx-auto text-center">
+              <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-widest mb-2">
+                {isFr ? "AI-Native Company" : "AI-Native Company"}
+              </p>
+              <p className="text-gray-600 text-base md:text-lg">
+                {isFr
+                  ? "Nous croyons que la prochaine génération d'entreprises sera construite avec l'IA - nativement, structurellement. SymbiozAI est le premier logiciel commercial conçu selon ce principe."
+                  : "We believe the next generation of companies will be built with AI - natively, structurally. SymbiozAI is the first commercial software designed on this principle."}
+              </p>
+              <Link href={`/${lang}/manifeste`} className="inline-block mt-3 text-sm font-medium text-[#0d47a1] hover:text-[#00e5ff] transition-colors underline underline-offset-4">
+                {isFr ? "Lire notre manifeste" : "Read our manifesto"}
+              </Link>
+            </ScrollReveal>
+          </section>
+
+          {/* Problem Section */}
+          <section className="py-16 px-4 sm:px-6 bg-gray-50">
+            <div className="max-w-6xl mx-auto">
+              <ScrollReveal>
+                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
+                  {isFr ? "Le problème" : "The problem"}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                  {isFr ? "Ce que vous perdez chaque semaine sans le savoir" : "What you lose every week without knowing"}
+                </h3>
+              </ScrollReveal>
+
+              <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
+                {painPoints.map((point, index) => (
+                  <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div className="mb-4">{point.icon}</div>
+                    <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider mb-1">{point.title}</p>
+                    <p className="text-2xl font-bold mb-3">{point.stat}</p>
+                    <p className="text-gray-600 text-sm">{point.description}</p>
+                  </div>
+                ))}
+              </ScrollReveal>
+            </div>
+          </section>
+
+          {/* Solution / Maya Section */}
           <section className="py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
             <div className="max-w-6xl mx-auto">
               <ScrollReveal>
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Votre nouvelle interface" : "Your new interface"}
+                  {isFr ? "La solution" : "The solution"}
                 </p>
                 <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                  {isFr ? "Rencontrez Maya AI" : "Meet Maya AI"}
+                  {isFr ? "Un système qui comprend, décide et exécute." : "A system that understands, decides, and executes."}
                 </h3>
                 <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
                   {isFr
-                    ? "Oubliez les dashboards complexes et les clics interminables. Maya est votre agent IA personnel : elle opère votre croissance par la conversation."
-                    : "Forget complex dashboards and endless clicks. Maya is your personal AI agent that manages your Autonomous Revenue Brain through conversation."}
+                    ? "SymbiozAI n'est pas un CRM amélioré. C'est une nouvelle génération de logiciel commercial - AI-Native - qui opère votre pipeline de manière autonome. Opérationnel en moins de 30 minutes."
+                    : "SymbiozAI is not an improved CRM. It's a new generation of commercial software - AI-Native - that operates your pipeline autonomously. Operational in under 30 minutes."}
                 </p>
               </ScrollReveal>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Left side - Maya presentation */}
                 <div className="order-2 lg:order-1">
                   <ScrollReveal stagger className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                        <GlassIcon type="bot" size={48} />
+                      <div className="flex-shrink-0">
+                        <GlassIcon type="refresh" size={48} />
                       </div>
                       <div>
                         <h4 className="text-xl font-semibold mb-2">
-                          {isFr ? "Pas un SaaS. Un collègue." : "Not a SaaS. A colleague."}
+                          {isFr ? "Capture automatique" : "Automatic capture"}
                         </h4>
                         <p className="text-gray-600">
                           {isFr
-                            ? "Maya n'est pas une interface de plus à apprendre. C'est une IA qui comprend vos demandes, exécute les actions et vous tient informé, comme un assistant humain, mais disponible 24/7."
-                            : "Maya is not another interface to learn. It's an AI that understands your requests, executes actions, and keeps you informed, like a human assistant, but available 24/7."}
+                            ? "SymbiozAI se connecte à Gmail et Google Calendar. Chaque email, chaque réunion, chaque interaction - capturée, analysée, rattachée au bon deal. Zéro saisie."
+                            : "SymbiozAI connects to Gmail and Google Calendar. Every email, every meeting, every interaction - captured, analyzed, linked to the right deal. Zero data entry."}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-[#e3f2fd] rounded-full flex items-center justify-center text-[#0d47a1] flex-shrink-0">
+                      <div className="flex-shrink-0">
+                        <GlassIcon type="chart" size={48} />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-semibold mb-2">
+                          {isFr ? "Pipeline auto-piloté" : "Auto-piloted pipeline"}
+                        </h4>
+                        <p className="text-gray-600">
+                          {isFr
+                            ? "Le scoring de chaque deal est recalculé en continu sur 6 facteurs de risque. Les deals qui stagnent remontent. Les relances sont identifiées avant que vous le demandiez."
+                            : "Each deal's score is continuously recalculated on 6 risk factors. Stalling deals surface. Follow-ups are identified before you ask."}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
                         <GlassIcon type="message" size={48} />
                       </div>
                       <div>
                         <h4 className="text-xl font-semibold mb-2">
-                          {isFr ? "Parlez, ne cliquez plus" : "Talk, don't click"}
+                          {isFr ? "Pilotage conversationnel" : "Conversational control"}
                         </h4>
                         <p className="text-gray-600">
                           {isFr
-                            ? '"Maya, envoie une relance à tous les leads chauds de cette semaine" et c\'est fait. Fini les 15 clics pour une action simple.'
-                            : '"Maya, send a follow-up to all hot leads from this week" and it\'s done. No more 15 clicks for a simple action.'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-[#e3f2fd] rounded-full flex items-center justify-center text-[#0d47a1] flex-shrink-0">
-                        <GlassIcon type="sparkles" size={48} />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-semibold mb-2">
-                          {isFr ? "Proactive, pas réactive" : "Proactive, not reactive"}
-                        </h4>
-                        <p className="text-gray-600">
-                          {isFr
-                            ? "Maya vous alerte avant les problèmes : deals à risque, opportunités à saisir, relances oubliées. Elle anticipe vos besoins."
-                            : "Maya alerts you before problems: at-risk deals, opportunities to seize, forgotten follow-ups. She anticipates your needs."}
+                            ? "Vous parlez à Maya en français, comme à un collègue. « Passe TechVision en négociation. » « Qui n'a pas eu de contact depuis 15 jours ? » Réponse immédiate."
+                            : "You talk to Maya in plain language, like a colleague. \"Move TechVision to negotiation.\" \"Who hasn't been contacted in 15 days?\" Instant answer."}
                         </p>
                       </div>
                     </div>
                   </ScrollReveal>
                 </div>
 
-                {/* Right side - Chat mockup */}
                 <div className="order-1 lg:order-2">
                   <ChatMockup
                     messages={[
                       {
                         type: "user",
                         text: isFr
-                          ? "Maya, quel est le statut de mes deals cette semaine ?"
-                          : "Maya, what's the status of my deals this week?",
+                          ? "Quels deals risquent de se bloquer cette semaine ?"
+                          : "Which deals are at risk of stalling this week?",
                       },
                       {
                         type: "ai",
                         text: isFr
-                          ? "Cette semaine, vous avez 12 deals actifs pour 45K€ de pipeline. 3 sont en négociation finale, dont TechCorp qui attend votre proposition. Voulez-vous que je prépare le devis ?"
-                          : "This week, you have 12 active deals for $45K in pipeline. 3 are in final negotiation, including TechCorp awaiting your proposal. Want me to prepare the quote?",
+                          ? "3 deals à surveiller : TechCorp (45K€, pas de contact depuis 12 jours), DataFlow (28K€, budget gelé signalé), CloudNet (15K€, décision repoussée). Je recommande de relancer TechCorp en priorité."
+                          : "3 deals to watch: TechCorp ($45K, no contact in 12 days), DataFlow ($28K, frozen budget flagged), CloudNet ($15K, decision postponed). I recommend following up with TechCorp first.",
                       },
                       {
                         type: "user",
-                        text: isFr ? "Oui, et relance les 2 autres" : "Yes, and follow up on the other 2",
+                        text: isFr ? "Relance TechCorp et prépare un point pipeline pour lundi" : "Follow up with TechCorp and prepare a pipeline summary for Monday",
                       },
                       {
                         type: "ai",
                         text: isFr
-                          ? "C'est fait. Devis TechCorp généré et relances envoyées à DataFlow et CloudNet. Je vous notifie dès qu'ils répondent."
-                          : "Done. TechCorp quote generated and follow-ups sent to DataFlow and CloudNet. I'll notify you as soon as they respond.",
+                          ? "C'est fait. Relance envoyée à TechCorp avec votre dernière proposition. Point pipeline lundi 9h programmé - je vous l'envoie automatiquement."
+                          : "Done. Follow-up sent to TechCorp with your latest proposal. Monday 9am pipeline summary scheduled - I'll send it automatically.",
                       },
                     ]}
                     inputPlaceholder={isFr ? "Demandez à Maya..." : "Ask Maya..."}
@@ -343,57 +372,84 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             </div>
           </section>
 
-          {/* Mission Section */}
-          <section className="py-16 px-4 sm:px-6 bg-gray-50">
+          {/* Features Section — 4 features */}
+          <section className="py-16 px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
               <ScrollReveal>
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Notre mission" : "Our Mission"}
+                  {isFr ? "Concrètement" : "In practice"}
                 </p>
                 <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                  {isFr ? "Une intelligence qui travaille pour vous" : "An intelligence that works for you"}
+                  {isFr ? "Ce qui change avec SymbiozAI" : "What changes with SymbiozAI"}
                 </h3>
               </ScrollReveal>
 
-              <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
-                {missionPillars.map((pillar, index) => (
+              <ScrollReveal stagger className="grid sm:grid-cols-2 gap-8">
+                {features.map((feature, index) => (
                   <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="mb-4">{pillar.icon}</div>
-                    <h4 className="text-xl font-semibold mb-2">{pillar.title}</h4>
-                    <p className="text-gray-600">{pillar.description}</p>
+                    <div className="mb-4">{feature.icon}</div>
+                    <h4 className="text-xl font-bold mb-1">{feature.title}</h4>
+                    <p className="text-sm font-medium text-[#0d47a1] mb-3">{feature.subtitle}</p>
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
                 ))}
               </ScrollReveal>
             </div>
           </section>
 
-          {/* Features Section */}
-          <section className="py-16 px-4 sm:px-6">
+          {/* Social Proof Section */}
+          <section className="py-16 px-4 sm:px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
               <ScrollReveal>
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Fonctionnalités" : "Features"}
+                  {isFr ? "Construit pour durer" : "Built to last"}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                  {isFr ? "Tout ce dont vous avez besoin" : "Everything you need"}
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                  {isFr ? "Une infrastructure AI-Native. Pas un gadget." : "An AI-Native infrastructure. Not a gadget."}
                 </h3>
-                <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                  {isFr
-                    ? "Des fonctionnalités pensées pour automatiser votre cycle commercial de bout en bout."
-                    : "Features designed to automate your sales cycle from end to end."}
-                </p>
               </ScrollReveal>
 
-              <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {features.map((feature, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex-shrink-0">{feature.icon}</div>
-                    <div>
-                      <h4 className="font-semibold mb-1">{feature.title}</h4>
-                      <p className="text-sm text-gray-600">{feature.description}</p>
+              {/* Product metrics */}
+              <ScrollReveal stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                {productMetrics.map((metric, index) => (
+                  <div key={index} className="text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
+                        {metric.value}
+                      </p>
+                      {metric.live && (
+                        <span className="relative flex h-2.5 w-2.5 mt-1">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                        </span>
+                      )}
                     </div>
+                    <p className="text-sm text-gray-600 mt-1">{metric.label}</p>
                   </div>
                 ))}
+              </ScrollReveal>
+
+              {/* Trust badges */}
+              <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {trustBadges.map((badge, index) => (
+                  <div key={index} className="bg-white p-4 rounded-xl shadow-sm text-center">
+                    <div className="flex justify-center mb-3">{badge.icon}</div>
+                    <h4 className="font-semibold mb-1">{badge.title}</h4>
+                    <p className="text-xs text-gray-600">{badge.description}</p>
+                  </div>
+                ))}
+              </ScrollReveal>
+
+              {/* Founder quote */}
+              <ScrollReveal className="max-w-3xl mx-auto">
+                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                  <blockquote className="italic text-gray-700 text-base md:text-lg leading-relaxed">
+                    &ldquo;{dictionary.quote}&rdquo;
+                  </blockquote>
+                  <p className="mt-4 text-sm font-semibold text-gray-900">
+                    — Laurent Bouzon, {isFr ? "fondateur de SymbiozAI" : "founder of SymbiozAI"}
+                  </p>
+                </div>
               </ScrollReveal>
             </div>
           </section>
@@ -429,11 +485,33 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             </div>
           </section>
 
-          {/* Quote Section */}
-          <section className="py-16 px-4 sm:px-6">
-            <ScrollReveal className="max-w-3xl mx-auto text-center">
-              <blockquote className="italic text-xl md:text-2xl text-gray-700">"{dictionary.quote}"</blockquote>
-            </ScrollReveal>
+          {/* CTA Final Section */}
+          <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
+            <div className="max-w-3xl mx-auto text-center">
+              <ScrollReveal>
+                <h3 className="text-3xl md:text-4xl font-semibold mb-6">
+                  {isFr ? "Récupérez vos lundis matin." : "Take back your Monday mornings."}
+                </h3>
+                <p className="text-white/80 text-lg mb-4">
+                  {isFr
+                    ? "Votre pipeline, à jour, en permanence. Vos deals à risque, identifiés avant qu'ils partent. Vos commerciaux qui vendent au lieu de saisir."
+                    : "Your pipeline, always up to date. At-risk deals, identified before they slip. Your salespeople selling instead of typing."}
+                </p>
+                <p className="text-white/60 text-sm mb-8">
+                  {isFr
+                    ? "Accès bêta privé pour les scaleups européennes. Onboarding en moins de 30 minutes."
+                    : "Private beta access for European scaleups. Onboarding in under 30 minutes."}
+                </p>
+                <div className="max-w-md mx-auto">
+                  <WaitlistForm form={dictionary.form} lang={lang} />
+                </div>
+                <p className="text-white/40 text-xs mt-4">
+                  {isFr
+                    ? "Sans engagement. Sans carte bancaire. Sans configuration de 3 semaines."
+                    : "No commitment. No credit card. No 3-week setup."}
+                </p>
+              </ScrollReveal>
+            </div>
           </section>
         </main>
 
