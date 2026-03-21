@@ -45,11 +45,20 @@ export function MobileMenu({ lang, dictionary }: MobileMenuProps) {
         </svg>
       </button>
 
+      {/* Overlay sombre */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+          onClick={closeMenu}
+        />
+      )}
+
       {/* Menu mobile */}
       <div
         className={`fixed inset-0 z-50 bg-white transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{ backgroundColor: "#ffffff" }}
       >
         <div className="flex justify-end p-4">
           <button

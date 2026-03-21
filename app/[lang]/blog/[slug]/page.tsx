@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
+import remarkGfm from "remark-gfm"
 import { getDictionary } from "@/lib/dictionary"
 import { getPostBySlug, getAdjacentPosts, getAllSlugs, getPostsByCategory } from "@/lib/blog"
 import { ArticleLayout } from "@/components/blog/article-layout"
@@ -145,7 +146,11 @@ export default async function BlogArticlePage({
         next={next}
         relatedArticles={relatedArticles}
       >
-        <MDXRemote source={post.content} components={mdxComponents} />
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </ArticleLayout>
     </>
   )
