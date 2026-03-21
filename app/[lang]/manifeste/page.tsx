@@ -41,7 +41,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
-      <SharedHeader lang={lang} dictionary={dictionary} activePage="manifeste" />
+      <SharedHeader lang={lang} dictionary={dictionary} activePage="manifeste" showLogo={false} />
 
       {/* Contenu */}
       <main className="flex-grow pt-24 pb-20 px-4 sm:px-6 bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">

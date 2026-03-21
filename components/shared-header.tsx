@@ -7,9 +7,10 @@ interface SharedHeaderProps {
   lang: string
   dictionary: Dictionary
   activePage?: "home" | "manifeste" | "blog" | "contact"
+  showLogo?: boolean
 }
 
-export function SharedHeader({ lang, dictionary, activePage }: SharedHeaderProps) {
+export function SharedHeader({ lang, dictionary, activePage, showLogo = true }: SharedHeaderProps) {
   const isFr = lang === "fr"
 
   const navItems = [
@@ -21,10 +22,12 @@ export function SharedHeader({ lang, dictionary, activePage }: SharedHeaderProps
   return (
     <header className="absolute top-0 left-0 right-0 z-10">
       <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <Link href={`/${lang}`}>
-            <Logo size="lg" />
-          </Link>
+        <div className={`flex items-center ${showLogo ? "justify-between" : "justify-end"}`}>
+          {showLogo && (
+            <Link href={`/${lang}`}>
+              <Logo size="lg" />
+            </Link>
+          )}
           <MobileMenu lang={lang} dictionary={dictionary} />
           <nav className="hidden md:flex items-center space-x-10">
             {navItems.map((item) => (

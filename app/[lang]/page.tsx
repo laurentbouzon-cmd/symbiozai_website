@@ -171,7 +171,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
-        <SharedHeader lang={lang} dictionary={dictionary} activePage="home" />
+        <SharedHeader lang={lang} dictionary={dictionary} activePage="home" showLogo={false} />
 
         {/* Hero Section */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">

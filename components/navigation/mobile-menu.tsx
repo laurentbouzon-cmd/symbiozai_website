@@ -27,7 +27,7 @@ export function MobileMenu({ lang, dictionary }: MobileMenuProps) {
       {/* Bouton hamburger */}
       <button
         onClick={toggleMenu}
-        className="flex items-center p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none"
+        className="flex items-center p-2 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm text-gray-700 hover:text-gray-900 hover:bg-white focus:outline-none transition-colors"
         aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
       >
         <svg
