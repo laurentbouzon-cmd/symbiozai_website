@@ -71,6 +71,23 @@ export type Dictionary = {
     backToHome: string
     sections: PrivacySection[]
   }
+  blog: {
+    title: string
+    subtitle: string
+    allPosts: string
+    categories: {
+      produit: string
+      comparatifs: string
+      guides: string
+      "actualites-ia": string
+    }
+    readingTime: string
+    backToBlog: string
+    ctaTitle: string
+    ctaDescription: string
+    previousArticle: string
+    nextArticle: string
+  }
 }
 
 export type FormDictionary = Dictionary["form"]
@@ -164,6 +181,23 @@ const dictionaries: Record<Locale, Dictionary> = {
         },
       ],
     },
+    blog: {
+      title: "Blog",
+      subtitle: "Ideas behind the AI-Native CRM.",
+      allPosts: "All",
+      categories: {
+        produit: "Product",
+        comparatifs: "Comparisons",
+        guides: "Guides",
+        "actualites-ia": "AI News",
+      },
+      readingTime: "min read",
+      backToBlog: "Back to blog",
+      ctaTitle: "Ready to try?",
+      ctaDescription: "Join the beta and discover the first European AI-Native CRM.",
+      previousArticle: "Previous article",
+      nextArticle: "Next article",
+    },
   },
   fr: {
     title: "SymbiozAI - Le CRM qui comprend, décide et agit",
@@ -253,6 +287,23 @@ const dictionaries: Record<Locale, Dictionary> = {
             "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à",
         },
       ],
+    },
+    blog: {
+      title: "Blog",
+      subtitle: "Les id\u00e9es derri\u00e8re le CRM AI-Native.",
+      allPosts: "Tous",
+      categories: {
+        produit: "Produit",
+        comparatifs: "Comparatifs",
+        guides: "Guides",
+        "actualites-ia": "Actualit\u00e9s IA",
+      },
+      readingTime: "min de lecture",
+      backToBlog: "Retour au blog",
+      ctaTitle: "Pr\u00eat \u00e0 essayer ?",
+      ctaDescription: "Rejoignez la beta et d\u00e9couvrez le premier CRM AI-Native europ\u00e9en.",
+      previousArticle: "Article pr\u00e9c\u00e9dent",
+      nextArticle: "Article suivant",
     },
   },
 }

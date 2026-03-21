@@ -100,6 +100,13 @@ export function MobileMenu({ lang, dictionary }: MobileMenuProps) {
             >
               {lang === "fr" ? "Manifeste" : "Manifesto"}
             </Link>
+            <Link
+              href={`/${lang}/blog`}
+              className="text-xl font-medium text-gray-800 hover:text-gray-900 transition-colors"
+              onClick={closeMenu}
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Séparateur visuel */}
