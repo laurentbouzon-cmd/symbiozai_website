@@ -8,7 +8,7 @@ import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { ChatMockup } from "@/components/chat-mockup"
+import { InteractivePlayground } from "@/components/playground/interactive-playground"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
@@ -338,35 +338,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <ChatMockup
-                    messages={[
-                      {
-                        type: "user",
-                        text: isFr
-                          ? "Quels deals risquent de se bloquer cette semaine ?"
-                          : "Which deals are at risk of stalling this week?",
-                      },
-                      {
-                        type: "ai",
-                        text: isFr
-                          ? "3 deals à surveiller : TechCorp (45K€, pas de contact depuis 12 jours), DataFlow (28K€, budget gelé signalé), CloudNet (15K€, décision repoussée). Je recommande de relancer TechCorp en priorité."
-                          : "3 deals to watch: TechCorp ($45K, no contact in 12 days), DataFlow ($28K, frozen budget flagged), CloudNet ($15K, decision postponed). I recommend following up with TechCorp first.",
-                      },
-                      {
-                        type: "user",
-                        text: isFr ? "Relance TechCorp et prépare un point pipeline pour lundi" : "Follow up with TechCorp and prepare a pipeline summary for Monday",
-                      },
-                      {
-                        type: "ai",
-                        text: isFr
-                          ? "C'est fait. Relance envoyée à TechCorp avec votre dernière proposition. Point pipeline lundi 9h programmé - je vous l'envoie automatiquement."
-                          : "Done. Follow-up sent to TechCorp with your latest proposal. Monday 9am pipeline summary scheduled - I'll send it automatically.",
-                      },
-                    ]}
-                    inputPlaceholder={isFr ? "Demandez à Maya..." : "Ask Maya..."}
-                    agentName="Maya AI"
-                    agentStatus={isFr ? "En ligne" : "Online"}
-                  />
+                  <InteractivePlayground lang={lang} />
                 </div>
               </div>
             </div>
@@ -486,7 +458,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           </section>
 
           {/* CTA Final Section */}
-          <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
+          <section id="cta-final" className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
             <div className="max-w-3xl mx-auto text-center">
               <ScrollReveal>
                 <h3 className="text-3xl md:text-4xl font-semibold mb-6">
