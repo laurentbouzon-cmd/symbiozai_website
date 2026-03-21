@@ -46,21 +46,30 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
   const scrollContainerToBottom = useCallback((force = false) => {
     const container = containerRef.current
     if (!container) return
-    const threshold = 50
+    const threshold = 80
     const isNearBottom =
       container.scrollHeight - container.scrollTop - container.clientHeight < threshold
     if (force || isNearBottom) {
+      // Double rAF to ensure React has painted the new content before scrolling
       requestAnimationFrame(() => {
-        if (containerRef.current) {
-          containerRef.current.scrollTop = containerRef.current.scrollHeight
-        }
+        requestAnimationFrame(() => {
+          if (containerRef.current) {
+            containerRef.current.scrollTo({
+              top: containerRef.current.scrollHeight,
+              behavior: "smooth",
+            })
+          }
+        })
       })
     }
   }, [])
 
+  // Auto-scroll when typing indicator appears (messages are handled by explicit calls)
   useEffect(() => {
-    scrollContainerToBottom()
-  }, [messages, showTyping, scrollContainerToBottom])
+    if (showTyping) {
+      scrollContainerToBottom()
+    }
+  }, [showTyping, scrollContainerToBottom])
 
   // Intersection Observer to trigger welcome
   useEffect(() => {
@@ -393,8 +402,8 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
         ref={containerRef}
         role="log"
         aria-live="polite"
-        className="p-4 space-y-3 bg-gray-50 overflow-y-auto"
-        style={{ minHeight: "350px", maxHeight: "70vh" }}
+        className="p-4 space-y-3 bg-gray-50 overflow-y-auto scroll-smooth"
+        style={{ height: "400px" }}
       >
         {messages.map((msg) => {
           if (msg.type === "buttons" && msg.buttons) {

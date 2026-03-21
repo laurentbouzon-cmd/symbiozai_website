@@ -19,7 +19,6 @@ export interface ScenarioButton {
 
 export interface InlineChoice {
   label: string
-  /** Messages to play after this choice is clicked */
   nextMessages: PlaygroundMessage[]
 }
 
@@ -79,6 +78,26 @@ const scenarios: Record<Locale, Scenario[]> = {
           text: "J'en ai trouvé 23 au total. Tu veux que je les ajoute à une séquence d'outreach ?",
           delay: 500,
         },
+        {
+          type: "inline-choices",
+          choices: [
+            {
+              label: "Oui, lance la séquence",
+              nextMessages: [
+                { type: "user", text: "Oui, ajoute-les à une séquence", autoAdvance: true },
+                { type: "ai", text: "C'est fait ! Séquence \"ESN Île-de-France\" créée avec 23 contacts. Premier email envoyé demain 9h. Je te ferai un point sur les ouvertures dans 48h.", delay: 1500 },
+              ],
+            },
+            {
+              label: "Filtre les +500 employés",
+              nextMessages: [
+                { type: "user", text: "Filtre uniquement les +500 employés", autoAdvance: true },
+                { type: "ai", text: "Filtré ! 8 ESN de +500 employés retenues : Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Séquence \"ESN 500+ IdF\" créée. Premier email demain matin.", delay: 1500 },
+              ],
+            },
+          ],
+          delay: 300,
+        },
       ],
     },
     {
@@ -116,14 +135,47 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Prépare une relance TechCorp",
               nextMessages: [
                 { type: "user", text: "Prépare une relance pour TechCorp", autoAdvance: true },
-                { type: "ai", text: "C'est fait ! Email de relance personnalisé prêt, basé sur votre dernière proposition. Objet : \"Votre contrat arrive à échéance — on en parle ?\". Tu veux que je l'envoie ou tu préfères relire avant ?", delay: 1500 },
+                { type: "ai", text: "Email de relance prêt ! Objet : \"Votre contrat arrive à échéance — on en parle ?\". Basé sur votre dernière proposition. Tu veux l'envoyer maintenant ?", delay: 1500 },
+                {
+                  type: "inline-choices",
+                  choices: [
+                    {
+                      label: "Envoie-le",
+                      nextMessages: [
+                        { type: "user", text: "Envoie", autoAdvance: true },
+                        { type: "ai", text: "Envoyé ! Email parti à j.martin@techcorp.fr. Rappel automatique programmé dans 3 jours si pas de réponse. Je te notifie dès qu'il ouvre le mail.", delay: 1500 },
+                      ],
+                    },
+                    {
+                      label: "Montre-moi le brouillon d'abord",
+                      nextMessages: [
+                        { type: "user", text: "Montre-moi le brouillon", autoAdvance: true },
+                        { type: "ai", text: "Brouillon enregistré dans tes drafts et accessible depuis la fiche TechCorp. Je t'ai aussi ajouté un rappel demain matin pour le relire à tête reposée.", delay: 1500 },
+                      ],
+                    },
+                  ],
+                  delay: 300,
+                },
               ],
             },
             {
               label: "Détails sur DataVision",
               nextMessages: [
                 { type: "user", text: "Donne-moi les détails sur DataVision", autoAdvance: true },
-                { type: "ai", text: "DataVision — deal perdu il y a 4 mois (budget gelé). Le nouveau CTO Thomas Mercier est arrivé en février. Il a un profil tech/data, potentiellement plus réceptif à notre approche IA. Dernier contact : appel avec l'ancien directeur en novembre. Tu veux que je prépare un message d'intro pour le nouveau CTO ?", delay: 1500 },
+                { type: "ai", text: "DataVision — deal perdu il y a 4 mois (budget gelé). Nouveau CTO Thomas Mercier arrivé en février, profil tech/data. Dernier contact : novembre avec l'ancien directeur. Je te prépare un message d'intro pour le nouveau CTO ?", delay: 1500 },
+                {
+                  type: "inline-choices",
+                  choices: [
+                    {
+                      label: "Oui, prépare le message",
+                      nextMessages: [
+                        { type: "user", text: "Oui, vas-y", autoAdvance: true },
+                        { type: "ai", text: "Message LinkedIn prêt pour Thomas Mercier : angle \"IA + data\" adapté à son profil. Programmé pour envoi lundi 9h. Deal DataVision remis en statut \"Réactivation\" dans ton pipeline.", delay: 1500 },
+                      ],
+                    },
+                  ],
+                  delay: 300,
+                },
               ],
             },
           ],
@@ -151,22 +203,22 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Call commercial",
               nextMessages: [
                 { type: "user", text: "Call de 30min — intéressés par le plan Pro, décision en avril", autoAdvance: true },
-                { type: "ai", text: "Note ajoutée sur Pennylane. J'ai détecté une date clé : je te rappellerai début avril pour le follow-up. Tu veux que je planifie autre chose ?", delay: 1500 },
+                { type: "ai", text: "Note ajoutée sur Pennylane. J'ai détecté une date clé : décision en avril. Tu veux que je planifie un rappel ?", delay: 1500 },
                 {
                   type: "inline-choices",
                   choices: [
                     {
-                      label: "Planifie un rappel",
+                      label: "Oui, rappel début avril",
                       nextMessages: [
                         { type: "user", text: "Oui, rappel le 1er avril", autoAdvance: true },
-                        { type: "ai", text: "Rappel créé pour le 1er avril : \"Follow-up Pennylane — décision plan Pro\". Je t'enverrai une notification le matin. D'ici là, je surveille toute activité sur leur compte.", delay: 1500 },
+                        { type: "ai", text: "Rappel créé pour le 1er avril : \"Follow-up Pennylane — décision plan Pro\". Notification le matin. D'ici là, je surveille toute activité sur leur compte.", delay: 1500 },
                       ],
                     },
                     {
                       label: "Non, c'est bon",
                       nextMessages: [
-                        { type: "user", text: "Non, c'est tout pour l'instant", autoAdvance: true },
-                        { type: "ai", text: "Compris ! La note est enregistrée et le rappel automatique début avril est activé. Si Pennylane interagit d'ici là, je te préviens.", delay: 1500 },
+                        { type: "user", text: "Non, c'est tout", autoAdvance: true },
+                        { type: "ai", text: "Compris ! Note enregistrée et rappel automatique début avril activé. Si Pennylane interagit d'ici là, je te préviens.", delay: 1500 },
                       ],
                     },
                   ],
@@ -178,7 +230,7 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Feedback produit",
               nextMessages: [
                 { type: "user", text: "Démo produit — ils veulent une intégration Notion, bloquant pour eux", autoAdvance: true },
-                { type: "ai", text: "Note ajoutée sur Pennylane avec le tag \"feedback produit\". J'ai remonté la demande d'intégration Notion dans le backlog produit — c'est la 3ème fois qu'on nous la demande ce mois-ci. Priorité suggérée : haute.", delay: 1500 },
+                { type: "ai", text: "Note ajoutée sur Pennylane avec le tag \"feedback produit\". Demande d'intégration Notion remontée dans le backlog — c'est la 3ème demande ce mois-ci. Priorité suggérée : haute. Fiche Pennylane mise à jour.", delay: 1500 },
               ],
             },
           ],
@@ -218,6 +270,26 @@ const scenarios: Record<Locale, Scenario[]> = {
           text: "Found 23 in total. Want me to add them to an outreach sequence?",
           delay: 500,
         },
+        {
+          type: "inline-choices",
+          choices: [
+            {
+              label: "Yes, start the sequence",
+              nextMessages: [
+                { type: "user", text: "Yes, add them to a sequence", autoAdvance: true },
+                { type: "ai", text: "Done! Sequence \"IT Firms Paris\" created with 23 contacts. First email goes out tomorrow 9am. I'll give you an update on opens in 48h.", delay: 1500 },
+              ],
+            },
+            {
+              label: "Filter 500+ employees only",
+              nextMessages: [
+                { type: "user", text: "Filter only 500+ employees", autoAdvance: true },
+                { type: "ai", text: "Filtered! 8 firms with 500+ employees retained: Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Sequence \"IT 500+ Paris\" created. First email tomorrow morning.", delay: 1500 },
+              ],
+            },
+          ],
+          delay: 300,
+        },
       ],
     },
     {
@@ -255,14 +327,47 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Prepare a TechCorp follow-up",
               nextMessages: [
                 { type: "user", text: "Prepare a follow-up for TechCorp", autoAdvance: true },
-                { type: "ai", text: "Done! Personalized follow-up email ready, based on your last proposal. Subject: \"Your contract is expiring — shall we talk?\". Want me to send it or would you rather review it first?", delay: 1500 },
+                { type: "ai", text: "Follow-up email ready! Subject: \"Your contract is expiring — shall we talk?\". Based on your last proposal. Want me to send it now?", delay: 1500 },
+                {
+                  type: "inline-choices",
+                  choices: [
+                    {
+                      label: "Send it",
+                      nextMessages: [
+                        { type: "user", text: "Send it", autoAdvance: true },
+                        { type: "ai", text: "Sent! Email delivered to j.martin@techcorp.com. Auto-reminder set for 3 days if no reply. I'll notify you as soon as they open it.", delay: 1500 },
+                      ],
+                    },
+                    {
+                      label: "Show me the draft first",
+                      nextMessages: [
+                        { type: "user", text: "Show me the draft first", autoAdvance: true },
+                        { type: "ai", text: "Draft saved and accessible from the TechCorp record. I've also set a reminder for tomorrow morning so you can review it fresh.", delay: 1500 },
+                      ],
+                    },
+                  ],
+                  delay: 300,
+                },
               ],
             },
             {
               label: "Details on DataVision",
               nextMessages: [
                 { type: "user", text: "Give me details on DataVision", autoAdvance: true },
-                { type: "ai", text: "DataVision — deal lost 4 months ago (frozen budget). New CTO Thomas Mercier arrived in February. He has a tech/data background, potentially more receptive to our AI approach. Last contact: call with former director in November. Want me to prepare an intro message for the new CTO?", delay: 1500 },
+                { type: "ai", text: "DataVision — deal lost 4 months ago (frozen budget). New CTO Thomas Mercier arrived in February, tech/data background. Last contact: November with former director. Want me to prepare an intro message for the new CTO?", delay: 1500 },
+                {
+                  type: "inline-choices",
+                  choices: [
+                    {
+                      label: "Yes, prepare the message",
+                      nextMessages: [
+                        { type: "user", text: "Yes, go ahead", autoAdvance: true },
+                        { type: "ai", text: "LinkedIn message ready for Thomas Mercier: \"AI + data\" angle tailored to his profile. Scheduled for Monday 9am. DataVision deal moved to \"Reactivation\" in your pipeline.", delay: 1500 },
+                      ],
+                    },
+                  ],
+                  delay: 300,
+                },
               ],
             },
           ],
@@ -290,15 +395,15 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Sales call",
               nextMessages: [
                 { type: "user", text: "30min call — interested in the Pro plan, decision in April", autoAdvance: true },
-                { type: "ai", text: "Note added on Pennylane. I detected a key date: I'll remind you in early April for the follow-up. Want me to schedule anything else?", delay: 1500 },
+                { type: "ai", text: "Note added on Pennylane. I detected a key date: decision in April. Want me to schedule a reminder?", delay: 1500 },
                 {
                   type: "inline-choices",
                   choices: [
                     {
-                      label: "Schedule a reminder",
+                      label: "Yes, reminder April 1st",
                       nextMessages: [
                         { type: "user", text: "Yes, reminder on April 1st", autoAdvance: true },
-                        { type: "ai", text: "Reminder created for April 1st: \"Pennylane follow-up — Pro plan decision\". I'll send you a notification that morning. Until then, I'll monitor any activity on their account.", delay: 1500 },
+                        { type: "ai", text: "Reminder created for April 1st: \"Pennylane follow-up — Pro plan decision\". Morning notification set. Until then, I'll monitor any activity on their account.", delay: 1500 },
                       ],
                     },
                     {
@@ -316,8 +421,8 @@ const scenarios: Record<Locale, Scenario[]> = {
             {
               label: "Product feedback",
               nextMessages: [
-                { type: "user", text: "Product demo — they want a Notion integration, it's a blocker for them", autoAdvance: true },
-                { type: "ai", text: "Note added on Pennylane with the \"product feedback\" tag. I've escalated the Notion integration request to the product backlog — that's the 3rd time it's been requested this month. Suggested priority: high.", delay: 1500 },
+                { type: "user", text: "Product demo — they want a Notion integration, it's a blocker", autoAdvance: true },
+                { type: "ai", text: "Note added on Pennylane with \"product feedback\" tag. Notion integration request escalated to product backlog — 3rd request this month. Suggested priority: high. Pennylane record updated.", delay: 1500 },
               ],
             },
           ],
