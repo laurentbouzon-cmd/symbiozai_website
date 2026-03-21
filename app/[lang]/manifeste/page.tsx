@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
-import { MobileMenu } from "@/components/navigation/mobile-menu"
+import { SharedHeader } from "@/components/shared-header"
 import { Logo } from "@/components/ui/logo"
 import { getDictionary } from "@/lib/dictionary"
 
@@ -41,25 +41,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
-      {/* Navigation */}
-      <header className="absolute top-0 left-0 right-0 z-10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-end items-center">
-            <MobileMenu lang={lang} dictionary={dictionary} />
-            <nav className="hidden md:flex items-center space-x-10 mr-6 -ml-20">
-              <Link href={`/${lang}`} className="text-black hover:text-gray-900 transition-colors">
-                {isFr ? "Accueil" : "Home"}
-              </Link>
-              <Link
-                href={`/${lang}/manifeste`}
-                className="text-black font-medium hover:text-gray-900 transition-colors"
-              >
-                {isFr ? "Manifeste" : "Manifesto"}
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <SharedHeader lang={lang} dictionary={dictionary} activePage="manifeste" />
 
       {/* Contenu */}
       <main className="flex-grow pt-24 pb-20 px-4 sm:px-6 bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">

@@ -1,9 +1,9 @@
 import Image from "next/image"
 import { getDictionary } from "@/lib/dictionary"
 import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
-import { MobileMenu } from "@/components/navigation/mobile-menu"
-import { Logo } from "@/components/ui/logo"
 import Link from "next/link"
+import { SharedHeader } from "@/components/shared-header"
+import { Logo } from "@/components/ui/logo"
 import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
@@ -171,22 +171,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
-        {/* Navigation */}
-        <header className="absolute top-0 left-0 right-0 z-10">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-end items-center">
-              <MobileMenu lang={lang} dictionary={dictionary} />
-              <nav className="hidden md:flex items-center space-x-10 mr-6 -ml-20">
-                <Link href={`/${lang}`} className="text-black hover:text-gray-900 transition-colors">
-                  {isFr ? "Accueil" : "Home"}
-                </Link>
-                <Link href={`/${lang}/manifeste`} className="text-black hover:text-gray-900 transition-colors">
-                  {isFr ? "Manifeste" : "Manifesto"}
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <SharedHeader lang={lang} dictionary={dictionary} activePage="home" />
 
         {/* Hero Section */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">

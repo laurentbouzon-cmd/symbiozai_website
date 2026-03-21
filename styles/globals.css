@@ -88,3 +88,60 @@
     @apply bg-background text-foreground font-sans;
   }
 }
+
+/* Blog wahouu effects */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes line-expand {
+  from { width: 0; }
+  to { width: 5rem; }
+}
+
+.blog-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+.blog-hero-title {
+  animation: float-in 0.8s ease-out both;
+}
+
+.blog-hero-subtitle {
+  animation: float-in 0.8s ease-out 0.15s both;
+}
+
+.blog-hero-filters {
+  animation: float-in 0.8s ease-out 0.3s both;
+}
+
+.blog-accent-line {
+  animation: line-expand 0.6s ease-out 0.5s both;
+}
+
+.blog-article-enter {
+  animation: float-in 0.6s ease-out both;
+}
+
+.blog-article-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-article-card:hover {
+  transform: translateX(4px);
+}
