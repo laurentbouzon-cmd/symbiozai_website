@@ -2,21 +2,22 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 import { getDictionary } from "@/lib/dictionary"
-import { getScenarios, type PlaygroundMessage, type ScenarioButton } from "@/lib/playground-scenarios"
+import { getScenarios, type PlaygroundMessage, type ScenarioButton, type InlineChoice } from "@/lib/playground-scenarios"
 import { PlaygroundHeader } from "./playground-header"
 import { MessageBubble } from "./message-bubble"
 import { TypingIndicator } from "./typing-indicator"
 import { ScenarioButtons } from "./scenario-buttons"
 
-type PlaygroundState = "IDLE" | "WELCOME" | "SCENARIO_PLAYING" | "SCENARIO_DONE" | "CTA"
+type PlaygroundState = "IDLE" | "WELCOME" | "SCENARIO_PLAYING" | "AWAITING_CHOICE" | "SCENARIO_DONE" | "CTA"
 
 interface DisplayedMessage {
   id: string
-  type: "user" | "ai" | "buttons"
+  type: "user" | "ai" | "buttons" | "inline-choices"
   text?: string
   richContent?: "table" | "deals"
   richData?: unknown
   buttons?: ScenarioButton[]
+  choices?: InlineChoice[]
   streaming?: boolean
 }
 
@@ -33,38 +34,33 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
   const [showTyping, setShowTyping] = useState(false)
   const [playedIds, setPlayedIds] = useState<Set<string>>(new Set())
   const [isButtonsDisabled, setIsButtonsDisabled] = useState(false)
+  const [currentScenarioId, setCurrentScenarioId] = useState<string | null>(null)
 
-  const messagesEndRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const playgroundRef = useRef<HTMLDivElement>(null)
   const hasTriggeredRef = useRef(false)
   const cleanupRef = useRef<(() => void) | null>(null)
   const msgCounterRef = useRef(0)
 
-  // Auto-scroll - only if user is near the bottom
-  const scrollToBottom = useCallback(() => {
+  // Scroll inside the messages container only — never scrollIntoView (which moves the page)
+  const scrollContainerToBottom = useCallback((force = false) => {
     const container = containerRef.current
     if (!container) return
     const threshold = 50
     const isNearBottom =
       container.scrollHeight - container.scrollTop - container.clientHeight < threshold
-    if (isNearBottom) {
+    if (force || isNearBottom) {
       requestAnimationFrame(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        if (containerRef.current) {
+          containerRef.current.scrollTop = containerRef.current.scrollHeight
+        }
       })
     }
   }, [])
 
-  // Force scroll (used for initial welcome)
-  const forceScrollToBottom = useCallback(() => {
-    requestAnimationFrame(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    })
-  }, [])
-
   useEffect(() => {
-    scrollToBottom()
-  }, [messages, showTyping, scrollToBottom])
+    scrollContainerToBottom()
+  }, [messages, showTyping, scrollContainerToBottom])
 
   // Intersection Observer to trigger welcome
   useEffect(() => {
@@ -127,7 +123,6 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
       }
       setMessages([welcomeMsg])
 
-      // After streaming finishes, show buttons (estimate ~3s for welcome message)
       const welcomeWords = dictionary.playground.welcome.split(" ").length
       const estimatedTime = welcomeWords * 60 + 500
       const btnTimer = setTimeout(() => {
@@ -139,14 +134,14 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
             buttons: getChoiceButtons(),
           },
         ])
-        forceScrollToBottom()
+        scrollContainerToBottom(true)
       }, estimatedTime)
 
       cleanupRef.current = () => clearTimeout(btnTimer)
     }, 1200)
 
     return () => clearTimeout(timer)
-  }, [dictionary.playground.welcome, nextMsgId, getChoiceButtons, forceScrollToBottom])
+  }, [dictionary.playground.welcome, nextMsgId, getChoiceButtons, scrollContainerToBottom])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -157,36 +152,48 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
     }
   }, [])
 
-  const playScenario = useCallback(
-    (scenarioId: string) => {
-      const scenario = scenarios.find((s) => s.id === scenarioId)
-      if (!scenario) return
-
-      setState("SCENARIO_PLAYING")
-      setIsButtonsDisabled(true)
-
+  /** Play a sequence of messages, then call onComplete when done */
+  const playMessages = useCallback(
+    (msgs: PlaygroundMessage[], onComplete: () => void) => {
       const timers: ReturnType<typeof setTimeout>[] = []
       let cumulativeDelay = 0
 
-      scenario.messages.forEach((msg: PlaygroundMessage, idx: number) => {
+      for (let idx = 0; idx < msgs.length; idx++) {
+        const msg = msgs[idx]
+
+        // If this is an inline-choices, schedule it and stop — user interaction needed
+        if (msg.type === "inline-choices") {
+          const choiceDelay = cumulativeDelay + (msg.delay ?? 0)
+          const choiceTimer = setTimeout(() => {
+            setShowTyping(false)
+            setState("AWAITING_CHOICE")
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: nextMsgId(),
+                type: "inline-choices",
+                choices: msg.choices,
+              },
+            ])
+            scrollContainerToBottom(true)
+          }, choiceDelay)
+          timers.push(choiceTimer)
+
+          cleanupRef.current = () => {
+            timers.forEach(clearTimeout)
+          }
+          return // Stop here — onComplete will be called by choice handler
+        }
+
         const msgDelay = msg.delay ?? 0
         cumulativeDelay += msgDelay
 
         // Show typing before AI messages
-        if (msg.type === "ai" && !msg.richContent) {
+        if (msg.type === "ai") {
           const typingStart = cumulativeDelay - msgDelay
           const typingTimer = setTimeout(() => {
             setShowTyping(true)
-            forceScrollToBottom()
-          }, typingStart)
-          timers.push(typingTimer)
-        }
-
-        if (msg.type === "ai" && msg.richContent) {
-          const typingStart = cumulativeDelay - msgDelay
-          const typingTimer = setTimeout(() => {
-            setShowTyping(true)
-            forceScrollToBottom()
+            scrollContainerToBottom(true)
           }, typingStart)
           timers.push(typingTimer)
         }
@@ -196,7 +203,7 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
 
           const displayMsg: DisplayedMessage = {
             id: nextMsgId(),
-            type: msg.type === "buttons" ? "buttons" : msg.type,
+            type: msg.type === "buttons" ? "buttons" : msg.type as "user" | "ai",
             text: msg.text,
             richContent: msg.richContent,
             richData: msg.richData,
@@ -205,14 +212,7 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
           }
 
           setMessages((prev) => [...prev, displayMsg])
-          forceScrollToBottom()
-
-          // If this is a streaming text message, add delay for streaming to finish
-          if (msg.type === "ai" && !msg.richContent && msg.text) {
-            const wordCount = msg.text.split(" ").length
-            // Offset for the NEXT message: words * avg speed + buffer
-            // This is handled by cumulativeDelay of the next message
-          }
+          scrollContainerToBottom(true)
         }, cumulativeDelay)
         timers.push(displayTimer)
 
@@ -222,108 +222,148 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
           cumulativeDelay += wordCount * 60 + 300
         }
 
-        // For auto-advance user messages that follow an AI message, small pause
+        // For auto-advance user messages, small pause
         if (msg.type === "user" && msg.autoAdvance && idx > 0) {
           cumulativeDelay += 200
         }
-      })
+      }
 
-      // After all messages, mark scenario done
-      const doneTimer = setTimeout(() => {
-        setState("SCENARIO_DONE")
-        setIsButtonsDisabled(false)
-        setShowTyping(false)
-
-        const newPlayedIds = new Set(playedIds)
-        newPlayedIds.add(scenarioId)
-        setPlayedIds(newPlayedIds)
-
-        // Check if all scenarios played
-        const allPlayed = scenarios.every((s) => newPlayedIds.has(s.id))
-
-        if (allPlayed) {
-          // Show CTA
-          const ctaTypingTimer = setTimeout(() => {
-            setShowTyping(true)
-            forceScrollToBottom()
-          }, 500)
-          timers.push(ctaTypingTimer)
-
-          const ctaTimer = setTimeout(() => {
-            setShowTyping(false)
-            setState("CTA")
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: nextMsgId(),
-                type: "ai",
-                text: dictionary.playground.ctaText,
-                streaming: true,
-              },
-            ])
-            forceScrollToBottom()
-
-            // Show CTA button after text streams
-            const ctaWords = dictionary.playground.ctaText.split(" ").length
-            const ctaBtnTimer = setTimeout(() => {
-              setMessages((prev) => [
-                ...prev,
-                {
-                  id: nextMsgId(),
-                  type: "buttons",
-                  buttons: [{ id: "cta", emoji: "\ud83d\ude80", label: dictionary.playground.ctaButton }],
-                },
-              ])
-              forceScrollToBottom()
-            }, ctaWords * 60 + 500)
-            timers.push(ctaBtnTimer)
-          }, 1500)
-          timers.push(ctaTimer)
-        } else {
-          // Show "try another" + remaining buttons
-          const tryTimer = setTimeout(() => {
-            setShowTyping(true)
-            forceScrollToBottom()
-          }, 300)
-          timers.push(tryTimer)
-
-          const buttonsTimer = setTimeout(() => {
-            setShowTyping(false)
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: nextMsgId(),
-                type: "ai",
-                text: dictionary.playground.tryAnother,
-                streaming: true,
-              },
-            ])
-            forceScrollToBottom()
-
-            const tryWords = dictionary.playground.tryAnother.split(" ").length
-            const showBtnsTimer = setTimeout(() => {
-              setMessages((prev) => [
-                ...prev,
-                {
-                  id: nextMsgId(),
-                  type: "buttons",
-                  buttons: getChoiceButtons(),
-                },
-              ])
-              forceScrollToBottom()
-            }, tryWords * 60 + 500)
-            timers.push(showBtnsTimer)
-          }, 1200)
-          timers.push(buttonsTimer)
-        }
-      }, cumulativeDelay + 500)
+      // All messages scheduled — call onComplete after they finish
+      const doneTimer = setTimeout(onComplete, cumulativeDelay + 500)
       timers.push(doneTimer)
 
       cleanupRef.current = () => {
         timers.forEach(clearTimeout)
       }
     },
-    [scenarios, playedIds, dictionary.playground, nextMsgId, getChoiceButtons, forceScrollToBottom]
+    [nextMsgId, scrollContainerToBottom]
+  )
+
+  const finishScenario = useCallback(
+    (scenarioId: string) => {
+      setState("SCENARIO_DONE")
+      setIsButtonsDisabled(false)
+      setShowTyping(false)
+
+      const newPlayedIds = new Set(playedIds)
+      newPlayedIds.add(scenarioId)
+      setPlayedIds(newPlayedIds)
+
+      const allPlayed = scenarios.every((s) => newPlayedIds.has(s.id))
+
+      if (allPlayed) {
+        // Show CTA
+        const timers: ReturnType<typeof setTimeout>[] = []
+        const ctaTypingTimer = setTimeout(() => {
+          setShowTyping(true)
+          scrollContainerToBottom(true)
+        }, 500)
+        timers.push(ctaTypingTimer)
+
+        const ctaTimer = setTimeout(() => {
+          setShowTyping(false)
+          setState("CTA")
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: nextMsgId(),
+              type: "ai",
+              text: dictionary.playground.ctaText,
+              streaming: true,
+            },
+          ])
+          scrollContainerToBottom(true)
+
+          const ctaWords = dictionary.playground.ctaText.split(" ").length
+          const ctaBtnTimer = setTimeout(() => {
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: nextMsgId(),
+                type: "buttons",
+                buttons: [{ id: "cta", emoji: "\ud83d\ude80", label: dictionary.playground.ctaButton }],
+              },
+            ])
+            scrollContainerToBottom(true)
+          }, ctaWords * 60 + 500)
+          timers.push(ctaBtnTimer)
+        }, 1500)
+        timers.push(ctaTimer)
+
+        cleanupRef.current = () => timers.forEach(clearTimeout)
+      } else {
+        // Show "try another" + remaining buttons
+        const timers: ReturnType<typeof setTimeout>[] = []
+        const tryTimer = setTimeout(() => {
+          setShowTyping(true)
+          scrollContainerToBottom(true)
+        }, 300)
+        timers.push(tryTimer)
+
+        const buttonsTimer = setTimeout(() => {
+          setShowTyping(false)
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: nextMsgId(),
+              type: "ai",
+              text: dictionary.playground.tryAnother,
+              streaming: true,
+            },
+          ])
+          scrollContainerToBottom(true)
+
+          const tryWords = dictionary.playground.tryAnother.split(" ").length
+          const showBtnsTimer = setTimeout(() => {
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: nextMsgId(),
+                type: "buttons",
+                buttons: getChoiceButtons(),
+              },
+            ])
+            scrollContainerToBottom(true)
+          }, tryWords * 60 + 500)
+          timers.push(showBtnsTimer)
+        }, 1200)
+        timers.push(buttonsTimer)
+
+        cleanupRef.current = () => timers.forEach(clearTimeout)
+      }
+    },
+    [scenarios, playedIds, dictionary.playground, nextMsgId, getChoiceButtons, scrollContainerToBottom]
+  )
+
+  const playScenario = useCallback(
+    (scenarioId: string) => {
+      const scenario = scenarios.find((s) => s.id === scenarioId)
+      if (!scenario) return
+
+      setState("SCENARIO_PLAYING")
+      setIsButtonsDisabled(true)
+      setCurrentScenarioId(scenarioId)
+
+      playMessages(scenario.messages, () => {
+        finishScenario(scenarioId)
+      })
+    },
+    [scenarios, playMessages, finishScenario]
+  )
+
+  const handleInlineChoice = useCallback(
+    (choice: InlineChoice) => {
+      if (state !== "AWAITING_CHOICE") return
+
+      setState("SCENARIO_PLAYING")
+
+      playMessages(choice.nextMessages, () => {
+        if (currentScenarioId) {
+          finishScenario(currentScenarioId)
+        }
+      })
+    },
+    [state, currentScenarioId, playMessages, finishScenario]
   )
 
   const handleButtonClick = useCallback(
@@ -332,7 +372,7 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
         document.getElementById("cta-final")?.scrollIntoView({ behavior: "smooth" })
         return
       }
-      if (state === "SCENARIO_PLAYING") return
+      if (state === "SCENARIO_PLAYING" || state === "AWAITING_CHOICE") return
       playScenario(id)
     },
     [state, playScenario]
@@ -369,6 +409,28 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
             )
           }
 
+          if (msg.type === "inline-choices" && msg.choices) {
+            return (
+              <div key={msg.id} className="flex flex-col gap-2 pl-2">
+                {msg.choices.map((choice, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleInlineChoice(choice)}
+                    disabled={state !== "AWAITING_CHOICE"}
+                    className={`text-left text-sm px-4 py-2.5 rounded-xl border transition-all duration-200
+                      ${
+                        state !== "AWAITING_CHOICE"
+                          ? "border-gray-200 text-gray-400 cursor-not-allowed opacity-50"
+                          : "border-[#0d47a1]/20 text-[#0d47a1] hover:bg-[#0d47a1]/5 hover:border-[#0d47a1]/40 cursor-pointer"
+                      }`}
+                  >
+                    {choice.label}
+                  </button>
+                ))}
+              </div>
+            )
+          }
+
           return (
             <MessageBubble
               key={msg.id}
@@ -383,8 +445,6 @@ export function InteractivePlayground({ lang }: InteractivePlaygroundProps) {
         })}
 
         <TypingIndicator visible={showTyping} />
-
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Input bar (disabled, decorative) */}
