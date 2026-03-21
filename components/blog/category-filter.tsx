@@ -8,9 +8,11 @@ interface CategoryFilterProps {
   categories: BlogCategory[]
   dictionary: Dictionary
   onFilter: (category: BlogCategory | null) => void
+  counts: Record<string, number>
+  totalCount: number
 }
 
-export function CategoryFilter({ categories, dictionary, onFilter }: CategoryFilterProps) {
+export function CategoryFilter({ categories, dictionary, onFilter, counts, totalCount }: CategoryFilterProps) {
   const [active, setActive] = useState<BlogCategory | null>(null)
 
   const handleClick = (category: BlogCategory | null) => {
@@ -28,10 +30,11 @@ export function CategoryFilter({ categories, dictionary, onFilter }: CategoryFil
             : "text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
         }`}
       >
-        {dictionary.blog.allPosts}
+        {dictionary.blog.allPosts} ({totalCount})
       </button>
       {categories.map((cat) => {
         const label = dictionary.blog.categories[cat as keyof typeof dictionary.blog.categories] || cat
+        const count = counts[cat] || 0
         return (
           <button
             key={cat}
@@ -42,7 +45,7 @@ export function CategoryFilter({ categories, dictionary, onFilter }: CategoryFil
                 : "text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
             }`}
           >
-            {label}
+            {label} ({count})
           </button>
         )
       })}

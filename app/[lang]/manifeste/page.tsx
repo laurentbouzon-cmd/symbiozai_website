@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
+import { SharedFooter } from "@/components/shared-footer"
 import { SharedHeader } from "@/components/shared-header"
 import { Logo } from "@/components/ui/logo"
 import { getDictionary } from "@/lib/dictionary"
@@ -217,15 +217,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
         </article>
       </main>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-gray-500 text-sm border-t border-gray-200 bg-white">
-        <p>
-          &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
-        </p>
-        <div className="mt-3 flex justify-center">
-          <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
-        </div>
-      </footer>
+      <SharedFooter lang={lang} dictionary={dictionary} />
     </div>
     </>
   )

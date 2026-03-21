@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { getDictionary } from "@/lib/dictionary"
-import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
+import { SharedFooter } from "@/components/shared-footer"
 import Link from "next/link"
 import { SharedHeader } from "@/components/shared-header"
 import { Logo } from "@/components/ui/logo"
@@ -472,15 +472,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           </section>
         </main>
 
-        {/* Footer */}
-        <footer className="py-4 text-center text-gray-400 text-sm bg-white">
-          <p>
-            &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
-          </p>
-          <div className="mt-3 flex justify-center">
-            <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
-          </div>
-        </footer>
+        <SharedFooter lang={lang} dictionary={dictionary} />
       </div>
     </>
   )

@@ -4,8 +4,8 @@ import { getDictionary } from "@/lib/dictionary"
 import { getAllPosts } from "@/lib/blog"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { BlogList } from "@/components/blog/blog-list"
-import { FooterLanguageSwitcher } from "@/components/footer-language-switcher"
 import { SharedHeader } from "@/components/shared-header"
+import { SharedFooter } from "@/components/shared-footer"
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }]
@@ -86,13 +86,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="py-4 text-center text-gray-400 text-sm bg-white border-t border-gray-100">
-        <p>&copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}</p>
-        <div className="mt-3 flex justify-center">
-          <FooterLanguageSwitcher currentLocale={lang} dictionary={dictionary} />
-        </div>
-      </footer>
+      <SharedFooter lang={lang} dictionary={dictionary} />
     </div>
   )
 }

@@ -76,7 +76,27 @@ export default function RootLayout({
       <body>
         {children}
 
-        {/* Google tag (gtag.js) - Placé à la fin du body pour une meilleure détection */}
+        {/* Axeptio — Cookie consent (MUST load before GA4) */}
+        <Script id="axeptio-settings" strategy="beforeInteractive">
+          {`
+            window.axeptioSettings = {
+              clientId: "69be06bc1986705da989b48d",
+              cookiesVersion: "3ff8725e-4f9c-4f13-914f-87c85336c3e5",
+              googleConsentMode: {
+                default: {
+                  analytics_storage: "denied",
+                  ad_storage: "denied",
+                  ad_user_data: "denied",
+                  ad_personalization: "denied",
+                  wait_for_update: 500
+                }
+              }
+            };
+          `}
+        </Script>
+        <Script src="//static.axept.io/sdk.js" strategy="beforeInteractive" />
+
+        {/* Google tag (gtag.js) — Consent Mode v2 gated by Axeptio */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-1P585GSSEQ" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { getDictionary } from "@/lib/dictionary"
-import { getPostBySlug, getAdjacentPosts, getAllSlugs } from "@/lib/blog"
+import { getPostBySlug, getAdjacentPosts, getAllSlugs, getPostsByCategory } from "@/lib/blog"
 import { ArticleLayout } from "@/components/blog/article-layout"
+import { mdxComponents } from "@/components/blog/mdx-components"
 
 export async function generateStaticParams() {
   const langs = ["en", "fr"]
@@ -53,6 +54,8 @@ export async function generateMetadata({
     },
   }
 
+  const ogImageUrl = `/og?title=${encodeURIComponent(post.meta.title)}&lang=${lang}`
+
   return {
     title: `${post.meta.title} | SymbiozAI Blog`,
     description: post.meta.description,
@@ -64,11 +67,13 @@ export async function generateMetadata({
       locale: lang === "fr" ? "fr_FR" : "en_US",
       type: "article",
       publishedTime: post.meta.date,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: post.meta.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.meta.title,
       description: post.meta.description,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `https://symbioz.ai/${lang}/blog/${slug}`,
@@ -97,6 +102,11 @@ export default async function BlogArticlePage({
 
   const dictionary = getDictionary(lang)
   const { previous, next } = getAdjacentPosts(lang, slug)
+
+  // Get related articles from same category (max 3, exclude current)
+  const relatedArticles = getPostsByCategory(lang, post.meta.category)
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3)
 
   // Schema.org structured data - content is from our own static MDX files,
   // not from user input, so this is safe for injection into a script tag.
@@ -133,8 +143,9 @@ export default async function BlogArticlePage({
         dictionary={dictionary}
         previous={previous}
         next={next}
+        relatedArticles={relatedArticles}
       >
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} components={mdxComponents} />
       </ArticleLayout>
     </>
   )

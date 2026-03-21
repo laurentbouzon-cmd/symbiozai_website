@@ -12,6 +12,8 @@ export function ArticleCard({ post, lang, dictionary }: ArticleCardProps) {
   const categoryLabel =
     dictionary.blog.categories[post.category as keyof typeof dictionary.blog.categories] || post.category
 
+  const isFr = lang === "fr"
+
   return (
     <article className="group relative pl-6 blog-article-card">
       {/* Accent line on hover */}
@@ -21,10 +23,22 @@ export function ArticleCard({ post, lang, dictionary }: ArticleCardProps) {
           <span className="text-xs font-medium uppercase tracking-wider text-[#0d47a1]/70 group-hover:text-[#0d47a1] transition-colors duration-200">
             {categoryLabel}
           </span>
+          {post.featured && (
+            <>
+              <span className="text-xs text-gray-300">·</span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] text-white">
+                {isFr ? "A la une" : "Featured"}
+              </span>
+            </>
+          )}
           <span className="text-xs text-gray-300">·</span>
           <span className="text-xs text-gray-400">{formatDate(post.date, lang)}</span>
         </div>
-        <h2 className="text-xl font-semibold text-gray-900 group-hover:text-[#0d47a1] transition-colors duration-300 mb-2">
+        <h2
+          className={`font-semibold text-gray-900 group-hover:text-[#0d47a1] transition-colors duration-300 mb-2 ${
+            post.featured ? "text-2xl" : "text-xl"
+          }`}
+        >
           {post.title}
         </h2>
         <p className="text-base text-gray-500 mb-3 line-clamp-2">{post.description}</p>
