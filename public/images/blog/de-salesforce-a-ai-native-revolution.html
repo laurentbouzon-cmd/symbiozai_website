@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .glow-center {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(0,136,194,0.07) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 52px 44px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 32px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header h1 { font-size: 26px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
+  .header h1 em { font-style: normal; color: #0088C2; }
+  .header .subtitle { margin-top: 6px; font-size: 13px; color: #9CA3AF; }
+  .logo { font-size: 15px; font-weight: 700; color: #FFFFFF; white-space: nowrap; }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  /* 4 generations timeline horizontal */
+  .generations {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    align-items: start;
+  }
+
+  .generations::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 52px;
+    right: 52px;
+    height: 2px;
+    background: linear-gradient(90deg, #6B7280, #0D47A1, #0088C2);
+  }
+
+  .gen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+  }
+
+  .gen-dot {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 3px solid rgba(255,255,255,0.1);
+  }
+
+  .gen-dot.g1 { background: #2D2D2D; color: #9CA3AF; border-color: #4B5563; }
+  .gen-dot.g2 { background: #1E3A5F; color: #93C5FD; border-color: #1D4ED8; }
+  .gen-dot.g3 { background: #0D3D2A; color: #6EE7B7; border-color: #059669; }
+  .gen-dot.g4 {
+    background: linear-gradient(135deg, #0D47A1, #0088C2);
+    color: #FFFFFF;
+    border-color: #0088C2;
+    box-shadow: 0 0 16px rgba(0,136,194,0.4);
+  }
+
+  .gen-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 16px 14px;
+    width: 100%;
+  }
+
+  .gen-card.current {
+    background: rgba(0,136,194,0.08);
+    border-color: rgba(0,136,194,0.3);
+  }
+
+  .gen-period {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  .gen-card.current .gen-period { color: #0088C2; }
+
+  .gen-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+
+  .gen-example {
+    font-size: 11px;
+    color: #6B7280;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .gen-problem-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+
+  .gen-card.current .gen-problem-label { color: #10B981; }
+
+  .gen-problem {
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.4;
+  }
+
+  .gen-card.current .gen-problem { color: #FFFFFF; font-weight: 500; }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6B7280 0%, #0088C2 80%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="glow-center"></div>
+
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>De Salesforce a l'<em>AI-Native</em> :<br>4 generations de CRM</h1>
+      <p class="subtitle">Chaque generation resout un probleme et en cree un nouveau — jusqu'au dernier chapitre</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="generations">
+    <div class="gen">
+      <div class="gen-dot g1">G1</div>
+      <div class="gen-card">
+        <div class="gen-period">1987 – 1999</div>
+        <div class="gen-name">Rolodex numerique</div>
+        <div class="gen-example">ACT!, GoldMine</div>
+        <div class="gen-problem-label">Probleme resolu</div>
+        <div class="gen-problem">Centraliser les contacts disperses dans des carnets</div>
+      </div>
+    </div>
+
+    <div class="gen">
+      <div class="gen-dot g2">G2</div>
+      <div class="gen-card">
+        <div class="gen-period">1999 – 2010</div>
+        <div class="gen-name">CRM Cloud</div>
+        <div class="gen-example">Salesforce, Oracle CRM</div>
+        <div class="gen-problem-label">Probleme resolu</div>
+        <div class="gen-problem">Silos entre commerciaux — base partagee en temps reel</div>
+      </div>
+    </div>
+
+    <div class="gen">
+      <div class="gen-dot g3">G3</div>
+      <div class="gen-card">
+        <div class="gen-period">2010 – 2023</div>
+        <div class="gen-name">CRM tout-en-un</div>
+        <div class="gen-example">HubSpot, Pipedrive</div>
+        <div class="gen-problem-label">Probleme resolu</div>
+        <div class="gen-problem">Complexite et cout de Salesforce pour les PME</div>
+      </div>
+    </div>
+
+    <div class="gen">
+      <div class="gen-dot g4">G4</div>
+      <div class="gen-card current">
+        <div class="gen-period">2024 → Maintenant</div>
+        <div class="gen-name">CRM AI-Native</div>
+        <div class="gen-example">SymbiozAI</div>
+        <div class="gen-problem-label">Probleme resolu</div>
+        <div class="gen-problem">La saisie manuelle et le pipeline mort — zero friction, pipeline vivant</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

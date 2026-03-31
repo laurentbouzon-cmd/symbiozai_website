@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #FFFFFF;
+    background-image: radial-gradient(#CCEEFF 1px, transparent 1px);
+    background-size: 10px 10px;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    padding: 40px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 28px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1A1A1A;
+    line-height: 1.2;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: #0088C2;
+  }
+
+  .header .subtitle {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #6B7280;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    white-space: nowrap;
+  }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  /* Table */
+  .table-wrapper {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+
+  thead tr {
+    background: #1A1A1A;
+  }
+
+  thead th {
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9CA3AF;
+  }
+
+  thead th:first-child {
+    color: #FFFFFF;
+    font-size: 11px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #F3F4F6;
+    transition: background 0.1s;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr.highlight {
+    background: rgba(0,136,194,0.04);
+    border-left: 3px solid #0088C2;
+  }
+
+  tbody tr:not(.highlight):nth-child(even) {
+    background: #FAFAFA;
+  }
+
+  tbody td {
+    padding: 10px 14px;
+    color: #1A1A1A;
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-native {
+    background: rgba(0,136,194,0.1);
+    color: #0088C2;
+    border: 1px solid rgba(0,136,194,0.3);
+  }
+
+  .badge-predictif {
+    background: rgba(245,158,11,0.1);
+    color: #D97706;
+    border: 1px solid rgba(245,158,11,0.2);
+  }
+
+  .badge-generatif {
+    background: rgba(107,114,128,0.1);
+    color: #6B7280;
+    border: 1px solid rgba(107,114,128,0.2);
+  }
+
+  .badge-agentique {
+    background: rgba(16,185,129,0.1);
+    color: #10B981;
+    border: 1px solid rgba(16,185,129,0.2);
+  }
+
+  .check { color: #10B981; font-weight: 700; }
+  .cross { color: #EF4444; }
+  .partial { color: #F59E0B; }
+
+  .symbioz-name {
+    color: #0088C2;
+    font-weight: 700;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 20px;
+    padding: 10px 14px;
+    background: #F9FAFB;
+    border-top: 1px solid #F3F4F6;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #9CA3AF;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>Les <em>10 meilleurs CRM IA</em> en 2026</h1>
+      <p class="subtitle">Comparatif honnete — profondeur IA, saisie zero, prix, profil ideal</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>CRM</th>
+          <th>Type IA</th>
+          <th>Saisie zero</th>
+          <th>Prix d'entree</th>
+          <th>Ideal pour</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Salesforce + Agentforce</td>
+          <td><span class="badge badge-agentique">Agentique (complexe)</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>165 €/user/mois</td>
+          <td>Enterprise IT dediee</td>
+        </tr>
+        <tr>
+          <td>HubSpot + Breeze</td>
+          <td><span class="badge badge-generatif">Generatif</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>Gratuit / 90 €/user</td>
+          <td>PME marketing+sales</td>
+        </tr>
+        <tr>
+          <td>Pipedrive AI</td>
+          <td><span class="badge badge-predictif">Predictif</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>14 €/user/mois</td>
+          <td>Equipes 5-30 pers.</td>
+        </tr>
+        <tr>
+          <td>Freshsales + Freddy</td>
+          <td><span class="badge badge-predictif">Predictif</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>11 €/user/mois</td>
+          <td>Mid-market</td>
+        </tr>
+        <tr>
+          <td>Zoho + Zia</td>
+          <td><span class="badge badge-generatif">Analytique</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>14 €/user/mois</td>
+          <td>ETI ecosysteme</td>
+        </tr>
+        <tr>
+          <td>Attio</td>
+          <td><span class="badge badge-generatif">Enrichissement</span></td>
+          <td><span class="partial">~</span></td>
+          <td>29 $/user/mois</td>
+          <td>Startups tech</td>
+        </tr>
+        <tr>
+          <td>Microsoft Dynamics + Copilot</td>
+          <td><span class="badge badge-generatif">Generatif</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>65 $/user/mois</td>
+          <td>Enterprise Microsoft</td>
+        </tr>
+        <tr class="highlight">
+          <td><span class="symbioz-name">SymbiozAI</span></td>
+          <td><span class="badge badge-native">AI-Native</span></td>
+          <td><span class="check">✓</span></td>
+          <td>Sur devis</td>
+          <td>PME/ETI europeennes</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="legend">
+      <div class="legend-item"><span class="check">✓</span> Saisie zero native</div>
+      <div class="legend-item"><span class="cross">✗</span> Saisie manuelle requise</div>
+      <div class="legend-item"><span class="partial">~</span> Partiel</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0,136,194,0.08) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 36px 52px 28px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: #0088C2;
+  }
+
+  .header .subtitle {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #9CA3AF;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  /* Comparison layout */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+
+  .col-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  .col-title.legacy {
+    color: #9CA3AF;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .col-title.native {
+    color: #0088C2;
+    background: rgba(0,136,194,0.1);
+    border: 1px solid rgba(0,136,194,0.3);
+  }
+
+  .col-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .row-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 11px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .row-item.native-item {
+    background: rgba(0,136,194,0.05);
+    border-color: rgba(0,136,194,0.2);
+  }
+
+  .row-item .item-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6B7280;
+    margin-bottom: 2px;
+  }
+
+  .row-item.native-item .item-label {
+    color: #0088C2;
+    opacity: 0.8;
+  }
+
+  .row-item .item-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .row-item .item-detail {
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  /* Cross icon for legacy vs checkmark for native */
+  .row-item .icon {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .row-item.legacy-item .icon { color: #EF4444; opacity: 0.7; }
+  .row-item.native-item .icon { color: #10B981; }
+
+  /* Center divider */
+  .center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 36px;
+  }
+
+  .vs-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,136,194,0.15);
+    border: 2px solid rgba(0,136,194,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #0088C2;
+  }
+
+  .center-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, transparent, rgba(0,136,194,0.3), transparent);
+    min-height: 200px;
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #9CA3AF 0%, #0088C2 50%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg-overlay"></div>
+<div class="glow"></div>
+
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>L'<em>architecture</em> compte<br>plus que les features</h1>
+      <p class="subtitle">CRM bolt-on IA vs CRM AI-Native — la difference est structurelle</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="comparison">
+    <!-- LEGACY -->
+    <div>
+      <div class="col-title legacy">CRM + couche IA</div>
+      <div class="col-rows">
+        <div class="row-item legacy-item">
+          <div class="item-label">Donnees</div>
+          <div class="item-text">Saisie manuelle requise</div>
+          <div class="item-detail">L'IA n'a que ce que l'humain a entre. Incomplet = suggestions approximatives.</div>
+        </div>
+        <div class="row-item legacy-item">
+          <div class="item-label">Pipeline</div>
+          <div class="item-text">Etat declare par le commercial</div>
+          <div class="item-detail">Reflete ce que quelqu'un a eu le temps de mettre a jour — pas la realite.</div>
+        </div>
+        <div class="row-item legacy-item">
+          <div class="item-label">Interface</div>
+          <div class="item-text">Dashboards & champs</div>
+          <div class="item-detail">Formulaires, exports Excel, reporting 2h/semaine.</div>
+        </div>
+        <div class="row-item legacy-item">
+          <div class="item-label">IA</div>
+          <div class="item-text">Feature ajoutee (bolt-on)</div>
+          <div class="item-detail">Suggestions de completions. Garbage in, garbage out.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-col">
+      <div class="center-line"></div>
+      <div class="vs-badge">vs</div>
+      <div class="center-line"></div>
+    </div>
+
+    <!-- AI-NATIVE -->
+    <div>
+      <div class="col-title native">CRM AI-Native</div>
+      <div class="col-rows">
+        <div class="row-item native-item">
+          <div class="item-label">Donnees</div>
+          <div class="item-text">Capture automatique</div>
+          <div class="item-detail">Emails, appels, reunions — analyses et structures sans saisie.</div>
+        </div>
+        <div class="row-item native-item">
+          <div class="item-label">Pipeline</div>
+          <div class="item-text">Etat observe en continu</div>
+          <div class="item-detail">Signaux reels, score de risque en temps reel, alertes proactives.</div>
+        </div>
+        <div class="row-item native-item">
+          <div class="item-label">Interface</div>
+          <div class="item-text">Langage naturel</div>
+          <div class="item-detail">"Quels deals sont a risque ?" → reponse en 5 secondes.</div>
+        </div>
+        <div class="row-item native-item">
+          <div class="item-label">IA</div>
+          <div class="item-text">Architecture native</div>
+          <div class="item-detail">LLM au coeur. Donnees completes car capturees, pas saisies.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

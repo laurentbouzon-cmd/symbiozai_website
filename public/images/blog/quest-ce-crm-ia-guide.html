@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* Background subtle grid */
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  /* Accent glow */
+  .glow {
+    position: absolute;
+    top: -120px;
+    left: -80px;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0,136,194,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 44px 52px 44px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 28px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .header-left h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    max-width: 560px;
+  }
+
+  .header-left h1 em {
+    font-style: normal;
+    color: #0088C2;
+  }
+
+  .header-left .subtitle {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #9CA3AF;
+    font-weight: 400;
+  }
+
+  .logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+  }
+
+  .logo em {
+    font-style: normal;
+    color: #0088C2;
+  }
+
+  /* 4 capacites grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px 22px 32px 22px;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0088C2, #0D47A1);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: #0088C2;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: #9CA3AF;
+    line-height: 1.6;
+  }
+
+  .card-highlight {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(0,136,194,0.12);
+    border: 1px solid rgba(0,136,194,0.3);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #0088C2;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0088C2 0%, #0D47A1 50%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg-overlay"></div>
+<div class="glow"></div>
+
+<div class="container">
+  <div class="header">
+    <div class="header-left">
+      <h1>Un CRM <em>AI-Native</em> :<br>4 capacites qui changent tout</h1>
+      <p class="subtitle">Ce que fait un vrai CRM IA — vs un CRM qui "a une couche IA"</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-number">01</div>
+      <div class="card-title">Capture automatique des interactions</div>
+      <div class="card-desc">Chaque appel, email, meeting est analyse et synthetise. Zero saisie manuelle. Le CRM sait ce qui s'est dit — sans qu'on lui demande.</div>
+      <div class="card-highlight">Zero saisie</div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">02</div>
+      <div class="card-title">Comprehension semantique</div>
+      <div class="card-desc">L'IA extrait les signaux : interet, frein, stakeholder manquant, action recommandee. Pas un enregistrement — un raisonnement.</div>
+      <div class="card-highlight">Raisonnement</div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">03</div>
+      <div class="card-title">Pipeline vivant et predictif</div>
+      <div class="card-desc">Le pipeline reflete l'etat reel de chaque deal en continu. Silence 12 jours → descend. Proposition ouverte 3x → remonte.</div>
+      <div class="card-highlight">Temps reel</div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">04</div>
+      <div class="card-title">Actions recommandees et executees</div>
+      <div class="card-desc">"Relancez Martin avant jeudi." Et dans les CRM les plus avances : la relance est envoyee — bon message, bon moment, sans clic.</div>
+      <div class="card-highlight">Agentique</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

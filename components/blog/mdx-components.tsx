@@ -1,5 +1,6 @@
 import { Info, AlertTriangle, Lightbulb, BarChart3 } from "lucide-react"
 import type { ReactNode } from "react"
+import { FAQ } from "./faq"
 
 const CALLOUT_STYLES = {
   info: {
@@ -61,4 +62,5 @@ export function StatHighlight({ value, label }: StatHighlightProps) {
 export const mdxComponents = {
   Callout,
   StatHighlight,
+  FAQ,
 }

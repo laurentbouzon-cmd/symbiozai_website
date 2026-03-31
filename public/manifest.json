@@ -1,11 +1,13 @@
 {
-  "name": "SymbiozAI",
+  "name": "SymbiozAI - AI-Native CRM",
   "short_name": "SymbiozAI",
-  "description": "SymbiozAI crée des agents IA de classe mondiale conçus pour surpasser les meilleures équipes humaines.",
+  "description": "The first 100% AI-Native CRM. Your prospecting, client follow-ups and CRM updates are fully automated, driven by an integrated AI agent.",
+  "lang": "en",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1a237e",
+  "theme_color": "#0d47a1",
   "icons": [
     {
       "src": "/icon-192.png",

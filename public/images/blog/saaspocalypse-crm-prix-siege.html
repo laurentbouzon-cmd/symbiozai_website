@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Red glow top-right (danger/crisis mood) */
+  .glow-red {
+    position: absolute;
+    top: -100px;
+    right: -80px;
+    width: 480px;
+    height: 380px;
+    background: radial-gradient(ellipse, rgba(239,68,68,0.10) 0%, transparent 70%);
+  }
+
+  .glow-blue {
+    position: absolute;
+    bottom: -100px;
+    left: -80px;
+    width: 400px;
+    height: 320px;
+    background: radial-gradient(ellipse, rgba(0,136,194,0.10) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 52px 56px 52px 56px;
+    height: 630px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: stretch;
+  }
+
+  .left {
+    justify-content: center;
+  }
+
+  /* LEFT COLUMN */
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #EF4444;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .left h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+  }
+
+  .left h1 em {
+    font-style: normal;
+    color: #0088C2;
+  }
+
+  .left h1 .strike {
+    text-decoration: line-through;
+    color: #6B7280;
+    font-weight: 600;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #EF4444;
+    min-width: 110px;
+    line-height: 1;
+  }
+
+  .stat-value.blue {
+    color: #0088C2;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #9CA3AF;
+    line-height: 1.5;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  /* RIGHT COLUMN */
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .right-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .comparison-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 24px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comparison-card.old {
+    border-color: rgba(239,68,68,0.2);
+  }
+
+  .comparison-card.new {
+    border-color: rgba(0,136,194,0.3);
+    background: rgba(0,136,194,0.05);
+  }
+
+  .comparison-card .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+
+  .comparison-card.old .card-label { color: #EF4444; }
+  .comparison-card.new .card-label { color: #0088C2; }
+
+  .comparison-card .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .comparison-card .card-desc {
+    font-size: 13px;
+    color: #9CA3AF;
+    line-height: 1.6;
+  }
+
+  .arrow-down {
+    text-align: center;
+    font-size: 18px;
+    color: #0088C2;
+    opacity: 0.6;
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #EF4444 0%, #0088C2 60%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg-overlay"></div>
+<div class="glow-red"></div>
+<div class="glow-blue"></div>
+
+<div class="container">
+  <!-- LEFT -->
+  <div class="left">
+    <div class="tag">SaaSpocalypse 2026</div>
+
+    <h1>Le pricing <span class="strike">par siege</span><br>est <em>obsolete</em></h1>
+
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-value">-21%</div>
+        <div class="stat-label">ETF logiciel iShares IGV<br>depuis debut 2026</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">2 000 Md$</div>
+        <div class="stat-label">de valeur detruite<br>dans le SaaS mondial</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value blue">1 pour 5</div>
+        <div class="stat-label">agents IA deployes →<br>5 sieges humains elimines</div>
+      </div>
+    </div>
+
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="right-title">La bifurcation en cours</div>
+
+    <div class="comparison-card old">
+      <div class="card-label">Modele obsolete</div>
+      <div class="card-title">1 utilisateur = 1 siege = 1 tache</div>
+      <div class="card-desc">Le CRM facture chaque humain qui remplit des champs. L'equipe grandit → la facture grandit. Taxe sur la croissance.</div>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="comparison-card new">
+      <div class="card-label">Modele emergent</div>
+      <div class="card-title">Agents qui agissent · pas de siege</div>
+      <div class="card-desc">L'agent capture, met a jour, detecte, alerte — en continu. Il ne se connecte pas. Il n'a pas de mot de passe. Il n'a pas besoin de siege.</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

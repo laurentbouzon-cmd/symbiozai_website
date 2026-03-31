@@ -8,7 +8,7 @@ import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { InteractivePlayground } from "@/components/playground/interactive-playground"
+import { LazyInteractivePlayground } from "@/components/playground/lazy-interactive-playground"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
@@ -29,6 +29,10 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       url: "https://symbioz.ai",
       logo: "https://symbioz.ai/icon.png",
       description: dictionary.description,
+      sameAs: [
+        "https://www.linkedin.com/in/laurentbouzon/",
+        "https://www.instagram.com/symbiozai/",
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         email: "contact@symbioz.ai",
@@ -234,9 +238,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
                   {isFr ? "Le problème" : "The problem"}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                   {isFr ? "Ce que vous perdez chaque semaine sans le savoir" : "What you lose every week without knowing"}
-                </h3>
+                </h2>
               </ScrollReveal>
 
               <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
@@ -259,9 +263,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
                   {isFr ? "La solution" : "The solution"}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
                   {isFr ? "Un système qui comprend, décide et exécute." : "A system that understands, decides, and executes."}
-                </h3>
+                </h2>
                 <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
                   {isFr
                     ? "SymbiozAI n'est pas un CRM amélioré. C'est une nouvelle génération de logiciel commercial - AI-Native - qui opère votre pipeline de manière autonome. Opérationnel en moins de 30 minutes."
@@ -277,9 +281,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         <GlassIcon type="refresh" size={48} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-semibold mb-2">
+                        <h3 className="text-xl font-semibold mb-2">
                           {isFr ? "Capture automatique" : "Automatic capture"}
-                        </h4>
+                        </h3>
                         <p className="text-gray-600">
                           {isFr
                             ? "SymbiozAI se connecte à Gmail et Google Calendar. Chaque email, chaque réunion, chaque interaction - capturée, analysée, rattachée au bon deal. Zéro saisie."
@@ -293,9 +297,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         <GlassIcon type="chart" size={48} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-semibold mb-2">
+                        <h3 className="text-xl font-semibold mb-2">
                           {isFr ? "Pipeline auto-piloté" : "Auto-piloted pipeline"}
-                        </h4>
+                        </h3>
                         <p className="text-gray-600">
                           {isFr
                             ? "Le scoring de chaque deal est recalculé en continu sur 6 facteurs de risque. Les deals qui stagnent remontent. Les relances sont identifiées avant que vous le demandiez."
@@ -309,9 +313,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         <GlassIcon type="message" size={48} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-semibold mb-2">
+                        <h3 className="text-xl font-semibold mb-2">
                           {isFr ? "Pilotage conversationnel" : "Conversational control"}
-                        </h4>
+                        </h3>
                         <p className="text-gray-600">
                           {isFr
                             ? "Vous parlez à Maya en français, comme à un collègue. « Passe TechVision en négociation. » « Qui n'a pas eu de contact depuis 15 jours ? » Réponse immédiate."
@@ -323,7 +327,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <InteractivePlayground lang={lang} />
+                  <LazyInteractivePlayground lang={lang} />
                 </div>
               </div>
             </div>
@@ -336,16 +340,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
                   {isFr ? "Concrètement" : "In practice"}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                   {isFr ? "Ce qui change avec SymbiozAI" : "What changes with SymbiozAI"}
-                </h3>
+                </h2>
               </ScrollReveal>
 
               <ScrollReveal stagger className="grid sm:grid-cols-2 gap-8">
                 {features.map((feature, index) => (
                   <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                     <div className="mb-4">{feature.icon}</div>
-                    <h4 className="text-xl font-bold mb-1">{feature.title}</h4>
+                    <h3 className="text-xl font-bold mb-1">{feature.title}</h3>
                     <p className="text-sm font-medium text-[#0d47a1] mb-3">{feature.subtitle}</p>
                     <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
@@ -361,9 +365,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
                   {isFr ? "Construit pour durer" : "Built to last"}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                   {isFr ? "Une infrastructure AI-Native. Pas un gadget." : "An AI-Native infrastructure. Not a gadget."}
-                </h3>
+                </h2>
               </ScrollReveal>
 
               {/* Product metrics */}
@@ -391,7 +395,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 {trustBadges.map((badge, index) => (
                   <div key={index} className="bg-white p-4 rounded-xl shadow-sm text-center">
                     <div className="flex justify-center mb-3">{badge.icon}</div>
-                    <h4 className="font-semibold mb-1">{badge.title}</h4>
+                    <h3 className="font-semibold mb-1">{badge.title}</h3>
                     <p className="text-xs text-gray-600">{badge.description}</p>
                   </div>
                 ))}
@@ -415,9 +419,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
               <ScrollReveal>
-                <h3 className="text-2xl md:text-3xl font-semibold text-center mb-12">
+                <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
                   {isFr ? "Connecté à vos outils" : "Connected to your tools"}
-                </h3>
+                </h2>
               </ScrollReveal>
               <ScrollReveal stagger className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {integrations.map((integration) => (
@@ -432,6 +436,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         width={20}
                         height={20}
                         className="object-contain w-5 h-5"
+                        loading="lazy"
                         unoptimized
                       />
                     </div>
@@ -446,9 +451,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           <section id="cta-final" className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
             <div className="max-w-3xl mx-auto text-center">
               <ScrollReveal>
-                <h3 className="text-3xl md:text-4xl font-semibold mb-6">
+                <h2 className="text-3xl md:text-4xl font-semibold mb-6">
                   {isFr ? "Récupérez vos lundis matin." : "Take back your Monday mornings."}
-                </h3>
+                </h2>
                 <p className="text-white/80 text-lg mb-4">
                   {isFr
                     ? "Votre pipeline, à jour, en permanence. Vos deals à risque, identifiés avant qu'ils partent. Vos commerciaux qui vendent au lieu de saisir."

@@ -61,11 +61,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <p className="font-bold text-gray-900 text-xl md:text-2xl">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
                 ? "Tout le monde parle de l'entreprise AI-Native. Nous, on l'a construite."
                 : "Everyone talks about the AI-Native company. We built one."}
-            </p>
+            </h2>
             <p>
               {isFr
                 ? "On nous promet depuis des mois l'entreprise d'un fondateur et dix agents IA. L'organisation où l'intelligence artificielle ne se contente pas d'assister. Elle opère. Où chaque processus, chaque décision, chaque livraison est porté par une intelligence qui apprend, s'adapte et exécute."
@@ -79,11 +79,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <p className="font-bold text-gray-900 text-xl md:text-2xl">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
                 ? "L'IA ne remplace pas l'humain. Elle transforme un individu en organisation."
                 : "AI doesn't replace humans. It turns one individual into an organization."}
-            </p>
+            </h2>
             <p>
               {isFr
                 ? "Nos agents IA codent, testent, rédigent, prospectent, analysent. En continu. Ils ont des rôles, des compétences, une mémoire. Ils se coordonnent entre eux. Le fondateur ne code pas. Il dirige. Il décide. Il garde le contrôle sur ce qui compte."
@@ -133,11 +133,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           {/* ═══════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <p className="font-bold text-gray-900 text-xl md:text-2xl">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
                 ? "Votre CRM vous coûte des deals. Chaque jour."
                 : "Your CRM is costing you deals. Every single day."}
-            </p>
+            </h2>
             <p>
               {isFr
                 ? "Vos commerciaux passent plus de temps à remplir des champs qu'à parler à des clients. Vos managers reconstruisent le pipeline à la main chaque lundi matin. Vos données sont obsolètes avant d'être saisies. Et pendant ce temps, des opportunités passent entre les mailles du filet."
@@ -151,11 +151,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <p className="font-bold text-gray-900 text-xl md:text-2xl">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
                 ? "Le premier CRM qui travaille pendant que vous vendez."
                 : "The first CRM that works while you sell."}
-            </p>
+            </h2>
             <p>
               {isFr
                 ? "SymbiozAI vit là où vos décisions se prennent vraiment : dans vos conversations. Sur Slack. Par email. En réunion. Il écoute, comprend, et agit. Il capture l'information en temps réel, qualifie vos opportunités, orchestre les relances, met à jour le pipeline. Tout seul."
@@ -169,11 +169,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <p className="font-bold text-gray-900 text-xl md:text-2xl">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
                 ? "Pas un prototype. Pas une démo. Un système qui tourne."
                 : "Not a prototype. Not a demo. A system that runs."}
-            </p>
+            </h2>
             <p>
               {isFr
                 ? "38 agents IA coordonnés. Un pipeline commercial piloté par la conversation. Plus de 95% de précision sur nos benchmarks internes. SymbiozAI est en production. Aujourd'hui."

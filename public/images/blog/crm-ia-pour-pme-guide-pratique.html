@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #FFFFFF;
+    background-image: radial-gradient(#CCEEFF 1px, transparent 1px);
+    background-size: 10px 10px;
+    overflow: hidden;
+  }
+  .container {
+    padding: 40px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A1A1A;
+    line-height: 1.15;
+  }
+  .header h1 em { font-style: normal; color: #0088C2; }
+  .header .subtitle { margin-top: 6px; font-size: 13px; color: #6B7280; }
+  .logo { font-size: 15px; font-weight: 700; color: #1A1A1A; white-space: nowrap; }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  /* Timeline */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    align-items: start;
+    margin-top: 12px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #0088C2, #0D47A1);
+    z-index: 0;
+  }
+
+  .phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+  }
+
+  .phase-dot {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #0088C2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    box-shadow: 0 0 0 2px #0088C2;
+    flex-shrink: 0;
+  }
+
+  .phase-content {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 20px 18px 22px 18px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .phase-period {
+    font-size: 10px;
+    font-weight: 700;
+    color: #0088C2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .phase-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+  }
+
+  .phase-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .phase-item {
+    font-size: 12.5px;
+    color: #6B7280;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 2px;
+  }
+
+  .phase-item::before {
+    content: '→';
+    color: #0088C2;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>CRM IA pour PME :<br>la <em>timeline de migration</em></h1>
+      <p class="subtitle">De l'evaluation a l'optimisation — 10 semaines, etape par etape</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-dot">1</div>
+      <div class="phase-content">
+        <div class="phase-period">Semaines 1-2</div>
+        <div class="phase-title">Preparation</div>
+        <div class="phase-items">
+          <div class="phase-item">Audit des donnees existantes</div>
+          <div class="phase-item">Nettoyage — 18 derniers mois uniquement</div>
+          <div class="phase-item">Config email + calendrier</div>
+          <div class="phase-item">Selection des 2-3 pilotes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-dot">2</div>
+      <div class="phase-content">
+        <div class="phase-period">Semaines 3-6</div>
+        <div class="phase-title">Pilote</div>
+        <div class="phase-items">
+          <div class="phase-item">Deploy sur 2-3 commerciaux</div>
+          <div class="phase-item">Feedback hebdomadaire</div>
+          <div class="phase-item">Ajustements config</div>
+          <div class="phase-item">Doc des nouveaux workflows</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-dot">3</div>
+      <div class="phase-content">
+        <div class="phase-period">Semaines 7-10</div>
+        <div class="phase-title">Deploiement equipe</div>
+        <div class="phase-items">
+          <div class="phase-item">Migration equipe complete</div>
+          <div class="phase-item">Formation 2h max</div>
+          <div class="phase-item">Premier reporting IA</div>
+          <div class="phase-item">Arret de l'Excel</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-dot">4</div>
+      <div class="phase-content">
+        <div class="phase-period">Mois 3</div>
+        <div class="phase-title">Bilan &amp; ROI</div>
+        <div class="phase-items">
+          <div class="phase-item">Mesure temps de saisie economise</div>
+          <div class="phase-item">Taux de relances dans les delais</div>
+          <div class="phase-item">Deals reactives depuis "perdu"</div>
+          <div class="phase-item">Plan Q2 d'optimisation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

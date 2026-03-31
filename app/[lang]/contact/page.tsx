@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const dictionary = getDictionary(lang)
   const isEnglish = lang === "en"
 
-  const title = isEnglish ? "Contact - SymbiozAI" : "Contact - SymbiozAI"
+  const title = isEnglish ? "Contact | SymbiozAI" : "Contact | SymbiozAI"
   const description = isEnglish
     ? "Contact the SymbiozAI team for any questions about our AI-Native CRM."
     : "Contactez l'équipe SymbiozAI pour toute question sur notre CRM IA-Native."

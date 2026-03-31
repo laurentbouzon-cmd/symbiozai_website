@@ -5,6 +5,7 @@ import { TableOfContents } from "./table-of-contents"
 import { ReadingProgress } from "./reading-progress"
 import { ShareButtons } from "./share-buttons"
 import { RelatedArticles } from "./related-articles"
+import { AuthorCard } from "./author-card"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { SharedHeader } from "@/components/shared-header"
@@ -78,6 +79,9 @@ export function ArticleLayout({ meta, lang, dictionary, previous, next, relatedA
                 {children}
               </div>
             </ScrollReveal>
+
+            {/* Author card — E-E-A-T signal */}
+            <AuthorCard lang={lang} />
 
             {/* Related articles */}
             {relatedArticles.length > 0 && (

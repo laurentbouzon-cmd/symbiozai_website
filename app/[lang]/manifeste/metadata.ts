@@ -5,8 +5,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const isEnglish = lang === "en"
 
   const title = isEnglish
-    ? "SymbiozAI Manifesto - A new commercial era begins"
-    : "Manifeste SymbiozAI - Une nouvelle ère commerciale commence"
+    ? "SymbiozAI Manifesto | AI-Native CRM Vision"
+    : "Manifeste SymbiozAI | Vision CRM AI-Native"
   const description = isEnglish
     ? "SymbiozAI is the first fully AI-Native CRM. Discover our vision for a sales system that understands, acts, and learns autonomously."
     : "SymbiozAI est le premier CRM entièrement IA-Native. Découvrez notre vision d'un système commercial qui comprend, agit et apprend de manière autonome."

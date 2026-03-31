@@ -2,5 +2,18 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow AI crawlers for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 # Sitemap location
 Sitemap: https://symbioz.ai/sitemap.xml

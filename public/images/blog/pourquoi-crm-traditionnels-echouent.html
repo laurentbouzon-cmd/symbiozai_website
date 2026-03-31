@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .glow-red {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 450px;
+    height: 360px;
+    background: radial-gradient(ellipse, rgba(239,68,68,0.09) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 52px;
+    align-items: center;
+  }
+
+  .left h1 { font-size: 30px; font-weight: 800; color: #FFFFFF; line-height: 1.15; }
+  .left h1 em { font-style: normal; color: #EF4444; }
+  .left .subtitle { margin-top: 8px; font-size: 13px; color: #9CA3AF; line-height: 1.5; }
+  .left .big-stat { margin-top: 24px; }
+  .left .big-stat .number {
+    font-size: 64px;
+    font-weight: 900;
+    color: #EF4444;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .left .big-stat .stat-desc { font-size: 14px; color: #9CA3AF; margin-top: 4px; line-height: 1.4; }
+  .left .big-stat .stat-source { font-size: 11px; color: #6B7280; margin-top: 4px; }
+
+  .logo { font-size: 15px; font-weight: 700; color: #FFFFFF; position: absolute; top: 40px; right: 52px; }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .defaut-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .defaut-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid #EF4444;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+  }
+
+  .defaut-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #EF4444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  .defaut-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+
+  .defaut-desc {
+    font-size: 12px;
+    color: #9CA3AF;
+    line-height: 1.5;
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #EF4444 0%, #0088C2 70%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="glow-red"></div>
+
+<div class="container">
+  <div class="left">
+    <h1>Pourquoi les CRM<br>traditionnels <em>echouent</em></h1>
+    <p class="subtitle">L'architecture repose sur l'humain. L'humain est faillible. C'est structurel, pas culturel.</p>
+    <div class="big-stat">
+      <div class="number">55%</div>
+      <div class="stat-desc">des projets CRM echouent<br>a atteindre leurs objectifs</div>
+      <div class="stat-source">Source : Gartner 2008 — 2026 : le chiffre n'a pas bouge</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="defaut-title">3 defauts structurels</div>
+
+    <div class="defaut-card">
+      <div class="defaut-num">Defaut 01</div>
+      <div class="defaut-name">Depend de la discipline humaine</div>
+      <div class="defaut-desc">30 deals en parallele → relances oubliees. Ce n'est pas de la negligence, c'est de la physique.</div>
+    </div>
+
+    <div class="defaut-card">
+      <div class="defaut-num">Defaut 02</div>
+      <div class="defaut-name">Documente le passe, pas le futur</div>
+      <div class="defaut-desc">Le CRM vous dit ce qui s'est passe. Il ne vous dit pas ce que vous devriez faire demain.</div>
+    </div>
+
+    <div class="defaut-card">
+      <div class="defaut-num">Defaut 03</div>
+      <div class="defaut-name">Des champs, pas des signaux</div>
+      <div class="defaut-desc">Une date de dernier contact n'est pas un champ texte — c'est un signal de risque qui devrait declencher une action.</div>
+    </div>
+  </div>
+</div>
+
+<div class="logo">Symbioz<em>AI</em></div>
+<div class="bottom-bar"></div>
+</body>
+</html>

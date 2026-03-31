@@ -94,11 +94,11 @@ export type FormDictionary = Dictionary["form"]
 
 const dictionaries: Record<Locale, Dictionary> = {
   en: {
-    title: "SymbiozAI - The 1st European AI-Native CRM",
+    title: "SymbiozAI | The First European AI-Native CRM",
     h1: "SymbiozAI - AI-Native CRM for European Scaleups",
     subtitle: ["The 1st European AI-Native CRM.", "Zero data entry. Auto-piloted pipeline. Recovered deals."],
     description:
-      "Prospecting, customer follow-ups and opportunity tracking are automated directly from WhatsApp and Slack by an integrated intelligence. SymbiozAI turns every interaction into concrete actions: qualification, follow-ups, documentation, reporting... Your revenue engine runs continuously, without manual input.",
+      "SymbiozAI is the first European AI-Native CRM. Zero data entry, auto-piloted pipeline, recovered deals. The system that understands, decides and acts.",
     quote:
       "We believe the next generation of companies won't just use AI, they'll be built with it. Natively. Structurally. Intelligently.",
     form: {
@@ -200,11 +200,11 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
   },
   fr: {
-    title: "SymbiozAI - Le CRM qui comprend, décide et agit",
+    title: "SymbiozAI | Le premier CRM AI-Native européen",
     h1: "SymbiozAI - CRM AI-Native pour scaleups européennes",
     subtitle: ["Le CRM qui comprend, décide et agit.", "Zéro saisie. Pipeline piloté. Deals récupérés."],
     description:
-      "SymbiozAI est un CRM AI-Native. Il capture vos interactions, pilote votre pipeline et exécute les actions commerciales de manière autonome. Vous gardez le contrôle. Le système fait le reste.",
+      "SymbiozAI est le premier CRM AI-Native européen. Zéro saisie, pipeline auto-piloté, deals récupérés. Le système qui comprend, décide et agit.",
     quote:
       "Les entreprises de demain ne se contenteront pas d'utiliser l'IA — elles seront construites avec. Nativement. Structurellement. C'est la conviction qui guide SymbiozAI : un système commercial qui ne documente plus la vente, mais qui la pilote. L'IA n'est pas une couche ajoutée. C'est l'infrastructure. C'est ce que j'aurais voulu avoir quand je vendais.",
     form: {

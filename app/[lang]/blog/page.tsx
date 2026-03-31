@@ -15,12 +15,20 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params
   const dictionary = getDictionary(lang)
 
+  const isFr = lang === "fr"
+  const blogTitle = isFr
+    ? "Blog CRM IA & AI-Native : articles et guides | SymbiozAI"
+    : "AI CRM Blog: Guides, Comparisons & Insights | SymbiozAI"
+  const blogDescription = isFr
+    ? "Découvrez nos articles sur le CRM IA, l'AI-Native CRM, le pipeline commercial et l'intelligence artificielle pour la vente. Guides, comparatifs et tendances."
+    : "Explore articles on AI CRM, AI-Native CRM, sales pipeline automation and artificial intelligence for sales teams. Guides, comparisons and trends for 2026."
+
   return {
-    title: `Blog | SymbiozAI`,
-    description: dictionary.blog.subtitle,
+    title: blogTitle,
+    description: blogDescription,
     openGraph: {
-      title: `Blog | SymbiozAI`,
-      description: dictionary.blog.subtitle,
+      title: blogTitle,
+      description: blogDescription,
       url: `https://symbioz.ai/${lang}/blog`,
       siteName: "SymbiozAI",
       locale: lang === "fr" ? "fr_FR" : "en_US",

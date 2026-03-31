@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(16,185,129,0.08) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 28px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header h1 { font-size: 26px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
+  .header h1 em { font-style: normal; color: #0088C2; }
+  .header .subtitle { margin-top: 6px; font-size: 13px; color: #9CA3AF; }
+  .logo { font-size: 15px; font-weight: 700; color: #FFFFFF; white-space: nowrap; }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* LEFT: stats metrics */
+  .metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .metric-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .metric-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .metric-card .metric-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6B7280;
+  }
+
+  .metric-card .metric-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #10B981;
+    line-height: 1;
+  }
+
+  .metric-card .metric-desc {
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  .metric-card.blue .metric-value { color: #0088C2; }
+  .metric-card.amber .metric-value { color: #F59E0B; }
+
+  /* RIGHT: ROI table */
+  .roi-table {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .roi-title {
+    padding: 14px 18px;
+    background: rgba(0,136,194,0.15);
+    border-bottom: 1px solid rgba(0,136,194,0.2);
+    font-size: 12px;
+    font-weight: 700;
+    color: #0088C2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .roi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .roi-row:last-child { border-bottom: none; }
+
+  .roi-row .roi-label {
+    font-size: 12px;
+    color: #9CA3AF;
+  }
+
+  .roi-row .roi-amount {
+    font-size: 14px;
+    font-weight: 700;
+    color: #10B981;
+  }
+
+  .roi-row.cost .roi-amount { color: #EF4444; }
+
+  .roi-row.total {
+    background: rgba(16,185,129,0.08);
+    border-top: 1px solid rgba(16,185,129,0.2);
+  }
+
+  .roi-row.total .roi-label { font-weight: 700; color: #FFFFFF; }
+  .roi-row.total .roi-amount { font-size: 18px; }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10B981 0%, #0088C2 60%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="glow"></div>
+
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>CRM IA : le <em>ROI chiffre</em><br>pour une equipe de 5 commerciaux</h1>
+      <p class="subtitle">Calcul conservateur — hypothese : salaire charge 70k EUR, quota 500k EUR/an</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="content">
+    <!-- LEFT: key metrics -->
+    <div class="metrics">
+      <div class="metric-row">
+        <div class="metric-card">
+          <div class="metric-label">Admin time reduit</div>
+          <div class="metric-value">-70%</div>
+          <div class="metric-desc">7-9h recuperees par commercial/semaine</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="metric-label">Taux closing</div>
+          <div class="metric-value">+18%</div>
+          <div class="metric-desc">Meilleurs suivis, meilleures relances (Forrester 2025)</div>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-card amber">
+          <div class="metric-label">Deals perdus → reactives</div>
+          <div class="metric-value">+35%</div>
+          <div class="metric-desc">35% des deals perdus sur l'oubli, pas la valeur (McKinsey)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Churn reduit</div>
+          <div class="metric-value">-20%</div>
+          <div class="metric-desc">Prediction preventive — NRR +8-12 pts (Gartner)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: ROI breakdown -->
+    <div class="roi-table">
+      <div class="roi-title">Calcul ROI — 5 commerciaux / an</div>
+      <div class="roi-row">
+        <div class="roi-label">Valeur temps de saisie recupere</div>
+        <div class="roi-amount">29 400 EUR</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-label">Deals supplementaires (+18% closing)</div>
+        <div class="roi-amount">180 000 EUR</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-label">Deals reactives depuis "Perdu"</div>
+        <div class="roi-amount">500 000 EUR</div>
+      </div>
+      <div class="roi-row cost">
+        <div class="roi-label">Cout annuel CRM IA (mediane)</div>
+        <div class="roi-amount">- 12 000 EUR</div>
+      </div>
+      <div class="roi-row total">
+        <div class="roi-label">ROI net (conservateur)</div>
+        <div class="roi-amount">>5 800%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

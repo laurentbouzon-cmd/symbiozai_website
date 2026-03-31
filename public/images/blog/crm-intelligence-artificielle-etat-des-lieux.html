@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0A0A0A;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,136,194,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .glow {
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    width: 480px;
+    height: 380px;
+    background: radial-gradient(ellipse, rgba(0,136,194,0.10) 0%, transparent 70%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 52px;
+    height: 630px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 28px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header h1 { font-size: 26px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
+  .header h1 em { font-style: normal; color: #0088C2; }
+  .header .subtitle { margin-top: 6px; font-size: 13px; color: #9CA3AF; }
+  .logo { font-size: 15px; font-weight: 700; color: #FFFFFF; white-space: nowrap; }
+  .logo em { font-style: normal; color: #0088C2; }
+
+  .content {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Market stat */
+  .market-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .stat-block .val {
+    font-size: 32px;
+    font-weight: 900;
+    color: #0088C2;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .stat-block .label {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .stat-block .year {
+    font-size: 10px;
+    color: #6B7280;
+    margin-top: 3px;
+  }
+
+  /* Actors grid */
+  .actors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .actor-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 9px;
+    padding: 14px 16px;
+  }
+
+  .actor-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+
+  .actor-product {
+    font-size: 11px;
+    color: #0088C2;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .actor-verdict {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+  }
+
+  .verdict-surcouche { background: rgba(245,158,11,0.12); color: #F59E0B; border: 1px solid rgba(245,158,11,0.25); }
+  .verdict-ecosystem { background: rgba(107,114,128,0.12); color: #9CA3AF; border: 1px solid rgba(107,114,128,0.2); }
+  .verdict-native { background: rgba(0,136,194,0.12); color: #0088C2; border: 1px solid rgba(0,136,194,0.3); }
+
+  .actor-desc {
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.4;
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0088C2 0%, #0D47A1 60%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="glow"></div>
+
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>CRM &amp; IA en 2026 :<br><em>etat des lieux</em></h1>
+      <p class="subtitle">Qui avance vraiment, qui fait semblant — et ce que les chiffres disent</p>
+    </div>
+    <div class="logo">Symbioz<em>AI</em></div>
+  </div>
+
+  <div class="content">
+    <!-- Market stats -->
+    <div class="market-stat">
+      <div class="stat-block">
+        <div class="val">126 Md$</div>
+        <div class="label">Marche mondial CRM</div>
+        <div class="year">2026 (IDC)</div>
+      </div>
+      <div class="stat-block">
+        <div class="val">38%</div>
+        <div class="label">Nouvelles licences CRM pilotees par l'IA</div>
+        <div class="year">vs 11% en 2022 (IDC)</div>
+      </div>
+      <div class="stat-block">
+        <div class="val">&lt; 50%</div>
+        <div class="label">Entreprises capables de deployer les dernieres capacites IA CRM d'ici 2027</div>
+        <div class="year">(ISG 2026)</div>
+      </div>
+    </div>
+
+    <!-- Actors -->
+    <div class="actors-grid">
+      <div class="actor-card">
+        <div class="actor-name">Salesforce</div>
+        <div class="actor-product">Agentforce</div>
+        <div class="actor-verdict verdict-surcouche">Puissant mais bolt-on</div>
+        <div class="actor-desc">Agents configurables. Complexite enterprise. Architecture 25 ans de dette technique.</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-name">HubSpot</div>
+        <div class="actor-product">Breeze AI</div>
+        <div class="actor-verdict verdict-surcouche">Feature, pas architecture</div>
+        <div class="actor-desc">Accessible aux PME. Suggestions, enrichissement. CRM reste form-driven.</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-name">Microsoft</div>
+        <div class="actor-product">Dynamics + Copilot</div>
+        <div class="actor-verdict verdict-ecosystem">IA ecosysteme</div>
+        <div class="actor-desc">Fort si ecosysteme MS. Pertinent pour Teams/Outlook. Pas natif.</div>
+      </div>
+      <div class="actor-card">
+        <div class="actor-name">SymbiozAI</div>
+        <div class="actor-product">AI-Native CRM</div>
+        <div class="actor-verdict verdict-native">IA = architecture</div>
+        <div class="actor-desc">Construit sur feuille blanche avec LLMs. Zero saisie. Pipeline vivant. Europe-first.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+</body>
+</html>

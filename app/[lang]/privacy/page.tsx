@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const isEnglish = lang === "en"
 
   return {
-    title: isEnglish ? "Privacy Policy - SymbiozAI" : "Politique de confidentialité - SymbiozAI",
+    title: isEnglish ? "Privacy Policy | SymbiozAI" : "Politique de confidentialité | SymbiozAI",
     description: isEnglish
       ? "SymbiozAI privacy policy. Learn how we collect and use your data."
       : "Politique de confidentialité de SymbiozAI. Découvrez comment nous collectons et utilisons vos données.",
