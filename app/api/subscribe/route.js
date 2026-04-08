@@ -232,7 +232,7 @@ export async function POST(request) {
     }
 
     if (!isProEmail(email)) {
-      return Response.json({ success: false, message: "Please use a professional email address" }, { status: 400 })
+      return Response.json({ success: false, message: "Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted." }, { status: 400 })
     }
 
     if (!process.env.NOTION_DATABASE_ID) {

@@ -28,7 +28,7 @@ export function AuthorCard({ lang }: AuthorCardProps) {
               Laurent Bouzon
             </h4>
             <a
-              href="https://www.linkedin.com/in/laurentbouzon/"
+              href="https://www.linkedin.com/in/laurent-bouzon-150237108/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Laurent Bouzon LinkedIn"

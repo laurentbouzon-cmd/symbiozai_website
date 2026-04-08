@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import type { FormDictionary } from "@/lib/dictionary"
+import { isProEmail } from "@/lib/utils"
 
 export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: string }) {
   const [email, setEmail] = useState("")
@@ -20,6 +21,12 @@ export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: strin
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setStatus("error")
       setMessage(form.validation.invalid)
+      return
+    }
+
+    if (!isProEmail(email)) {
+      setStatus("error")
+      setMessage(form.validation.professional)
       return
     }
 
@@ -49,7 +56,7 @@ export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: strin
     } catch (error) {
       console.error("Error:", error)
       setStatus("error")
-      setMessage(form.error)
+      setMessage(error instanceof Error && error.message ? error.message : form.error)
     }
   }
 

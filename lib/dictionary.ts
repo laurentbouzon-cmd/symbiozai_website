@@ -20,6 +20,7 @@ export type Dictionary = {
     validation: {
       required: string
       invalid: string
+      professional: string
     }
   }
   footer: {
@@ -110,6 +111,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "Email is required",
         invalid: "Please enter a valid email address",
+        professional: "Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted.",
       },
     },
     footer: {
@@ -216,6 +218,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "L'email est requis",
         invalid: "Veuillez entrer une adresse email valide",
+        professional: "Merci d'utiliser votre email professionnel — les adresses personnelles (Gmail, Yahoo, Outlook…) ne sont pas acceptées.",
       },
     },
     footer: {

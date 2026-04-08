@@ -29,7 +29,7 @@ export function WaitlistForm() {
 
     if (!isProEmail(email)) {
       setStatus("error")
-      setMessage("Please use a professional email address")
+      setMessage("Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted.")
       return
     }
 
@@ -59,7 +59,7 @@ export function WaitlistForm() {
     } catch (error) {
       console.error("Error:", error)
       setStatus("error")
-      setMessage("❌ Something went wrong. Please try again.")
+      setMessage(error instanceof Error ? error.message : "An error occurred. Please try again.")
     }
   }
 
