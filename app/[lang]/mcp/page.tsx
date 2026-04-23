@@ -477,13 +477,16 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
               Dark gradient block, keeps tertiary Calendly link verrouille.
               ================================================================ */}
           <section className="relative overflow-hidden bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
+            {/* Dotted backdrop. Density + dot size aligned with hero home
+                reference (10x10 grid, 1px dot). Color stays rgba white on
+                dark gradient for contrast. */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-40"
               style={{
                 backgroundImage:
                   "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
+                backgroundSize: "10px 10px",
               }}
             />
             <div className="relative z-10 mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 md:py-32">

@@ -41,15 +41,18 @@ export function HeroSection({
 
   return (
     <section className={`relative overflow-hidden ${bgBase}`}>
-      {/* Subtle dotted grid + radial accent */}
+      {/* Subtle dotted grid + radial accent. Density + dot size aligned
+          with hero home reference (`bg-[size:10px_10px]`, 1px dots). Color
+          diverges on dark tone only (contrast need): light keeps #cceeff,
+          dark uses rgba(255,255,255,0.06). */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-0"
         style={{
           backgroundImage: isDark
             ? "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)"
-            : "radial-gradient(rgba(13,71,161,0.08) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
+            : "radial-gradient(#cceeff 1px, transparent 1px)",
+          backgroundSize: "10px 10px",
         }}
       />
       <div
