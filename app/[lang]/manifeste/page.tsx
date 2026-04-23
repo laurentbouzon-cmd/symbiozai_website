@@ -129,7 +129,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════ */}
-          {/* PARTIE 2 — Le CRM AI-Native : le premier produit */}
+          {/* PARTIE 2 — Le CRM AI-Native : le produit pivot */}
           {/* ═══════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -153,8 +153,8 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
             <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
-                ? "Le premier CRM qui travaille pendant que vous vendez."
-                : "The first CRM that works while you sell."}
+                ? "Le CRM qui travaille pendant que vous vendez."
+                : "The CRM that works while you sell."}
             </h2>
             <p>
               {isFr

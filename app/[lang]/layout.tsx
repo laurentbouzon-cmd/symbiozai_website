@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: dictionary.title,
     description: dictionary.description,
     keywords: isEnglish
-      ? "AI-Native CRM, AI CRM, sales automation, pipeline management, European CRM, AI agents, scaleup"
-      : "CRM IA, CRM AI-Native, automatisation commerciale, pipeline commercial, CRM européen, agents IA, scaleup",
+      ? "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, Model Context Protocol CRM, Claude Code CRM, Cursor CRM, EU CRM"
+      : "CRM headless, CRM MCP, CRM IA-native, CRM pour agents IA, CRM agent-native, Model Context Protocol, Claude Code, Cursor, CRM européen",
     openGraph: {
       title: dictionary.title,
       description: dictionary.description,
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       siteName: "SymbiozAI",
       images: [
         {
-          url: `/og?lang=${lang}`,
+          url: "/images/pivot-mcp/og-image-symbiozai.png",
           width: 1200,
           height: 630,
           alt: dictionary.title,
@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: "summary_large_image",
       title: dictionary.title,
       description: dictionary.description,
-      images: [`/og?lang=${lang}`],
+      images: ["/images/pivot-mcp/og-image-symbiozai.png"],
     },
     alternates: {
       canonical: `https://symbioz.ai/${lang}`,
       languages: {
-        "x-default": "https://symbioz.ai",
+        "x-default": "https://symbioz.ai/en",
         en: "https://symbioz.ai/en",
         fr: "https://symbioz.ai/fr",
       },

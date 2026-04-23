@@ -95,13 +95,16 @@ export type FormDictionary = Dictionary["form"]
 
 const dictionaries: Record<Locale, Dictionary> = {
   en: {
-    title: "SymbiozAI | The First European AI-Native CRM",
-    h1: "SymbiozAI - AI-Native CRM for European Scaleups",
-    subtitle: ["The 1st European AI-Native CRM.", "Zero data entry. Auto-piloted pipeline. Recovered deals."],
+    title: "The headless AI CRM | SymbiozAI",
+    h1: "SymbiozAI — The headless AI CRM",
+    subtitle: [
+      "The headless AI CRM.",
+      "The MCP-only CRM piloted by your AI agent via Claude Code, Cursor, or any MCP-compatible agent. You supervise, it executes.",
+    ],
     description:
-      "SymbiozAI is the first European AI-Native CRM. Zero data entry, auto-piloted pipeline, recovered deals. The system that understands, decides and acts.",
+      "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
     quote:
-      "We believe the next generation of companies won't just use AI, they'll be built with it. Natively. Structurally. Intelligently.",
+      "A CRM designed for humans, piloted by AI, is a compromise. A CRM designed to be piloted by AI is a product. MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
       placeholder: "Enter your email",
       button: "Join the waitlist",
@@ -185,7 +188,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     blog: {
       title: "Blog",
-      subtitle: "Ideas behind the AI-Native CRM.",
+      subtitle: "Ideas behind the headless AI CRM.",
       allPosts: "All",
       categories: {
         produit: "Product",
@@ -196,19 +199,22 @@ const dictionaries: Record<Locale, Dictionary> = {
       readingTime: "min read",
       backToBlog: "Back to blog",
       ctaTitle: "Ready to try?",
-      ctaDescription: "Join the beta and discover the first European AI-Native CRM.",
+      ctaDescription: "Join the beta and connect your AI agent to the headless AI CRM.",
       previousArticle: "Previous article",
       nextArticle: "Next article",
     },
   },
   fr: {
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
-    h1: "SymbiozAI - CRM AI-Native pour scaleups européennes",
-    subtitle: ["Le CRM qui comprend, décide et agit.", "Zéro saisie. Pipeline piloté. Deals récupérés."],
+    title: "Le CRM headless pour agents IA | SymbiozAI",
+    h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
+    subtitle: [
+      "Le CRM headless pour agents IA.",
+      "Le CRM MCP-only piloté par votre agent IA via Claude Code, Cursor ou tout agent compatible MCP. Vous supervisez, il exécute.",
+    ],
     description:
-      "SymbiozAI est le premier CRM AI-Native européen. Zéro saisie, pipeline auto-piloté, deals récupérés. Le système qui comprend, décide et agit.",
+      "SymbiozAI est le CRM MCP-only piloté par votre agent IA. Connectez Claude Code, Cursor ou tout agent compatible MCP. 35 missions. Vous supervisez, il exécute. Hébergé en EU, AI Act natif.",
     quote:
-      "Les entreprises de demain ne se contenteront pas d'utiliser l'IA — elles seront construites avec. Nativement. Structurellement. C'est la conviction qui guide SymbiozAI : un système commercial qui ne documente plus la vente, mais qui la pilote. L'IA n'est pas une couche ajoutée. C'est l'infrastructure. C'est ce que j'aurais voulu avoir quand je vendais.",
+      "Un CRM conçu pour les humains, piloté par l'IA, c'est un compromis. Un CRM conçu pour être piloté par l'IA, c'est un produit. MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {
       placeholder: "Entrez votre email",
       button: "Rejoindre la liste",
@@ -293,7 +299,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     blog: {
       title: "Blog",
-      subtitle: "Les id\u00e9es derri\u00e8re le CRM AI-Native.",
+      subtitle: "Les id\u00e9es derri\u00e8re le CRM headless pour agents IA.",
       allPosts: "Tous",
       categories: {
         produit: "Produit",
@@ -304,7 +310,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       readingTime: "min de lecture",
       backToBlog: "Retour au blog",
       ctaTitle: "Pr\u00eat \u00e0 essayer ?",
-      ctaDescription: "Rejoignez la beta et d\u00e9couvrez le premier CRM AI-Native europ\u00e9en.",
+      ctaDescription: "Rejoignez la beta et connectez votre agent IA au CRM headless.",
       previousArticle: "Article pr\u00e9c\u00e9dent",
       nextArticle: "Article suivant",
     },

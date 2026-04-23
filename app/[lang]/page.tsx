@@ -62,24 +62,24 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       title: isFr ? "Le temps" : "Time",
       stat: isFr ? "3 à 5h / semaine" : "3 to 5h / week",
       description: isFr
-        ? "Vos commerciaux passent en moyenne 3 à 5 heures par semaine à mettre à jour leur CRM. Ce sont des heures de vente en moins. Un commercial qui saisit est un commercial qui ne vend pas."
-        : "Your salespeople spend an average of 3 to 5 hours per week updating their CRM. That's selling time lost. A rep who's typing is a rep who's not selling.",
+        ? "Vos commerciaux passent en moyenne 3 à 5 heures par semaine à saisir des données dans un CRM. Avec un agent IA qui opère via MCP, ce temps disparaît. L'agent journalise. Ils vendent."
+        : "Your salespeople spend an average of 3 to 5 hours per week entering data into a CRM. With an AI agent operating via MCP, that time disappears. The agent logs. They sell.",
     },
     {
       icon: <GlassIcon type="trending-down" size={48} />,
       title: isFr ? "Les deals" : "Deals",
       stat: isFr ? "20 à 30% récupérables" : "20 to 30% recoverable",
       description: isFr
-        ? "Entre 20 et 30% des deals « perdus » ne sont pas perdus - ils sont juste différés. Mais votre CRM les a rangés en « Perdu » et n'en parle plus. Ces deals dorment jusqu'à ce que votre concurrent les réveille."
-        : "20 to 30% of \"lost\" deals aren't actually lost - they're just deferred. But your CRM filed them as \"Lost\" and moved on. They sit dormant until a competitor wakes them up.",
+        ? "Entre 20 et 30% des deals « perdus » ne sont pas perdus - ils sont juste différés. Votre agent IA surveille les signaux de réactivation en continu et vous remonte le bon deal au bon moment."
+        : "20 to 30% of \"lost\" deals aren't actually lost - they're just deferred. Your AI agent monitors reactivation signals continuously and surfaces the right deal at the right moment.",
     },
     {
       icon: <GlassIcon type="bell" size={48} />,
       title: isFr ? "Les relances" : "Follow-ups",
       stat: isFr ? "5 deals oubliés" : "5 deals forgotten",
       description: isFr
-        ? "Un commercial gère 25 à 40 deals actifs en même temps. Il en oublie 5. Pas par négligence - par volume. Chaque relance oubliée est une fenêtre de décision que vous n'avez pas ouverte."
-        : "A sales rep manages 25 to 40 active deals at once. They forget 5. Not out of carelessness - out of volume. Each missed follow-up is a decision window left closed.",
+        ? "Un commercial gère 25 à 40 deals actifs en même temps. Il en oublie 5. Pas par négligence - par volume. Votre agent IA ne les oublie pas. Il les priorise, les score, et vous alerte."
+        : "A sales rep manages 25 to 40 active deals at once. They forget 5. Not out of carelessness - out of volume. Your AI agent doesn't forget. It prioritizes, scores, and alerts you.",
     },
   ]
 
@@ -87,34 +87,34 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     {
       icon: <GlassIcon type="refresh" size={48} />,
       title: isFr ? "Zéro saisie" : "Zero data entry",
-      subtitle: isFr ? "Votre CRM se remplit sans vos commerciaux" : "Your CRM fills itself without your sales team",
+      subtitle: isFr ? "Votre agent IA opère. Votre CRM se remplit." : "Your AI agent operates. Your CRM fills itself.",
       description: isFr
-        ? "Gmail, Google Calendar, LinkedIn - SymbiozAI capture toutes les interactions commerciales automatiquement. Les contacts sont créés. Les deals sont mis à jour. L'historique est complet. Vos commerciaux n'ont plus qu'à vendre."
-        : "Gmail, Google Calendar, LinkedIn - SymbiozAI captures all sales interactions automatically. Contacts are created. Deals are updated. History is complete. Your salespeople just sell.",
+        ? "Via MCP, Claude Code, Cursor ou tout agent compatible appelle 35 missions verbales pour cibler, enrichir, qualifier, rédiger. Les contacts sont créés. Les deals sont mis à jour. L'historique est complet. Vos commerciaux n'ont plus qu'à vendre."
+        : "Via MCP, Claude Code, Cursor, or any compatible agent calls 35 verbal missions to target, enrich, qualify, draft. Contacts are created. Deals are updated. History is complete. Your salespeople just sell.",
     },
     {
       icon: <GlassIcon type="bell" size={48} />,
       title: isFr ? "Pipeline vivant" : "Living pipeline",
-      subtitle: isFr ? "Chaque deal a une date de relance. Maya ne l'oublie pas." : "Every deal has a follow-up date. Maya never forgets.",
+      subtitle: isFr ? "Votre agent surveille. Vous supervisez." : "Your agent monitors. You supervise.",
       description: isFr
-        ? "Le système identifie les deals qui stagnent, calcule le risque de chaque opportunité sur 6 facteurs, et vous alerte avant que ça parte en vrille. Pas de notification parasite - uniquement ce qui compte."
-        : "The system identifies stalling deals, calculates risk on 6 factors, and alerts you before things go sideways. No noise - only what matters.",
+        ? "L'agent identifie les deals qui stagnent, score chaque opportunité sur plusieurs signaux, et vous remonte ce qui compte dans une console de supervision 5 minutes par jour. Pas de notification parasite - uniquement ce qui compte."
+        : "The agent identifies stalling deals, scores every opportunity on multiple signals, and surfaces what matters in a 5-minutes-a-day supervision console. No noise - only what matters.",
     },
     {
       icon: <GlassIcon type="target" size={48} />,
       title: isFr ? "Réserve active" : "Active reserve",
       subtitle: isFr ? "Vos deals perdus deviennent un actif, pas un cimetière" : "Your lost deals become an asset, not a graveyard",
       description: isFr
-        ? "SymbiozAI classe automatiquement vos deals perdus en P1, P2 ou P3. Il surveille les signaux de réactivation - levée de fonds, nouveau poste, changement de budget. Quand le moment est bon, il vous le dit."
-        : "SymbiozAI automatically classifies lost deals into P1, P2, or P3. It monitors reactivation signals - fundraising, new role, budget change. When the time is right, it tells you.",
+        ? "L'agent classe automatiquement vos deals perdus et surveille les signaux de réactivation - levée de fonds, nouveau poste, changement de budget. Quand le moment est bon, il vous le dit."
+        : "The agent automatically classifies lost deals and monitors reactivation signals - fundraising, new role, budget change. When the time is right, it tells you.",
     },
     {
       icon: <GlassIcon type="chart" size={48} />,
       title: isFr ? "Pilotage en une question" : "Pipeline in one question",
       subtitle: isFr ? "L'état de votre pipeline en 5 secondes" : "Your pipeline status in 5 seconds",
       description: isFr
-        ? "Fin de quarter. Board meeting dans 2 heures. Vous posez la question à Maya. Elle vous sort les chiffres, les deals à risque, les opportunités à accélérer. Pas de dashboard à construire. Juste la réponse."
-        : "End of quarter. Board meeting in 2 hours. You ask Maya. She gives you the numbers, at-risk deals, and opportunities to accelerate. No dashboard to build. Just the answer.",
+        ? "Fin de trimestre. Board meeting dans 2 heures. Vous demandez à votre agent IA dans Claude Code ou Cursor. Il appelle get_pipeline_snapshot et assess_deal_health. Vous avez les chiffres, les deals à risque, les opportunités à accélérer. Pas de dashboard à construire. Juste la réponse."
+        : "End of quarter. Board meeting in 2 hours. You ask your AI agent in Claude Code or Cursor. It calls get_pipeline_snapshot and assess_deal_health. You get the numbers, at-risk deals, and opportunities to accelerate. No dashboard to build. Just the answer.",
     },
   ]
 
@@ -132,39 +132,39 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   const trustBadges = [
     {
       icon: <GlassIcon type="globe" size={40} />,
-      title: isFr ? "Hébergé en Europe" : "Hosted in Europe",
+      title: isFr ? "Hébergé en EU (Frankfurt)" : "EU-hosted (Frankfurt)",
       description: isFr
-        ? "Vos données commerciales ne quittent pas le territoire européen."
-        : "Your sales data never leaves European territory.",
+        ? "Infrastructure DigitalOcean FRA1. Vos données pipeline restent en EU."
+        : "DigitalOcean FRA1 infrastructure. Your pipeline data stays in the EU.",
     },
     {
       icon: <GlassIcon type="shield" size={40} />,
-      title: isFr ? "RGPD by design" : "GDPR by design",
+      title: isFr ? "AI Act natif" : "AI Act native",
       description: isFr
-        ? "Pas un add-on de conformité - une architecture où la confidentialité est structurelle."
-        : "Not a compliance add-on - an architecture where privacy is structural.",
+        ? "Audit log immuable signé HMAC, rétention 7 ans, politique HITL 3 classes, kill-switch tenant en moins d'1 seconde."
+        : "Immutable HMAC-signed audit log, 7-year retention, 3-class HITL policy, tenant kill-switch in under 1 second.",
     },
     {
       icon: <GlassIcon type="cpu" size={40} />,
-      title: isFr ? "Architecture AI-Native" : "AI-Native Architecture",
+      title: isFr ? "LLM-agnostic" : "LLM-agnostic",
       description: isFr
-        ? "Construit avec l'IA comme fondation, pas comme ajout. LLM-agnostique par design."
-        : "Built with AI as the foundation, not as an add-on. LLM-agnostic by design.",
+        ? "UnifiedLLMClient multi-provider. Pas de fine-tuning sur vos données. Pas de rétention par les providers LLM."
+        : "UnifiedLLMClient multi-provider. No fine-tuning on your data. No retention by LLM providers.",
     },
     {
       icon: <GlassIcon type="unlock" size={40} />,
-      title: isFr ? "Zéro vendor lock-in" : "Zero vendor lock-in",
+      title: isFr ? "RGPD article 15 natif" : "GDPR article 15 native",
       description: isFr
-        ? "Vos données vous appartiennent. Export complet à tout moment."
-        : "Your data belongs to you. Full export at any time.",
+        ? "Endpoint /audit/my-data, export à la demande, zéro vendor lock-in."
+        : "/audit/my-data endpoint, export on demand, zero vendor lock-in.",
     },
   ]
 
   const productMetrics = [
-    { value: "38+", label: isFr ? "agents IA - et ce n'est que le début" : "AI agents - and counting", live: true },
-    { value: ">95%", label: isFr ? "de précision sur nos tests" : "accuracy on our test suite", live: false },
-    { value: "< 30 min", label: isFr ? "pour être opérationnel" : "to be operational", live: false },
-    { value: "130+", label: isFr ? "endpoints CRM" : "CRM endpoints", live: false },
+    { value: "35", label: isFr ? "missions MCP verbales" : "verbal MCP missions", live: true },
+    { value: "23", label: isFr ? "fournisseurs de données wrappés" : "data providers wrapped", live: false },
+    { value: "< 5 min", label: isFr ? "pour connecter votre agent IA" : "to connect your AI agent", live: false },
+    { value: "5 min/j", label: isFr ? "de supervision, pas plus" : "of supervision, nothing more", live: false },
   ]
 
   // Note: dangerouslySetInnerHTML below is safe — jsonLd is built from
@@ -214,16 +214,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <ScrollIndicator />
           </section>
 
-          {/* AI-Native Vision Banner */}
+          {/* Headless AI CRM Banner */}
           <section className="py-8 px-4 sm:px-6 bg-white">
             <ScrollReveal className="max-w-3xl mx-auto text-center">
               <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-widest mb-2">
-                {isFr ? "AI-Native Company" : "AI-Native Company"}
+                {isFr ? "Headless AI CRM" : "Headless AI CRM"}
               </p>
               <p className="text-gray-600 text-base md:text-lg">
                 {isFr
-                  ? "Nous croyons que la prochaine génération d'entreprises sera construite avec l'IA - nativement, structurellement. SymbiozAI est le premier logiciel commercial conçu selon ce principe."
-                  : "We believe the next generation of companies will be built with AI - natively, structurally. SymbiozAI is the first commercial software designed on this principle."}
+                  ? "La génération précédente de CRM a ajouté l'IA au-dessus d'une base de données. Nous avons construit le CRM pour être opéré par l'IA. Votre agent opère, vous supervisez."
+                  : "The last generation of CRMs added AI on top of a database. We built the CRM to be operated by the AI. Your agent operates, you supervise."}
               </p>
               <Link href={`/${lang}/manifeste`} className="inline-block mt-3 text-sm font-medium text-[#0d47a1] hover:text-[#00e5ff] transition-colors underline underline-offset-4">
                 {isFr ? "Lire notre manifeste" : "Read our manifesto"}
@@ -264,12 +264,12 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   {isFr ? "La solution" : "The solution"}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                  {isFr ? "Un système qui comprend, décide et exécute." : "A system that understands, decides, and executes."}
+                  {isFr ? "Votre agent opère. Vous supervisez." : "Your agent operates. You supervise."}
                 </h2>
                 <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
                   {isFr
-                    ? "SymbiozAI n'est pas un CRM amélioré. C'est une nouvelle génération de logiciel commercial - AI-Native - qui opère votre pipeline de manière autonome. Opérationnel en moins de 30 minutes."
-                    : "SymbiozAI is not an improved CRM. It's a new generation of commercial software - AI-Native - that operates your pipeline autonomously. Operational in under 30 minutes."}
+                    ? "SymbiozAI n'est pas un CRM avec une IA ajoutée. C'est un CRM conçu pour qu'un agent IA externe — Claude Code, Cursor, tout agent compatible MCP — soit l'opérateur principal. 35 missions MCP verbales. Un seul endpoint. Installation en moins de 5 minutes."
+                    : "SymbiozAI is not a CRM with AI on top. It's a CRM designed so that an external AI agent — Claude Code, Cursor, any MCP-compatible agent — is the primary operator. 35 verbal MCP missions. One endpoint. Install in under 5 minutes."}
                 </p>
               </ScrollReveal>
 
@@ -282,12 +282,12 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "Capture automatique" : "Automatic capture"}
+                          {isFr ? "Connecté en 5 minutes" : "Connected in 5 minutes"}
                         </h3>
                         <p className="text-gray-600">
                           {isFr
-                            ? "SymbiozAI se connecte à Gmail et Google Calendar. Chaque email, chaque réunion, chaque interaction - capturée, analysée, rattachée au bon deal. Zéro saisie."
-                            : "SymbiozAI connects to Gmail and Google Calendar. Every email, every meeting, every interaction - captured, analyzed, linked to the right deal. Zero data entry."}
+                            ? "Une commande : npx @symbiozai/mcp-setup. Le CLI auto-configure votre client Claude Code, Cursor, Cline, Goose ou Continue.dev. Pas de clé API à gérer. Pas de JSON à éditer."
+                            : "One command: npx @symbiozai/mcp-setup. The CLI auto-configures your Claude Code, Cursor, Cline, Goose, or Continue.dev client. No API key to manage. No JSON to edit."}
                         </p>
                       </div>
                     </div>
@@ -298,12 +298,12 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "Pipeline auto-piloté" : "Auto-piloted pipeline"}
+                          {isFr ? "35 missions MCP verbales" : "35 verbal MCP missions"}
                         </h3>
                         <p className="text-gray-600">
                           {isFr
-                            ? "Le scoring de chaque deal est recalculé en continu sur 6 facteurs de risque. Les deals qui stagnent remontent. Les relances sont identifiées avant que vous le demandiez."
-                            : "Each deal's score is continuously recalculated on 6 risk factors. Stalling deals surface. Follow-ups are identified before you ask."}
+                            ? "Votre agent appelle start_targeting, qualify_lead, assess_deal_health, analyze_communication_style — en langage naturel. Acquisition, qualification, engagement, meta. Un seul endpoint."
+                            : "Your agent calls start_targeting, qualify_lead, assess_deal_health, analyze_communication_style — in natural language. Acquisition, qualification, engagement, meta. One endpoint."}
                         </p>
                       </div>
                     </div>
@@ -314,12 +314,12 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "Pilotage conversationnel" : "Conversational control"}
+                          {isFr ? "Supervision 5 min/jour" : "5 min/day supervision"}
                         </h3>
                         <p className="text-gray-600">
                           {isFr
-                            ? "Vous parlez à Maya en français, comme à un collègue. « Passe TechVision en négociation. » « Qui n'a pas eu de contact depuis 15 jours ? » Réponse immédiate."
-                            : "You talk to Maya in plain language, like a colleague. \"Move TechVision to negotiation.\" \"Who hasn't been contacted in 15 days?\" Instant answer."}
+                            ? "Une politique HITL 3 classes : Vert pour exécution automatique, Orange pour dry-run + confirmation, Rouge pour approbation explicite. Audit log immuable signé HMAC, rétention 7 ans, kill-switch tenant en moins d'une seconde."
+                            : "A 3-class HITL policy: Green for auto-execution, Orange for dry-run + confirmation, Red for explicit approval. Immutable HMAC-signed audit log, 7-year retention, tenant kill-switch in under a second."}
                         </p>
                       </div>
                     </div>
@@ -366,7 +366,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   {isFr ? "Construit pour durer" : "Built to last"}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                  {isFr ? "Une infrastructure AI-Native. Pas un gadget." : "An AI-Native infrastructure. Not a gadget."}
+                  {isFr ? "Une infrastructure MCP-only. Pas un chatbot collé sur un CRM." : "An MCP-only infrastructure. Not a chatbot bolted on a CRM."}
                 </h2>
               </ScrollReveal>
 
@@ -420,7 +420,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <div className="max-w-4xl mx-auto">
               <ScrollReveal>
                 <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
-                  {isFr ? "Connecté à vos outils" : "Connected to your tools"}
+                  {isFr ? "Compatible avec votre agent IA et vos outils" : "Compatible with your AI agent and your tools"}
                 </h2>
               </ScrollReveal>
               <ScrollReveal stagger className="flex flex-wrap justify-center gap-6 md:gap-8">
@@ -452,17 +452,17 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <div className="max-w-3xl mx-auto text-center">
               <ScrollReveal>
                 <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                  {isFr ? "Récupérez vos lundis matin." : "Take back your Monday mornings."}
+                  {isFr ? "Prêt à connecter votre agent ?" : "Ready to connect your agent?"}
                 </h2>
                 <p className="text-white/80 text-lg mb-4">
                   {isFr
-                    ? "Votre pipeline, à jour, en permanence. Vos deals à risque, identifiés avant qu'ils partent. Vos commerciaux qui vendent au lieu de saisir."
-                    : "Your pipeline, always up to date. At-risk deals, identified before they slip. Your salespeople selling instead of typing."}
+                    ? "Votre agent IA opère via MCP. Vous supervisez ce qui compte. Vos commerciaux vendent au lieu de saisir."
+                    : "Your AI agent operates via MCP. You supervise what matters. Your salespeople sell instead of typing."}
                 </p>
                 <p className="text-white/60 text-sm mb-8">
                   {isFr
-                    ? "Accès bêta privé pour les scaleups européennes. Onboarding en moins de 30 minutes."
-                    : "Private beta access for European scaleups. Onboarding in under 30 minutes."}
+                    ? "Accès bêta. Installation MCP en moins de 5 minutes. Gratuit jusqu'à 500 appels/jour."
+                    : "Beta access. MCP install in under 5 minutes. Free up to 500 calls/day."}
                 </p>
                 <div className="max-w-md mx-auto">
                   <WaitlistForm form={dictionary.form} lang={lang} />

@@ -109,7 +109,7 @@ export const WelcomeEmailEn = ({ email }) => {
             marginBottom: "30px",
           }}
         >
-          You're now among the first to be informed about our progress. We'll reach out as soon as our platform is ready
+          You're in the loop for every update on our progress. We'll reach out as soon as our platform is ready
           for launch.
         </p>
 

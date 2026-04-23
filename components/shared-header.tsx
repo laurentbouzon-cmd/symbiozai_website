@@ -6,7 +6,7 @@ import type { Dictionary } from "@/lib/dictionary"
 interface SharedHeaderProps {
   lang: string
   dictionary: Dictionary
-  activePage?: "home" | "manifeste" | "blog" | "contact"
+  activePage?: "home" | "mcp" | "for-sales-teams" | "about" | "manifeste" | "blog" | "contact"
   showLogo?: boolean
 }
 
@@ -14,8 +14,9 @@ export function SharedHeader({ lang, dictionary, activePage, showLogo = true }: 
   const isFr = lang === "fr"
 
   const navItems = [
-    { key: "home", href: `/${lang}`, label: isFr ? "Accueil" : "Home" },
-    { key: "manifeste", href: `/${lang}/manifeste`, label: isFr ? "Manifeste" : "Manifesto" },
+    { key: "mcp", href: `/${lang}/mcp`, label: "MCP" },
+    { key: "for-sales-teams", href: `/${lang}/for-sales-teams`, label: isFr ? "Équipes commerciales" : "For sales teams" },
+    { key: "about", href: `/${lang}/about`, label: isFr ? "À propos" : "About" },
     { key: "blog", href: `/${lang}/blog`, label: "Blog" },
   ]
 

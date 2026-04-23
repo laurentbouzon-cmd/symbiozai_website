@@ -85,14 +85,14 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Oui, lance la séquence",
               nextMessages: [
                 { type: "user", text: "Oui, ajoute-les à une séquence", autoAdvance: true },
-                { type: "ai", text: "C'est fait ! Séquence \"ESN Île-de-France\" créée avec 23 contacts. Premier email envoyé demain 9h. Je te ferai un point sur les ouvertures dans 48h.", delay: 1500 },
+                { type: "ai", text: "C'est fait ! Séquence \"ESN Île-de-France\" créée avec 23 contacts. Envoi programmé demain 9h. Je te ferai un point sur les ouvertures dans 48h.", delay: 1500 },
               ],
             },
             {
               label: "Filtre les +500 employés",
               nextMessages: [
                 { type: "user", text: "Filtre uniquement les +500 employés", autoAdvance: true },
-                { type: "ai", text: "Filtré ! 8 ESN de +500 employés retenues : Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Séquence \"ESN 500+ IdF\" créée. Premier email demain matin.", delay: 1500 },
+                { type: "ai", text: "Filtré ! 8 ESN de +500 employés retenues : Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Séquence \"ESN 500+ IdF\" créée. Départ demain matin.", delay: 1500 },
               ],
             },
           ],
@@ -277,14 +277,14 @@ const scenarios: Record<Locale, Scenario[]> = {
               label: "Yes, start the sequence",
               nextMessages: [
                 { type: "user", text: "Yes, add them to a sequence", autoAdvance: true },
-                { type: "ai", text: "Done! Sequence \"IT Firms Paris\" created with 23 contacts. First email goes out tomorrow 9am. I'll give you an update on opens in 48h.", delay: 1500 },
+                { type: "ai", text: "Done! Sequence \"IT Firms Paris\" created with 23 contacts. Outreach starts tomorrow 9am. I'll give you an update on opens in 48h.", delay: 1500 },
               ],
             },
             {
               label: "Filter 500+ employees only",
               nextMessages: [
                 { type: "user", text: "Filter only 500+ employees", autoAdvance: true },
-                { type: "ai", text: "Filtered! 8 firms with 500+ employees retained: Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Sequence \"IT 500+ Paris\" created. First email tomorrow morning.", delay: 1500 },
+                { type: "ai", text: "Filtered! 8 firms with 500+ employees retained: Néosoft, Apside, Sopra Steria, Capgemini, Atos, CGI, Alten, Accenture. Sequence \"IT 500+ Paris\" created. Outreach starts tomorrow morning.", delay: 1500 },
               ],
             },
           ],
@@ -339,9 +339,9 @@ const scenarios: Record<Locale, Scenario[]> = {
                       ],
                     },
                     {
-                      label: "Show me the draft first",
+                      label: "Show me the draft",
                       nextMessages: [
-                        { type: "user", text: "Show me the draft first", autoAdvance: true },
+                        { type: "user", text: "Show me the draft", autoAdvance: true },
                         { type: "ai", text: "Draft saved and accessible from the TechCorp record. I've also set a reminder for tomorrow morning so you can review it fresh.", delay: 1500 },
                       ],
                     },

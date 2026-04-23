@@ -12,32 +12,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://symbioz.ai"),
-  title: "SymbiozAI | Le premier CRM AI-Native européen",
+  title: "The headless AI CRM | SymbiozAI",
   description:
-    "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés, pilotés depuis WhatsApp et Slack, avec un agent IA intégré.",
-  keywords: "CRM, IA-Native, intelligence artificielle, automatisation, prospection, suivi client, WhatsApp, Slack",
+    "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
+  keywords:
+    "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, CRM MCP server, Model Context Protocol CRM, Claude Code CRM, Cursor CRM",
   openGraph: {
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
+    title: "The headless AI CRM | SymbiozAI",
     description:
-      "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés, pilotés depuis WhatsApp et Slack.",
+      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
     url: "https://symbioz.ai",
     siteName: "SymbiozAI",
     images: [
       {
-        url: "/og",
+        url: "/images/pivot-mcp/og-image-symbiozai.png",
         width: 1200,
         height: 630,
-        alt: "SymbiozAI | Le premier CRM AI-Native européen",
+        alt: "SymbiozAI — the headless AI CRM",
       },
     ],
-    locale: "fr_FR",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
-    description: "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés.",
-    images: ["/og"],
+    title: "The headless AI CRM | SymbiozAI",
+    description:
+      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes.",
+    images: ["/images/pivot-mcp/og-image-symbiozai.png"],
   },
   robots: {
     index: true,
@@ -72,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Preconnect to third-party origins for faster resource fetching */}
         <link rel="preconnect" href="https://static.axept.io" crossOrigin="anonymous" />

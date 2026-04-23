@@ -69,15 +69,26 @@ function MobileMenuPortal({ lang, isOpen, onClose }: { lang: string; isOpen: boo
               <Logo size="lg" />
             </Link>
             <p className="text-gray-600 mt-3 max-w-xs mx-auto">
-              {isFr ? "Le premier CRM 100% IA-Native." : "The first 100% AI-Native CRM."}
+              {isFr
+                ? "Le CRM headless piloté par votre agent IA via MCP."
+                : "The headless AI CRM. Operated by your AI agent via MCP."}
             </p>
           </div>
 
           <div className="w-16 h-0.5 bg-gray-200 my-6" />
 
-          <nav className="flex flex-col items-center space-y-8 flex-grow justify-center">
+          <nav className="flex flex-col items-center space-y-6 flex-grow justify-center">
             <Link href={`/${lang}`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Accueil" : "Home"}
+            </Link>
+            <Link href={`/${lang}/mcp`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+              MCP
+            </Link>
+            <Link href={`/${lang}/for-sales-teams`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+              {isFr ? "Équipes commerciales" : "For sales teams"}
+            </Link>
+            <Link href={`/${lang}/about`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+              {isFr ? "À propos" : "About"}
             </Link>
             <Link href={`/${lang}/manifeste`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Manifeste" : "Manifesto"}
