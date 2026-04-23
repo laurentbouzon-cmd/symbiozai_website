@@ -239,7 +239,13 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 className="hero-item font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.15] text-[#0d47a1]"
                 style={{ animationDelay: "100ms" }}
               >
-                <span className="block">{dictionary.subtitle[0]}</span>
+                {/*
+                  Line 1 EN must stay single-line on viewports >=375px (design
+                  constraint validated 2026-04-23). FR line 1 may wrap naturally
+                  on narrow viewports — no constraint. Approach: conditional
+                  whitespace-nowrap on EN only, responsive typo scale unchanged.
+                */}
+                <span className={`block ${isFr ? "" : "whitespace-nowrap"}`}>{dictionary.subtitle[0]}</span>
                 <span className="block">{dictionary.subtitle[1]}</span>
               </h2>
 
