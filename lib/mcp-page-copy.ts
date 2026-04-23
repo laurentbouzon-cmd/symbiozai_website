@@ -1,5 +1,5 @@
 /**
- * /mcp page copy — post-pivot MCP-only site (2026-04-23).
+ * /mcp page copy: post-pivot MCP-only site (2026-04-23).
  * Source of truth: symbiozai-cos/cos-data/content/site-copy/2026-04-23-site-copy-post-pivot-mcp.md
  * R11-compliant: no primacy claims in rendered copy.
  */
@@ -76,7 +76,7 @@ export const missionsCatalog: Record<SiteLang, MissionCategory[]> = {
         { name: "get_supervision_queue", description: "List of Orange/Red actions pending human review.", hitl: "green" },
         { name: "run_playbook", description: "Execute a pre-defined playbook (sequence of missions).", hitl: "varies" },
         { name: "get_agent_status", description: "Current agent state, running missions, pending actions.", hitl: "green" },
-        { name: "export_my_data", description: "GDPR art. 15 native — export all your data on demand.", hitl: "green" },
+        { name: "export_my_data", description: "GDPR art. 15 native. Export all your data on demand.", hitl: "green" },
         { name: "kill_switch", description: "Immediately halt all agent activity for the tenant.", hitl: "red" },
       ],
     },
@@ -130,7 +130,7 @@ export const missionsCatalog: Record<SiteLang, MissionCategory[]> = {
         { name: "get_supervision_queue", description: "Liste des actions Orange/Rouge en attente de revue humaine.", hitl: "green" },
         { name: "run_playbook", description: "Exécuter un playbook pré-défini (séquence de missions).", hitl: "varies" },
         { name: "get_agent_status", description: "État courant de l'agent, missions en cours, actions pending.", hitl: "green" },
-        { name: "export_my_data", description: "RGPD art. 15 natif — exporter toutes vos données à la demande.", hitl: "green" },
+        { name: "export_my_data", description: "RGPD art. 15 natif. Exporter toutes vos données à la demande.", hitl: "green" },
         { name: "kill_switch", description: "Stopper immédiatement toute l'activité agent pour le tenant.", hitl: "red" },
       ],
     },
@@ -152,7 +152,7 @@ export const mcpCopy = {
       eyebrow: "MCP Server",
       headline: "The MCP-only CRM.",
       subhead:
-        "Headless by design. Operated by your AI agent via MCP. Claude Code, Cursor, GPT — it's all native.",
+        "Headless by design. Operated by your AI agent via MCP. Claude Code, Cursor, GPT. It's all native.",
       primary: { label: "Install the MCP in 5 min", href: "#quickstart" },
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
       tertiary: { label: "Book a demo", href: "/en/contact" },
@@ -162,18 +162,18 @@ export const mcpCopy = {
       title: "Three steps. Any MCP-compatible agent.",
       steps: [
         {
-          heading: "Step 1 — Run the installer",
+          heading: "Step 1: Run the installer",
           body:
             "The CLI detects your MCP client (Claude Code, Cursor, Cline, Goose, Continue.dev) and auto-configures the connection. No API key management. No JSON to edit manually.",
           code: "npx @symbiozai/mcp-setup",
         },
         {
-          heading: "Step 2 — Connect in your agent",
+          heading: "Step 2: Connect in your agent",
           body:
             "Your agent now has access to 35 SymbiozAI MCP missions. No plugin. No SDK. Standard MCP spec.",
         },
         {
-          heading: "Step 3 — Run your opening mission",
+          heading: "Step 3: Run your opening mission",
           body:
             "Your agent calls start_targeting. Results in your pipeline in under 60 seconds.",
           code: `"Target 50 founders in B2B SaaS, Series A, France, using Claude Code."`,
@@ -221,7 +221,7 @@ npx @symbiozai/mcp-setup`,
       eyebrow: "35 MCP missions",
       title: "Every mission is designed to be called by a language model.",
       lede:
-        "No guesswork — each mission has a schema, an example prompt, and an expected output.",
+        "No guesswork. Each mission has a schema, an example prompt, and an expected output.",
       phase2Note:
         "7 additional missions in Phase 2: score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
     },
@@ -229,7 +229,7 @@ npx @symbiozai/mcp-setup`,
       eyebrow: "Architecture wrap-first",
       title: "SymbiozAI does not rebuild data providers. It wraps them.",
       lede:
-        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase, and 15 others — all available through two MCP enrichment missions. Your agent calls enrich_contact. SymbiozAI decides which provider to query, aggregates the results, deduplicates, and returns a structured response.",
+        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase, and 15 others. All available through two MCP enrichment missions. Your agent calls enrich_contact. SymbiozAI decides which provider to query, aggregates the results, deduplicates, and returns a structured response.",
       result: "You get 23 data providers. You manage one endpoint.",
       layers: [
         { layer: "Contact enrichment", providers: "Apollo, BrightData, Hunter, Clearbit, Lusha" },
@@ -272,7 +272,7 @@ npx @symbiozai/mcp-setup`,
     },
     audit: {
       eyebrow: "Audit log WORM",
-      title: "Every action, every agent call, every human decision — logged.",
+      title: "Every action, every agent call, every human decision: logged.",
       bullets: [
         { heading: "Append-only", body: "No record can be modified or deleted" },
         {
@@ -401,7 +401,7 @@ npx @symbiozai/mcp-setup`,
         question:
           "How is SymbiozAI different from CRMs that have added an MCP server (Octolane, HubSpot, Zoho, Salesforce Headless 360)?",
         answer:
-          "Those CRMs added an MCP server as a feature layered on top of their existing human-facing UI. SymbiozAI is MCP-only: the MCP server is the primary interface, there is no alternative UI to operate the CRM. Supervision happens through a lightweight console for sensitive actions — not as a daily operating surface.",
+          "Those CRMs added an MCP server as a feature layered on top of their existing human-facing UI. SymbiozAI is MCP-only: the MCP server is the primary interface, there is no alternative UI to operate the CRM. Supervision happens through a lightweight console for sensitive actions. Not as a daily operating surface.",
       },
       {
         question: "How does authentication work?",
@@ -430,7 +430,7 @@ npx @symbiozai/mcp-setup`,
       eyebrow: "Serveur MCP",
       headline: "Le CRM MCP-only.",
       subhead:
-        "Headless par design. Piloté par votre agent IA via MCP. Claude Code, Cursor, GPT — tout est natif.",
+        "Headless par design. Piloté par votre agent IA via MCP. Claude Code, Cursor, GPT. Tout est natif.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
       tertiary: { label: "Réserver une démo", href: "/fr/contact" },
@@ -440,18 +440,18 @@ npx @symbiozai/mcp-setup`,
       title: "Trois étapes. Tout agent compatible MCP.",
       steps: [
         {
-          heading: "Étape 1 — Lancer l'installeur",
+          heading: "Étape 1 : Lancer l'installeur",
           body:
             "Le CLI détecte votre client MCP (Claude Code, Cursor, Cline, Goose, Continue.dev) et auto-configure la connexion. Pas de gestion de clé API. Pas de JSON à éditer manuellement.",
           code: "npx @symbiozai/mcp-setup",
         },
         {
-          heading: "Étape 2 — Connecter dans votre agent",
+          heading: "Étape 2 : Connecter dans votre agent",
           body:
             "Votre agent a désormais accès à 35 missions MCP SymbiozAI. Pas de plugin. Pas de SDK. Spec MCP standard.",
         },
         {
-          heading: "Étape 3 — Lancer votre première mission",
+          heading: "Étape 3 : Lancer votre première mission",
           body:
             "Votre agent appelle start_targeting. Résultats dans votre pipeline en moins de 60 secondes.",
           code: `« Cible 50 fondateurs en SaaS B2B, Series A, France, depuis Claude Code. »`,
@@ -499,7 +499,7 @@ npx @symbiozai/mcp-setup`,
       eyebrow: "35 missions MCP",
       title: "Chaque mission est conçue pour être appelée par un language model.",
       lede:
-        "Pas de devinette — chaque mission a un schéma, un prompt d'exemple et un format de sortie attendu.",
+        "Pas de devinette. Chaque mission a un schéma, un prompt d'exemple et un format de sortie attendu.",
       phase2Note:
         "7 missions supplémentaires en Phase 2 : score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
     },
@@ -507,7 +507,7 @@ npx @symbiozai/mcp-setup`,
       eyebrow: "Architecture wrap-first",
       title: "SymbiozAI ne reconstruit pas les fournisseurs. Il les wrappe.",
       lede:
-        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase et 15 autres — tous disponibles via deux missions MCP d'enrichissement. Votre agent appelle enrich_contact. SymbiozAI décide quel fournisseur interroger, agrège les résultats, déduplique et retourne une réponse structurée.",
+        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase et 15 autres. Tous disponibles via deux missions MCP d'enrichissement. Votre agent appelle enrich_contact. SymbiozAI décide quel fournisseur interroger, agrège les résultats, déduplique et retourne une réponse structurée.",
       result: "Vous obtenez 23 fournisseurs. Vous gérez un seul endpoint.",
       layers: [
         { layer: "Enrichissement contact", providers: "Apollo, BrightData, Hunter, Clearbit, Lusha" },
@@ -550,7 +550,7 @@ npx @symbiozai/mcp-setup`,
     },
     audit: {
       eyebrow: "Audit log WORM",
-      title: "Chaque action, chaque appel agent, chaque décision humaine — journalisé.",
+      title: "Chaque action, chaque appel agent, chaque décision humaine : journalisé.",
       bullets: [
         { heading: "Append-only", body: "Aucun enregistrement ne peut être modifié ou supprimé" },
         {
@@ -679,7 +679,7 @@ npx @symbiozai/mcp-setup`,
         question:
           "Quelle différence avec les CRM qui ont ajouté un serveur MCP (Octolane, HubSpot, Zoho, Salesforce Headless 360) ?",
         answer:
-          "Ces CRM ont ajouté un serveur MCP comme feature par-dessus leur UI humaine existante. SymbiozAI est MCP-only : le serveur MCP est l'interface principale, il n'existe pas d'UI alternative pour opérer le CRM. La supervision passe par une console légère pour actions sensibles — pas comme surface opérationnelle quotidienne.",
+          "Ces CRM ont ajouté un serveur MCP comme feature par-dessus leur UI humaine existante. SymbiozAI est MCP-only : le serveur MCP est l'interface principale, il n'existe pas d'UI alternative pour opérer le CRM. La supervision passe par une console légère pour actions sensibles. Pas comme surface opérationnelle quotidienne.",
       },
       {
         question: "Comment fonctionne l'authentification ?",

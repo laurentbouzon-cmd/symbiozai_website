@@ -9,7 +9,7 @@ interface CodeBlockProps {
 }
 
 /**
- * CodeBlock — dark terminal/editor block with copy-to-clipboard.
+ * CodeBlock: dark terminal/editor block with copy-to-clipboard.
  * Keeps the dark tone consistent across /mcp and /features install snippets.
  */
 export function CodeBlock({ code, language = "bash", caption }: CodeBlockProps) {

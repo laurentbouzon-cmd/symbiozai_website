@@ -89,10 +89,10 @@ export type FormDictionary = Dictionary["form"]
 const dictionaries: Record<Locale, Dictionary> = {
   en: {
     title: "The headless AI CRM | SymbiozAI",
-    h1: "SymbiozAI — The headless AI CRM",
+    h1: "SymbiozAI | The headless AI CRM",
     subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
-      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse — they'll pilot with their AI workforce.",
+      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse. They'll pilot with their AI workforce.",
     quote:
       "Tomorrow's companies won't just use AI. They'll be built with it. Natively. Structurally.",
     form: {
@@ -104,7 +104,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "Email is required",
         invalid: "Please enter a valid email address",
-        professional: "Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted.",
+        professional: "Please use your work email. Personal addresses (Gmail, Yahoo, Outlook…) are not accepted.",
       },
     },
     footer: {
@@ -189,10 +189,10 @@ const dictionaries: Record<Locale, Dictionary> = {
   },
   fr: {
     title: "Le CRM headless pour agents IA | SymbiozAI",
-    h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
+    h1: "SymbiozAI | Le CRM headless piloté par votre agent IA",
     subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
-      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris — elle pilotera avec sa workforce IA.",
+      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris. Elle pilotera avec sa workforce IA.",
     quote:
       "Les entreprises de demain ne se contenteront pas d'utiliser l'IA. Elles seront construites avec. Nativement. Structurellement.",
     form: {
@@ -204,7 +204,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "L'email est requis",
         invalid: "Veuillez entrer une adresse email valide",
-        professional: "Merci d'utiliser votre email professionnel — les adresses personnelles (Gmail, Yahoo, Outlook…) ne sont pas acceptées.",
+        professional: "Merci d'utiliser votre email professionnel. Les adresses personnelles (Gmail, Yahoo, Outlook…) ne sont pas acceptées.",
       },
     },
     footer: {

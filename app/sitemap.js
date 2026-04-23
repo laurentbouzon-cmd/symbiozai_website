@@ -78,7 +78,7 @@ export default function sitemap() {
       priority: 0.9,
       alternates: { languages: { fr: `${base}/fr`, en: `${base}/en` } },
     },
-    // MCP — P0 priority post-pivot
+    // MCP: P0 priority post-pivot
     {
       url: `${base}/en/mcp`,
       lastModified: staticLastMod,
@@ -93,7 +93,7 @@ export default function sitemap() {
       priority: 0.9,
       alternates: { languages: { fr: `${base}/fr/mcp`, en: `${base}/en/mcp` } },
     },
-    // For sales teams — secondary ICP page
+    // For sales teams: secondary ICP page
     {
       url: `${base}/en/for-sales-teams`,
       lastModified: staticLastMod,
@@ -117,21 +117,6 @@ export default function sitemap() {
           en: `${base}/en/for-sales-teams`,
         },
       },
-    },
-    // About — bilingual founder narrative
-    {
-      url: `${base}/en/about`,
-      lastModified: staticLastMod,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: { languages: { fr: `${base}/fr/about`, en: `${base}/en/about` } },
-    },
-    {
-      url: `${base}/fr/about`,
-      lastModified: staticLastMod,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: { languages: { fr: `${base}/fr/about`, en: `${base}/en/about` } },
     },
     {
       url: `${base}/fr/manifeste`,
@@ -220,7 +205,7 @@ export default function sitemap() {
     },
   ]
 
-  // Blog articles — deduplicate: only emit one entry per article pair, with correct alternates
+  // Blog articles: deduplicate, only emit one entry per article pair, with correct alternates
   const seenPairs = new Set()
   const blogPages = []
 

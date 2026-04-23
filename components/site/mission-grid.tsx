@@ -11,7 +11,7 @@ interface MissionCategoryProps {
 }
 
 /**
- * MissionGrid — grid of MCP missions per category.
+ * MissionGrid: grid of MCP missions per category.
  * Each mission is a monospace pill + short description.
  * Optional HITL color dot at the end.
  */

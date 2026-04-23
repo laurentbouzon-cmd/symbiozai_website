@@ -3,7 +3,7 @@ import { Logo } from "@/components/ui/logo"
 import { MobileMenu } from "@/components/navigation/mobile-menu"
 import type { Dictionary } from "@/lib/dictionary"
 
-type ActivePage = "home" | "mcp" | "for-sales-teams" | "about" | "blog"
+type ActivePage = "home" | "mcp" | "for-sales-teams" | "manifeste" | "blog"
 
 interface SiteHeaderProps {
   lang: string
@@ -14,7 +14,7 @@ interface SiteHeaderProps {
 }
 
 /**
- * SiteHeader — header for the new post-pivot pages.
+ * SiteHeader: header for the new post-pivot pages.
  * Keeps the existing mobile-menu component but updates nav items for the new IA.
  */
 export function SiteHeader({
@@ -28,13 +28,14 @@ export function SiteHeader({
   const isDark = tone === "dark"
 
   const navItems: { key: ActivePage; href: string; label: string }[] = [
+    { key: "home", href: `/${lang}`, label: isFr ? "Accueil" : "Home" },
     { key: "mcp", href: `/${lang}/mcp`, label: "MCP" },
     {
       key: "for-sales-teams",
       href: `/${lang}/for-sales-teams`,
       label: isFr ? "Équipes commerciales" : "For sales teams",
     },
-    { key: "about", href: `/${lang}/about`, label: isFr ? "À propos" : "About" },
+    { key: "manifeste", href: `/${lang}/manifeste`, label: isFr ? "Manifeste" : "Manifesto" },
     { key: "blog", href: `/${lang}/blog`, label: "Blog" },
   ]
 

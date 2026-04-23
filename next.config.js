@@ -18,8 +18,9 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true, // Restaure la position de défilement
   },
-  // /features was fused into /mcp post-pivot 2026-04-23. Preserve SEO equity
-  // from any inbound link to the legacy URL with a permanent (301) redirect.
+  // /features was fused into /mcp post-pivot 2026-04-23. /about was removed
+  // 2026-04-23 ter (founder narrative merged into /manifeste + /mcp).
+  // Preserve SEO equity from legacy URLs with permanent (301) redirects.
   async redirects() {
     return [
       {
@@ -30,6 +31,16 @@ const nextConfig = {
       {
         source: "/:lang(en|fr)/features",
         destination: "/:lang/mcp",
+        permanent: true,
+      },
+      {
+        source: "/about",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/:lang(en|fr)/about",
+        destination: "/:lang",
         permanent: true,
       },
     ]

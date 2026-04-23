@@ -87,9 +87,6 @@ function MobileMenuPortal({ lang, isOpen, onClose }: { lang: string; isOpen: boo
             <Link href={`/${lang}/for-sales-teams`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Équipes commerciales" : "For sales teams"}
             </Link>
-            <Link href={`/${lang}/about`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
-              {isFr ? "À propos" : "About"}
-            </Link>
             <Link href={`/${lang}/manifeste`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Manifeste" : "Manifesto"}
             </Link>

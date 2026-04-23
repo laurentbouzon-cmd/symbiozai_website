@@ -33,7 +33,7 @@ const TONE_STYLES: Record<
 }
 
 /**
- * HITLExplainer — 3-column Green/Orange/Red supervision policy.
+ * HITLExplainer: 3-column Green/Orange/Red supervision policy.
  * Used on /features and /mcp and /for-sales-teams.
  */
 export function HITLExplainer({

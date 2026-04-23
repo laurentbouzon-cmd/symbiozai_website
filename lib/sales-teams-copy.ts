@@ -1,5 +1,5 @@
 /**
- * /for-sales-teams page copy — post-pivot MCP-only (2026-04-23).
+ * /for-sales-teams page copy: post-pivot MCP-only (2026-04-23).
  * Source: symbiozai-cos/cos-data/content/site-copy/2026-04-23-site-copy-post-pivot-mcp.md
  * R11-compliant.
  */
@@ -11,7 +11,7 @@ export const salesTeamsCopy = {
     meta: {
       title: "Your sales team's AI workforce | SymbiozAI",
       description:
-        "SymbiozAI gives your sales team an AI agent that targets, qualifies, and follows up — while they focus on closing. Built on MCP. You approve what matters.",
+        "SymbiozAI gives your sales team an AI agent that targets, qualifies, and follows up, while they focus on closing. Built on MCP. You approve what matters.",
     },
     hero: {
       eyebrow: "For sales teams",
@@ -26,7 +26,7 @@ export const salesTeamsCopy = {
       eyebrow: "The 3-minute demo",
       title: "See the motion run while nobody opens a browser tab.",
       lede:
-        "See your AI agent target 50 prospects by ICP, score the top 20, draft 10 personalized emails, and surface the 3 deals at risk in your pipeline — without anyone opening a browser tab. Then see the supervision console: 5 minutes. One queue. Your approvals.",
+        "See your AI agent target 50 prospects by ICP, score the top 20, draft 10 personalized emails, and surface the 3 deals at risk in your pipeline. Without anyone opening a browser tab. Then see the supervision console: 5 minutes. One queue. Your approvals.",
       placeholder:
         "Video walkthrough coming soon. Book a live demo to see it on your ICP.",
     },
@@ -51,7 +51,7 @@ export const salesTeamsCopy = {
         {
           heading: "Ramp time is killing your velocity.",
           body:
-            "A new AE takes 3-6 months to reach full productivity. With SymbiozAI, they inherit the agent's institutional knowledge from day one — DISC profiles, deal history, buying signals, all surfaced automatically.",
+            "A new AE takes 3-6 months to reach full productivity. With SymbiozAI, they inherit the agent's institutional knowledge from day one: DISC profiles, deal history, buying signals, all surfaced automatically.",
         },
       ],
     },
@@ -92,12 +92,12 @@ export const salesTeamsCopy = {
         {
           heading: "Your agent runs the motion. You run the deals.",
           body:
-            "Acquisition, qualification, enrichment, email drafting, meeting prep — all handled by your AI agent. You focus on the calls and the closes that require human judgment.",
+            "Acquisition, qualification, enrichment, email drafting, meeting prep. All handled by your AI agent. You focus on the calls and the closes that require human judgment.",
         },
         {
           heading: "Full pipeline. Zero blind spots.",
           body:
-            "35 missions cover the full sales cycle — from targeting an ICP list to scoring a deal's health. Nothing falls through the cracks.",
+            "35 missions cover the full sales cycle. From targeting an ICP list to scoring a deal's health. Nothing falls through the cracks.",
         },
         {
           heading: "Supervised. Audited. AI Act-ready.",
@@ -132,10 +132,10 @@ export const salesTeamsCopy = {
       title: "Built in the EU. Your data stays where it belongs.",
       items: [
         "Frankfurt datacenter (DigitalOcean FRA1)",
-        "AI Act article 14 compliant — human oversight by design",
-        "GDPR article 15 endpoint — export your data on demand",
-        "Immutable audit log — 7-year retention",
-        "Kill-switch — stop everything in under 1 second",
+        "AI Act article 14 compliant: human oversight by design",
+        "GDPR article 15 endpoint: export your data on demand",
+        "Immutable audit log: 7-year retention",
+        "Kill-switch: stop everything in under 1 second",
       ],
     },
     ctaFinal: {
@@ -167,7 +167,7 @@ export const salesTeamsCopy = {
     meta: {
       title: "La workforce IA de votre équipe commerciale | SymbiozAI",
       description:
-        "SymbiozAI donne à votre équipe commerciale un agent IA qui cible, qualifie et relance — pendant qu'ils se concentrent sur le closing. Basé sur MCP. Vous approuvez ce qui compte.",
+        "SymbiozAI donne à votre équipe commerciale un agent IA qui cible, qualifie et relance, pendant qu'ils se concentrent sur le closing. Basé sur MCP. Vous approuvez ce qui compte.",
     },
     hero: {
       eyebrow: "Pour les équipes commerciales",
@@ -182,7 +182,7 @@ export const salesTeamsCopy = {
       eyebrow: "La démo de 3 minutes",
       title: "Le motion tourne sans que personne n'ouvre un onglet.",
       lede:
-        "Voyez votre agent IA cibler 50 prospects par ICP, scorer le top 20, rédiger 10 emails personnalisés et remonter les 3 deals à risque dans votre pipeline — sans que personne n'ouvre un navigateur. Puis voyez la console de supervision : 5 minutes. Une file. Vos approbations.",
+        "Voyez votre agent IA cibler 50 prospects par ICP, scorer le top 20, rédiger 10 emails personnalisés et remonter les 3 deals à risque dans votre pipeline. Sans que personne n'ouvre un navigateur. Puis voyez la console de supervision : 5 minutes. Une file. Vos approbations.",
       placeholder:
         "Vidéo à venir. Réservez une démo live pour la voir sur votre ICP.",
     },
@@ -207,7 +207,7 @@ export const salesTeamsCopy = {
         {
           heading: "Le ramp tue votre vélocité.",
           body:
-            "Un nouvel AE met 3-6 mois à atteindre sa pleine productivité. Avec SymbiozAI, il hérite de la connaissance institutionnelle de l'agent dès le départ — profils DISC, historique deals, signaux d'achat, tout remonté automatiquement.",
+            "Un nouvel AE met 3-6 mois à atteindre sa pleine productivité. Avec SymbiozAI, il hérite de la connaissance institutionnelle de l'agent dès le départ : profils DISC, historique deals, signaux d'achat, tout remonté automatiquement.",
         },
       ],
     },
@@ -248,12 +248,12 @@ export const salesTeamsCopy = {
         {
           heading: "Votre agent pilote le motion. Vous pilotez les deals.",
           body:
-            "Acquisition, qualification, enrichissement, rédaction email, préparation de réunions — tout géré par votre agent IA. Vous vous concentrez sur les calls et les closes qui demandent un jugement humain.",
+            "Acquisition, qualification, enrichissement, rédaction email, préparation de réunions. Tout géré par votre agent IA. Vous vous concentrez sur les calls et les closes qui demandent un jugement humain.",
         },
         {
           heading: "Pipeline complet. Aucun angle mort.",
           body:
-            "35 missions couvrent le cycle Sales complet — du targeting d'une liste ICP au scoring de santé d'un deal. Rien ne passe à travers les mailles.",
+            "35 missions couvrent le cycle Sales complet. Du targeting d'une liste ICP au scoring de santé d'un deal. Rien ne passe à travers les mailles.",
         },
         {
           heading: "Supervisé. Audité. Prêt pour l'AI Act.",
@@ -288,10 +288,10 @@ export const salesTeamsCopy = {
       title: "Construit en EU. Vos données restent où elles doivent.",
       items: [
         "Datacenter Frankfurt (DigitalOcean FRA1)",
-        "Conforme AI Act article 14 — supervision humaine by design",
-        "Endpoint RGPD article 15 — exportez vos données à la demande",
-        "Audit log immuable — rétention 7 ans",
-        "Kill-switch — stoppez tout en moins d'une seconde",
+        "Conforme AI Act article 14 : supervision humaine by design",
+        "Endpoint RGPD article 15 : exportez vos données à la demande",
+        "Audit log immuable : rétention 7 ans",
+        "Kill-switch : stoppez tout en moins d'une seconde",
       ],
     },
     ctaFinal: {

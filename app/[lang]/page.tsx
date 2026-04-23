@@ -170,7 +170,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   // Agents compatibles (text-only pills, R11-safe, zero third-party logo)
   const agents = ["Claude Code", "Cursor", "ChatGPT", "Cline", "Goose", "Continue.dev"]
 
-  // Illustrative agent session mocked for the Solution section — narrative only,
+  // Illustrative agent session mocked for the Solution section: narrative only,
   // not an install command. Shows what a tenant's own agent does when it talks
   // to SymbiozAI through the MCP server. No interactivity, no typing animation.
   const agentSessionTranscript = isFr
@@ -207,7 +207,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 [agent] calling get_meeting_prep_brief...
 ✓ Company context, history, talking points ready`
 
-  // Note: dangerouslySetInnerHTML below is safe — jsonLd is built from
+  // Note: the inline JSON-LD injection below is safe. jsonLd is built from
   // our own static dictionary strings, not from user input.
   const jsonLdHtml = JSON.stringify(jsonLd)
 
@@ -217,7 +217,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
         <SharedHeader lang={lang} dictionary={dictionary} activePage="home" showLogo={false} />
 
-        {/* Hero Section — above-the-fold on desktop 900px and mobile 700px */}
+        {/* Hero Section: above-the-fold on desktop 900px and mobile 700px */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
           <section className="flex flex-col px-4 sm:px-6 text-center min-h-screen justify-center relative">
             <div
@@ -242,7 +242,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 {/*
                   Line 1 EN must stay single-line on viewports >=375px (design
                   constraint validated 2026-04-23). FR line 1 may wrap naturally
-                  on narrow viewports — no constraint. Approach: conditional
+                  on narrow viewports (no constraint). Approach: conditional
                   whitespace-nowrap on EN only, responsive typo scale unchanged.
                 */}
                 <span className={`block ${isFr ? "" : "whitespace-nowrap"}`}>{dictionary.subtitle[0]}</span>
@@ -324,8 +324,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </h2>
                 <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
                   {isFr
-                    ? "SymbiozAI n'est pas un CRM avec une IA ajoutée. C'est un CRM conçu pour qu'un agent IA externe — Claude Code, Cursor, tout agent compatible MCP — soit l'opérateur principal. 35 missions MCP verbales. Un seul endpoint. Installation en moins de 5 minutes."
-                    : "SymbiozAI is not a CRM with AI on top. It's a CRM designed so that an external AI agent — Claude Code, Cursor, any MCP-compatible agent — is the primary operator. 35 verbal MCP missions. One endpoint. Install in under 5 minutes."}
+                    ? "SymbiozAI n'est pas un CRM avec une IA ajoutée. C'est un CRM conçu pour qu'un agent IA externe, Claude Code, Cursor, tout agent compatible MCP, soit l'opérateur principal. 35 missions MCP verbales. Un seul endpoint. Installation en moins de 5 minutes."
+                    : "SymbiozAI is not a CRM with AI on top. It's a CRM designed so that an external AI agent, Claude Code, Cursor, any MCP-compatible agent, is the primary operator. 35 verbal MCP missions. One endpoint. Install in under 5 minutes."}
                 </p>
               </ScrollReveal>
 
@@ -358,8 +358,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                         </h3>
                         <p className="text-gray-600">
                           {isFr
-                            ? "Votre agent appelle start_targeting, qualify_lead, assess_deal_health, analyze_communication_style — en langage naturel. Acquisition, qualification, engagement, meta. Un seul endpoint."
-                            : "Your agent calls start_targeting, qualify_lead, assess_deal_health, analyze_communication_style — in natural language. Acquisition, qualification, engagement, meta. One endpoint."}
+                            ? "Votre agent appelle start_targeting, qualify_lead, assess_deal_health, analyze_communication_style. En langage naturel. Acquisition, qualification, engagement, meta. Un seul endpoint."
+                            : "Your agent calls start_targeting, qualify_lead, assess_deal_health, analyze_communication_style. In natural language. Acquisition, qualification, engagement, meta. One endpoint."}
                         </p>
                       </div>
                     </div>
@@ -395,7 +395,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             </div>
           </section>
 
-          {/* Features Section — 4 features */}
+          {/* Features Section: 4 features */}
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
               <ScrollReveal>
@@ -470,14 +470,14 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                     &ldquo;{dictionary.quote}&rdquo;
                   </blockquote>
                   <p className="mt-4 text-sm font-semibold text-gray-900">
-                    — Laurent Bouzon, {isFr ? "fondateur de SymbiozAI" : "founder of SymbiozAI"}
+                    Laurent Bouzon, {isFr ? "fondateur de SymbiozAI" : "founder of SymbiozAI"}
                   </p>
                 </div>
               </ScrollReveal>
             </div>
           </section>
 
-          {/* Integrations Section — 2 rows : AI agents (text-only) + tools (logos) */}
+          {/* Integrations Section: 2 rows, AI agents (text-only) + tools (logos) */}
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
               <ScrollReveal>
@@ -486,7 +486,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </h2>
               </ScrollReveal>
 
-              {/* Row 1 — AI agents (text-only pills, R11-safe) */}
+              {/* Row 1: AI agents (text-only pills, R11-safe) */}
               <ScrollReveal className="mb-10">
                 <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
                   {isFr ? "Votre agent IA" : "Your AI agent"}
@@ -509,7 +509,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </div>
               </ScrollReveal>
 
-              {/* Row 2 — Tools (existing logo pills, unchanged) */}
+              {/* Row 2: Tools (existing logo pills, unchanged) */}
               <ScrollReveal>
                 <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
                   {isFr ? "Vos outils" : "Your tools"}

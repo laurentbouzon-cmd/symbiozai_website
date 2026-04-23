@@ -8,8 +8,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     ? "SymbiozAI Manifesto | Tomorrow's company will be AI-Native. Or it won't be."
     : "Manifeste SymbiozAI | L'entreprise de demain sera AI-Native. Ou ne sera pas."
   const description = isEnglish
-    ? "The AI-Native company built from the inside out — and the MCP-only CRM operated by your agent. For 25 years we asked humans to open their CRM. In 2026, the agent operates it."
-    : "L'entreprise AI-Native construite de l'intérieur — et le CRM MCP-only opéré par votre agent. Pendant 25 ans on a demandé aux humains d'ouvrir leur CRM. En 2026, l'agent l'opère."
+    ? "The AI-Native company built from the inside out. And the MCP-only CRM operated by your agent. For 25 years we asked humans to open their CRM. In 2026, the agent operates it."
+    : "L'entreprise AI-Native construite de l'intérieur. Et le CRM MCP-only opéré par votre agent. Pendant 25 ans on a demandé aux humains d'ouvrir leur CRM. En 2026, l'agent l'opère."
 
   return {
     title,

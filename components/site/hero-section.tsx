@@ -19,7 +19,7 @@ interface HeroSectionProps {
 }
 
 /**
- * HeroSection — central hero used on /mcp and /for-sales-teams.
+ * HeroSection: central hero used on /mcp and /for-sales-teams.
  * Editorial aesthetic: tight typography stack, generous negative space,
  * a single subtle radial accent behind the headline, no autoplay video.
  */

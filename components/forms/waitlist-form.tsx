@@ -29,7 +29,7 @@ export function WaitlistForm() {
 
     if (!isProEmail(email)) {
       setStatus("error")
-      setMessage("Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted.")
+      setMessage("Please use your work email. Personal addresses (Gmail, Yahoo, Outlook…) are not accepted.")
       return
     }
 

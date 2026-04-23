@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "/images/pivot-mcp/og-image-symbiozai.png",
         width: 1200,
         height: 630,
-        alt: "SymbiozAI — the headless AI CRM",
+        alt: "SymbiozAI: the headless AI CRM",
       },
     ],
     locale: "en_US",
@@ -86,7 +86,7 @@ export default function RootLayout({
         {children}
 
         {/*
-          Google Consent Mode v2 defaults — MUST run before GA4 fires.
+          Google Consent Mode v2 defaults: MUST run before GA4 fires.
           This inline script is tiny (~200 bytes) and sets denied defaults
           so GA4 respects consent from the start, even before Axeptio loads.
         */}
@@ -104,7 +104,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Google tag (gtag.js) — Consent Mode v2 gated by defaults above + Axeptio */}
+        {/* Google tag (gtag.js): Consent Mode v2 gated by defaults above + Axeptio */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-1P585GSSEQ" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -115,7 +115,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Axeptio — Cookie consent SDK (lazy loaded, updates consent mode when user interacts) */}
+        {/* Axeptio: Cookie consent SDK (lazy loaded, updates consent mode when user interacts) */}
         <Script id="axeptio-settings" strategy="lazyOnload">
           {`
             window.axeptioSettings = {

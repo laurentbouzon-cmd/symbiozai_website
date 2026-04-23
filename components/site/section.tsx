@@ -25,7 +25,7 @@ const TONES = {
 }
 
 /**
- * Section — consistent page section wrapper.
+ * Section: consistent page section wrapper.
  * Handles eyebrow + title + lede stack and background tone.
  */
 export function Section({

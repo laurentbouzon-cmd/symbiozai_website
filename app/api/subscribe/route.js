@@ -11,8 +11,8 @@ function buildEmailHtml(email, lang) {
     fr: {
       preview: "Tu es dans la boucle. Le CRM tel qu'on le connaît est mort.",
       headline: "C'est noté,<br>tu es dans la boucle.",
-      p1: "Tu viens de rejoindre la waitlist de SymbiozAI — le CRM headless pilot&eacute; par ton agent IA via MCP.",
-      p2: `Pas un CRM avec une couche d'IA coll&eacute;e par-dessus. Un CRM <span style="color: #ffffff; font-weight: 600;">pens&eacute; depuis le jour 1</span> pour &ecirc;tre op&eacute;r&eacute; par un agent IA — saisir, structurer, relancer, suivre. Tu supervises, il ex&eacute;cute.`,
+      p1: "Tu viens de rejoindre la waitlist de SymbiozAI : le CRM headless pilot&eacute; par ton agent IA via MCP.",
+      p2: `Pas un CRM avec une couche d'IA coll&eacute;e par-dessus. Un CRM <span style="color: #ffffff; font-weight: 600;">pens&eacute; depuis le jour 1</span> pour &ecirc;tre op&eacute;r&eacute; par un agent IA : saisir, structurer, relancer, suivre. Tu supervises, il ex&eacute;cute.`,
       p3: "Toi, tu te concentres sur ce qui compte&nbsp;: vendre.",
       earlyLabel: "Early Adopter",
       earlyText: `Tu es parmi les <span style="color: #ffffff; font-weight: 600;">early adopters</span>. Concr&egrave;tement&nbsp;: acc&egrave;s prioritaire au produit, influence directe sur ce qu'on construit, et pricing early adopter au lancement.`,
@@ -30,7 +30,7 @@ function buildEmailHtml(email, lang) {
     en: {
       preview: "You're in the loop. CRM as we know it is dead.",
       headline: "Noted,<br>you're in the loop.",
-      p1: "You just joined the SymbiozAI waitlist — the headless AI CRM operated by your AI agent via MCP.",
+      p1: "You just joined the SymbiozAI waitlist: the headless AI CRM operated by your AI agent via MCP.",
       p2: `Not a CRM with an AI layer slapped on top. A CRM <span style="color: #ffffff; font-weight: 600;">designed from day 1</span> to be operated by an AI agent: targeting, qualifying, drafting, tracking. You supervise, it executes.`,
       p3: "You focus on what matters: selling.",
       earlyLabel: "Early Adopter",
@@ -205,7 +205,7 @@ async function sendConfirmationEmail(email, lang) {
   const apiKey = process.env.BREVO_API_KEY
   if (!apiKey) return
 
-  const subjects = { fr: "C'est noté, tu es dans la boucle — SymbiozAI", en: "Noted, you're in the loop — SymbiozAI" }
+  const subjects = { fr: "C'est noté, tu es dans la boucle | SymbiozAI", en: "Noted, you're in the loop | SymbiozAI" }
 
   await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
@@ -232,7 +232,7 @@ export async function POST(request) {
     }
 
     if (!isProEmail(email)) {
-      return Response.json({ success: false, message: "Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted." }, { status: 400 })
+      return Response.json({ success: false, message: "Please use your work email. Personal addresses (Gmail, Yahoo, Outlook…) are not accepted." }, { status: 400 })
     }
 
     if (!process.env.NOTION_DATABASE_ID) {

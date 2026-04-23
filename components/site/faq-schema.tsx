@@ -8,7 +8,7 @@ interface FAQSchemaProps {
 }
 
 /**
- * FAQSchema — renders JSON-LD FAQPage Schema.org.
+ * FAQSchema: renders JSON-LD FAQPage Schema.org.
  * Content is built from our own static copy (no user input), so it is safe.
  * Next.js allows JSON-LD as a script child without hydration mismatch.
  */

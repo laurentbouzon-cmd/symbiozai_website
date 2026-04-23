@@ -17,7 +17,7 @@ interface CTABlockProps {
 }
 
 /**
- * CTABlock — shared primary / secondary / tertiary CTA pattern.
+ * CTABlock: shared primary / secondary / tertiary CTA pattern.
  * Primary uses the brand gradient (reserved for the principal action).
  * Secondary is a quiet outlined button. Tertiary is a plain text link with arrow.
  */

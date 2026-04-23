@@ -56,7 +56,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </h1>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* PARTIE 1 — L'AI-Native Company : on l'a construite */}
+          {/* PARTIE 1 - L'AI-Native Company : on l'a construite */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -128,11 +128,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* PARTIE 2 — Le CRM MCP-only : le produit pivot           */}
+          {/* PARTIE 2 - Le CRM MCP-only : le produit pivot           */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2.1 — Thèse 25 ans                              */}
+          {/* SECTION 2.1 - Thèse 25 ans                              */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -164,7 +164,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2.2 — La bascule 2026                           */}
+          {/* SECTION 2.2 - La bascule 2026                           */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -186,17 +186,17 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
             <p>
               {isFr
                 ? "Ce n'est pas une prophétie. C'est une bascule déjà observable pour ceux qui utilisent Claude Code ou Cursor au quotidien. Un agent IA peut lire un pipeline, qualifier un lead, rédiger un email adapté au profil DISC du destinataire. Il peut faire tout ça pendant que vous êtes en réunion. Il lui manquait seulement un CRM conçu pour qu'il en soit l'opérateur."
-                : "This isn't a prophecy. It's a shift already visible to anyone using Claude Code or Cursor daily. An AI agent can read a pipeline, qualify a lead, draft an email calibrated to the recipient's DISC profile. It can do all of this while you're in a meeting. The only thing missing was a CRM built for the agent to operate — not adapted to accommodate it."}
+                : "This isn't a prophecy. It's a shift already visible to anyone using Claude Code or Cursor daily. An AI agent can read a pipeline, qualify a lead, draft an email calibrated to the recipient's DISC profile. It can do all of this while you're in a meeting. The only thing missing was a CRM built for the agent to operate. Not adapted to accommodate it."}
             </p>
             <p>
               {isFr
-                ? "Les outils sont là. Le protocole est là — MCP, spécification officielle Anthropic 2025. Ce qui restait à construire, c'est le CRM conçu d'emblée pour ça. Pas pour accommoder ça."
-                : "The tools exist. The protocol exists — MCP, Anthropic's official specification, 2025. What remained was a CRM designed for this from the ground up. Not retrofitted for it."}
+                ? "Les outils sont là. Le protocole est là : MCP, spécification officielle Anthropic 2025. Ce qui restait à construire, c'est le CRM conçu d'emblée pour ça. Pas pour accommoder ça."
+                : "The tools exist. The protocol exists: MCP, Anthropic's official specification, 2025. What remained was a CRM designed for this from the ground up. Not retrofitted for it."}
             </p>
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2.3 — Headless by design                        */}
+          {/* SECTION 2.3 - Headless by design                        */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -207,13 +207,13 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
             </h2>
             <p>
               {isFr
-                ? "En 2026, tous les CRM sérieux exposent un serveur MCP. Octolane, HubSpot, Zoho, Salesforce Headless 360 — chacun a son implémentation. Pour tous, MCP est une couche ajoutée à côté d'une interface humaine historique. L'UI reste le produit principal. MCP est une option."
-                : "In 2026, every serious CRM exposes an MCP server. Octolane, HubSpot, Zoho, Salesforce Headless 360 — each has an implementation. For all of them, MCP is a layer added alongside a legacy human interface. The UI remains the main product. MCP is an option."}
+                ? "En 2026, tous les CRM sérieux exposent un serveur MCP. Octolane, HubSpot, Zoho, Salesforce Headless 360. Chacun a son implémentation. Pour tous, MCP est une couche ajoutée à côté d'une interface humaine historique. L'UI reste le produit principal. MCP est une option."
+                : "In 2026, every serious CRM exposes an MCP server. Octolane, HubSpot, Zoho, Salesforce Headless 360. Each has an implementation. For all of them, MCP is a layer added alongside a legacy human interface. The UI remains the main product. MCP is an option."}
             </p>
             <p>
               {isFr
-                ? "SymbiozAI a fait le chemin inverse. Zéro interface humaine principale. Le serveur MCP est le produit. La console de supervision — cinq minutes par jour, sur les actions sensibles — est une porte de contrôle, pas une interface d'opération."
-                : "SymbiozAI went the other way. No primary human interface. The MCP server is the product. The supervision console — five minutes a day, for sensitive actions — is a control gate, not an operating interface."}
+                ? "SymbiozAI a fait le chemin inverse. Zéro interface humaine principale. Le serveur MCP est le produit. La console de supervision, cinq minutes par jour, sur les actions sensibles, est une porte de contrôle, pas une interface d'opération."
+                : "SymbiozAI went the other way. No primary human interface. The MCP server is the product. The supervision console, five minutes a day, for sensitive actions, is a control gate, not an operating interface."}
             </p>
             <p>
               {isFr
@@ -228,7 +228,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2.4 — Ce que ça change concrètement             */}
+          {/* SECTION 2.4 - Ce que ça change concrètement             */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -238,8 +238,8 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
             <ul className="space-y-4 list-none pl-0">
               <li>
                 {isFr
-                  ? "35 missions MCP exposées à l'agent du client — ciblage, enrichissement, qualification, scoring, email DISC-aware, préparation de réunion, état du pipeline."
-                  : "35 MCP missions exposed to the client's agent — targeting, enrichment, qualification, scoring, DISC-aware email drafting, meeting preparation, pipeline snapshot."}
+                  ? "35 missions MCP exposées à l'agent du client : ciblage, enrichissement, qualification, scoring, email DISC-aware, préparation de réunion, état du pipeline."
+                  : "35 MCP missions exposed to the client's agent: targeting, enrichment, qualification, scoring, DISC-aware email drafting, meeting preparation, pipeline snapshot."}
               </li>
               <li>
                 {isFr
@@ -255,7 +255,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2.5 — Chute doctrinale                          */}
+          {/* SECTION 2.5 - Chute doctrinale                          */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-6 mb-12">

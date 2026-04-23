@@ -51,11 +51,6 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/about`} className="text-sm hover:text-white transition-colors duration-200">
-                  {isFr ? "À propos" : "About"}
-                </Link>
-              </li>
-              <li>
                 <Link href={`/${lang}#cta-final`} className="text-sm hover:text-white transition-colors duration-200">
                   {isFr ? "Rejoindre la beta" : "Join the beta"}
                 </Link>

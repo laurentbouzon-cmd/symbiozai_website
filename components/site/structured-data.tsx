@@ -3,7 +3,7 @@ interface StructuredDataProps {
 }
 
 /**
- * StructuredData — generic JSON-LD injector.
+ * StructuredData: generic JSON-LD injector.
  * Content is built from our own static copy, so it is safe.
  */
 export function StructuredData({ data }: StructuredDataProps) {
