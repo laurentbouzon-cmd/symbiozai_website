@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { getDictionary } from "@/lib/dictionary"
 import { salesTeamsCopy } from "@/lib/sales-teams-copy"
-import { SiteHeader } from "@/components/site/site-header"
+import { SharedHeader } from "@/components/shared-header"
 import { SharedFooter } from "@/components/shared-footer"
 import { HeroSection } from "@/components/site/hero-section"
 import { Section } from "@/components/site/section"
@@ -103,7 +103,7 @@ export default async function ForSalesTeamsPage({
       <FAQSchema items={copy.faq} />
 
       <div className="flex min-h-screen flex-col overflow-x-hidden bg-white">
-        <SiteHeader lang={lang} dictionary={dictionary} activePage="for-sales-teams" />
+        <SharedHeader lang={lang} dictionary={dictionary} activePage="for-sales-teams" />
 
         <main className="flex-1">
           <HeroSection
@@ -115,7 +115,7 @@ export default async function ForSalesTeamsPage({
             tertiary={copy.hero.tertiary}
           />
 
-          {/* DEMO PLACEHOLDER */}
+          {/* SUPERVISION CONSOLE PREVIEW */}
           <Section
             id="demo"
             tone="gray"
@@ -129,16 +129,16 @@ export default async function ForSalesTeamsPage({
                 <div className="relative aspect-video overflow-hidden rounded-2xl bg-gray-900">
                   <Image
                     src="/images/pivot-mcp/supervision-console-mockup.png"
-                    alt="Supervision console mockup"
+                    alt={copy.demo.eyebrow}
                     fill
-                    className="object-cover opacity-95"
+                    className="object-cover"
                     sizes="(min-width: 1024px) 48rem, 100vw"
                   />
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-6">
-                    <p className="text-sm text-white/90">{copy.demo.placeholder}</p>
-                  </div>
                 </div>
               </div>
+              <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-gray-600">
+                {copy.demo.caption}
+              </p>
             </ScrollReveal>
           </Section>
 
@@ -147,6 +147,7 @@ export default async function ForSalesTeamsPage({
             tone="white"
             container="default"
             eyebrow={copy.pains.eyebrow}
+            title={copy.pains.title}
           >
             <ScrollReveal stagger className="grid gap-6 md:grid-cols-2">
               {copy.pains.items.map((item, idx) => (
@@ -266,6 +267,55 @@ export default async function ForSalesTeamsPage({
                   </span>
                   <span className="text-sm leading-relaxed text-gray-700">{item}</span>
                 </div>
+              ))}
+            </ScrollReveal>
+          </Section>
+
+          {/* AGENT COMPATIBILITY STRIP */}
+          <Section
+            tone="gray"
+            container="default"
+            eyebrow={copy.agents.eyebrow}
+            title={copy.agents.title}
+          >
+            <ScrollReveal>
+              <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 md:p-8">
+                <Image
+                  src="/images/pivot-mcp/logo-strip-agents.png"
+                  alt={copy.agents.alt}
+                  width={1200}
+                  height={200}
+                  className="mx-auto h-auto w-full"
+                  sizes="(min-width: 1024px) 48rem, 100vw"
+                />
+              </div>
+              <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-gray-600">
+                {copy.agents.caption}
+              </p>
+            </ScrollReveal>
+          </Section>
+
+          {/* FAQ */}
+          <Section
+            tone="white"
+            container="narrow"
+            eyebrow={copy.faqSection.eyebrow}
+            title={copy.faqSection.title}
+            titleAlign="center"
+          >
+            <ScrollReveal stagger className="space-y-4">
+              {copy.faq.map((item, idx) => (
+                <article
+                  key={idx}
+                  className="rounded-2xl border border-gray-200 bg-white p-6 md:p-7"
+                >
+                  <h3 className="text-base font-semibold text-gray-900 md:text-lg">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">
+                    {item.answer}
+                  </p>
+                </article>
               ))}
             </ScrollReveal>
           </Section>

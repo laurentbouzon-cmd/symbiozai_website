@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { getDictionary } from "@/lib/dictionary"
 import { mcpCopy, missionsCatalog } from "@/lib/mcp-page-copy"
-import { SiteHeader } from "@/components/site/site-header"
+import { SharedHeader } from "@/components/shared-header"
 import { SharedFooter } from "@/components/shared-footer"
 import { HeroSection } from "@/components/site/hero-section"
 import { Section } from "@/components/site/section"
@@ -115,7 +115,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
       <FAQSchema items={copy.faq} />
 
       <div className="flex min-h-screen flex-col overflow-x-hidden bg-white">
-        <SiteHeader lang={lang} dictionary={dictionary} activePage="mcp" />
+        <SharedHeader lang={lang} dictionary={dictionary} activePage="mcp" />
 
         <main className="flex-1">
           <HeroSection

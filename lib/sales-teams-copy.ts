@@ -9,29 +9,30 @@ import type { FAQItem } from "./site-types"
 export const salesTeamsCopy = {
   en: {
     meta: {
-      title: "Your sales team's AI workforce | SymbiozAI",
+      title: "Your team sells. The agents do everything else. | SymbiozAI",
       description:
         "SymbiozAI gives your sales team an AI agent that targets, qualifies, and follows up, while they focus on closing. Built on MCP. You approve what matters.",
     },
     hero: {
       eyebrow: "For sales teams",
-      headline: "Your sales team's AI workforce.",
+      headline: "Your team sells. The agents do everything else.",
       subhead:
-        "Your AI agent runs the sales motion. You approve what matters. Built on MCP. AI-native by design.",
+        "Your AI agents handle targeting, enrichment, qualification, and follow-up while you sleep. Every morning, a 5-minute queue of what needs your call. Nothing ships without your approval.",
       primary: { label: "Book a demo", href: "/en/contact" },
-      secondary: { label: "Watch the 3-minute demo", href: "#demo" },
-      tertiary: { label: "Try the live sandbox", href: "/en/mcp#quickstart" },
+      secondary: { label: "See the supervision console", href: "#demo" },
+      tertiary: { label: "Read the MCP docs", href: "/en/mcp" },
     },
     demo: {
-      eyebrow: "The 3-minute demo",
-      title: "See the motion run while nobody opens a browser tab.",
+      eyebrow: "Supervision console",
+      title: "Five minutes a day. One queue. Your approvals.",
       lede:
-        "See your AI agent target 50 prospects by ICP, score the top 20, draft 10 personalized emails, and surface the 3 deals at risk in your pipeline. Without anyone opening a browser tab. Then see the supervision console: 5 minutes. One queue. Your approvals.",
-      placeholder:
-        "Video walkthrough coming soon. Book a live demo to see it on your ICP.",
+        "Your AI agents target 50 prospects by ICP, score the top 20, draft 10 personalized emails, and surface the 3 deals at risk in your pipeline overnight. Each morning you open the supervision console: a short queue of decisions that need your judgment. You approve, you edit, you block. The agents ship the rest.",
+      caption:
+        "Supervision console preview. Book a demo to walk through it on your own pipeline.",
     },
     pains: {
       eyebrow: "The pains we solve",
+      title: "Four reasons your pipeline lies to you.",
       items: [
         {
           heading: "Your reps don't fill the CRM. And it's not their fault.",
@@ -41,7 +42,7 @@ export const salesTeamsCopy = {
         {
           heading: "You have 5 tools where you should have one.",
           body:
-            "Apollo for prospecting. Clay for enrichment. Outreach for sequences. HubSpot for pipeline. Gong for call intelligence. Five contracts. Five integrations. Five onboardings. SymbiozAI wraps 23 data providers and the full sales cycle into one MCP endpoint.",
+            "Apollo for prospecting. Clay for enrichment. Outreach for sequences. HubSpot for pipeline. Gong for call intelligence. Five contracts. Five integrations. Five onboardings. SymbiozAI connects 23 data providers and the full sales cycle into one agent.",
         },
         {
           heading: "Your pipeline forecast is always wrong.",
@@ -108,7 +109,7 @@ export const salesTeamsCopy = {
     },
     whatStays: {
       eyebrow: "What your team keeps doing",
-      title: "SymbiozAI does not replace your sales team. It removes the parts they hate.",
+      title: "Your team owns the calls, the relationships, and the close. The agents handle everything that gets in the way.",
       humanLabel: "What stays human",
       agentLabel: "What the agent handles",
       human: [
@@ -138,8 +139,19 @@ export const salesTeamsCopy = {
         "Kill-switch: stop everything in under 1 second",
       ],
     },
+    agents: {
+      eyebrow: "Agent compatibility",
+      title: "Built on MCP. Works with the agent your team already uses.",
+      alt: "Claude Code, Cursor, and other MCP-compatible AI agents supported by SymbiozAI",
+      caption:
+        "SymbiozAI exposes 35 sales missions through an MCP server. Your existing AI agent connects with one CLI install. No SDK to learn. No lock-in.",
+    },
+    faqSection: {
+      eyebrow: "FAQ",
+      title: "Before you book a demo.",
+    },
     ctaFinal: {
-      title: "Ready to run a leaner, faster sales motion?",
+      title: "Run a leaner, faster sales motion. Starting now.",
       lede: "Walk through a live agent-operated pipeline on your data.",
       primary: { label: "Book a demo", href: "/en/contact" },
       linkedinLabel: "Reach Laurent directly on LinkedIn",
@@ -165,29 +177,30 @@ export const salesTeamsCopy = {
   },
   fr: {
     meta: {
-      title: "La workforce IA de votre équipe commerciale | SymbiozAI",
+      title: "Votre équipe vend. Les agents font tout le reste. | SymbiozAI",
       description:
         "SymbiozAI donne à votre équipe commerciale un agent IA qui cible, qualifie et relance, pendant qu'ils se concentrent sur le closing. Basé sur MCP. Vous approuvez ce qui compte.",
     },
     hero: {
       eyebrow: "Pour les équipes commerciales",
-      headline: "La workforce IA de votre équipe commerciale.",
+      headline: "Votre équipe vend. Les agents font tout le reste.",
       subhead:
-        "Votre agent IA pilote le motion commerciale. Vous approuvez ce qui compte. Basé sur MCP. IA-native par design.",
+        "Vos agents IA gèrent le ciblage, l'enrichissement, la qualification et les relances pendant que vous dormez. Chaque matin, 5 minutes de décisions qui demandent votre jugement. Rien ne part sans votre validation.",
       primary: { label: "Réserver une démo", href: "/fr/contact" },
-      secondary: { label: "Voir la démo de 3 minutes", href: "#demo" },
-      tertiary: { label: "Tester la sandbox", href: "/fr/mcp#quickstart" },
+      secondary: { label: "Voir la console de supervision", href: "#demo" },
+      tertiary: { label: "Lire la documentation MCP", href: "/fr/mcp" },
     },
     demo: {
-      eyebrow: "La démo de 3 minutes",
-      title: "Le motion tourne sans que personne n'ouvre un onglet.",
+      eyebrow: "Console de supervision",
+      title: "Cinq minutes par jour. Une file. Vos approbations.",
       lede:
-        "Voyez votre agent IA cibler 50 prospects par ICP, scorer le top 20, rédiger 10 emails personnalisés et remonter les 3 deals à risque dans votre pipeline. Sans que personne n'ouvre un navigateur. Puis voyez la console de supervision : 5 minutes. Une file. Vos approbations.",
-      placeholder:
-        "Vidéo à venir. Réservez une démo live pour la voir sur votre ICP.",
+        "Vos agents IA ciblent 50 prospects par ICP, scorent le top 20, rédigent 10 emails personnalisés et remontent les 3 deals à risque dans votre pipeline, pendant la nuit. Chaque matin vous ouvrez la console de supervision : une file courte de décisions qui demandent votre jugement. Vous approuvez, vous éditez, vous bloquez. Les agents envoient le reste.",
+      caption:
+        "Aperçu de la console de supervision. Réservez une démo pour la parcourir sur votre propre pipeline.",
     },
     pains: {
       eyebrow: "Les douleurs qu'on résout",
+      title: "Quatre raisons pour lesquelles votre pipeline vous ment.",
       items: [
         {
           heading: "Vos commerciaux ne remplissent pas le CRM. Et ce n'est pas leur faute.",
@@ -197,7 +210,7 @@ export const salesTeamsCopy = {
         {
           heading: "Vous avez 5 outils là où il en faudrait 1.",
           body:
-            "Apollo pour la prospection. Clay pour l'enrichissement. Outreach pour les séquences. HubSpot pour le pipeline. Gong pour l'intelligence d'appels. Cinq contrats. Cinq intégrations. Cinq onboardings. SymbiozAI wrappe 23 fournisseurs de données et le cycle Sales complet dans un seul endpoint MCP.",
+            "Apollo pour la prospection. Clay pour l'enrichissement. Outreach pour les séquences. HubSpot pour le pipeline. Gong pour l'intelligence d'appels. Cinq contrats. Cinq intégrations. Cinq onboardings. SymbiozAI connecte 23 sources de données et le cycle Sales complet dans un seul agent.",
         },
         {
           heading: "Vos prévisions de pipeline sont toujours fausses.",
@@ -264,7 +277,7 @@ export const salesTeamsCopy = {
     },
     whatStays: {
       eyebrow: "Ce que votre équipe continue de faire",
-      title: "SymbiozAI ne remplace pas votre équipe commerciale. Il retire les parties qu'ils détestent.",
+      title: "Votre équipe garde les appels, les relations et le closing. Les agents gèrent tout ce qui est dans le chemin.",
       humanLabel: "Ce qui reste humain",
       agentLabel: "Ce que gère l'agent",
       human: [
@@ -294,8 +307,19 @@ export const salesTeamsCopy = {
         "Kill-switch : stoppez tout en moins d'une seconde",
       ],
     },
+    agents: {
+      eyebrow: "Compatibilité agents",
+      title: "Basé sur MCP. Compatible avec l'agent que votre équipe utilise déjà.",
+      alt: "Claude Code, Cursor et autres agents IA compatibles MCP supportés par SymbiozAI",
+      caption:
+        "SymbiozAI expose 35 missions commerciales via un serveur MCP. Votre agent IA existant se connecte avec une commande CLI. Aucun SDK à apprendre. Aucun lock-in.",
+    },
+    faqSection: {
+      eyebrow: "FAQ",
+      title: "Avant de réserver une démo.",
+    },
     ctaFinal: {
-      title: "Prêt à faire tourner un motion commerciale plus lean, plus rapide ?",
+      title: "Faites tourner un cycle commercial plus lean, plus rapide. Dès maintenant.",
       lede: "Parcourez un pipeline agent-operated sur vos données, en live.",
       primary: { label: "Réserver une démo", href: "/fr/contact" },
       linkedinLabel: "Contactez Laurent directement sur LinkedIn",
