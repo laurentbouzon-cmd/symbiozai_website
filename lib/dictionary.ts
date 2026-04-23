@@ -92,7 +92,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — The headless AI CRM",
     subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
-      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. Because the next generation of founders doesn't pilot with a mouse — they pilot with their AI workforce. EU-hosted. AI Act native.",
+      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse.",
     quote:
       "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
@@ -192,7 +192,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
     subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
-      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. Parce que la prochaine génération de fondateurs ne pilote plus avec une souris — elle pilote avec sa workforce IA. Hébergé en Europe. Conçu pour l'AI Act.",
+      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris.",
     quote:
       "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {
