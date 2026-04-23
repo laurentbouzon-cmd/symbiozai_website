@@ -165,6 +165,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             container="default"
             eyebrow={`01 · ${copy.quickstart.eyebrow}`}
             title={copy.quickstart.title}
+            lede={copy.quickstart.lede}
           >
             <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.quickstart.steps.map((step, idx) => (
@@ -217,6 +218,9 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                     {client.name}
                   </h3>
                   <CodeBlock code={client.code} language="json" caption={client.label} />
+                  <p className="mt-4 text-[13px] leading-relaxed text-white/70">
+                    {client.note}
+                  </p>
                 </article>
               ))}
             </ScrollReveal>
@@ -277,6 +281,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             container="default"
             eyebrow={`05 · ${copy.hitl.eyebrow}`}
             title={copy.hitl.title}
+            lede={copy.hitl.lede}
           >
             <ScrollReveal>
               <HITLExplainer
@@ -284,7 +289,13 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                 labelBehavior={copy.hitl.behaviorLabel}
                 labelExamples={copy.hitl.examplesLabel}
               />
-              <p className="mx-auto mt-12 max-w-3xl text-center text-base leading-relaxed text-gray-700 md:text-[17px]">
+              <div className="mx-auto mt-12 max-w-2xl">
+                <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500">
+                  {copy.hitl.policyLabel}
+                </p>
+                <CodeBlock code={copy.hitl.policyCode} language="json" />
+              </div>
+              <p className="mx-auto mt-10 max-w-3xl text-center text-base leading-relaxed text-gray-700 md:text-[17px]">
                 {copy.hitl.footer}
               </p>
             </ScrollReveal>
@@ -299,6 +310,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             container="default"
             eyebrow={`06 · ${copy.differentiators.eyebrow}`}
             title={copy.differentiators.title}
+            lede={copy.differentiators.lede}
           >
             <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.differentiators.items.map((item) => (
@@ -313,8 +325,21 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                     {item.heading}
                   </h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-gray-600">{item.body}</p>
-                  <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 font-mono text-[12.5px] italic leading-relaxed text-gray-700">
-                    {item.example}
+                  <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                    <p className="mb-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                      {copy.differentiators.examplePromptLabel}
+                    </p>
+                    <p className="font-mono text-[12.5px] italic leading-relaxed text-gray-700">
+                      {item.example}
+                    </p>
+                  </div>
+                  <div className="mt-3 rounded-xl border border-[#0d47a1]/15 bg-[#0d47a1]/[0.04] px-4 py-3">
+                    <p className="mb-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0d47a1]">
+                      {copy.differentiators.expectedOutputLabel}
+                    </p>
+                    <p className="text-[13px] leading-relaxed text-gray-700">
+                      {item.expected}
+                    </p>
                   </div>
                 </article>
               ))}
@@ -332,16 +357,16 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             title={copy.supervision.title}
             lede={copy.supervision.lede}
           >
-            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:gap-5">
               {copy.supervision.items.map((item) => (
                 <article
                   key={item.heading}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
                 >
-                  <h3 className="text-[15px] font-semibold tracking-tight text-gray-900">
+                  <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
                     {item.heading}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-gray-600">{item.body}</p>
                 </article>
               ))}
             </ScrollReveal>
@@ -359,18 +384,19 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             tone="gray"
             container="default"
             eyebrow={`08 · ${copy.compliance.eyebrow}`}
-            title={undefined}
+            title={copy.compliance.title}
+            lede={copy.compliance.lede}
           >
-            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
               {copy.compliance.items.map((item) => (
                 <article
                   key={item.heading}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
                 >
-                  <h3 className="text-[15px] font-semibold tracking-tight text-gray-900">
+                  <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
                     {item.heading}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-gray-600">{item.body}</p>
                 </article>
               ))}
             </ScrollReveal>
@@ -385,6 +411,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             container="default"
             eyebrow={`09 · ${copy.audit.eyebrow}`}
             title={copy.audit.title}
+            lede={copy.audit.lede}
           >
             <ScrollReveal stagger className="grid gap-4 md:grid-cols-5 lg:gap-5">
               {copy.audit.bullets.map((item) => (
@@ -397,6 +424,13 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                 </article>
               ))}
             </ScrollReveal>
+            <div className="mx-auto mt-10 max-w-2xl">
+              <CodeBlock
+                code={copy.audit.exampleCode}
+                language="bash"
+                caption={copy.audit.exampleCaption}
+              />
+            </div>
           </Section>
 
           {/* ================================================================
@@ -405,16 +439,37 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
               ================================================================ */}
           <Section
             tone="white"
-            container="narrow"
+            container="default"
             eyebrow={`10 · ${copy.pricing.eyebrow}`}
             title={copy.pricing.title}
-            titleAlign="center"
+            lede={copy.pricing.lede}
           >
-            <ScrollReveal>
-              <p className="mx-auto max-w-2xl text-center text-base leading-relaxed text-gray-600 md:text-lg">
-                {copy.pricing.body}
-              </p>
+            <ScrollReveal stagger className="grid gap-5 md:grid-cols-3 lg:gap-6">
+              {copy.pricing.blocks.map((block) => (
+                <article
+                  key={block.heading}
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
+                >
+                  <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
+                    {block.heading}
+                  </h3>
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-gray-600">
+                    {block.body}
+                  </p>
+                </article>
+              ))}
             </ScrollReveal>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-gray-600 md:text-[15px]">
+              {copy.pricing.footerNote}{" "}
+              <Link
+                href={copy.pricing.footerLinkHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#0d47a1] underline underline-offset-4 transition hover:text-[#0d47a1]/80"
+              >
+                {copy.pricing.footerLinkLabel}
+              </Link>
+            </p>
           </Section>
 
           {/* ================================================================
@@ -434,7 +489,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             <div className="relative z-10 mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 md:py-32">
               <ScrollReveal>
                 <p className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">
-                  11 · CTA
+                  11 · {copy.ctaFinal.eyebrow}
                 </p>
                 <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-[44px] md:leading-[1.08] lg:text-5xl lg:leading-[1.05]">
                   {copy.ctaFinal.title}
@@ -450,7 +505,18 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                     size="lg"
                   />
                 </div>
-                <p className="mt-8 text-sm text-white/70">
+                <p className="mt-8 text-sm text-white/80">
+                  {copy.ctaFinal.walkthroughNote}{" "}
+                  <Link
+                    href={copy.ctaFinal.walkthroughLinkHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline underline-offset-4 transition hover:text-white"
+                  >
+                    {copy.ctaFinal.walkthroughLinkLabel}
+                  </Link>
+                </p>
+                <p className="mt-4 text-sm text-white/70">
                   <Link
                     href="https://docs.symbioz.ai/mcp"
                     target="_blank"

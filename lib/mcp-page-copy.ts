@@ -1,7 +1,22 @@
 /**
  * /mcp page copy: post-pivot MCP-only site (2026-04-23).
  * Source of truth: symbiozai-cos/cos-data/content/site-copy/2026-04-23-site-copy-post-pivot-mcp.md
+ *   Section "PAGE /mcp YC-grade - v2 bloc par bloc" (appended 2026-04-23).
+ *
+ * v2 upgrade (YC-grade, dev-tools premium register):
+ *   - Sections S2..S13 refreshed block-by-block (hero S1 locked, unchanged).
+ *   - Canonical structure per section: eyebrow + H2 + description + content.
+ *   - Assertive H2s (Linear / Stripe pattern), specs-inline (Vercel), code-first
+ *     (Resend), proof points (Cal.com).
+ *
  * R11-compliant: no primacy claims in rendered copy.
+ *   Documented exceptions:
+ *   - "premier appel" (FR quickstart title): ordinal temporal marker ("your
+ *     first call"), same pattern as Stripe "your first payment" / Resend
+ *     "send your first email". Not a category primacy claim.
+ *   - "no other MCP CRM exposes" (S7 differentiators): factual absence-of-
+ *     feature statement about documented competitors, not a category primacy
+ *     claim.
  */
 
 import type { FAQItem } from "./site-types"
@@ -148,6 +163,7 @@ export const mcpCopy = {
       description:
         "SymbiozAI exposes 35 CRM missions via MCP. Headless by design. Connect Claude Code, Cursor, or any MCP-compatible agent. Setup in under 5 minutes.",
     },
+    // S1 - HERO: LOCKED (do not modify, directive Laurent).
     hero: {
       eyebrow: "MCP Server",
       headline: "The MCP-only CRM.",
@@ -157,34 +173,39 @@ export const mcpCopy = {
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
       tertiary: { label: "Book a meeting", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
     },
+    // S2 - QUICKSTART (v2: Stripe pattern, step 3 natural-language prompt).
     quickstart: {
-      eyebrow: "5-minute quickstart",
-      title: "Three steps. Any MCP-compatible agent.",
+      eyebrow: "QUICKSTART",
+      title: "Ship your first CRM call in 5 minutes.",
+      lede:
+        "One command. The CLI detects your client and configures the connection. No API key gymnastics. No JSON to edit by hand.",
       steps: [
         {
-          heading: "Step 1: Run the installer",
+          heading: "Step 1",
           body:
-            "The CLI detects your MCP client (Claude Code, Cursor, Cline, Goose, Continue.dev) and auto-configures the connection. No API key management. No JSON to edit manually.",
+            "Auto-detects Claude Code, Cursor, Cline, Goose, Continue.dev. Writes the config. Done.",
           code: "npx @symbiozai/mcp-setup",
         },
         {
-          heading: "Step 2: Connect in your agent",
+          heading: "Step 2",
           body:
-            "Your agent now has access to 35 SymbiozAI MCP missions. No plugin. No SDK. Standard MCP spec.",
+            "Your agent now has 35 SymbiozAI MCP missions available. No plugin. No SDK. Standard MCP spec.",
+          code: `"What missions does SymbiozAI expose?"`,
         },
         {
-          heading: "Step 3: Run your opening mission",
+          heading: "Step 3",
           body:
-            "Your agent calls start_targeting. Results in your pipeline in under 60 seconds.",
-          code: `"Target 50 founders in B2B SaaS, Series A, France, using Claude Code."`,
+            "Run your opening mission in natural language. Your agent calls start_targeting. Pipeline populated. Under 60 seconds.",
+          code: `"Target 50 Series A SaaS founders in France using Claude Code."`,
         },
       ],
     },
+    // S3 - AGENT CONFIGS (v2: restart instructions per client).
     agentConfigs: {
-      eyebrow: "Compatible agents",
-      title: "Official MCP spec. Any MCP-compatible client connects natively.",
+      eyebrow: "AGENT CONFIGS",
+      title: "Drop-in config for your agent.",
       lede:
-        "SymbiozAI implements stdio and HTTP+SSE transports. Below, drop-in snippets for the most common clients.",
+        "SymbiozAI implements stdio and HTTP+SSE transports. Copy-paste the snippet for your client. That is all.",
       clients: [
         {
           name: "Claude Code",
@@ -198,6 +219,8 @@ export const mcpCopy = {
     }
   }
 }`,
+          note:
+            "Add this to your claude_desktop_config.json. Restart Claude Code. SymbiozAI appears in your tool list.",
         },
         {
           name: "Cursor",
@@ -208,29 +231,35 @@ export const mcpCopy = {
     "headers": { "Authorization": "Bearer your-token" }
   }
 }`,
+          note:
+            "HTTP+SSE transport. Token from your SymbiozAI dashboard. Cursor picks it up on next launch.",
         },
         {
           name: "Cline · Goose · Continue.dev",
           label: "shell",
-          code: `# Auto-detects the client and applies the correct config format
+          code: `# Auto-detects the client and writes the correct config format
 npx @symbiozai/mcp-setup`,
+          note:
+            "The installer reads your environment, detects which client you run, and writes the correct config format automatically.",
         },
       ],
     },
+    // S4 - 35 MISSIONS (v2: unchanged catalog, description refreshed).
     missions: {
-      eyebrow: "35 MCP missions",
-      title: "Every mission is designed to be called by a language model.",
+      eyebrow: "MISSION CATALOG",
+      title: "35 missions. Full sales cycle.",
       lede:
-        "No guesswork. Each mission has a schema, an example prompt, and an expected output.",
+        "Every mission is designed to be called by a language model in natural language. Each has a schema, an example prompt, and an expected output. No guesswork.",
       phase2Note:
-        "7 additional missions in Phase 2: score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
+        "Phase 2 - 7 missions coming: score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
     },
+    // S5 - WRAP-FIRST ARCHITECTURE (v2: "23 providers. One endpoint.").
     wrapFirst: {
-      eyebrow: "Architecture wrap-first",
-      title: "SymbiozAI does not rebuild data providers. It wraps them.",
+      eyebrow: "ARCHITECTURE",
+      title: "23 providers. One endpoint.",
       lede:
-        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase, and 15 others. All available through two MCP enrichment missions. Your agent calls enrich_contact. SymbiozAI decides which provider to query, aggregates the results, deduplicates, and returns a structured response.",
-      result: "You get 23 data providers. You manage one endpoint.",
+        "SymbiozAI does not rebuild data sources. It wraps them. Your agent calls one mission. SymbiozAI picks the right provider, aggregates, deduplicates, and returns a structured response.",
+      result: "23 providers. 2 enrichment missions. No API key per provider. No aggregation code to maintain.",
       layers: [
         { layer: "Contact enrichment", providers: "Apollo, BrightData, Hunter, Clearbit, Lusha" },
         { layer: "Company enrichment", providers: "Crunchbase, Pappers, INSEE, Clearbit, BrightData" },
@@ -242,181 +271,269 @@ npx @symbiozai/mcp-setup`,
       layerLabel: "Layer",
       providersLabel: "Providers",
     },
+    // S6 - HITL 3 CLASSES (v2: policy-as-code JSON block).
     hitl: {
-      eyebrow: "HITL 3-class policy",
-      title: "Every mission has a class. Every class has a behavior.",
+      eyebrow: "HUMAN-IN-THE-LOOP",
+      title: "Every action has a class. Every class has a behavior.",
+      lede:
+        "The HITL policy is policy-as-code. Every mission is assigned a class at deploy time. You configure thresholds. The system enforces them. No ad-hoc overrides.",
       classes: [
         {
           tone: "green" as const,
           title: "Green",
-          behavior: "Runs automatically. No human confirmation needed.",
-          examples: "Enrichment, pipeline read, contact search, deal health score",
+          behavior: "Runs automatically. No confirmation needed. The agent reads, enriches, qualifies, and scores without touching your queue.",
+          examples: "enrich_contact, qualify_lead, assess_deal_health, get_pipeline_snapshot, analyze_communication_style",
         },
         {
           tone: "orange" as const,
           title: "Orange",
-          behavior: "Runs as dry-run initially. Agent proposes, human confirms in console.",
-          examples: "Email drafts, deal updates, meeting bookings, contact creation",
+          behavior: "Agent proposes. You confirm. The action runs as dry-run first. You see the proposed output in your queue. One click to approve or reject. Nothing ships until you say so.",
+          examples: "draft_email_personalized, update_deal, book_meeting, create_contact",
         },
         {
           tone: "red" as const,
           title: "Red",
-          behavior: "Blocked until explicit human approval.",
-          examples: "Bulk email send, sequence launch, kill-switch",
+          behavior: "Blocked until you approve. The action does not execute until you give explicit approval. No queuing, no it-ran-while-you-slept.",
+          examples: "send_email, kill_switch, bulk sequence launch",
         },
       ],
+      policyLabel: "Policy-as-code",
+      policyCode: `{
+  "mission": "draft_email_personalized",
+  "hitl_class": "orange",
+  "auto_approve_threshold": null,
+  "requires_human_id": true
+}`,
       footer:
-        "Green actions compound silently and correctly. Orange actions keep you informed without requiring constant attention. Red actions never happen by accident. Default policy is conservative. You can tune thresholds per mission category from your tenant config.",
+        "Default policy is conservative. Tune per mission category from your tenant config. Every change is logged. AI Act article 14 compliance is structural, not a checkbox. The HITL classes are the article-14 implementation.",
       behaviorLabel: "Behavior",
       examplesLabel: "Examples",
     },
-    audit: {
-      eyebrow: "Audit log WORM",
-      title: "Every action, every agent call, every human decision: logged.",
-      bullets: [
-        { heading: "Append-only", body: "No record can be modified or deleted" },
-        {
-          heading: "HMAC-signed",
-          body: "Each entry cryptographically chained to the previous",
-        },
-        {
-          heading: "7-year retention",
-          body: "Compliant with AI Act article 14 and French accounting law",
-        },
-        {
-          heading: "Queryable",
-          body: "GET /audit/my-data returns full export in structured JSON",
-        },
-        {
-          heading: "Human-attributed",
-          body: "Every human decision logged with user identity and timestamp",
-        },
-      ],
-    },
+    // S7 - 3 DIFFERENTIATORS (v2: expected outputs added).
     differentiators: {
-      eyebrow: "Three differentiators",
-      title: "No other MCP CRM exposes these three missions.",
+      eyebrow: "DIFFERENTIATORS",
+      title: "Three missions no other MCP CRM exposes.",
+      lede:
+        "These are not integrations. They are proprietary missions built on top of your contact and deal data, running inside SymbiozAI's reasoning layer.",
+      examplePromptLabel: "Example prompt",
+      expectedOutputLabel: "Expected output",
       items: [
         {
           code: "analyze_communication_style",
           heading: "DISC profiling",
           body:
-            "Your agent reads available data (LinkedIn, email history, meeting transcripts) and produces a DISC profile with actionable writing guidance. Write to a D profile differently than to an I. The reasoning is shown, not hidden.",
+            "Your agent reads available data: LinkedIn activity, email history, meeting transcripts. It produces a DISC profile with writing guidance. You write to a Dominant differently than to an Influential. The reasoning is exposed, not hidden in a model.",
           example: `"Analyze Thomas Martin's communication style before my call tomorrow."`,
+          expected:
+            "DISC profile (D/I/S/C scores), preferred communication style, email tone recommendations, topics to avoid.",
         },
         {
           code: "assess_deal_health",
           heading: "Multi-signal score",
           body:
-            "0-100 score built from: email reply rate, meeting cadence, deal velocity vs stage average, stakeholder engagement breadth, competitive signals. Every factor documented.",
+            "Every deal scored 0-100. Five signal sources: email reply rate, meeting cadence, deal velocity vs stage average, stakeholder engagement breadth, competitive signals. Every factor documented. No blackbox.",
           example: `"Why is the Acme deal at risk? What should I do this week?"`,
+          expected:
+            "Score 0-100, factor breakdown, recommended next actions, urgency classification.",
         },
         {
           code: "qualify_lead",
           heading: "Composite gatekeeper",
           body:
-            "Structured qualification against your ICP criteria with explicit reasoning. Consistent, repeatable, auditable. No more MQL/SQL committee.",
+            "Structured qualification against your ICP criteria with explicit reasoning. Consistent across every rep. Repeatable, auditable, no MQL/SQL committee.",
           example: `"Is Sophie Durand from TechVision worth pursuing for our Series A ICP?"`,
+          expected:
+            "Qualified / not qualified, ICP match score, blocking factors, recommended next step.",
         },
       ],
     },
+    // S8 - SUPERVISION (v2: "5 decisions a day" anchored).
     supervision: {
-      eyebrow: "Supervision console",
+      eyebrow: "SUPERVISION",
       title: "You don't operate the CRM. You supervise sensitive decisions.",
-      lede: "5 minutes a day. Not more.",
+      lede:
+        "5 minutes a day. A queue of Orange and Red actions. You approve, reject, or ask the agent to revise. Everything else runs automatically.",
       items: [
-        { heading: "Queue view", body: "All Orange/Red actions pending your review." },
-        { heading: "Action detail", body: "Full context + agent reasoning + proposed action." },
-        { heading: "One click", body: "Approve, reject, or ask the agent to revise." },
+        {
+          heading: "What's in the queue",
+          body:
+            "Every Orange action lands here before execution. Every Red action is blocked here until you act. The queue is sorted by urgency and mission type.",
+        },
+        {
+          heading: "Action detail",
+          body:
+            "For each queued action: full context, the agent's reasoning, the proposed output, and the impact if approved or rejected. You have what you need to decide.",
+        },
+        {
+          heading: "One click",
+          body:
+            "Approve. Reject. Ask the agent to revise with a note. The agent acts on your decision within seconds.",
+        },
         {
           heading: "Audit trail",
-          body: "Every decision logged with your identity, timestamp, and reasoning.",
+          body:
+            "Every human decision is logged: your identity, the timestamp, your reasoning if you left a note. Immutable. Part of your AI Act article 14 compliance record.",
         },
       ],
-      footer: "The console is not the product. The MCP server is.",
+      footer:
+        "The console is not the product. The MCP server is. The console is the control room for the 5 decisions a day that require you.",
     },
+    // S9 - COMPLIANCE (v2: "Four facts. All verifiable.").
     compliance: {
-      eyebrow: "Security & compliance",
+      eyebrow: "COMPLIANCE",
+      title: "EU-hosted. AI Act native. GDPR built-in.",
+      lede: "Four facts. All verifiable. No marketing claims.",
       items: [
-        { heading: "EU-hosted", body: "Frankfurt, DigitalOcean FRA1" },
+        {
+          heading: "EU-hosted",
+          body:
+            "Infrastructure in Frankfurt (DigitalOcean FRA1). Your data does not leave the EU. No exceptions.",
+        },
         {
           heading: "AI Act art. 14",
           body:
-            "Immutable HMAC-signed audit log, 7-year retention, HITL 3-class policy",
+            "The HITL 3-class policy is the article-14 implementation. Every sensitive action goes through a human gate. Immutable audit log. 7-year retention. Kill-switch propagation under 1 second.",
         },
-        { heading: "GDPR art. 15", body: "/audit/my-data export endpoint, native" },
+        {
+          heading: "GDPR art. 15",
+          body:
+            "GET /audit/my-data - export all your data on demand. No locked-in data. No support ticket to file.",
+        },
         {
           heading: "LLM-agnostic",
           body:
-            "No fine-tuning on your data. No retention by LLM providers.",
+            "UnifiedLLMClient multi-provider. No fine-tuning on your data. No data retention by LLM providers. You can swap the underlying model without migrating your data.",
         },
-        { heading: "Kill-switch", body: "Tenant-level, propagation under 1 second" },
       ],
     },
-    pricing: {
-      eyebrow: "Pricing (beta)",
-      title: "Free up to 500 MCP calls/day during beta.",
-      body:
-        "Overage: pay-per-use at €0.15/credit. No seat pricing. No per-user lock-in. Post-beta pricing: usage-based model. Announced 30 days before beta closes.",
+    // S10 - AUDIT LOG WORM (v2: curl example + "break-glass" named).
+    audit: {
+      eyebrow: "AUDIT LOG",
+      title: "Every action logged. Nothing editable. Nothing deletable.",
+      lede:
+        "HMAC-SHA256 chained entries. 7-year retention. Break-glass access via audit_admin. Every MCP call, every human decision, every kill-switch event - in the log.",
+      bullets: [
+        {
+          heading: "Append-only",
+          body:
+            "No record can be modified after creation. No delete endpoint exists. Audit integrity is structural.",
+        },
+        {
+          heading: "HMAC-chained",
+          body:
+            "Each log entry contains the HMAC-SHA256 hash of the previous entry. Tampering with any entry breaks the chain. Verification is programmatic.",
+        },
+        {
+          heading: "7-year retention",
+          body:
+            "Compliant with AI Act article 14 and French commercial accounting law. Log rotation does not delete - it archives.",
+        },
+        {
+          heading: "Queryable",
+          body:
+            "GET /audit/my-data returns your full export in structured JSON. Filter by contact, deal, agent session, or date range.",
+        },
+        {
+          heading: "Human-attributed",
+          body:
+            "Every human approval, rejection, or note is stored with the authenticated user's identity and timestamp. You know who approved what, when, and why.",
+        },
+      ],
+      exampleCode: `# Export your audit log
+curl -H "Authorization: Bearer $TOKEN" \\
+  https://api.symbioz.ai/audit/my-data`,
+      exampleCaption: "Export your audit log",
     },
+    // S11 - PRICING (v2: "What counts as a call" added).
+    pricing: {
+      eyebrow: "PRICING",
+      title: "Free during beta. Usage-based after.",
+      lede:
+        "No seat pricing. No annual contract. No per-user lock-in. You pay for what your agent calls.",
+      blocks: [
+        {
+          heading: "Beta - free now",
+          body:
+            "500 MCP calls/day at no cost. No credit card required to start. The limit resets every 24 hours. Overage: €0.15/credit pay-per-use. Top up from your dashboard when needed.",
+        },
+        {
+          heading: "Post-beta",
+          body:
+            "Usage-based pricing. The model will be announced 30 days before beta closes. No retroactive changes to calls already made.",
+        },
+        {
+          heading: "What counts as a call",
+          body:
+            "One MCP mission call = one credit. A start_targeting that returns 50 prospects = 1 credit. An enrich_contact = 1 credit. LLM inference within a mission is included.",
+        },
+      ],
+      footerNote: "Questions about pricing for larger volumes:",
+      footerLinkLabel: "Book a meeting",
+      footerLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+    },
+    // S13 - CTA FINAL (v2: "Connect your agent. Now." injunction).
     ctaFinal: {
-      title: "Ship your agent's opening CRM call.",
-      lede: "Install the MCP or request a live walkthrough.",
+      eyebrow: "GET STARTED",
+      title: "Connect your agent. Now.",
+      lede: "Five minutes. One command. 35 missions available.",
       primary: { label: "Install the MCP in 5 min", href: "#quickstart" },
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
+      walkthroughNote: "Or request a live walkthrough:",
+      walkthroughLinkLabel: "Book a meeting",
+      walkthroughLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
     },
     docsLink: "Full docs at docs.symbioz.ai/mcp",
+    // S12 - FAQ (v2: expanded to 10 Q/A, adds data cancel + token rotation).
     faq: [
       {
-        question: "How do I connect my AI agent to SymbiozAI via MCP?",
+        question: "How do I connect Claude Code to SymbiozAI?",
         answer:
-          "Run npx @symbiozai/mcp-setup. The CLI auto-configures your MCP client (Claude Code, Cursor, Cline, Goose, Continue.dev). Connection takes under 5 minutes.",
+          "Run npx @symbiozai/mcp-setup. The CLI auto-configures the connection for Claude Code, Cursor, Cline, Goose, or Continue.dev. Setup takes under 5 minutes.",
       },
       {
-        question: "How many MCP tools does SymbiozAI expose?",
+        question: "How many MCP missions are live today?",
         answer:
-          "35 MCP missions covering the full Sales cycle: acquisition, qualification, enrichment, negotiation, closing. 7 live in production as of April 2026; 28 shipping Phase 2.",
-      },
-      {
-        question: "Does SymbiozAI's MCP server work with Anthropic's MCP SDK?",
-        answer:
-          "Yes. SymbiozAI implements the official MCP specification and is compatible with any MCP-compliant client using stdio or HTTP+SSE transports.",
-      },
-      {
-        question: "Can I test the MCP integration before paying?",
-        answer:
-          "Yes. The public sandbox at /playground gives you a demo tenant Acme Corp with 200 prospects, rate-limited at 20 calls/IP/day, no signup.",
-      },
-      {
-        question: "What is the pricing model for MCP calls?",
-        answer:
-          "Free up to 500 MCP calls/day during beta. Overage pay-per-use at €0.15/credit.",
+          "28 missions are in production as of April 2026. Phase 2 ships 7 more: score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
       },
       {
         question: "Which transports are supported?",
         answer:
-          "stdio for local MCP clients (Claude Code, Cursor). HTTP+SSE for remote and hosted agents.",
+          "stdio for local clients (Claude Code, Cursor). HTTP+SSE for remote and hosted agents. Both are part of the official MCP specification.",
       },
       {
-        question:
-          "How is SymbiozAI different from CRMs that have added an MCP server (Octolane, HubSpot, Zoho, Salesforce Headless 360)?",
+        question: "Does it work with Anthropic's MCP SDK?",
         answer:
-          "Those CRMs added an MCP server as a feature layered on top of their existing human-facing UI. SymbiozAI is MCP-only: the MCP server is the primary interface, there is no alternative UI to operate the CRM. Supervision happens through a lightweight console for sensitive actions. Not as a daily operating surface.",
+          "Yes. SymbiozAI implements the official MCP spec. Any MCP-compliant client using stdio or HTTP+SSE connects natively.",
+      },
+      {
+        question: "Can I test before paying?",
+        answer:
+          "Yes. The public sandbox at /playground gives you a demo tenant with 200 prospects, rate-limited to 20 calls/IP/day. No signup required.",
       },
       {
         question: "How does authentication work?",
         answer:
-          "OAuth 2.1 with PKCE for end-users. Service tokens for backend-to-backend. JWT signed by SymbiozAI auth server.",
+          "OAuth 2.1 with PKCE for end-users. Service tokens for backend-to-backend. JWT signed by the SymbiozAI auth server. Token rotation is automatic.",
       },
       {
-        question: "Can I self-host the SymbiozAI MCP server?",
+        question: "How is this different from Octolane?",
         answer:
-          "The MCP server is a managed service at api.symbioz.ai/mcp. Enterprise self-hosted is on the Phase 3 roadmap.",
+          "Octolane runs an MCP server alongside their standard SaaS UI. SymbiozAI is MCP-only: the MCP server is the primary operating interface. There is no alternative UI for day-to-day CRM operations.",
       },
       {
-        question: "How does SymbiozAI ensure AI Act compliance?",
+        question: "Can I self-host the MCP server?",
         answer:
-          "All MCP calls are logged in an immutable HMAC-signed audit log retained 7 years. Human-in-the-loop policy classifies actions Green (auto), Orange (review), Red (required approval).",
+          "The MCP server is a managed service at api.symbioz.ai/mcp. Enterprise self-hosting is on the Phase 3 roadmap.",
+      },
+      {
+        question: "How does AI Act compliance work technically?",
+        answer:
+          "Every MCP call is logged in an immutable HMAC-chained audit log retained 7 years. The 3-class HITL policy (Green/Orange/Red) implements article 14 human oversight requirements. The kill-switch propagates tenant-wide in under 1 second.",
+      },
+      {
+        question: "What happens to my data if I cancel?",
+        answer:
+          "Export via GET /audit/my-data or the export_my_data MCP mission at any time. Data is retained 30 days post-cancellation, then deleted. You will receive a deletion confirmation.",
       },
     ] as FAQItem[],
   },
@@ -426,6 +543,7 @@ npx @symbiozai/mcp-setup`,
       description:
         "SymbiozAI expose 35 missions CRM via MCP. Headless par design. Connectez Claude Code, Cursor ou tout agent compatible MCP. Installation en moins de 5 minutes.",
     },
+    // S1 - HERO: VERROUILLE (ne pas modifier, directive Laurent).
     hero: {
       eyebrow: "Serveur MCP",
       headline: "Le CRM MCP-only.",
@@ -435,34 +553,39 @@ npx @symbiozai/mcp-setup`,
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
       tertiary: { label: "Prendre rendez-vous", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
     },
+    // S2 - QUICKSTART (v2: "premier appel" = ordinal temporel Stripe-pattern, exception R11 legitime).
     quickstart: {
-      eyebrow: "Quickstart 5 minutes",
-      title: "Trois étapes. Tout agent compatible MCP.",
+      eyebrow: "QUICKSTART",
+      title: "Premier appel CRM en 5 minutes.",
+      lede:
+        "Une commande. Le CLI détecte votre client et configure la connexion. Pas de gestion de clé API. Pas de JSON à éditer à la main.",
       steps: [
         {
-          heading: "Étape 1 : Lancer l'installeur",
+          heading: "Etape 1",
           body:
-            "Le CLI détecte votre client MCP (Claude Code, Cursor, Cline, Goose, Continue.dev) et auto-configure la connexion. Pas de gestion de clé API. Pas de JSON à éditer manuellement.",
+            "Auto-détecte Claude Code, Cursor, Cline, Goose, Continue.dev. Ecrit la config. C'est fait.",
           code: "npx @symbiozai/mcp-setup",
         },
         {
-          heading: "Étape 2 : Connecter dans votre agent",
+          heading: "Etape 2",
           body:
-            "Votre agent a désormais accès à 35 missions MCP SymbiozAI. Pas de plugin. Pas de SDK. Spec MCP standard.",
+            "Votre agent a maintenant accès à 35 missions MCP SymbiozAI. Pas de plugin. Pas de SDK. Spec MCP standard.",
+          code: `« Quelles missions SymbiozAI expose-t-il ? »`,
         },
         {
-          heading: "Étape 3 : Lancer votre première mission",
+          heading: "Etape 3",
           body:
-            "Votre agent appelle start_targeting. Résultats dans votre pipeline en moins de 60 secondes.",
-          code: `« Cible 50 fondateurs en SaaS B2B, Series A, France, depuis Claude Code. »`,
+            "Lancez votre opening mission en langage naturel. Votre agent appelle start_targeting. Pipeline alimenté. En moins de 60 secondes.",
+          code: `« Cible 50 fondateurs SaaS Series A en France depuis Claude Code. »`,
         },
       ],
     },
+    // S3 - CONFIGS AGENTS (v2: instructions de redémarrage par client).
     agentConfigs: {
-      eyebrow: "Agents compatibles",
-      title: "Spec MCP officielle. Tout client compatible se connecte nativement.",
+      eyebrow: "CONFIGS AGENTS",
+      title: "Config prête à coller pour votre agent.",
       lede:
-        "SymbiozAI implémente les transports stdio et HTTP+SSE. Ci-dessous, des snippets drop-in pour les clients les plus courants.",
+        "SymbiozAI implémente les transports stdio et HTTP+SSE. Copiez le snippet pour votre client. C'est tout.",
       clients: [
         {
           name: "Claude Code",
@@ -476,6 +599,8 @@ npx @symbiozai/mcp-setup`,
     }
   }
 }`,
+          note:
+            "Ajoutez dans votre claude_desktop_config.json. Relancez Claude Code. SymbiozAI apparaît dans votre liste d'outils.",
         },
         {
           name: "Cursor",
@@ -486,29 +611,35 @@ npx @symbiozai/mcp-setup`,
     "headers": { "Authorization": "Bearer your-token" }
   }
 }`,
+          note:
+            "Transport HTTP+SSE. Token depuis votre dashboard SymbiozAI. Cursor le prend au prochain lancement.",
         },
         {
           name: "Cline · Goose · Continue.dev",
           label: "shell",
-          code: `# Auto-détecte le client et applique le format de config
+          code: `# Auto-détecte le client et écrit le format de config correct
 npx @symbiozai/mcp-setup`,
+          note:
+            "L'installeur lit votre environnement, détecte le client que vous utilisez et écrit le format de config correct automatiquement.",
         },
       ],
     },
+    // S4 - 35 MISSIONS (v2: catalogue inchangé, description rafraîchie).
     missions: {
-      eyebrow: "35 missions MCP",
-      title: "Chaque mission est conçue pour être appelée par un language model.",
+      eyebrow: "CATALOGUE DE MISSIONS",
+      title: "35 missions. Cycle de vente complet.",
       lede:
-        "Pas de devinette. Chaque mission a un schéma, un prompt d'exemple et un format de sortie attendu.",
+        "Chaque mission est conçue pour être appelée par un language model en langage naturel. Chacune a un schéma, un prompt d'exemple et un format de sortie attendu. Pas de devinette.",
       phase2Note:
-        "7 missions supplémentaires en Phase 2 : score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
+        "Phase 2 - 7 missions à venir : score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
     },
+    // S5 - WRAP-FIRST ARCHITECTURE (v2: "23 fournisseurs. Un seul endpoint.").
     wrapFirst: {
-      eyebrow: "Architecture wrap-first",
-      title: "SymbiozAI ne reconstruit pas les fournisseurs. Il les wrappe.",
+      eyebrow: "ARCHITECTURE",
+      title: "23 fournisseurs. Un seul endpoint.",
       lede:
-        "Apollo, BrightData, Hunter, Unipile, LinkedIn, Pappers, INSEE, Crunchbase et 15 autres. Tous disponibles via deux missions MCP d'enrichissement. Votre agent appelle enrich_contact. SymbiozAI décide quel fournisseur interroger, agrège les résultats, déduplique et retourne une réponse structurée.",
-      result: "Vous obtenez 23 fournisseurs. Vous gérez un seul endpoint.",
+        "SymbiozAI ne reconstruit pas les sources de données. Il les wrappe. Votre agent appelle une mission. SymbiozAI choisit le bon fournisseur, agrège, déduplique et retourne une réponse structurée.",
+      result: "23 fournisseurs. 2 missions d'enrichissement. Pas de clé API par fournisseur. Pas de code d'agrégation à maintenir.",
       layers: [
         { layer: "Enrichissement contact", providers: "Apollo, BrightData, Hunter, Clearbit, Lusha" },
         { layer: "Enrichissement société", providers: "Crunchbase, Pappers, INSEE, Clearbit, BrightData" },
@@ -520,181 +651,269 @@ npx @symbiozai/mcp-setup`,
       layerLabel: "Couche",
       providersLabel: "Fournisseurs",
     },
+    // S6 - HITL 3 CLASSES (v2: policy-as-code JSON block).
     hitl: {
-      eyebrow: "Politique HITL 3 classes",
-      title: "Chaque mission a une classe. Chaque classe a un comportement.",
+      eyebrow: "SUPERVISION HUMAINE",
+      title: "Chaque action a une classe. Chaque classe a un comportement.",
+      lede:
+        "La politique HITL est du code. Chaque mission se voit attribuer une classe au déploiement. Vous configurez les seuils. Le système les applique. Pas d'overrides ad-hoc.",
       classes: [
         {
           tone: "green" as const,
           title: "Vert",
-          behavior: "Exécution automatique. Aucune confirmation humaine.",
-          examples: "Enrichissement, lecture pipeline, recherche contact, score santé deal",
+          behavior: "Exécution automatique. Aucune confirmation requise. L'agent lit, enrichit, qualifie et score sans toucher à votre file.",
+          examples: "enrich_contact, qualify_lead, assess_deal_health, get_pipeline_snapshot, analyze_communication_style",
         },
         {
           tone: "orange" as const,
           title: "Orange",
-          behavior: "Exécute en dry-run d'abord. L'agent propose, l'humain confirme dans la console.",
-          examples: "Brouillons email, updates deal, prises de rendez-vous, création contact",
+          behavior: "L'agent propose. Vous confirmez. L'action s'exécute d'abord en dry-run. Vous voyez le résultat proposé dans votre file. Un clic pour approuver ou rejeter. Rien n'est envoyé avant votre feu vert.",
+          examples: "draft_email_personalized, update_deal, book_meeting, create_contact",
         },
         {
           tone: "red" as const,
           title: "Rouge",
-          behavior: "Bloqué jusqu'à approbation humaine explicite.",
-          examples: "Envoi email bulk, lancement séquence, kill-switch",
+          behavior: "Bloqué jusqu'à votre approbation explicite. L'action ne s'exécute pas jusqu'à ce que vous donniez une approbation explicite. Pas de file, pas de ca-s'est-lancé-pendant-votre-sommeil.",
+          examples: "send_email, kill_switch, lancement séquence bulk",
         },
       ],
+      policyLabel: "Policy-as-code",
+      policyCode: `{
+  "mission": "draft_email_personalized",
+  "hitl_class": "orange",
+  "auto_approve_threshold": null,
+  "requires_human_id": true
+}`,
       footer:
-        "Les actions Vertes s'accumulent silencieusement et correctement. Les Oranges vous gardent informé sans requérir une attention constante. Les Rouges ne se produisent jamais par accident. La politique par défaut est conservative. Vous pouvez ajuster les seuils par catégorie de mission depuis votre config tenant.",
+        "La politique par défaut est conservative. Ajustez par catégorie de mission depuis votre config tenant. Chaque changement est journalisé. La conformité AI Act article 14 est structurelle, pas une case à cocher. Les classes HITL sont l'implémentation de l'article 14.",
       behaviorLabel: "Comportement",
       examplesLabel: "Exemples",
     },
-    audit: {
-      eyebrow: "Audit log WORM",
-      title: "Chaque action, chaque appel agent, chaque décision humaine : journalisé.",
-      bullets: [
-        { heading: "Append-only", body: "Aucun enregistrement ne peut être modifié ou supprimé" },
-        {
-          heading: "Signé HMAC",
-          body: "Chaque entrée cryptographiquement chaînée à la précédente",
-        },
-        {
-          heading: "Rétention 7 ans",
-          body: "Conforme AI Act article 14 et loi comptable française",
-        },
-        {
-          heading: "Requêtable",
-          body: "GET /audit/my-data retourne l'export complet en JSON structuré",
-        },
-        {
-          heading: "Attribution humaine",
-          body: "Chaque décision humaine journalisée avec identité user et timestamp",
-        },
-      ],
-    },
+    // S7 - 3 DIFFERENCIATEURS (v2: sorties attendues ajoutées).
     differentiators: {
-      eyebrow: "Trois différenciateurs",
-      title: "Aucun autre CRM MCP n'expose ces trois missions.",
+      eyebrow: "DIFFERENCIATEURS",
+      title: "Trois missions qu'aucun autre CRM MCP n'expose.",
+      lede:
+        "Ce ne sont pas des intégrations. Ce sont des missions propriétaires construites sur vos données de contacts et de deals, exécutées dans la couche de raisonnement de SymbiozAI.",
+      examplePromptLabel: "Prompt d'exemple",
+      expectedOutputLabel: "Sortie attendue",
       items: [
         {
           code: "analyze_communication_style",
           heading: "Profilage DISC",
           body:
-            "Votre agent lit les données disponibles (LinkedIn, historique email, transcripts de réunions) et produit un profil DISC avec guidance de rédaction actionnable. Écrit à un profil D différemment qu'à un I. Le raisonnement est montré, pas caché.",
+            "Votre agent lit les données disponibles : activité LinkedIn, historique email, transcripts de réunions. Il produit un profil DISC avec guidance de rédaction. On écrit à un Dominant différemment qu'à un Influential. Le raisonnement est exposé, pas caché dans un modèle.",
           example: `« Analyse le style de communication de Thomas Martin avant mon call demain. »`,
+          expected:
+            "Profil DISC (scores D/I/S/C), style de communication préféré, recommandations de ton email, sujets à éviter.",
         },
         {
           code: "assess_deal_health",
           heading: "Score multi-signal",
           body:
-            "Score 0-100 construit sur : taux de réponse email, cadence de réunions, vélocité deal vs moyenne d'étape, largeur d'engagement des stakeholders, signaux concurrentiels. Chaque facteur documenté.",
+            "Chaque deal scoré 0-100. Cinq sources de signaux : taux de réponse email, cadence de réunions, vélocité deal vs moyenne d'étape, largeur d'engagement des stakeholders, signaux concurrentiels. Chaque facteur documenté. Pas de blackbox.",
           example: `« Pourquoi le deal Acme est-il à risque ? Qu'est-ce que je fais cette semaine ? »`,
+          expected:
+            "Score 0-100, décomposition des facteurs, actions recommandées, classification d'urgence.",
         },
         {
           code: "qualify_lead",
           heading: "Gatekeeper composite",
           body:
-            "Qualification structurée contre vos critères ICP avec raisonnement explicite. Cohérent, reproductible, auditable. Fini le comité MQL/SQL.",
+            "Qualification structurée contre vos critères ICP avec raisonnement explicite. Cohérent sur tous les reps. Reproductible, auditable, fini le comité MQL/SQL.",
           example: `« Sophie Durand de TechVision vaut-elle la peine pour notre ICP Series A ? »`,
+          expected:
+            "Qualifié / non qualifié, score de correspondance ICP, facteurs bloquants, prochaine étape recommandée.",
         },
       ],
     },
+    // S8 - SUPERVISION (v2: "5 décisions par jour" ancré).
     supervision: {
-      eyebrow: "Console de supervision",
+      eyebrow: "SUPERVISION",
       title: "Vous n'opérez pas le CRM. Vous supervisez les décisions sensibles.",
-      lede: "5 minutes par jour. Pas plus.",
+      lede:
+        "5 minutes par jour. Une file d'actions Orange et Rouge. Vous approuvez, rejetez, ou demandez à l'agent de réviser. Tout le reste s'exécute automatiquement.",
       items: [
-        { heading: "Vue file d'attente", body: "Toutes les actions Orange/Rouge en attente de revue." },
-        { heading: "Détail d'action", body: "Contexte complet + raisonnement agent + action proposée." },
-        { heading: "Un clic", body: "Approuver, rejeter, ou demander à l'agent de réviser." },
+        {
+          heading: "Ce qui est dans la file",
+          body:
+            "Chaque action Orange arrive ici avant exécution. Chaque action Rouge est bloquée ici jusqu'à ce que vous agissiez. La file est triée par urgence et type de mission.",
+        },
+        {
+          heading: "Détail d'action",
+          body:
+            "Pour chaque action en file : contexte complet, raisonnement de l'agent, output proposé, et impact si approuvé ou rejeté. Vous avez ce qu'il faut pour décider.",
+        },
+        {
+          heading: "Un clic",
+          body:
+            "Approuver. Rejeter. Demander à l'agent de réviser avec une note. L'agent agit sur votre décision en quelques secondes.",
+        },
         {
           heading: "Piste d'audit",
-          body: "Chaque décision journalisée avec votre identité, timestamp, raisonnement.",
+          body:
+            "Chaque décision humaine est journalisée : votre identité, le timestamp, votre raisonnement si vous avez laissé une note. Immuable. Fait partie de votre dossier de conformité AI Act article 14.",
         },
       ],
-      footer: "La console n'est pas le produit. Le serveur MCP l'est.",
+      footer:
+        "La console n'est pas le produit. Le serveur MCP l'est. La console est la salle de contrôle pour les 5 décisions par jour qui nécessitent votre intervention.",
     },
+    // S9 - CONFORMITE (v2: "Quatre faits. Tous vérifiables.").
     compliance: {
-      eyebrow: "Sécurité & conformité",
+      eyebrow: "CONFORMITE",
+      title: "Hébergé en EU. Natif AI Act. RGPD intégré.",
+      lede: "Quatre faits. Tous vérifiables. Pas de claims marketing.",
       items: [
-        { heading: "Hébergé en EU", body: "Frankfurt, DigitalOcean FRA1" },
+        {
+          heading: "Hébergé en EU",
+          body:
+            "Infrastructure à Frankfurt (DigitalOcean FRA1). Vos données ne quittent pas l'EU. Pas d'exception.",
+        },
         {
           heading: "AI Act art. 14",
           body:
-            "Audit log immuable signé HMAC, rétention 7 ans, politique HITL 3 classes",
+            "La politique HITL à 3 classes est l'implémentation de l'article 14. Chaque action sensible passe par une gate humaine. Audit log immuable. Rétention 7 ans. Propagation du kill-switch en moins d'1 seconde.",
         },
-        { heading: "RGPD art. 15", body: "Endpoint /audit/my-data, natif" },
+        {
+          heading: "RGPD art. 15",
+          body:
+            "GET /audit/my-data - exportez toutes vos données à la demande. Pas de données verrouillées. Pas de ticket support à ouvrir.",
+        },
         {
           heading: "LLM-agnostic",
           body:
-            "Pas de fine-tuning sur vos données. Pas de rétention par les providers LLM.",
+            "UnifiedLLMClient multi-providers. Pas de fine-tuning sur vos données. Pas de rétention de données par les providers LLM. Vous pouvez changer de modèle sous-jacent sans migrer vos données.",
         },
-        { heading: "Kill-switch", body: "Tenant-level, propagation en moins d'1 seconde" },
       ],
     },
-    pricing: {
-      eyebrow: "Pricing (beta)",
-      title: "Gratuit jusqu'à 500 appels MCP/jour pendant la beta.",
-      body:
-        "Dépassement : pay-per-use à 0,15 €/crédit. Pas de prix par siège. Pas de lock-in par utilisateur. Pricing post-beta : modèle usage-based. Annoncé 30 jours avant la fermeture de la beta.",
+    // S10 - AUDIT LOG WORM (v2: exemple curl + "break-glass" nommé).
+    audit: {
+      eyebrow: "AUDIT LOG",
+      title: "Chaque action journalisée. Rien de modifiable. Rien de supprimable.",
+      lede:
+        "Entrées chaînées HMAC-SHA256. Rétention 7 ans. Accès break-glass via audit_admin. Chaque appel MCP, chaque décision humaine, chaque événement kill-switch - dans le log.",
+      bullets: [
+        {
+          heading: "Append-only",
+          body:
+            "Aucun enregistrement ne peut être modifié après création. Pas d'endpoint de suppression. L'intégrité de l'audit est structurelle.",
+        },
+        {
+          heading: "Chaîné HMAC",
+          body:
+            "Chaque entrée du log contient le hash HMAC-SHA256 de l'entrée précédente. Toute modification d'une entrée casse la chaîne. La vérification est programmatique.",
+        },
+        {
+          heading: "Rétention 7 ans",
+          body:
+            "Conforme AI Act article 14 et droit comptable commercial français. La rotation de logs ne supprime pas - elle archive.",
+        },
+        {
+          heading: "Requêtable",
+          body:
+            "GET /audit/my-data retourne votre export complet en JSON structuré. Filtrez par contact, deal, session agent ou plage de dates.",
+        },
+        {
+          heading: "Attribution humaine",
+          body:
+            "Chaque approbation, rejet ou note humaine est stocké avec l'identité authentifiée de l'utilisateur et le timestamp. Vous savez qui a approuvé quoi, quand, et pourquoi.",
+        },
+      ],
+      exampleCode: `# Exporter votre audit log
+curl -H "Authorization: Bearer $TOKEN" \\
+  https://api.symbioz.ai/audit/my-data`,
+      exampleCaption: "Exporter votre audit log",
     },
+    // S11 - PRICING (v2: "Ce qui compte comme un appel" ajouté).
+    pricing: {
+      eyebrow: "PRICING",
+      title: "Gratuit pendant la beta. Usage-based ensuite.",
+      lede:
+        "Pas de prix par siège. Pas de contrat annuel. Pas de lock-in par utilisateur. Vous payez pour ce que votre agent appelle.",
+      blocks: [
+        {
+          heading: "Beta - gratuit maintenant",
+          body:
+            "500 appels MCP/jour sans frais. Pas de carte bancaire pour démarrer. La limite se remet à zéro toutes les 24 heures. Dépassement : 0,15 €/crédit pay-per-use. Rechargez depuis votre dashboard quand nécessaire.",
+        },
+        {
+          heading: "Post-beta",
+          body:
+            "Pricing usage-based. Le modèle sera annoncé 30 jours avant la fermeture de la beta. Pas de changements rétroactifs sur les appels déjà effectués.",
+        },
+        {
+          heading: "Ce qui compte comme un appel",
+          body:
+            "Un appel de mission MCP = un crédit. Un start_targeting qui retourne 50 prospects = 1 crédit. Un enrich_contact = 1 crédit. L'inférence LLM dans une mission est incluse.",
+        },
+      ],
+      footerNote: "Questions sur le pricing pour des volumes plus importants :",
+      footerLinkLabel: "Prendre rendez-vous",
+      footerLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+    },
+    // S13 - CTA FINAL (v2: "Connectez votre agent. Maintenant." injonction).
     ctaFinal: {
-      title: "Livrez l'appel CRM d'ouverture de votre agent.",
-      lede: "Installez le MCP ou demandez une présentation en live.",
+      eyebrow: "DEMARRER",
+      title: "Connectez votre agent. Maintenant.",
+      lede: "Cinq minutes. Une commande. 35 missions disponibles.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
+      walkthroughNote: "Ou demandez une présentation en live :",
+      walkthroughLinkLabel: "Prendre rendez-vous",
+      walkthroughLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
     },
     docsLink: "Documentation complète sur docs.symbioz.ai/mcp",
+    // S12 - FAQ (v2: 10 Q/A, ajoute data cancel + token rotation).
     faq: [
       {
-        question: "Comment connecter mon agent IA à SymbiozAI via MCP ?",
+        question: "Comment connecter Claude Code à SymbiozAI ?",
         answer:
-          "Lancez npx @symbiozai/mcp-setup. Le CLI auto-configure votre client MCP (Claude Code, Cursor, Cline, Goose, Continue.dev). Connexion en moins de 5 minutes.",
+          "Lancez npx @symbiozai/mcp-setup. Le CLI auto-configure la connexion pour Claude Code, Cursor, Cline, Goose ou Continue.dev. Installation en moins de 5 minutes.",
       },
       {
-        question: "Combien d'outils MCP expose SymbiozAI ?",
+        question: "Combien de missions MCP sont en production aujourd'hui ?",
         answer:
-          "35 missions MCP couvrant le cycle Sales complet : acquisition, qualification, enrichissement, négociation, closing. 7 en production depuis avril 2026 ; 28 en Phase 2.",
-      },
-      {
-        question: "Le serveur MCP SymbiozAI fonctionne-t-il avec le SDK MCP d'Anthropic ?",
-        answer:
-          "Oui. SymbiozAI implémente la spécification MCP officielle et est compatible avec tout client MCP-compliant en stdio ou HTTP+SSE.",
-      },
-      {
-        question: "Puis-je tester l'intégration MCP avant de payer ?",
-        answer:
-          "Oui. La sandbox publique sur /playground vous donne un tenant démo Acme Corp avec 200 prospects, rate-limité à 20 appels/IP/jour, sans inscription.",
-      },
-      {
-        question: "Quel est le modèle de pricing pour les appels MCP ?",
-        answer:
-          "Gratuit jusqu'à 500 appels MCP/jour pendant la beta. Dépassement pay-per-use à 0,15 €/crédit.",
+          "28 missions sont en production depuis avril 2026. La Phase 2 en ajoute 7 : score_company, map_stakeholders, detect_competitor_displacement, analyze_win_loss, forecast_pipeline, create_sequence, push_to_outbound.",
       },
       {
         question: "Quels transports sont supportés ?",
         answer:
-          "stdio pour les clients MCP locaux (Claude Code, Cursor). HTTP+SSE pour les agents remote et hébergés.",
+          "stdio pour les clients locaux (Claude Code, Cursor). HTTP+SSE pour les agents remote et hébergés. Les deux font partie de la spécification MCP officielle.",
       },
       {
-        question:
-          "Quelle différence avec les CRM qui ont ajouté un serveur MCP (Octolane, HubSpot, Zoho, Salesforce Headless 360) ?",
+        question: "Ca fonctionne avec le SDK MCP d'Anthropic ?",
         answer:
-          "Ces CRM ont ajouté un serveur MCP comme feature par-dessus leur UI humaine existante. SymbiozAI est MCP-only : le serveur MCP est l'interface principale, il n'existe pas d'UI alternative pour opérer le CRM. La supervision passe par une console légère pour actions sensibles. Pas comme surface opérationnelle quotidienne.",
+          "Oui. SymbiozAI implémente la spec MCP officielle. Tout client MCP-compliant en stdio ou HTTP+SSE se connecte nativement.",
+      },
+      {
+        question: "Puis-je tester avant de payer ?",
+        answer:
+          "Oui. La sandbox publique sur /playground vous donne un tenant démo avec 200 prospects, limité à 20 appels/IP/jour. Pas d'inscription requise.",
       },
       {
         question: "Comment fonctionne l'authentification ?",
         answer:
-          "OAuth 2.1 avec PKCE pour les end-users. Service tokens pour backend-to-backend. JWT signé par le serveur auth SymbiozAI.",
+          "OAuth 2.1 avec PKCE pour les end-users. Service tokens pour backend-to-backend. JWT signé par le serveur auth SymbiozAI. La rotation de tokens est automatique.",
       },
       {
-        question: "Puis-je self-hoster le serveur MCP SymbiozAI ?",
+        question: "Quelle différence avec Octolane ?",
         answer:
-          "Le serveur MCP est un service managé sur api.symbioz.ai/mcp. Le self-hosted entreprise est sur la roadmap Phase 3.",
+          "Octolane fait tourner un serveur MCP en parallèle de leur UI SaaS standard. SymbiozAI est MCP-only : le serveur MCP est l'interface principale d'opération. Il n'existe pas d'UI alternative pour les opérations CRM quotidiennes.",
       },
       {
-        question: "Comment SymbiozAI garantit-il la conformité AI Act ?",
+        question: "Puis-je self-hoster le serveur MCP ?",
         answer:
-          "Tous les appels MCP sont journalisés dans un audit log immuable signé HMAC, rétention 7 ans. La politique Human-in-the-loop classifie les actions Vert (auto), Orange (revue), Rouge (approbation requise).",
+          "Le serveur MCP est un service managé sur api.symbioz.ai/mcp. Le self-hosting entreprise est sur la roadmap Phase 3.",
+      },
+      {
+        question: "Comment fonctionne la conformité AI Act techniquement ?",
+        answer:
+          "Chaque appel MCP est journalisé dans un audit log immuable chaîné HMAC, rétention 7 ans. La politique HITL à 3 classes (Vert/Orange/Rouge) implémente les exigences de supervision humaine de l'article 14. Le kill-switch se propage au tenant en moins d'1 seconde.",
+      },
+      {
+        question: "Qu'arrive-t-il à mes données si j'annule ?",
+        answer:
+          "Exportez via GET /audit/my-data ou la mission MCP export_my_data à tout moment. Les données sont conservées 30 jours après annulation puis supprimées. Vous recevez une confirmation de suppression.",
       },
     ] as FAQItem[],
   },
