@@ -97,7 +97,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
     quote:
-      "A CRM designed for humans, piloted by AI, is a compromise. A CRM designed to be piloted by AI is a product. MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
+      "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
       placeholder: "Enter your email",
       button: "Join the waitlist",
@@ -200,7 +200,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "SymbiozAI est le CRM MCP-only piloté par votre agent IA. Connectez Claude Code, Cursor ou tout agent compatible MCP. 35 missions. Vous supervisez, il exécute. Hébergé en EU, AI Act natif.",
     quote:
-      "Un CRM conçu pour les humains, piloté par l'IA, c'est un compromis. Un CRM conçu pour être piloté par l'IA, c'est un produit. MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
+      "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {
       placeholder: "Entrez votre email",
       button: "Rejoindre la liste",
