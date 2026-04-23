@@ -20,11 +20,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
     "@context": "https://schema.org",
     "@type": "Article",
     headline: isFr
-      ? "Manifeste SymbiozAI. Le CRM MCP-only, opéré par votre agent."
-      : "SymbiozAI Manifesto. The MCP-only CRM, operated by your agent.",
+      ? "Manifeste SymbiozAI. L'entreprise de demain sera AI-Native"
+      : "SymbiozAI Manifesto. Tomorrow's company will be AI-Native",
     description: isFr
-      ? "Pendant 25 ans, on a demandé aux humains d'ouvrir leur CRM. En 2026, l'agent IA l'opère. SymbiozAI est MCP-only by design."
-      : "For 25 years, we asked humans to open their CRM. In 2026, the AI agent operates it. SymbiozAI is MCP-only by design.",
+      ? "Notre vision de l'entreprise AI-Native et du CRM MCP-only opéré par votre agent."
+      : "Our vision for the AI-Native company and the MCP-only CRM operated by your agent.",
     url: `https://symbioz.ai/${lang}/manifeste`,
     inLanguage: isFr ? "fr-FR" : "en-US",
     publisher: {
@@ -49,31 +49,97 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
             <Logo size="xl" />
           </div>
 
-          {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 1 — Thèse historique                            */}
-          {/* ═══════════════════════════════════════════════════════ */}
-
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight">
-            {isFr
-              ? "Pendant 25 ans, on a demandé aux humains d'ouvrir leur CRM."
-              : "For 25 years, we asked humans to open their CRM."}
+            {isFr ? "L'entreprise de demain sera AI-Native." : "Tomorrow's company will be AI-Native."}
             <br />
-            <span className="text-gray-400">
-              {isFr
-                ? "Ils ne devraient plus avoir à l'ouvrir. Ni à l'opérer."
-                : "They shouldn't have to open it. Or operate it."}
-            </span>
+            <span className="text-gray-400">{isFr ? "Ou ne sera pas." : "Or it won't be."}</span>
           </h1>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 2 — Diagnostic 25 ans                           */}
+          {/* PARTIE 1 — L'AI-Native Company : on l'a construite */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
             <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
-                ? "Le CRM n'a jamais été fait pour les humains qui vendent."
-                : "The CRM was never built for the humans who sell."}
+                ? "Tout le monde parle de l'entreprise AI-Native. Nous, on l'a construite."
+                : "Everyone talks about the AI-Native company. We built one."}
+            </h2>
+            <p>
+              {isFr
+                ? "On nous promet depuis des mois l'entreprise d'un fondateur et dix agents IA. L'organisation où l'intelligence artificielle ne se contente pas d'assister. Elle opère. Où chaque processus, chaque décision, chaque livraison est porté par une intelligence qui apprend, s'adapte et exécute."
+                : "For months, we've been promised the company of one founder and ten AI agents. The organization where artificial intelligence doesn't just assist. It operates. Where every process, every decision, every delivery is carried by intelligence that learns, adapts, and executes."}
+            </p>
+            <p className="font-semibold text-gray-900">
+              {isFr
+                ? "Chez SymbiozAI, ce n'est plus une promesse. C'est le quotidien."
+                : "At SymbiozAI, this is no longer a promise. It's daily life."}
+            </p>
+          </div>
+
+          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
+              {isFr
+                ? "L'IA ne remplace pas l'humain. Elle transforme un individu en organisation."
+                : "AI doesn't replace humans. It turns one individual into an organization."}
+            </h2>
+            <p>
+              {isFr
+                ? "Nos agents IA codent, testent, rédigent, prospectent, analysent. En continu. Ils ont des rôles, des compétences, une mémoire. Ils se coordonnent entre eux. Le fondateur ne code pas. Il dirige. Il décide. Il garde le contrôle sur ce qui compte."
+                : "Our AI agents code, test, write, prospect, analyze. Continuously. They have roles, skills, memory. They coordinate with each other. The founder doesn't code. He leads. He decides. He keeps control over what matters."}
+            </p>
+            <p>
+              {isFr
+                ? "Sous le capot : des modèles de langage de dernière génération orchestrés en temps réel, une mémoire institutionnelle qui capitalise sur chaque décision passée, et une architecture LLM-agnostique. Toujours la meilleure intelligence disponible."
+                : "Under the hood: cutting-edge language models orchestrated in real time, institutional memory that capitalizes on every past decision, and an LLM-agnostic architecture. Always the best available intelligence."}
+            </p>
+          </div>
+
+          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
+            <p>
+              {isFr
+                ? "Les entreprises qui comprendront ça dans les 24 prochains mois prendront une avance irrattrapable. Les autres passeront la décennie suivante à essayer de comprendre ce qui s'est passé."
+                : "The companies that understand this in the next 24 months will gain an insurmountable lead. The rest will spend the next decade trying to figure out what happened."}
+            </p>
+            <p className="font-semibold text-gray-900">
+              {isFr
+                ? "L'entreprise AI-Native n'est plus une vision. C'est un fait. Et nous en sommes la preuve."
+                : "The AI-Native company is no longer a vision. It's a fact. And we are the proof."}
+            </p>
+          </div>
+
+          {/* ═══════════════════════════════════════════ */}
+          {/* TRANSITION */}
+          {/* ═══════════════════════════════════════════ */}
+
+          <div className="my-16 py-10 border-t-2 border-b-2 border-gray-900">
+            <p className="text-center text-lg md:text-xl text-gray-600 leading-relaxed mb-4">
+              {isFr
+                ? "Quand on vit l'AI-Native au quotidien, on voit le monde différemment. On voit les logiciels d'entreprise tels qu'ils sont vraiment : des reliques d'une époque révolue. Et le plus cassé de tous..."
+                : "When you live AI-Native every day, you see the world differently. You see enterprise software for what it really is: relics of a bygone era. And the most broken of them all..."}
+            </p>
+            <p className="text-center text-xl md:text-2xl font-bold text-gray-900 leading-snug">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0d47a1] to-[#00e5ff]">
+                {isFr
+                  ? "...c'est le CRM."
+                  : "...is the CRM."}
+              </span>
+            </p>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* PARTIE 2 — Le CRM MCP-only : le produit pivot           */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.1 — Thèse 25 ans                              */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
+              {isFr
+                ? "Pendant 25 ans, on a demandé aux humains d'ouvrir leur CRM. Ils ne devraient plus avoir à l'ouvrir. Ni à l'opérer."
+                : "For 25 years, we asked humans to open their CRM. They shouldn't have to open it. Or operate it."}
             </h2>
             <p>
               {isFr
@@ -98,7 +164,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 3 — La bascule 2026                             */}
+          {/* SECTION 2.2 — La bascule 2026                           */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -130,7 +196,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 4 — Headless by design                          */}
+          {/* SECTION 2.3 — Headless by design                        */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -162,7 +228,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 5 — Ce que ça change concrètement               */}
+          {/* SECTION 2.4 — Ce que ça change concrètement             */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -189,7 +255,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </div>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* SECTION 6 — Chute doctrinale                            */}
+          {/* SECTION 2.5 — Chute doctrinale                          */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-6 mb-12">
