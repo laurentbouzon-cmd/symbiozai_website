@@ -45,6 +45,8 @@ export const salesTeamsCopy = {
     pains: {
       eyebrow: "Why your pipeline lies",
       title: "Four reasons your pipeline lies to you.",
+      lede:
+        "Not a tooling problem. An architecture problem - and these are the four numbers that show up in every pipeline review.",
       items: [
         {
           heading: "Your reps do not fill the CRM. That is not their fault.",
@@ -71,6 +73,8 @@ export const salesTeamsCopy = {
     day: {
       eyebrow: "A typical day",
       title: "How your team works after install.",
+      lede:
+        "One day in the motion, minute by minute. What your agent does before you wake up, what lands in your queue, and what never touches your reps.",
       timeline: [
         {
           time: "7:55 AM",
@@ -101,6 +105,8 @@ export const salesTeamsCopy = {
     pillars: {
       eyebrow: "3 pillars",
       title: "Built for the teams that close.",
+      lede:
+        "Three promises to a Head of Sales. Not feature bullets - the guardrails your team needs before an agent touches a live pipeline.",
       items: [
         {
           heading: "Your agent runs the motion. You run the deals.",
@@ -122,6 +128,8 @@ export const salesTeamsCopy = {
     whatStays: {
       eyebrow: "Human vs agent",
       title: "Your reps keep the calls and the closes. The agent takes everything else.",
+      lede:
+        "Where the line is drawn. Your reps keep the judgment calls. The agent takes the motion that used to eat their week.",
       humanLabel: "What stays human",
       agentLabel: "What the agent handles",
       human: [
@@ -170,6 +178,8 @@ export const salesTeamsCopy = {
     agents: {
       eyebrow: "Agent compatibility",
       title: "Built on MCP. Works with the agent your team already uses.",
+      lede:
+        "No SDK to install. No lock-in. One CLI command and your existing agent is running 35 sales missions on your pipeline.",
       alt: "Claude Code, Cursor, and other MCP-compatible AI agents supported by SymbiozAI",
       caption:
         "SymbiozAI exposes 35 sales missions through an MCP server. Your AI agent connects with one CLI command. No SDK. No lock-in.",
@@ -177,6 +187,8 @@ export const salesTeamsCopy = {
     faqSection: {
       eyebrow: "FAQ",
       title: "Before you book a meeting.",
+      lede:
+        "The three questions Heads of Sales ask before booking. Answered upfront so your meeting can focus on your pipeline.",
     },
     ctaFinal: {
       title: "Your pipeline is either accurate or useless. Make your choice.",
@@ -229,6 +241,8 @@ export const salesTeamsCopy = {
     pains: {
       eyebrow: "Pourquoi votre pipeline vous ment",
       title: "Quatre raisons pour lesquelles votre pipeline vous ment.",
+      lede:
+        "Pas un problème d'outil. Un problème d'architecture - et ce sont les quatre chiffres qui reviennent à chaque revue de pipeline.",
       items: [
         {
           heading: "Vos reps ne remplissent pas le CRM. Ce n'est pas leur faute.",
@@ -255,6 +269,8 @@ export const salesTeamsCopy = {
     day: {
       eyebrow: "Une journée type",
       title: "Comment votre équipe travaille après l'install.",
+      lede:
+        "Une journée dans le motion, minute par minute. Ce que votre agent traite avant votre réveil, ce qui atterrit dans votre file, et ce qui ne touche jamais vos reps.",
       timeline: [
         {
           time: "7h55",
@@ -285,6 +301,8 @@ export const salesTeamsCopy = {
     pillars: {
       eyebrow: "3 piliers",
       title: "Pour les équipes qui closent.",
+      lede:
+        "Trois promesses à un Head of Sales. Pas des features - les garde-fous dont votre équipe a besoin avant qu'un agent touche un pipeline live.",
       items: [
         {
           heading: "Votre agent pilote le motion. Vous pilotez les deals.",
@@ -306,6 +324,8 @@ export const salesTeamsCopy = {
     whatStays: {
       eyebrow: "Humain vs agent",
       title: "Vos reps gardent les appels et les closes. L'agent prend tout le reste.",
+      lede:
+        "Où la ligne est tracée. Vos reps gardent les décisions de jugement. L'agent prend le motion qui bouffait leur semaine.",
       humanLabel: "Ce qui reste humain",
       agentLabel: "Ce que gère l'agent",
       human: [
@@ -354,6 +374,8 @@ export const salesTeamsCopy = {
     agents: {
       eyebrow: "Compatibilité agents",
       title: "Basé sur MCP. Compatible avec l'agent que votre équipe utilise déjà.",
+      lede:
+        "Aucun SDK à installer. Aucun lock-in. Une commande CLI et votre agent existant opère 35 missions commerciales sur votre pipeline.",
       alt: "Claude Code, Cursor et autres agents IA compatibles MCP supportés par SymbiozAI",
       caption:
         "SymbiozAI expose 35 missions commerciales via un serveur MCP. Votre agent IA se connecte avec une seule commande CLI. Aucun SDK. Aucun lock-in.",
@@ -361,6 +383,8 @@ export const salesTeamsCopy = {
     faqSection: {
       eyebrow: "FAQ",
       title: "Avant de prendre rendez-vous.",
+      lede:
+        "Les trois questions que posent les Heads of Sales avant de prendre rendez-vous. Traitées en amont pour que le rendez-vous soit consacré à votre pipeline.",
     },
     ctaFinal: {
       title: "Votre pipeline est soit exact, soit inutile. Le choix est fait.",

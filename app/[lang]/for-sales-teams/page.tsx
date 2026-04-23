@@ -165,6 +165,7 @@ export default async function ForSalesTeamsPage({
             container="default"
             eyebrow={`02 · ${copy.pains.eyebrow}`}
             title={copy.pains.title}
+            lede={copy.pains.lede}
           >
             <ScrollReveal stagger className="grid gap-5 md:grid-cols-2 md:gap-6">
               {copy.pains.items.map((item, idx) => (
@@ -197,6 +198,7 @@ export default async function ForSalesTeamsPage({
             container="default"
             eyebrow={`03 · ${copy.day.eyebrow}`}
             title={copy.day.title}
+            lede={copy.day.lede}
           >
             <ScrollReveal stagger className="mx-auto max-w-3xl">
               <ol className="relative space-y-3">
@@ -231,6 +233,7 @@ export default async function ForSalesTeamsPage({
             container="default"
             eyebrow={`04 · ${copy.pillars.eyebrow}`}
             title={copy.pillars.title}
+            lede={copy.pillars.lede}
           >
             <ScrollReveal stagger className="grid gap-5 md:grid-cols-3 md:gap-6">
               {copy.pillars.items.map((item, idx) => (
@@ -260,6 +263,7 @@ export default async function ForSalesTeamsPage({
             container="default"
             eyebrow={`05 · ${copy.whatStays.eyebrow}`}
             title={copy.whatStays.title}
+            lede={copy.whatStays.lede}
           >
             <ScrollReveal className="grid gap-5 md:grid-cols-2 md:gap-6">
               <article className="rounded-2xl border border-gray-200 bg-white p-6 md:p-7">
@@ -316,6 +320,7 @@ export default async function ForSalesTeamsPage({
             container="default"
             eyebrow={`06 · ${copy.agents.eyebrow}`}
             title={copy.agents.title}
+            lede={copy.agents.lede}
           >
             <ScrollReveal>
               <AgentCompatibilityStrip lang={lang} ariaLabel={copy.agents.alt} />
@@ -376,6 +381,7 @@ export default async function ForSalesTeamsPage({
             container="narrow"
             eyebrow={`08 · ${copy.faqSection.eyebrow}`}
             title={copy.faqSection.title}
+            lede={copy.faqSection.lede}
             titleAlign="center"
           >
             <ScrollReveal stagger className="space-y-4">
