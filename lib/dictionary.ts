@@ -92,7 +92,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — The headless AI CRM",
     subtitle: "The headless AI CRM.",
     description:
-      "Plug in Claude Code, Cursor, or any MCP-compatible agent. 35 operational missions, ready on connect. You supervise, your agent executes. EU-hosted, AI Act native.",
+      "Legacy CRMs were built for humans — then the industry bolted a chatbot on top. SymbiozAI inverts the model: an MCP-native interface, no UI, no onboarding, operated directly by your agent from Claude Code, Cursor, or any MCP-compatible client. 35 operational missions live on connect — pipeline, qualification, DISC profiling, meeting briefs. You supervise. Your agent executes. EU-hosted, AI Act native.",
     quote:
       "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
@@ -192,7 +192,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
     subtitle: "Le CRM headless pour agents IA.",
     description:
-      "Branchez Claude Code, Cursor ou tout agent MCP-compatible. 35 missions opérationnelles disponibles dès la connexion. Vous supervisez, votre agent exécute. Données hébergées en EU, conformité AI Act native.",
+      "Les CRM existants ont été construits pour des humains — et les éditeurs ont posé un chatbot dessus. SymbiozAI prend le problème à l'envers : une interface MCP-native, sans UI, sans formation, que vos agents pilotent directement depuis Claude Code, Cursor ou tout client MCP-compatible. 35 missions opérationnelles disponibles dès la connexion — pipeline, qualification, DISC, briefs réunion. Vous supervisez. Votre agent exécute. Données hébergées en EU, conformité AI Act native.",
     quote:
       "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {

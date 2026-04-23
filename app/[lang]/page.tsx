@@ -229,10 +229,10 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               <h1 className="sr-only">{dictionary.h1}</h1>
 
               <div
-                className="hero-item flex justify-center mb-6 sm:mb-8"
+                className="hero-item flex justify-center mb-4 sm:mb-6 [&_img]:!h-16 sm:[&_img]:!h-20 md:[&_img]:!h-24"
                 style={{ animationDelay: "0ms" }}
               >
-                <Logo size="lg" />
+                <Logo size="xl" />
               </div>
 
               <h2
@@ -243,13 +243,13 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               </h2>
 
               <p
-                className="hero-item mt-5 sm:mt-6 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed"
+                className="hero-item mt-4 sm:mt-5 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed"
                 style={{ animationDelay: "200ms" }}
               >
                 {dictionary.description}
               </p>
 
-              <div className="hero-item mt-8 sm:mt-10" style={{ animationDelay: "300ms" }}>
+              <div className="hero-item mt-6 sm:mt-8" style={{ animationDelay: "300ms" }}>
                 <WaitlistForm form={dictionary.form} lang={lang} />
               </div>
 
