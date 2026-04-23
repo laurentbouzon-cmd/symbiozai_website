@@ -90,7 +90,7 @@ const dictionaries: Record<Locale, Dictionary> = {
   en: {
     title: "The headless AI CRM | SymbiozAI",
     h1: "SymbiozAI — The headless AI CRM",
-    subtitle: ["The MCP-only AI-Native CRM.", "Designed for AI agents."],
+    subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
       "Legacy CRMs were built for humans — the industry bolted a chatbot on top. SymbiozAI inverts the model: your agents operate it directly from your toolchain, no friction. You supervise. EU-hosted, AI Act native.",
     quote:
@@ -190,7 +190,7 @@ const dictionaries: Record<Locale, Dictionary> = {
   fr: {
     title: "Le CRM headless pour agents IA | SymbiozAI",
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
-    subtitle: ["Le CRM MCP-only AI-Native.", "Conçu pour les agents IA."],
+    subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
       "Les CRM ont été construits pour des humains — les éditeurs ont collé un chatbot dessus. SymbiozAI prend le problème à l'envers : vos agents pilotent directement depuis votre toolchain, sans friction. Vous supervisez. Données hébergées en EU, conformité AI Act native.",
     quote:

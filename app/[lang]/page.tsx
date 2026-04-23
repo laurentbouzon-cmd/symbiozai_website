@@ -236,7 +236,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               </div>
 
               <h2
-                className="hero-item font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.15] text-[#0d47a1]"
+                className="hero-item font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-tight leading-[1.15] text-[#0d47a1]"
                 style={{ animationDelay: "100ms" }}
               >
                 {/*
