@@ -8,7 +8,7 @@ export type PrivacySection = {
 export type Dictionary = {
   title: string
   h1: string
-  subtitle: string
+  subtitle: [string, string]
   description: string
   quote: string
   form: {
@@ -90,9 +90,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   en: {
     title: "The headless AI CRM | SymbiozAI",
     h1: "SymbiozAI — The headless AI CRM",
-    subtitle: "The headless AI CRM.",
+    subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
-      "Legacy CRMs were built for humans — then the industry bolted a chatbot on top. SymbiozAI inverts the model: an MCP-native interface, no UI, no onboarding, operated directly by your agent from Claude Code, Cursor, or any MCP-compatible client. 35 operational missions live on connect — pipeline, qualification, DISC profiling, meeting briefs. You supervise. Your agent executes. EU-hosted, AI Act native.",
+      "Legacy CRMs were built for humans — the industry bolted a chatbot on top. SymbiozAI inverts the model: your agents operate it directly from your toolchain, no friction. You supervise. EU-hosted, AI Act native.",
     quote:
       "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
@@ -190,9 +190,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   fr: {
     title: "Le CRM headless pour agents IA | SymbiozAI",
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
-    subtitle: "Le CRM headless pour agents IA.",
+    subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
-      "Les CRM existants ont été construits pour des humains — et les éditeurs ont posé un chatbot dessus. SymbiozAI prend le problème à l'envers : une interface MCP-native, sans UI, sans formation, que vos agents pilotent directement depuis Claude Code, Cursor ou tout client MCP-compatible. 35 missions opérationnelles disponibles dès la connexion — pipeline, qualification, DISC, briefs réunion. Vous supervisez. Votre agent exécute. Données hébergées en EU, conformité AI Act native.",
+      "Les CRM ont été construits pour des humains — les éditeurs ont collé un chatbot dessus. SymbiozAI prend le problème à l'envers : vos agents pilotent directement depuis votre toolchain, sans friction. Vous supervisez. Données hébergées en EU, conformité AI Act native.",
     quote:
       "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {

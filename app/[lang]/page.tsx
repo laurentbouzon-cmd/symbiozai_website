@@ -236,10 +236,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               </div>
 
               <h2
-                className="hero-item font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-[#0d47a1]"
+                className="hero-item font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.15] text-[#0d47a1]"
                 style={{ animationDelay: "100ms" }}
               >
-                {dictionary.subtitle}
+                <span className="block">{dictionary.subtitle[0]}</span>
+                <span className="block">{dictionary.subtitle[1]}</span>
               </h2>
 
               <p
