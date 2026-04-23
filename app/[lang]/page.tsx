@@ -1,5 +1,7 @@
 import Image from "next/image"
+import Link from "next/link"
 import { getDictionary } from "@/lib/dictionary"
+import { homeCopy, homeAgents, homeIntegrations } from "@/lib/home-page-copy"
 import { SharedFooter } from "@/components/shared-footer"
 import { SharedHeader } from "@/components/shared-header"
 import { GlassIcon } from "@/components/ui/glass-icon"
@@ -7,12 +9,13 @@ import { Logo } from "@/components/ui/logo"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { CodeBlock } from "@/components/site/code-block"
+import { Section } from "@/components/site/section"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   const dictionary = getDictionary(lang)
-  const currentYear = new Date().getFullYear()
+  const isFr = lang === "fr"
+  const copy = homeCopy[isFr ? "fr" : "en"]
 
   const jsonLd = [
     {
@@ -53,158 +56,28 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     },
   ]
 
-  const isFr = lang === "fr"
-
-  const painPoints = [
-    {
-      icon: <GlassIcon type="clock" size={48} />,
-      title: isFr ? "Le temps" : "Time",
-      stat: isFr ? "3 à 5h / semaine" : "3 to 5h / week",
-      description: isFr
-        ? "Vos commerciaux passent en moyenne 3 à 5 heures par semaine à saisir des données dans un CRM. Avec un agent IA qui opère via MCP, ce temps disparaît. L'agent journalise. Ils vendent."
-        : "Your salespeople spend an average of 3 to 5 hours per week entering data into a CRM. With an AI agent operating via MCP, that time disappears. The agent logs. They sell.",
-    },
-    {
-      icon: <GlassIcon type="trending-down" size={48} />,
-      title: isFr ? "Les deals" : "Deals",
-      stat: isFr ? "20 à 30% récupérables" : "20 to 30% recoverable",
-      description: isFr
-        ? "Entre 20 et 30% des deals « perdus » ne sont pas perdus - ils sont juste différés. Votre agent IA surveille les signaux de réactivation en continu et vous remonte le bon deal au bon moment."
-        : "20 to 30% of \"lost\" deals aren't actually lost - they're just deferred. Your AI agent monitors reactivation signals continuously and surfaces the right deal at the right moment.",
-    },
-    {
-      icon: <GlassIcon type="bell" size={48} />,
-      title: isFr ? "Les relances" : "Follow-ups",
-      stat: isFr ? "5 deals oubliés" : "5 deals forgotten",
-      description: isFr
-        ? "Un commercial gère 25 à 40 deals actifs en même temps. Il en oublie 5. Pas par négligence - par volume. Votre agent IA ne les oublie pas. Il les priorise, les score, et vous alerte."
-        : "A sales rep manages 25 to 40 active deals at once. They forget 5. Not out of carelessness - out of volume. Your AI agent doesn't forget. It prioritizes, scores, and alerts you.",
-    },
+  // Icons per pillar card (Section 2) - keeps visual consistency with existing GlassIcon library.
+  const pillarIcons = [
+    <GlassIcon key="ai" type="cpu" size={40} />,
+    <GlassIcon key="auto" type="refresh" size={40} />,
+    <GlassIcon key="mcp" type="target" size={40} />,
+    <GlassIcon key="learn" type="chart" size={40} />,
   ]
 
-  const features = [
-    {
-      icon: <GlassIcon type="refresh" size={48} />,
-      title: isFr ? "Zéro saisie" : "Zero data entry",
-      subtitle: isFr ? "Votre agent IA opère. Votre CRM se remplit." : "Your AI agent operates. Your CRM fills itself.",
-      description: isFr
-        ? "Via MCP, Claude Code, Cursor ou tout agent compatible appelle 35 missions verbales pour cibler, enrichir, qualifier, rédiger. Les contacts sont créés. Les deals sont mis à jour. L'historique est complet. Vos commerciaux n'ont plus qu'à vendre."
-        : "Via MCP, Claude Code, Cursor, or any compatible agent calls 35 verbal missions to target, enrich, qualify, draft. Contacts are created. Deals are updated. History is complete. Your salespeople just sell.",
-    },
-    {
-      icon: <GlassIcon type="bell" size={48} />,
-      title: isFr ? "Pipeline vivant" : "Living pipeline",
-      subtitle: isFr ? "Votre agent surveille. Vous supervisez." : "Your agent monitors. You supervise.",
-      description: isFr
-        ? "L'agent identifie les deals qui stagnent, score chaque opportunité sur plusieurs signaux, et vous remonte ce qui compte dans une console de supervision 5 minutes par jour. Pas de notification parasite - uniquement ce qui compte."
-        : "The agent identifies stalling deals, scores every opportunity on multiple signals, and surfaces what matters in a 5-minutes-a-day supervision console. No noise - only what matters.",
-    },
-    {
-      icon: <GlassIcon type="target" size={48} />,
-      title: isFr ? "Réserve active" : "Active reserve",
-      subtitle: isFr ? "Vos deals perdus deviennent un actif, pas un cimetière" : "Your lost deals become an asset, not a graveyard",
-      description: isFr
-        ? "L'agent classe automatiquement vos deals perdus et surveille les signaux de réactivation - levée de fonds, nouveau poste, changement de budget. Quand le moment est bon, il vous le dit."
-        : "The agent automatically classifies lost deals and monitors reactivation signals - fundraising, new role, budget change. When the time is right, it tells you.",
-    },
-    {
-      icon: <GlassIcon type="chart" size={48} />,
-      title: isFr ? "Pilotage en une question" : "Pipeline in one question",
-      subtitle: isFr ? "L'état de votre pipeline en 5 secondes" : "Your pipeline status in 5 seconds",
-      description: isFr
-        ? "Fin de trimestre. Board meeting dans 2 heures. Vous demandez à votre agent IA dans Claude Code ou Cursor. Il appelle get_pipeline_snapshot et assess_deal_health. Vous avez les chiffres, les deals à risque, les opportunités à accélérer. Pas de dashboard à construire. Juste la réponse."
-        : "End of quarter. Board meeting in 2 hours. You ask your AI agent in Claude Code or Cursor. It calls get_pipeline_snapshot and assess_deal_health. You get the numbers, at-risk deals, and opportunities to accelerate. No dashboard to build. Just the answer.",
-    },
+  // Icons per pain card (Section 3) - mapped to the 3 pains in order.
+  const painIcons = [
+    <GlassIcon key="time" type="clock" size={48} />,
+    <GlassIcon key="deals" type="trending-down" size={48} />,
+    <GlassIcon key="followup" type="bell" size={48} />,
   ]
 
-  const integrations = [
-    { name: "WhatsApp", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" },
-    { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
-    { name: "Gmail", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" },
-    { name: "Google Calendar", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" },
-    { name: "Notion", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" },
-    { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
-    { name: "HubSpot", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg" },
-    { name: "Pipedrive", logo: "https://www.pipedrive.com/favicon.ico" },
+  // Icons per trust badge (Section 7) - mapped to badges order (EU / AI Act / LLM-agnostic / GDPR).
+  const badgeIcons = [
+    <GlassIcon key="eu" type="globe" size={40} />,
+    <GlassIcon key="aiact" type="shield" size={40} />,
+    <GlassIcon key="llm" type="cpu" size={40} />,
+    <GlassIcon key="gdpr" type="unlock" size={40} />,
   ]
-
-  const trustBadges = [
-    {
-      icon: <GlassIcon type="globe" size={40} />,
-      title: isFr ? "Hébergé en EU (Frankfurt)" : "EU-hosted (Frankfurt)",
-      description: isFr
-        ? "Infrastructure DigitalOcean FRA1. Vos données pipeline restent en EU."
-        : "DigitalOcean FRA1 infrastructure. Your pipeline data stays in the EU.",
-    },
-    {
-      icon: <GlassIcon type="shield" size={40} />,
-      title: isFr ? "AI Act natif" : "AI Act native",
-      description: isFr
-        ? "Audit log immuable signé HMAC, rétention 7 ans, politique HITL 3 classes, kill-switch tenant en moins d'1 seconde."
-        : "Immutable HMAC-signed audit log, 7-year retention, 3-class HITL policy, tenant kill-switch in under 1 second.",
-    },
-    {
-      icon: <GlassIcon type="cpu" size={40} />,
-      title: isFr ? "LLM-agnostic" : "LLM-agnostic",
-      description: isFr
-        ? "UnifiedLLMClient multi-provider. Pas de fine-tuning sur vos données. Pas de rétention par les providers LLM."
-        : "UnifiedLLMClient multi-provider. No fine-tuning on your data. No retention by LLM providers.",
-    },
-    {
-      icon: <GlassIcon type="unlock" size={40} />,
-      title: isFr ? "RGPD article 15 natif" : "GDPR article 15 native",
-      description: isFr
-        ? "Endpoint /audit/my-data, export à la demande, zéro vendor lock-in."
-        : "/audit/my-data endpoint, export on demand, zero vendor lock-in.",
-    },
-  ]
-
-  const productMetrics = [
-    { value: "35", label: isFr ? "missions MCP verbales" : "verbal MCP missions", live: true },
-    { value: "23", label: isFr ? "fournisseurs de données wrappés" : "data providers wrapped", live: false },
-    { value: "< 5 min", label: isFr ? "pour connecter votre agent IA" : "to connect your AI agent", live: false },
-    { value: "5 min/j", label: isFr ? "de supervision, pas plus" : "of supervision, nothing more", live: false },
-  ]
-
-  // Agents compatibles (text-only pills, R11-safe, zero third-party logo)
-  const agents = ["Claude Code", "Cursor", "ChatGPT", "Cline", "Goose", "Continue.dev"]
-
-  // Illustrative agent session mocked for the Solution section: narrative only,
-  // not an install command. Shows what a tenant's own agent does when it talks
-  // to SymbiozAI through the MCP server. No interactivity, no typing animation.
-  const agentSessionTranscript = isFr
-    ? `> "Cible 50 fondateurs B2B SaaS, Series A, France."
-
-[agent] calling start_targeting...
-✓ 47 prospects retournés en 58s
-✓ 3 ajoutés à la file de supervision (Orange)
-
-> "Qualifie le top 10."
-
-[agent] calling qualify_lead × 10...
-✓ 7 passent le gate ICP (raisonnement structuré)
-✓ 3 rejetés avec motif explicite
-
-> "Brief meeting pour Sophie Durand demain."
-
-[agent] calling get_meeting_prep_brief...
-✓ Contexte société, historique, talking points prêts`
-    : `> "Target 50 founders in B2B SaaS, Series A, France."
-
-[agent] calling start_targeting...
-✓ 47 prospects returned in 58s
-✓ 3 added to supervision queue (Orange)
-
-> "Qualify the top 10."
-
-[agent] calling qualify_lead × 10...
-✓ 7 pass the ICP gate (structured reasoning)
-✓ 3 rejected with explicit motive
-
-> "Meeting brief for Sophie Durand tomorrow."
-
-[agent] calling get_meeting_prep_brief...
-✓ Company context, history, talking points ready`
 
   // Note: the inline JSON-LD injection below is safe. jsonLd is built from
   // our own static dictionary strings, not from user input.
@@ -216,7 +89,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
         <SharedHeader lang={lang} dictionary={dictionary} activePage="home" showLogo={false} />
 
-        {/* Hero Section: above-the-fold on desktop 900px and mobile 700px */}
+        {/* =====================================================================
+            HERO - LOCKED (verrouillé Laurent). Do not modify copy, layout, CTAs,
+            or above-the-fold constraints. Any change requires explicit founder
+            override.
+            ===================================================================== */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
           <section className="flex flex-col px-4 sm:px-6 text-center min-h-screen justify-center relative">
             <div
@@ -274,306 +151,407 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <ScrollIndicator />
           </section>
 
-          {/* Headless AI CRM Banner */}
-          <section className="py-8 px-4 sm:px-6 bg-white">
+          {/* =====================================================================
+              SECTION 1 - Banner rupture (claim doctrinal)
+              Copy: L'IA n'est plus dans votre CRM. Votre CRM est dans votre IA.
+              ===================================================================== */}
+          <section className="bg-white px-4 py-14 sm:px-6 md:py-20">
             <ScrollReveal className="max-w-3xl mx-auto text-center">
-              <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-widest mb-2">
-                {isFr ? "Headless AI CRM" : "Headless AI CRM"}
+              <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.2] text-gray-950">
+                {copy.ruptureBanner.claim}
               </p>
-              <p className="text-gray-600 text-base md:text-lg">
-                {isFr
-                  ? "La génération précédente de CRM a ajouté l'IA au-dessus d'une base de données. Nous avons construit le CRM pour être opéré par l'IA. Votre agent opère, vous supervisez."
-                  : "The last generation of CRMs added AI on top of a database. We built the CRM to be operated by the AI. Your agent operates, you supervise."}
+              <p className="mt-5 text-base md:text-lg leading-relaxed text-gray-600">
+                {copy.ruptureBanner.subclaim}
               </p>
             </ScrollReveal>
           </section>
 
-          {/* Problem Section */}
-          <section className="py-16 px-4 sm:px-6 bg-gray-50">
-            <div className="max-w-6xl mx-auto">
-              <ScrollReveal>
-                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Le problème" : "The problem"}
-                </p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                  {isFr ? "Ce que vous perdez chaque semaine sans le savoir" : "What you lose every week without knowing"}
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
-                {painPoints.map((point, index) => (
-                  <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="mb-4">{point.icon}</div>
-                    <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider mb-1">{point.title}</p>
-                    <p className="text-2xl font-bold mb-3">{point.stat}</p>
-                    <p className="text-gray-600 text-sm">{point.description}</p>
-                  </div>
+          {/* =====================================================================
+              SECTION 2 - Hub 4 piliers (grille 2x2)
+              Doctrinal hub: the four architectural choices that change everything.
+              ===================================================================== */}
+          <Section
+            id="pillars"
+            tone="gray"
+            container="default"
+            eyebrow={copy.pillarsHub.eyebrow}
+            title={copy.pillarsHub.h2}
+            lede={copy.pillarsHub.intro}
+          >
+            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+              <ScrollReveal stagger className="grid gap-6 sm:grid-cols-2">
+                {copy.pillarsHub.cards.map((card, idx) => (
+                  <article
+                    key={card.h3}
+                    className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <div className="mb-4">{pillarIcons[idx]}</div>
+                    <h3 className="text-lg font-semibold text-gray-900">{card.h3}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{card.body}</p>
+                  </article>
                 ))}
               </ScrollReveal>
-            </div>
-          </section>
-
-          {/* Solution / Maya Section */}
-          <section className="py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
-            <div className="max-w-6xl mx-auto">
               <ScrollReveal>
-                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "La solution" : "The solution"}
-                </p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
-                  {isFr ? "Votre agent opère. Vous supervisez." : "Your agent operates. You supervise."}
-                </h2>
-                <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                  {isFr
-                    ? "SymbiozAI n'est pas un CRM avec une IA ajoutée. C'est un CRM conçu pour qu'un agent IA externe, Claude Code, Cursor, tout agent compatible MCP, soit l'opérateur principal. 35 missions MCP verbales. Un seul endpoint. Installation en moins de 5 minutes."
-                    : "SymbiozAI is not a CRM with AI on top. It's a CRM designed so that an external AI agent, Claude Code, Cursor, any MCP-compatible agent, is the primary operator. 35 verbal MCP missions. One endpoint. Install in under 5 minutes."}
-                </p>
-              </ScrollReveal>
-
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="order-2 lg:order-1">
-                  <ScrollReveal stagger className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <GlassIcon type="refresh" size={48} />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "Connecté en 5 minutes" : "Connected in 5 minutes"}
-                        </h3>
-                        <p className="text-gray-600">
-                          {isFr
-                            ? "Une commande : npx @symbiozai/mcp-setup. Le CLI auto-configure votre client Claude Code, Cursor, Cline, Goose ou Continue.dev. Pas de clé API à gérer. Pas de JSON à éditer."
-                            : "One command: npx @symbiozai/mcp-setup. The CLI auto-configures your Claude Code, Cursor, Cline, Goose, or Continue.dev client. No API key to manage. No JSON to edit."}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <GlassIcon type="chart" size={48} />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "35 missions MCP verbales" : "35 verbal MCP missions"}
-                        </h3>
-                        <p className="text-gray-600">
-                          {isFr
-                            ? "Votre agent appelle start_targeting, qualify_lead, assess_deal_health, analyze_communication_style. En langage naturel. Acquisition, qualification, engagement, meta. Un seul endpoint."
-                            : "Your agent calls start_targeting, qualify_lead, assess_deal_health, analyze_communication_style. In natural language. Acquisition, qualification, engagement, meta. One endpoint."}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <GlassIcon type="shield" size={48} />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">
-                          {isFr ? "Supervision 5 min/jour" : "5 min/day supervision"}
-                        </h3>
-                        <p className="text-gray-600">
-                          {isFr
-                            ? "Une politique HITL 3 classes : Vert pour exécution automatique, Orange pour dry-run + confirmation, Rouge pour approbation explicite. Audit log immuable signé HMAC, rétention 7 ans, kill-switch tenant en moins d'une seconde."
-                            : "A 3-class HITL policy: Green for auto-execution, Orange for dry-run + confirmation, Red for explicit approval. Immutable HMAC-signed audit log, 7-year retention, tenant kill-switch in under a second."}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
+                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
+                  <Image
+                    src="/images/pivot-mcp/comparison-mcp-retrofitted-vs-mcp-only.png"
+                    alt={copy.pillarsHub.visualAlt}
+                    width={1200}
+                    height={720}
+                    className="w-full rounded-2xl"
+                    sizes="(min-width: 1024px) 36rem, 100vw"
+                  />
                 </div>
-
-                <div className="order-1 lg:order-2">
-                  <div className="max-w-md mx-auto">
-                    <CodeBlock
-                      code={agentSessionTranscript}
-                      language="text"
-                      caption={isFr ? "Agent · session illustrative" : "Agent · illustrative session"}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Features Section: 4 features */}
-          <section className="py-16 px-4 sm:px-6">
-            <div className="max-w-6xl mx-auto">
-              <ScrollReveal>
-                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Concrètement" : "In practice"}
-                </p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                  {isFr ? "Ce qui change avec SymbiozAI" : "What changes with SymbiozAI"}
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal stagger className="grid sm:grid-cols-2 gap-8">
-                {features.map((feature, index) => (
-                  <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-bold mb-1">{feature.title}</h3>
-                    <p className="text-sm font-medium text-[#0d47a1] mb-3">{feature.subtitle}</p>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
-                  </div>
-                ))}
               </ScrollReveal>
             </div>
-          </section>
+          </Section>
 
-          {/* Social Proof Section */}
-          <section className="py-16 px-4 sm:px-6 bg-gray-50">
-            <div className="max-w-6xl mx-auto">
-              <ScrollReveal>
-                <p className="text-sm font-medium text-[#0d47a1] uppercase tracking-wider text-center mb-2">
-                  {isFr ? "Construit pour durer" : "Built to last"}
-                </p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-                  {isFr ? "Une infrastructure MCP-only. Pas un chatbot collé sur un CRM." : "An MCP-only infrastructure. Not a chatbot bolted on a CRM."}
-                </h2>
-              </ScrollReveal>
-
-              {/* Product metrics */}
-              <ScrollReveal stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                {productMetrics.map((metric, index) => (
-                  <div key={index} className="text-center">
-                    <div className="flex items-center justify-center gap-2">
-                      <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
-                        {metric.value}
-                      </p>
-                      {metric.live && (
-                        <span className="relative flex h-2.5 w-2.5 mt-1">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600 mt-1">{metric.label}</p>
-                  </div>
-                ))}
-              </ScrollReveal>
-
-              {/* Trust badges */}
-              <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                {trustBadges.map((badge, index) => (
-                  <div key={index} className="bg-white p-4 rounded-xl shadow-sm text-center">
-                    <div className="flex justify-center mb-3">{badge.icon}</div>
-                    <h3 className="font-semibold mb-1">{badge.title}</h3>
-                    <p className="text-xs text-gray-600">{badge.description}</p>
-                  </div>
-                ))}
-              </ScrollReveal>
-
-              {/* Founder quote */}
-              <ScrollReveal className="max-w-3xl mx-auto">
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                  <blockquote className="italic text-gray-700 text-base md:text-lg leading-relaxed">
-                    &ldquo;{dictionary.quote}&rdquo;
-                  </blockquote>
-                  <p className="mt-4 text-sm font-semibold text-gray-900">
-                    Laurent Bouzon, {isFr ? "fondateur de SymbiozAI" : "founder of SymbiozAI"}
+          {/* =====================================================================
+              SECTION 3 - Douleur rerouted (3 pain cards + pilier link)
+              Each pain card now reroutes to the pillar that resolves it.
+              ===================================================================== */}
+          <Section
+            tone="white"
+            container="default"
+            eyebrow={copy.problem.eyebrow}
+            title={copy.problem.h2}
+          >
+            <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
+              {copy.problem.cards.map((pain, idx) => (
+                <div
+                  key={pain.title}
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200"
+                >
+                  <div className="mb-4">{painIcons[idx]}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{pain.title}</h3>
+                  <p className="text-2xl font-bold mb-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
+                    {pain.stat}
+                  </p>
+                  <p className="text-gray-600 text-sm mb-4">{pain.body}</p>
+                  <p className="text-xs font-medium text-[#0d47a1] leading-relaxed border-t border-gray-100 pt-3">
+                    {pain.pilier}
                   </p>
                 </div>
-              </ScrollReveal>
-            </div>
-          </section>
+              ))}
+            </ScrollReveal>
+          </Section>
 
-          {/* Integrations Section: 2 rows, AI agents (text-only) + tools (logos) */}
-          <section className="py-16 px-4 sm:px-6">
-            <div className="max-w-4xl mx-auto">
+          {/* =====================================================================
+              SECTION 4 - Pilier Autonome (Layer 1: internal agents)
+              H2 locked: "Your agent operates. You supervise."
+              Visual: supervision console mockup (already live on /for-sales-teams).
+              ===================================================================== */}
+          <Section
+            id="autonome"
+            tone="gray"
+            container="default"
+            eyebrow={copy.autonome.eyebrow}
+            title={copy.autonome.h2}
+          >
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <ScrollReveal>
-                <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
-                  {isFr ? "Votre agent IA, vos outils. Un seul endpoint." : "Your AI agent, your tools. One endpoint."}
-                </h2>
-              </ScrollReveal>
-
-              {/* Row 1: AI agents (text-only pills, R11-safe) */}
-              <ScrollReveal className="mb-10">
-                <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
-                  {isFr ? "Votre agent IA" : "Your AI agent"}
-                </p>
-                <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-                  {agents.map((agent) => (
-                    <div
-                      key={agent}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                    >
+                <p className="text-base md:text-lg leading-relaxed text-gray-700">{copy.autonome.intro}</p>
+                <ul className="mt-6 space-y-3">
+                  {copy.autonome.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
                       <span
                         aria-hidden="true"
-                        className="inline-flex h-5 w-5 items-center justify-center rounded border border-gray-300 font-mono text-[11px] font-semibold text-gray-700"
-                      >
-                        {agent.charAt(0)}
-                      </span>
-                      <span className="text-sm font-medium text-gray-700">{agent}</span>
-                    </div>
+                        className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
+                      />
+                      <span>{bullet}</span>
+                    </li>
                   ))}
-                </div>
-              </ScrollReveal>
-
-              {/* Row 2: Tools (existing logo pills, unchanged) */}
-              <ScrollReveal>
-                <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
-                  {isFr ? "Vos outils" : "Your tools"}
+                </ul>
+                <p className="mt-6 rounded-xl border border-gray-200 bg-white p-5 text-sm md:text-base font-medium text-gray-900 leading-relaxed">
+                  {copy.autonome.closing}
                 </p>
-                <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                  {integrations.map((integration) => (
-                    <div
-                      key={integration.name}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                      <div className="w-5 h-5 relative flex-shrink-0">
-                        <Image
-                          src={integration.logo || "/placeholder.svg"}
-                          alt={`${integration.name} logo`}
-                          width={20}
-                          height={20}
-                          className="object-contain w-5 h-5"
-                          loading="lazy"
-                          unoptimized
-                        />
-                      </div>
-                      <span className="text-sm font-medium text-gray-600">{integration.name}</span>
-                    </div>
-                  ))}
+              </ScrollReveal>
+              <ScrollReveal>
+                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
+                  <Image
+                    src="/images/pivot-mcp/supervision-console-mockup.png"
+                    alt={copy.autonome.visualAlt}
+                    width={1200}
+                    height={720}
+                    className="w-full rounded-2xl"
+                    sizes="(min-width: 1024px) 36rem, 100vw"
+                  />
                 </div>
               </ScrollReveal>
             </div>
-          </section>
+          </Section>
 
-          {/* CTA Final Section */}
-          <section id="cta-final" className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
+          {/* =====================================================================
+              SECTION 5 - Pilier MCP-first (Layer 2: MCP infrastructure)
+              Category rupture: we removed the interface.
+              Visual: architecture-diagram-wrap-first.
+              ===================================================================== */}
+          <Section
+            id="mcp-first"
+            tone="white"
+            container="default"
+            eyebrow={copy.mcpFirst.eyebrow}
+            title={copy.mcpFirst.h2}
+          >
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <ScrollReveal>
+                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
+                  <Image
+                    src="/images/pivot-mcp/architecture-diagram-wrap-first.png"
+                    alt={copy.mcpFirst.visualAlt}
+                    width={1200}
+                    height={720}
+                    className="w-full rounded-2xl"
+                    sizes="(min-width: 1024px) 36rem, 100vw"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal>
+                <p className="text-base md:text-lg leading-relaxed text-gray-700">{copy.mcpFirst.intro1}</p>
+                <p className="mt-4 text-lg md:text-xl font-semibold text-gray-950">{copy.mcpFirst.intro2}</p>
+                <p className="mt-4 text-base md:text-lg leading-relaxed text-gray-700">{copy.mcpFirst.intro3}</p>
+                <ul className="mt-6 space-y-3">
+                  {copy.mcpFirst.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
+                      />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-5 text-sm md:text-base italic text-gray-800 leading-relaxed">
+                  {copy.mcpFirst.closing}
+                </p>
+              </ScrollReveal>
+            </div>
+          </Section>
+
+          {/* =====================================================================
+              SECTION 6 - AI-Native + Auto-apprenant (architecture and learning)
+              Two sub-sections fused under one pillar.
+              Visual: auto-apprenant.png (new asset produced by visual-designer).
+              ===================================================================== */}
+          <Section
+            id="ai-native-learning"
+            tone="gray"
+            container="default"
+            eyebrow={copy.aiNativeLearn.eyebrow}
+            title={copy.aiNativeLearn.h2}
+          >
+            <ScrollReveal className="mb-12">
+              <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
+                <Image
+                  src="/images/pivot-mcp/auto-apprenant.png"
+                  alt={copy.aiNativeLearn.visualAlt}
+                  width={1600}
+                  height={900}
+                  className="w-full rounded-2xl"
+                  sizes="(min-width: 1024px) 56rem, 100vw"
+                />
+              </div>
+            </ScrollReveal>
+
+            <div className="grid gap-8 md:grid-cols-2">
+              <ScrollReveal>
+                <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+                  <h3 className="text-xl font-semibold text-gray-900">{copy.aiNativeLearn.sub1.h3}</h3>
+                  <div className="mt-4 space-y-4">
+                    {copy.aiNativeLearn.sub1.paragraphs.map((para, idx) => (
+                      <p key={idx} className="text-sm md:text-base leading-relaxed text-gray-700">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              </ScrollReveal>
+              <ScrollReveal>
+                <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+                  <h3 className="text-xl font-semibold text-gray-900">{copy.aiNativeLearn.sub2.h3}</h3>
+                  <div className="mt-4 space-y-4">
+                    {copy.aiNativeLearn.sub2.paragraphs.map((para, idx) => (
+                      <p key={idx} className="text-sm md:text-base leading-relaxed text-gray-700">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              </ScrollReveal>
+            </div>
+          </Section>
+
+          {/* =====================================================================
+              SECTION 7 - Infrastructure + trust (metrics + badges + quote)
+              Quote fondateur locked by Laurent 2026-04-23.
+              ===================================================================== */}
+          <Section
+            tone="white"
+            container="default"
+            eyebrow={copy.infra.eyebrow}
+            title={copy.infra.h2}
+          >
+            {/* Metrics row */}
+            <ScrollReveal stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+              {copy.infra.metrics.map((metric) => (
+                <div key={metric.label} className="text-center">
+                  <div className="flex items-center justify-center gap-2">
+                    <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
+                      {metric.value}
+                    </p>
+                    {metric.live && (
+                      <span className="relative flex h-2.5 w-2.5 mt-1">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">{metric.label}</p>
+                </div>
+              ))}
+            </ScrollReveal>
+
+            {/* Trust badges */}
+            <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {copy.infra.badges.map((badge, idx) => (
+                <div key={badge.title} className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100">
+                  <div className="flex justify-center mb-3">{badgeIcons[idx]}</div>
+                  <h3 className="font-semibold mb-1 text-gray-900">{badge.title}</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">{badge.body}</p>
+                </div>
+              ))}
+            </ScrollReveal>
+
+            {/* Founder quote - locked verbatim */}
+            <ScrollReveal className="max-w-3xl mx-auto">
+              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <blockquote className="italic text-gray-700 text-base md:text-lg leading-relaxed">
+                  &ldquo;{dictionary.quote}&rdquo;
+                </blockquote>
+                <p className="mt-4 text-sm font-semibold text-gray-900">{copy.infra.quoteAuthor}</p>
+              </div>
+            </ScrollReveal>
+          </Section>
+
+          {/* =====================================================================
+              SECTION 8 - Integrations (H2 retitled, 2 rows kept)
+              Row 1: AI agents (text-only). Row 2: tools (logos).
+              ===================================================================== */}
+          <Section tone="gray" container="default" title={copy.integrations.h2}>
+            {/* Row 1: AI agents (text-only pills, R11-safe) */}
+            <ScrollReveal className="mb-10">
+              <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+                {copy.integrations.agentsLabel}
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                {homeAgents.map((agent) => (
+                  <div
+                    key={agent}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex h-5 w-5 items-center justify-center rounded border border-gray-300 font-mono text-[11px] font-semibold text-gray-700"
+                    >
+                      {agent.charAt(0)}
+                    </span>
+                    <span className="text-sm font-medium text-gray-700">{agent}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Row 2: Tools (logo pills) */}
+            <ScrollReveal>
+              <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+                {copy.integrations.toolsLabel}
+              </p>
+              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+                {homeIntegrations.map((integration) => (
+                  <div
+                    key={integration.name}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <div className="w-5 h-5 relative flex-shrink-0">
+                      <Image
+                        src={integration.logo || "/placeholder.svg"}
+                        alt={`${integration.name} logo`}
+                        width={20}
+                        height={20}
+                        className="object-contain w-5 h-5"
+                        loading="lazy"
+                        unoptimized
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-gray-600">{integration.name}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <p className="mt-10 text-center text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                {copy.integrations.microcopy}
+              </p>
+            </ScrollReveal>
+          </Section>
+
+          {/* =====================================================================
+              SECTION 9 - CTA Final (ICP founder-tech sharpened)
+              Primary: WaitlistForm. Secondary: Calendly Book a meeting.
+              Microcopy link: reroute toward /for-sales-teams.
+              ===================================================================== */}
+          <section
+            id="cta-final"
+            className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white"
+          >
             <div className="max-w-3xl mx-auto text-center">
               <ScrollReveal>
-                <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                  {isFr ? "Prêt à connecter votre agent ?" : "Ready to connect your agent?"}
-                </h2>
-                <p className="text-white/80 text-lg mb-4">
-                  {isFr
-                    ? "Votre agent IA opère via MCP. Vous supervisez ce qui compte. Vos commerciaux vendent au lieu de saisir."
-                    : "Your AI agent operates via MCP. You supervise what matters. Your salespeople sell instead of typing."}
-                </p>
-                <p className="text-white/60 text-sm mb-8">
-                  {isFr
-                    ? "Accès bêta. Installation MCP en moins de 5 minutes. Gratuit jusqu'à 500 appels/jour."
-                    : "Beta access. MCP install in under 5 minutes. Free up to 500 calls/day."}
-                </p>
+                <h2 className="text-3xl md:text-4xl font-semibold mb-6">{copy.ctaFinal.h2}</h2>
+                {copy.ctaFinal.lede.map((line, idx) => (
+                  <p
+                    key={idx}
+                    className={`${idx === 0 ? "text-white/85 text-lg" : "text-white/70 text-base"} ${
+                      idx === 0 ? "mb-2" : "mb-8"
+                    }`}
+                  >
+                    {line}
+                  </p>
+                ))}
+
                 <div className="max-w-md mx-auto">
                   <WaitlistForm form={dictionary.form} lang={lang} />
                 </div>
+
                 <p className="mt-4">
                   <a
-                    href="https://calendly.com/laurent-bouzon-symbioz/30min"
+                    href={copy.ctaFinal.secondaryCta.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4"
+                    className="text-sm text-white/80 hover:text-white transition-colors underline underline-offset-4"
                   >
-                    {isFr ? "ou prendre rendez-vous →" : "or book a meeting →"}
+                    {isFr ? "ou " : "or "}
+                    {copy.ctaFinal.secondaryCta.label.toLowerCase()} →
                   </a>
                 </p>
-                <p className="text-white/40 text-xs mt-4">
-                  {isFr
-                    ? "Sans engagement. Sans carte bancaire. Sans configuration de 3 semaines."
-                    : "No commitment. No credit card. No 3-week setup."}
+
+                <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/70 text-xs md:text-sm">
+                  {copy.ctaFinal.reassurance.map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <span aria-hidden="true" className="h-1 w-1 rounded-full bg-white/40" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-10 text-white/60 text-sm">
+                  {copy.ctaFinal.microcopyPrefix}{" "}
+                  <Link
+                    href={copy.ctaFinal.microcopyLink.href}
+                    className="underline underline-offset-4 hover:text-white transition-colors"
+                  >
+                    {copy.ctaFinal.microcopyLink.label}
+                  </Link>
                 </p>
               </ScrollReveal>
             </div>
