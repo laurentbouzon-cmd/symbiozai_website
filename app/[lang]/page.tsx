@@ -8,7 +8,7 @@ import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { LazyInteractivePlayground } from "@/components/playground/lazy-interactive-playground"
+import { CodeBlock } from "@/components/site/code-block"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
@@ -167,6 +167,46 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     { value: "5 min/j", label: isFr ? "de supervision, pas plus" : "of supervision, nothing more", live: false },
   ]
 
+  // Agents compatibles (text-only pills, R11-safe, zero third-party logo)
+  const agents = ["Claude Code", "Cursor", "ChatGPT", "Cline", "Goose", "Continue.dev"]
+
+  // Illustrative agent session mocked for the Solution section — narrative only,
+  // not an install command. Shows what a tenant's own agent does when it talks
+  // to SymbiozAI through the MCP server. No interactivity, no typing animation.
+  const agentSessionTranscript = isFr
+    ? `> "Cible 50 fondateurs B2B SaaS, Series A, France."
+
+[agent] calling start_targeting...
+✓ 47 prospects retournés en 58s
+✓ 3 ajoutés à la file de supervision (Orange)
+
+> "Qualifie le top 10."
+
+[agent] calling qualify_lead × 10...
+✓ 7 passent le gate ICP (raisonnement structuré)
+✓ 3 rejetés avec motif explicite
+
+> "Brief meeting pour Sophie Durand demain."
+
+[agent] calling get_meeting_prep_brief...
+✓ Contexte société, historique, talking points prêts`
+    : `> "Target 50 founders in B2B SaaS, Series A, France."
+
+[agent] calling start_targeting...
+✓ 47 prospects returned in 58s
+✓ 3 added to supervision queue (Orange)
+
+> "Qualify the top 10."
+
+[agent] calling qualify_lead × 10...
+✓ 7 pass the ICP gate (structured reasoning)
+✓ 3 rejected with explicit motive
+
+> "Meeting brief for Sophie Durand tomorrow."
+
+[agent] calling get_meeting_prep_brief...
+✓ Company context, history, talking points ready`
+
   // Note: dangerouslySetInnerHTML below is safe — jsonLd is built from
   // our own static dictionary strings, not from user input.
   const jsonLdHtml = JSON.stringify(jsonLd)
@@ -206,8 +246,22 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <p className="text-center max-w-3xl">{dictionary.description}</p>
               </div>
 
+              <p className="hero-item text-xs sm:text-sm text-gray-500 mb-6" style={{ animationDelay: "400ms" }}>
+                {isFr ? "Compatible nativement avec " : "Works natively with "}
+                <span className="text-gray-700">{agents.join(" · ")}</span>
+              </p>
+
               <div className="hero-item" style={{ animationDelay: "450ms" }}>
                 <WaitlistForm form={dictionary.form} lang={lang} />
+              </div>
+
+              <div className="hero-item mt-4" style={{ animationDelay: "550ms" }}>
+                <Link
+                  href={`/${lang}/contact`}
+                  className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
+                >
+                  {isFr ? "ou réserver une démo →" : "or book a demo →"}
+                </Link>
               </div>
             </div>
 
@@ -225,9 +279,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   ? "La génération précédente de CRM a ajouté l'IA au-dessus d'une base de données. Nous avons construit le CRM pour être opéré par l'IA. Votre agent opère, vous supervisez."
                   : "The last generation of CRMs added AI on top of a database. We built the CRM to be operated by the AI. Your agent operates, you supervise."}
               </p>
-              <Link href={`/${lang}/manifeste`} className="inline-block mt-3 text-sm font-medium text-[#0d47a1] hover:text-[#00e5ff] transition-colors underline underline-offset-4">
-                {isFr ? "Lire notre manifeste" : "Read our manifesto"}
-              </Link>
             </ScrollReveal>
           </section>
 
@@ -310,7 +361,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <GlassIcon type="message" size={48} />
+                        <GlassIcon type="shield" size={48} />
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold mb-2">
@@ -327,7 +378,13 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <LazyInteractivePlayground lang={lang} />
+                  <div className="max-w-md mx-auto">
+                    <CodeBlock
+                      code={agentSessionTranscript}
+                      language="text"
+                      caption={isFr ? "Agent · session illustrative" : "Agent · illustrative session"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -415,34 +472,64 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             </div>
           </section>
 
-          {/* Integrations Section */}
+          {/* Integrations Section — 2 rows : AI agents (text-only) + tools (logos) */}
           <section className="py-16 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
               <ScrollReveal>
                 <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
-                  {isFr ? "Compatible avec votre agent IA et vos outils" : "Compatible with your AI agent and your tools"}
+                  {isFr ? "Votre agent IA, vos outils. Un seul endpoint." : "Your AI agent, your tools. One endpoint."}
                 </h2>
               </ScrollReveal>
-              <ScrollReveal stagger className="flex flex-wrap justify-center gap-6 md:gap-8">
-                {integrations.map((integration) => (
-                  <div
-                    key={integration.name}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="w-5 h-5 relative flex-shrink-0">
-                      <Image
-                        src={integration.logo || "/placeholder.svg"}
-                        alt={`${integration.name} logo`}
-                        width={20}
-                        height={20}
-                        className="object-contain w-5 h-5"
-                        loading="lazy"
-                        unoptimized
-                      />
+
+              {/* Row 1 — AI agents (text-only pills, R11-safe) */}
+              <ScrollReveal className="mb-10">
+                <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+                  {isFr ? "Votre agent IA" : "Your AI agent"}
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                  {agents.map((agent) => (
+                    <div
+                      key={agent}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="inline-flex h-5 w-5 items-center justify-center rounded border border-gray-300 font-mono text-[11px] font-semibold text-gray-700"
+                      >
+                        {agent.charAt(0)}
+                      </span>
+                      <span className="text-sm font-medium text-gray-700">{agent}</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-600">{integration.name}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </ScrollReveal>
+
+              {/* Row 2 — Tools (existing logo pills, unchanged) */}
+              <ScrollReveal>
+                <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+                  {isFr ? "Vos outils" : "Your tools"}
+                </p>
+                <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+                  {integrations.map((integration) => (
+                    <div
+                      key={integration.name}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <div className="w-5 h-5 relative flex-shrink-0">
+                        <Image
+                          src={integration.logo || "/placeholder.svg"}
+                          alt={`${integration.name} logo`}
+                          width={20}
+                          height={20}
+                          className="object-contain w-5 h-5"
+                          loading="lazy"
+                          unoptimized
+                        />
+                      </div>
+                      <span className="text-sm font-medium text-gray-600">{integration.name}</span>
+                    </div>
+                  ))}
+                </div>
               </ScrollReveal>
             </div>
           </section>
@@ -467,6 +554,14 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 <div className="max-w-md mx-auto">
                   <WaitlistForm form={dictionary.form} lang={lang} />
                 </div>
+                <p className="mt-4">
+                  <Link
+                    href={`/${lang}/contact`}
+                    className="text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4"
+                  >
+                    {isFr ? "ou réserver une démo →" : "or book a demo →"}
+                  </Link>
+                </p>
                 <p className="text-white/40 text-xs mt-4">
                   {isFr
                     ? "Sans engagement. Sans carte bancaire. Sans configuration de 3 semaines."

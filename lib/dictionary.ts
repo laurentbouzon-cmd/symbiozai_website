@@ -59,13 +59,6 @@ export type Dictionary = {
     title: string
     backToHome: string
   }
-  playground: {
-    welcome: string
-    tryAnother: string
-    ctaText: string
-    ctaButton: string
-    inputPlaceholder: string
-  }
   privacy: {
     title: string
     lastUpdated: string
@@ -152,13 +145,6 @@ const dictionaries: Record<Locale, Dictionary> = {
     manifesto: {
       title: "Manifesto",
       backToHome: "Back to Home",
-    },
-    playground: {
-      welcome: "Hey! I'm Maya, the AI that runs your CRM. Try it yourself",
-      tryAnother: "Want to see something else?",
-      ctaText: "That's just a preview. The real Maya does this on YOUR data.",
-      ctaButton: "Join the beta",
-      inputPlaceholder: "Ask Maya...",
     },
     privacy: {
       title: "Privacy Policy",
@@ -262,13 +248,6 @@ const dictionaries: Record<Locale, Dictionary> = {
     manifesto: {
       title: "Manifeste",
       backToHome: "Retour à l'accueil",
-    },
-    playground: {
-      welcome: "Salut ! Je suis Maya, l'IA qui pilote ton CRM. Essaie par toi-m\u00eame",
-      tryAnother: "Tu veux voir autre chose ?",
-      ctaText: "\u00c7a, c'est juste un aper\u00e7u. La vraie Maya fait \u00e7a sur TES donn\u00e9es.",
-      ctaButton: "Rejoindre la beta",
-      inputPlaceholder: "Demande \u00e0 Maya...",
     },
     privacy: {
       title: "Politique de confidentialit\u00e9",
