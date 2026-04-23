@@ -94,7 +94,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse — they'll pilot with their AI workforce.",
     quote:
-      "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
+      "Tomorrow's companies won't just use AI. They'll be built with it. Natively. Structurally.",
     form: {
       placeholder: "Enter your email",
       button: "Join the waitlist",
@@ -194,7 +194,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris — elle pilotera avec sa workforce IA.",
     quote:
-      "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
+      "Les entreprises de demain ne se contenteront pas d'utiliser l'IA. Elles seront construites avec. Nativement. Structurellement.",
     form: {
       placeholder: "Entrez votre email",
       button: "Rejoindre la liste",

@@ -259,16 +259,11 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-6 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
+            <p className="font-bold text-gray-900 text-lg md:text-xl">
               {isFr
-                ? "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only."
-                : "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only."}
-            </h2>
-            <blockquote className="border-l-4 border-[#0088C2] pl-6 py-2 text-lg md:text-xl font-semibold text-gray-900 leading-snug">
-              {isFr
-                ? "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence."
-                : "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference."}
-            </blockquote>
+                ? "Le CRM tel que vous le connaissez est mort. SymbiozAI est ce qui vient après."
+                : "The CRM as you know it is dead. SymbiozAI is what comes next."}
+            </p>
           </div>
 
           {/* Signature */}
