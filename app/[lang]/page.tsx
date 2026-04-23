@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { getDictionary } from "@/lib/dictionary"
@@ -13,6 +14,59 @@ import { Section } from "@/components/site/section"
 import { AgentActivityFeed } from "@/components/site/agent-activity-feed"
 import { McpConvergenceDiagram } from "@/components/site/mcp-convergence-diagram"
 import { LearningTimeline } from "@/components/site/learning-timeline"
+
+// Metadata declared at page level (not layout level) to ensure synchronous
+// rendering into <head> for HTML-limited bots (Googlebot, Bingbot, Twitterbot,
+// LinkedInBot, etc). When root layout is dynamic (x-locale header), layout-
+// level metadata defers to streaming and skips <head>. Page-level metadata
+// resolves early and lands in <head>. See SEO P0-3.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  const dictionary = getDictionary(lang)
+  const isEnglish = lang === "en"
+
+  return {
+    title: dictionary.title,
+    description: dictionary.description,
+    keywords: isEnglish
+      ? "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, Model Context Protocol CRM, Claude Code CRM, Cursor CRM, EU CRM"
+      : "CRM headless, CRM MCP, CRM IA-native, CRM pour agents IA, CRM agent-native, Model Context Protocol, Claude Code, Cursor, CRM européen",
+    openGraph: {
+      title: dictionary.title,
+      description: dictionary.description,
+      url: `https://symbioz.ai/${lang}`,
+      siteName: "SymbiozAI",
+      images: [
+        {
+          url: "/images/pivot-mcp/og-image-symbiozai.png",
+          width: 1200,
+          height: 630,
+          alt: dictionary.title,
+        },
+      ],
+      locale: isEnglish ? "en_US" : "fr_FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dictionary.title,
+      description: dictionary.description,
+      images: ["/images/pivot-mcp/og-image-symbiozai.png"],
+    },
+    alternates: {
+      canonical: `https://symbioz.ai/${lang}`,
+      languages: {
+        "x-default": "https://symbioz.ai/en",
+        en: "https://symbioz.ai/en",
+        fr: "https://symbioz.ai/fr",
+      },
+    },
+  }
+}
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params

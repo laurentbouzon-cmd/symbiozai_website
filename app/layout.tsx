@@ -3,12 +3,24 @@ import "./globals.css"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { Inter } from "next/font/google"
+import { headers } from "next/headers"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 })
+
+// Locales supportées pour déclarer <html lang> dynamiquement (SEO P0-2).
+// Le middleware injecte le header `x-locale` selon le segment /[lang]/ détecté.
+// Fallback "en" pour les routes hors /[lang]/ (ex: /status, /not-found).
+const SUPPORTED_LOCALES = ["en", "fr"] as const
+type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
+const DEFAULT_LOCALE: SupportedLocale = "en"
+
+function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
+  return value !== null && value !== undefined && (SUPPORTED_LOCALES as readonly string[]).includes(value)
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://symbioz.ai"),
@@ -68,13 +80,22 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // Lire la locale détectée par le middleware (injectée via header `x-locale`).
+  // Ce pattern permet à <html lang={...}> d'être dynamique sans restructurer
+  // l'arbre App Router en route groups multiples. Voir middleware.ts pour
+  // l'injection. Les meta tags sont synchronisés dans <head> pour les crawlers
+  // SEO via `htmlLimitedBots` dans next.config.js (P0-3).
+  const headersList = await headers()
+  const headerLocale = headersList.get("x-locale")
+  const locale: SupportedLocale = isSupportedLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <head>
         {/* Preconnect to third-party origins for faster resource fetching */}
         <link rel="preconnect" href="https://static.axept.io" crossOrigin="anonymous" />
