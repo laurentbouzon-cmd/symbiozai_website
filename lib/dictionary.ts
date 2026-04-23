@@ -92,7 +92,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — The headless AI CRM",
     subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
-      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse.",
+      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse — they'll pilot with their AI workforce.",
     quote:
       "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
@@ -192,7 +192,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
     subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
-      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris.",
+      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris — elle pilotera avec sa workforce IA.",
     quote:
       "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {
