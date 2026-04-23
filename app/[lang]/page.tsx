@@ -10,6 +10,9 @@ import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Section } from "@/components/site/section"
+import { AgentsStackVisual } from "@/components/site/agents-stack-visual"
+import { McpConvergenceDiagram } from "@/components/site/mcp-convergence-diagram"
+import { LearningTimeline } from "@/components/site/learning-timeline"
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
@@ -55,12 +58,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       },
     },
   ]
-
-  // Lang-aware image suffix for home pillar visuals.
-  // Pattern: each localised visual lives at /images/pivot-mcp/<name>-<suffix>.png.
-  // Kept inline (vs. embedding in home-page-copy.ts) because paths are asset
-  // concerns, not copy concerns, and page.tsx already resolves `lang` here.
-  const imgSuffix = isFr ? "fr" : "en"
 
   // Icons per pillar card (Section 2) - keeps visual consistency with existing GlassIcon library.
   const pillarIcons = [
@@ -184,32 +181,22 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             title={copy.pillarsHub.h2}
             lede={copy.pillarsHub.intro}
           >
-            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-              <ScrollReveal stagger className="grid gap-6 sm:grid-cols-2">
-                {copy.pillarsHub.cards.map((card, idx) => (
-                  <article
-                    key={card.h3}
-                    className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="mb-4">{pillarIcons[idx]}</div>
-                    <h3 className="text-lg font-semibold text-gray-900">{card.h3}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{card.body}</p>
-                  </article>
-                ))}
-              </ScrollReveal>
-              <ScrollReveal>
-                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
-                  <Image
-                    src={`/images/pivot-mcp/comparison-mcp-retrofitted-vs-mcp-only-${imgSuffix}.png`}
-                    alt={copy.pillarsHub.visualAlt}
-                    width={1200}
-                    height={720}
-                    className="w-full rounded-2xl"
-                    sizes="(min-width: 1024px) 36rem, 100vw"
-                  />
-                </div>
-              </ScrollReveal>
-            </div>
+            <ScrollReveal stagger className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2 lg:gap-6">
+              {copy.pillarsHub.cards.map((card, idx) => (
+                <article
+                  key={card.h3}
+                  className="group relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.2)] md:p-7"
+                >
+                  <div className="mb-5">{pillarIcons[idx]}</div>
+                  <h3 className="text-lg font-semibold tracking-tight text-gray-900">
+                    {card.h3}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-gray-600">
+                    {card.body}
+                  </p>
+                </article>
+              ))}
+            </ScrollReveal>
           </Section>
 
           {/* =====================================================================
@@ -222,19 +209,21 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             eyebrow={copy.problem.eyebrow}
             title={copy.problem.h2}
           >
-            <ScrollReveal stagger className="grid md:grid-cols-3 gap-8">
+            <ScrollReveal stagger className="grid gap-6 md:grid-cols-3 lg:gap-8">
               {copy.problem.cards.map((pain, idx) => (
                 <div
                   key={pain.title}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200"
+                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.2)] md:p-7"
                 >
-                  <div className="mb-4">{painIcons[idx]}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{pain.title}</h3>
-                  <p className="text-2xl font-bold mb-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
+                  <div className="mb-5">{painIcons[idx]}</div>
+                  <h3 className="text-base font-semibold tracking-tight text-gray-900">
+                    {pain.title}
+                  </h3>
+                  <p className="mt-2 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-2xl font-bold text-transparent">
                     {pain.stat}
                   </p>
-                  <p className="text-gray-600 text-sm mb-4">{pain.body}</p>
-                  <p className="text-xs font-medium text-[#0d47a1] leading-relaxed border-t border-gray-100 pt-3">
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">{pain.body}</p>
+                  <p className="mt-5 border-t border-gray-100 pt-4 text-xs font-medium leading-relaxed text-[#0d47a1]">
                     {pain.pilier}
                   </p>
                 </div>
@@ -245,8 +234,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 4 - Pilier Autonome (Layer 1: internal agents)
               H2 locked: "Your agent operates. You supervise."
-              Visual: pilier-autonome-<lang>.png (lang-aware, delivered
-              2026-04-23 - replaces generic supervision-console-mockup).
+              Visual: native React component <AgentsStackVisual /> (supervision
+              console mockup in pure Tailwind + inline SVG, 2026-04-23).
+              Replaces /images/pivot-mcp/pilier-autonome-<lang>.png.
               ===================================================================== */}
           <Section
             id="autonome"
@@ -274,16 +264,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </p>
               </ScrollReveal>
               <ScrollReveal>
-                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
-                  <Image
-                    src={`/images/pivot-mcp/pilier-autonome-${imgSuffix}.png`}
-                    alt={copy.autonome.visualAlt}
-                    width={1200}
-                    height={720}
-                    className="w-full rounded-2xl"
-                    sizes="(min-width: 1024px) 36rem, 100vw"
-                  />
-                </div>
+                <AgentsStackVisual lang={isFr ? "fr" : "en"} />
               </ScrollReveal>
             </div>
           </Section>
@@ -291,8 +272,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 5 - Pilier MCP-first (Layer 2: MCP infrastructure)
               Category rupture: we removed the interface.
-              Visual: pilier-mcp-first-<lang>.png (lang-aware, delivered
-              2026-04-23 - replaces architecture-diagram-wrap-first).
+              Visual: native React component <McpConvergenceDiagram /> (6 AI
+              client pills converging via inline SVG to the MCP endpoint hub,
+              2026-04-23). Replaces /images/pivot-mcp/pilier-mcp-first-<lang>.png.
               ===================================================================== */}
           <Section
             id="mcp-first"
@@ -303,16 +285,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           >
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <ScrollReveal>
-                <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
-                  <Image
-                    src={`/images/pivot-mcp/pilier-mcp-first-${imgSuffix}.png`}
-                    alt={copy.mcpFirst.visualAlt}
-                    width={1200}
-                    height={720}
-                    className="w-full rounded-2xl"
-                    sizes="(min-width: 1024px) 36rem, 100vw"
-                  />
-                </div>
+                <McpConvergenceDiagram lang={isFr ? "fr" : "en"} />
               </ScrollReveal>
               <ScrollReveal>
                 <p className="text-base md:text-lg leading-relaxed text-gray-700">{copy.mcpFirst.intro1}</p>
@@ -339,7 +312,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 6 - AI-Native + Auto-apprenant (architecture and learning)
               Two sub-sections fused under one pillar.
-              Visual: auto-apprenant-<lang>.png (lang-aware).
+              Visual: native React component <LearningTimeline /> (Day 1 / 30
+              / 180 horizontal timeline with context progression, 2026-04-23).
+              Replaces /images/pivot-mcp/auto-apprenant-<lang>.png.
               ===================================================================== */}
           <Section
             id="ai-native-learning"
@@ -348,17 +323,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             eyebrow={copy.aiNativeLearn.eyebrow}
             title={copy.aiNativeLearn.h2}
           >
-            <ScrollReveal className="mb-12">
-              <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
-                <Image
-                  src={`/images/pivot-mcp/auto-apprenant-${imgSuffix}.png`}
-                  alt={copy.aiNativeLearn.visualAlt}
-                  width={1600}
-                  height={900}
-                  className="w-full rounded-2xl"
-                  sizes="(min-width: 1024px) 56rem, 100vw"
-                />
-              </div>
+            <ScrollReveal className="mx-auto mb-14 max-w-5xl">
+              <LearningTimeline lang={isFr ? "fr" : "en"} />
             </ScrollReveal>
 
             <div className="grid gap-8 md:grid-cols-2">
@@ -422,10 +388,15 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             {/* Trust badges */}
             <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {copy.infra.badges.map((badge, idx) => (
-                <div key={badge.title} className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100">
-                  <div className="flex justify-center mb-3">{badgeIcons[idx]}</div>
-                  <h3 className="font-semibold mb-1 text-gray-900">{badge.title}</h3>
-                  <p className="text-xs text-gray-600 leading-relaxed">{badge.body}</p>
+                <div
+                  key={badge.title}
+                  className="flex h-full flex-col items-center rounded-2xl border border-gray-200 bg-white p-5 text-center transition-colors hover:border-[#0d47a1]/30"
+                >
+                  <div className="mb-3 flex justify-center">{badgeIcons[idx]}</div>
+                  <h3 className="text-sm font-semibold tracking-tight text-gray-900">
+                    {badge.title}
+                  </h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{badge.body}</p>
                 </div>
               ))}
             </ScrollReveal>
