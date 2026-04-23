@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { getDictionary } from "@/lib/dictionary"
 import { mcpCopy, missionsCatalog } from "@/lib/mcp-page-copy"
@@ -13,6 +12,7 @@ import { MissionGrid } from "@/components/site/mission-grid"
 import { HITLExplainer } from "@/components/site/hitl-explainer"
 import { FAQSchema } from "@/components/site/faq-schema"
 import { StructuredData } from "@/components/site/structured-data"
+import { WrapFirstArchitecture } from "@/components/site/wrap-first-architecture"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
 type SiteLang = "en" | "fr"
@@ -20,6 +20,33 @@ type SiteLang = "en" | "fr"
 function resolveLang(lang: string): SiteLang {
   return lang === "fr" ? "fr" : "en"
 }
+
+/**
+ * /mcp page - YC-grade design pass 2026-04-23.
+ *
+ * Structure canonique (homogene avec la home restructuree C+):
+ *   Hero (verrouille alpha-corr "The MCP-only CRM.")
+ *   01 Quickstart
+ *   02 Agent configs
+ *   03 MCP missions
+ *   04 Wrap-first architecture (composant natif WrapFirstArchitecture)
+ *   05 HITL policy
+ *   06 Differentiators
+ *   07 Supervision console
+ *   08 Security & compliance
+ *   09 Audit log WORM
+ *   10 Pricing
+ *   11 CTA Final
+ *
+ * Polish niveau YC:
+ *   - Chaque section: eyebrow numerote + H2 + description (lede) + visuel/composant
+ *   - Typography duale (font-mono eyebrows + sans body), rythme vertical
+ *     genereux (rhythm="generous" via Section)
+ *   - Chrome cartes unifie: rounded-2xl + border-gray-200 +
+ *     hover:border-[#0d47a1]/30 + translate-y + shadow brand-tinted
+ *   - Palette strictement brand + neutrals + emerald states
+ *   - Background alterne bg-white / bg-gray-50 / inverted pour rythmer le scroll
+ */
 
 export const dynamicParams = false
 
@@ -118,6 +145,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
         <SharedHeader lang={lang} dictionary={dictionary} activePage="mcp" />
 
         <main className="flex-1">
+          {/* HERO - verrouille alpha-corr "The MCP-only CRM." (directive Laurent) */}
           <HeroSection
             eyebrow={copy.hero.eyebrow}
             headline={copy.hero.headline}
@@ -127,25 +155,36 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             tertiary={copy.hero.tertiary}
           />
 
-          {/* QUICKSTART */}
+          {/* ================================================================
+              01 - QUICKSTART
+              3 steps cards with mono step numeral + premium code block.
+              ================================================================ */}
           <Section
             id="quickstart"
             tone="white"
             container="default"
-            eyebrow={copy.quickstart.eyebrow}
+            eyebrow={`01 · ${copy.quickstart.eyebrow}`}
             title={copy.quickstart.title}
           >
-            <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3">
+            <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.quickstart.steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
                 >
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-300"
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#0d47a1] to-[#00e5ff] text-sm font-semibold text-white">
                     {idx + 1}
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">{step.heading}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">{step.body}</p>
+                  <h3 className="mt-5 text-lg font-semibold tracking-tight text-gray-900">
+                    {step.heading}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-gray-600">{step.body}</p>
                   {step.code && (
                     <div className="mt-5">
                       <CodeBlock code={step.code} language="bash" />
@@ -156,11 +195,15 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             </ScrollReveal>
           </Section>
 
-          {/* AGENT CONFIGS */}
+          {/* ================================================================
+              02 - AGENT CONFIGS (inverted tone)
+              Dark section reserved for drop-in config snippets - echoes the
+              CodeBlock chrome and signals "this is where devs land".
+              ================================================================ */}
           <Section
             tone="inverted"
             container="default"
-            eyebrow={copy.agentConfigs.eyebrow}
+            eyebrow={`02 · ${copy.agentConfigs.eyebrow}`}
             title={copy.agentConfigs.title}
             lede={copy.agentConfigs.lede}
           >
@@ -168,9 +211,9 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
               {copy.agentConfigs.clients.map((client) => (
                 <article
                   key={client.name}
-                  className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+                  className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-200 hover:border-white/20"
                 >
-                  <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#6ddcff]">
+                  <h3 className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#6ddcff]">
                     {client.name}
                   </h3>
                   <CodeBlock code={client.code} language="json" caption={client.label} />
@@ -179,11 +222,15 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             </ScrollReveal>
           </Section>
 
-          {/* 35 MISSIONS */}
+          {/* ================================================================
+              03 - 35 MCP MISSIONS
+              Catalog grouped by category. MissionGrid already provides
+              unified card chrome with HITL dots per mission.
+              ================================================================ */}
           <Section
             tone="white"
             container="default"
-            eyebrow={copy.missions.eyebrow}
+            eyebrow={`03 · ${copy.missions.eyebrow}`}
             title={copy.missions.title}
             lede={copy.missions.lede}
           >
@@ -196,55 +243,39 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                 />
               </ScrollReveal>
             ))}
-            <p className="mt-6 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-5 text-sm text-gray-600">
+            <p className="mt-8 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 text-sm leading-relaxed text-gray-600">
               {copy.missions.phase2Note}
             </p>
           </Section>
 
-          {/* WRAP-FIRST ARCHITECTURE (migrated from /features) */}
+          {/* ================================================================
+              04 - WRAP-FIRST ARCHITECTURE
+              Native SVG+Tailwind component replaces the PNG diagram.
+              Providers catalog (left) -> MCP endpoint hub (right).
+              ================================================================ */}
           <Section
             tone="gray"
             container="default"
-            eyebrow={copy.wrapFirst.eyebrow}
+            eyebrow={`04 · ${copy.wrapFirst.eyebrow}`}
             title={copy.wrapFirst.title}
             lede={copy.wrapFirst.lede}
           >
             <ScrollReveal>
-              <div className="mx-auto mb-10 max-w-3xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-4">
-                <Image
-                  src="/images/pivot-mcp/architecture-diagram-wrap-first.png"
-                  alt="Wrap-first architecture: 23 data providers through SymbiozAI MCP server to your AI agent"
-                  width={1200}
-                  height={720}
-                  className="w-full rounded-2xl"
-                  sizes="(min-width: 1024px) 48rem, 100vw"
-                />
-              </div>
-              <p className="mx-auto mb-8 max-w-3xl text-center text-lg font-semibold text-gray-900">
+              <WrapFirstArchitecture lang={lang} />
+              <p className="mx-auto mt-12 max-w-3xl text-center text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
                 {copy.wrapFirst.result}
               </p>
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                <div className="hidden grid-cols-[0.4fr_1fr] gap-4 border-b border-gray-200 bg-gray-50 px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-gray-500 md:grid">
-                  <div>{copy.wrapFirst.layerLabel}</div>
-                  <div>{copy.wrapFirst.providersLabel}</div>
-                </div>
-                <ul className="divide-y divide-gray-200">
-                  {copy.wrapFirst.layers.map((row) => (
-                    <li key={row.layer} className="px-4 py-4 md:grid md:grid-cols-[0.4fr_1fr] md:gap-4 md:px-5">
-                      <div className="text-sm font-semibold text-gray-900">{row.layer}</div>
-                      <div className="mt-1 text-sm text-gray-600 md:mt-0">{row.providers}</div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </ScrollReveal>
           </Section>
 
-          {/* HITL 3-CLASS POLICY (migrated from /features) */}
+          {/* ================================================================
+              05 - HITL 3-CLASS POLICY
+              Shared HITLExplainer component (also used on /for-sales-teams).
+              ================================================================ */}
           <Section
             tone="white"
             container="default"
-            eyebrow={copy.hitl.eyebrow}
+            eyebrow={`05 · ${copy.hitl.eyebrow}`}
             title={copy.hitl.title}
           >
             <ScrollReveal>
@@ -253,31 +284,36 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                 labelBehavior={copy.hitl.behaviorLabel}
                 labelExamples={copy.hitl.examplesLabel}
               />
-              <p className="mx-auto mt-10 max-w-3xl text-center text-base leading-relaxed text-gray-700">
+              <p className="mx-auto mt-12 max-w-3xl text-center text-base leading-relaxed text-gray-700 md:text-[17px]">
                 {copy.hitl.footer}
               </p>
             </ScrollReveal>
           </Section>
 
-          {/* THREE DIFFERENTIATORS */}
+          {/* ================================================================
+              06 - THREE DIFFERENTIATORS
+              Cards with mono mission-code badge + example prompt callout.
+              ================================================================ */}
           <Section
             tone="gray"
             container="default"
-            eyebrow={copy.differentiators.eyebrow}
+            eyebrow={`06 · ${copy.differentiators.eyebrow}`}
             title={copy.differentiators.title}
           >
-            <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3">
+            <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.differentiators.items.map((item) => (
                 <article
                   key={item.code}
-                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
                 >
                   <code className="inline-block w-fit rounded bg-gray-900 px-2 py-0.5 font-mono text-xs text-white">
                     {item.code}
                   </code>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">{item.heading}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">{item.body}</p>
-                  <div className="mt-5 rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs italic leading-relaxed text-gray-700">
+                  <h3 className="mt-4 text-lg font-semibold tracking-tight text-gray-900">
+                    {item.heading}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-gray-600">{item.body}</p>
+                  <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 font-mono text-[12.5px] italic leading-relaxed text-gray-700">
                     {item.example}
                   </div>
                 </article>
@@ -285,75 +321,92 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             </ScrollReveal>
           </Section>
 
-          {/* SUPERVISION CONSOLE */}
+          {/* ================================================================
+              07 - SUPERVISION CONSOLE
+              4 role cards + reinforcing footer quote.
+              ================================================================ */}
           <Section
             tone="white"
             container="default"
-            eyebrow={copy.supervision.eyebrow}
+            eyebrow={`07 · ${copy.supervision.eyebrow}`}
             title={copy.supervision.title}
             lede={copy.supervision.lede}
           >
-            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
               {copy.supervision.items.map((item) => (
                 <article
                   key={item.heading}
-                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5"
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
                 >
-                  <h3 className="text-sm font-semibold text-gray-900">{item.heading}</h3>
+                  <h3 className="text-[15px] font-semibold tracking-tight text-gray-900">
+                    {item.heading}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
                 </article>
               ))}
             </ScrollReveal>
-            <p className="mt-10 text-center text-lg font-semibold text-gray-900">
+            <p className="mx-auto mt-12 max-w-3xl text-center text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
               {copy.supervision.footer}
             </p>
           </Section>
 
-          {/* COMPLIANCE */}
+          {/* ================================================================
+              08 - SECURITY & COMPLIANCE
+              5 compliance cards. Keep numbered eyebrow even though original
+              had no H2 (header block still rendered via eyebrow).
+              ================================================================ */}
           <Section
             tone="gray"
             container="default"
-            eyebrow={copy.compliance.eyebrow}
+            eyebrow={`08 · ${copy.compliance.eyebrow}`}
             title={undefined}
           >
-            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
               {copy.compliance.items.map((item) => (
                 <article
                   key={item.heading}
-                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5"
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
                 >
-                  <h3 className="text-sm font-semibold text-gray-900">{item.heading}</h3>
+                  <h3 className="text-[15px] font-semibold tracking-tight text-gray-900">
+                    {item.heading}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
                 </article>
               ))}
             </ScrollReveal>
           </Section>
 
-          {/* AUDIT LOG WORM (migrated from /features) */}
+          {/* ================================================================
+              09 - AUDIT LOG WORM (inverted tone)
+              Dark backdrop reserved for the trust & compliance bedrock.
+              ================================================================ */}
           <Section
             tone="inverted"
             container="default"
-            eyebrow={copy.audit.eyebrow}
+            eyebrow={`09 · ${copy.audit.eyebrow}`}
             title={copy.audit.title}
           >
-            <ScrollReveal stagger className="grid gap-4 md:grid-cols-5">
+            <ScrollReveal stagger className="grid gap-4 md:grid-cols-5 lg:gap-5">
               {copy.audit.bullets.map((item) => (
                 <article
                   key={item.heading}
-                  className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+                  className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-200 hover:border-white/25"
                 >
-                  <h3 className="text-sm font-semibold text-white">{item.heading}</h3>
+                  <h3 className="text-[15px] font-semibold text-white">{item.heading}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">{item.body}</p>
                 </article>
               ))}
             </ScrollReveal>
           </Section>
 
-          {/* PRICING */}
+          {/* ================================================================
+              10 - PRICING
+              Narrow container, center-aligned title, single paragraph body.
+              ================================================================ */}
           <Section
             tone="white"
             container="narrow"
-            eyebrow={copy.pricing.eyebrow}
+            eyebrow={`10 · ${copy.pricing.eyebrow}`}
             title={copy.pricing.title}
             titleAlign="center"
           >
@@ -364,15 +417,32 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
             </ScrollReveal>
           </Section>
 
-          {/* CTA FINAL */}
+          {/* ================================================================
+              11 - CTA FINAL
+              Dark gradient block, keeps tertiary Calendly link verrouille.
+              ================================================================ */}
           <section className="relative overflow-hidden bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white">
-            <div className="relative z-10 mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 md:py-24">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
+            <div className="relative z-10 mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 md:py-32">
               <ScrollReveal>
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+                <p className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">
+                  11 · CTA
+                </p>
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-[44px] md:leading-[1.08] lg:text-5xl lg:leading-[1.05]">
                   {copy.ctaFinal.title}
                 </h2>
-                <p className="mt-4 text-base text-white/80 md:text-lg">{copy.ctaFinal.lede}</p>
-                <div className="mt-8">
+                <p className="mt-6 text-lg leading-relaxed text-white/80 md:text-xl">
+                  {copy.ctaFinal.lede}
+                </p>
+                <div className="mt-10">
                   <CTABlock
                     primary={copy.ctaFinal.primary}
                     secondary={copy.ctaFinal.secondary}
@@ -380,7 +450,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                     size="lg"
                   />
                 </div>
-                <p className="mt-6 text-sm text-white/70">
+                <p className="mt-8 text-sm text-white/70">
                   <Link
                     href="https://docs.symbioz.ai/mcp"
                     target="_blank"
