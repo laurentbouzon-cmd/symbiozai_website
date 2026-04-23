@@ -18,7 +18,7 @@ export const salesTeamsCopy = {
       headline: "Your team sells. The agents do everything else.",
       subhead:
         "Your AI agents handle targeting, enrichment, qualification, and follow-up while you sleep. Every morning, a 5-minute queue of what needs your call. Nothing ships without your approval.",
-      primary: { label: "Book a demo", href: "/en/contact" },
+      primary: { label: "Book a demo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
       secondary: { label: "See the supervision console", href: "#demo" },
       tertiary: { label: "Read the MCP docs", href: "/en/mcp" },
     },
@@ -153,7 +153,7 @@ export const salesTeamsCopy = {
     ctaFinal: {
       title: "Run a leaner, faster sales motion. Starting now.",
       lede: "Walk through a live agent-operated pipeline on your data.",
-      primary: { label: "Book a demo", href: "/en/contact" },
+      primary: { label: "Book a demo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
       linkedinLabel: "Reach Laurent directly on LinkedIn",
       linkedinUrl: "https://www.linkedin.com/in/laurent-bouzon-150237108",
     },
@@ -186,7 +186,7 @@ export const salesTeamsCopy = {
       headline: "Votre équipe vend. Les agents font tout le reste.",
       subhead:
         "Vos agents IA gèrent le ciblage, l'enrichissement, la qualification et les relances pendant que vous dormez. Chaque matin, 5 minutes de décisions qui demandent votre jugement. Rien ne part sans votre validation.",
-      primary: { label: "Réserver une démo", href: "/fr/contact" },
+      primary: { label: "Réserver une démo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
       secondary: { label: "Voir la console de supervision", href: "#demo" },
       tertiary: { label: "Lire la documentation MCP", href: "/fr/mcp" },
     },
@@ -321,7 +321,7 @@ export const salesTeamsCopy = {
     ctaFinal: {
       title: "Faites tourner un cycle commercial plus lean, plus rapide. Dès maintenant.",
       lede: "Parcourez un pipeline agent-operated sur vos données, en live.",
-      primary: { label: "Réserver une démo", href: "/fr/contact" },
+      primary: { label: "Réserver une démo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
       linkedinLabel: "Contactez Laurent directement sur LinkedIn",
       linkedinUrl: "https://www.linkedin.com/in/laurent-bouzon-150237108",
     },

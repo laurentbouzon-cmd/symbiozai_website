@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { getDictionary } from "@/lib/dictionary"
 import { SharedFooter } from "@/components/shared-footer"
-import Link from "next/link"
 import { SharedHeader } from "@/components/shared-header"
 import { GlassIcon } from "@/components/ui/glass-icon"
 import { Logo } from "@/components/ui/logo"
@@ -261,12 +260,14 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               </div>
 
               <div className="hero-item mt-4" style={{ animationDelay: "400ms" }}>
-                <Link
-                  href={`/${lang}/contact`}
+                <a
+                  href="https://calendly.com/laurent-bouzon-symbioz/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
                 >
                   {isFr ? "ou réserver une démo →" : "or book a demo →"}
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -560,12 +561,14 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   <WaitlistForm form={dictionary.form} lang={lang} />
                 </div>
                 <p className="mt-4">
-                  <Link
-                    href={`/${lang}/contact`}
+                  <a
+                    href="https://calendly.com/laurent-bouzon-symbioz/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4"
                   >
                     {isFr ? "ou réserver une démo →" : "or book a demo →"}
-                  </Link>
+                  </a>
                 </p>
                 <p className="text-white/40 text-xs mt-4">
                   {isFr
