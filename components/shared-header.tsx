@@ -22,7 +22,7 @@ export function SharedHeader({ lang, dictionary, activePage, showLogo = true }: 
   ]
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-10">
+    <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className={`flex items-center ${showLogo ? "justify-between" : "justify-end"}`}>
           {showLogo && (
