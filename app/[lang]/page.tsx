@@ -3,7 +3,6 @@ import { getDictionary } from "@/lib/dictionary"
 import { SharedFooter } from "@/components/shared-footer"
 import Link from "next/link"
 import { SharedHeader } from "@/components/shared-header"
-import { Logo } from "@/components/ui/logo"
 import { GlassIcon } from "@/components/ui/glass-icon"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
@@ -227,35 +226,34 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
             <div className="max-w-3xl mx-auto relative z-10">
               <h1 className="sr-only">{dictionary.h1}</h1>
-              <div className="hero-item flex justify-center" style={{ animationDelay: "0ms" }}>
-                <Logo size="xl" />
-              </div>
 
-              <h2 className="hero-item font-normal text-xl md:text-2xl mt-4" style={{ animationDelay: "150ms" }}>
-                {Array.isArray(dictionary.subtitle) ? (
-                  <>
-                    <span className="block">{dictionary.subtitle[0]}</span>
-                    <span className="block">{dictionary.subtitle[1]}</span>
-                  </>
-                ) : (
-                  dictionary.subtitle
-                )}
+              <h2
+                className="hero-item font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#0d47a1]"
+                style={{ animationDelay: "0ms" }}
+              >
+                {dictionary.subtitle}
               </h2>
 
-              <div className="hero-item flex flex-col items-center justify-center my-6 sm:my-8 text-gray-600 text-sm sm:text-base md:text-lg" style={{ animationDelay: "300ms" }}>
-                <p className="text-center max-w-3xl">{dictionary.description}</p>
-              </div>
+              <p
+                className="hero-item mt-6 sm:mt-8 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed"
+                style={{ animationDelay: "150ms" }}
+              >
+                {dictionary.description}
+              </p>
 
-              <p className="hero-item text-xs sm:text-sm text-gray-500 mb-6" style={{ animationDelay: "400ms" }}>
+              <p
+                className="hero-item text-xs sm:text-sm text-gray-500 mt-8 sm:mt-10 mb-6"
+                style={{ animationDelay: "300ms" }}
+              >
                 {isFr ? "Compatible nativement avec " : "Works natively with "}
                 <span className="text-gray-700">{agents.join(" · ")}</span>
               </p>
 
-              <div className="hero-item" style={{ animationDelay: "450ms" }}>
+              <div className="hero-item" style={{ animationDelay: "400ms" }}>
                 <WaitlistForm form={dictionary.form} lang={lang} />
               </div>
 
-              <div className="hero-item mt-4" style={{ animationDelay: "550ms" }}>
+              <div className="hero-item mt-4" style={{ animationDelay: "500ms" }}>
                 <Link
                   href={`/${lang}/contact`}
                   className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"

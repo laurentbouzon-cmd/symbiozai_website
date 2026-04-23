@@ -8,7 +8,7 @@ export type PrivacySection = {
 export type Dictionary = {
   title: string
   h1: string
-  subtitle: [string, string]
+  subtitle: string
   description: string
   quote: string
   form: {
@@ -90,12 +90,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   en: {
     title: "The headless AI CRM | SymbiozAI",
     h1: "SymbiozAI — The headless AI CRM",
-    subtitle: [
-      "The headless AI CRM.",
-      "The MCP-only CRM piloted by your AI agent via Claude Code, Cursor, or any MCP-compatible agent. You supervise, it executes.",
-    ],
+    subtitle: "The headless AI CRM.",
     description:
-      "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
+      "Plug in Claude Code, Cursor, or any MCP-compatible agent. 35 operational missions, ready on connect. You supervise, your agent executes. EU-hosted, AI Act native.",
     quote:
       "MCP-retrofitted is not MCP-native. MCP-native is not MCP-only. We are MCP-only. That's the entire difference.",
     form: {
@@ -193,12 +190,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   fr: {
     title: "Le CRM headless pour agents IA | SymbiozAI",
     h1: "SymbiozAI — Le CRM headless piloté par votre agent IA",
-    subtitle: [
-      "Le CRM headless pour agents IA.",
-      "Le CRM MCP-only piloté par votre agent IA via Claude Code, Cursor ou tout agent compatible MCP. Vous supervisez, il exécute.",
-    ],
+    subtitle: "Le CRM headless pour agents IA.",
     description:
-      "SymbiozAI est le CRM MCP-only piloté par votre agent IA. Connectez Claude Code, Cursor ou tout agent compatible MCP. 35 missions. Vous supervisez, il exécute. Hébergé en EU, AI Act natif.",
+      "Branchez Claude Code, Cursor ou tout agent MCP-compatible. 35 missions opérationnelles disponibles dès la connexion. Vous supervisez, votre agent exécute. Données hébergées en EU, conformité AI Act native.",
     quote:
       "MCP-retrofitted n'est pas MCP-native. MCP-native n'est pas MCP-only. On est MCP-only. C'est toute la différence.",
     form: {
