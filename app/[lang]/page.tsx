@@ -4,6 +4,7 @@ import { SharedFooter } from "@/components/shared-footer"
 import Link from "next/link"
 import { SharedHeader } from "@/components/shared-header"
 import { GlassIcon } from "@/components/ui/glass-icon"
+import { Logo } from "@/components/ui/logo"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
@@ -216,7 +217,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <div className="flex flex-col min-h-screen overflow-x-hidden bg-white">
         <SharedHeader lang={lang} dictionary={dictionary} activePage="home" showLogo={false} />
 
-        {/* Hero Section */}
+        {/* Hero Section — above-the-fold on desktop 900px and mobile 700px */}
         <main className="bg-[radial-gradient(#cceeff_1px,transparent_1px)] bg-[size:10px_10px]">
           <section className="flex flex-col px-4 sm:px-6 text-center min-h-screen justify-center relative">
             <div
@@ -227,33 +228,32 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <div className="max-w-3xl mx-auto relative z-10">
               <h1 className="sr-only">{dictionary.h1}</h1>
 
-              <h2
-                className="hero-item font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#0d47a1]"
+              <div
+                className="hero-item flex justify-center mb-6 sm:mb-8"
                 style={{ animationDelay: "0ms" }}
+              >
+                <Logo size="lg" />
+              </div>
+
+              <h2
+                className="hero-item font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-[#0d47a1]"
+                style={{ animationDelay: "100ms" }}
               >
                 {dictionary.subtitle}
               </h2>
 
               <p
-                className="hero-item mt-6 sm:mt-8 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed"
-                style={{ animationDelay: "150ms" }}
+                className="hero-item mt-5 sm:mt-6 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed"
+                style={{ animationDelay: "200ms" }}
               >
                 {dictionary.description}
               </p>
 
-              <p
-                className="hero-item text-xs sm:text-sm text-gray-500 mt-8 sm:mt-10 mb-6"
-                style={{ animationDelay: "300ms" }}
-              >
-                {isFr ? "Compatible nativement avec " : "Works natively with "}
-                <span className="text-gray-700">{agents.join(" · ")}</span>
-              </p>
-
-              <div className="hero-item" style={{ animationDelay: "400ms" }}>
+              <div className="hero-item mt-8 sm:mt-10" style={{ animationDelay: "300ms" }}>
                 <WaitlistForm form={dictionary.form} lang={lang} />
               </div>
 
-              <div className="hero-item mt-4" style={{ animationDelay: "500ms" }}>
+              <div className="hero-item mt-4" style={{ animationDelay: "400ms" }}>
                 <Link
                   href={`/${lang}/contact`}
                   className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
