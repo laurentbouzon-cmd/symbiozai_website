@@ -17,6 +17,7 @@ export function SharedHeader({ lang, dictionary, activePage, showLogo = true }: 
     { key: "mcp", href: `/${lang}/mcp`, label: "MCP" },
     { key: "for-sales-teams", href: `/${lang}/for-sales-teams`, label: isFr ? "Équipes commerciales" : "For sales teams" },
     { key: "about", href: `/${lang}/about`, label: isFr ? "À propos" : "About" },
+    { key: "manifeste", href: `/${lang}/manifeste`, label: isFr ? "Manifeste" : "Manifesto" },
     { key: "blog", href: `/${lang}/blog`, label: "Blog" },
   ]
 
