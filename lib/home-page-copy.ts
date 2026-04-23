@@ -1,8 +1,9 @@
 /**
- * Home page copy: post-pivot MCP-only, restructured approach C+ (2026-04-23).
+ * Home page copy: post-pivot MCP-only, YC-grade v10 (2026-04-23).
  * Source: symbiozai-cos/cos-data/content/site-copy/2026-04-23-site-copy-post-pivot-mcp.md
+ *   Section "Home YC-grade -- 9 sections v10 2026-04-23" (l.1814-2067).
  * Scope: sections 1-9 post-hero. Hero copy stays in lib/dictionary.ts (locked).
- * R11-compliant. Zero em dash (only hyphens "-" used).
+ * R11-compliant (verified grep 0 match by content-creator). Zero em dash.
  */
 
 type CtaLink = {
@@ -108,33 +109,35 @@ export type HomePageCopy = {
 export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
   en: {
     ruptureBanner: {
-      claim: "AI is no longer in your CRM. Your CRM is in your AI.",
-      subclaim: "CRMs were built for humans to operate. We took the opposite bet.",
+      claim: "Your CRM waited to be opened. Ours executes.",
+      subclaim:
+        "CRMs were built for humans who fill in fields. Then the industry bolted an AI assistant on the side. We took the opposite bet.",
     },
     pillarsHub: {
       eyebrow: "WHY IT'S DIFFERENT",
       h2: "The architecture that changes everything",
-      intro: "Four architectural choices. Not four features.",
+      intro:
+        "Four architectural choices. Each one a break from the past, not a feature added to it.",
       cards: [
         {
-          h3: "Built for AI",
+          h3: "Built to be invoked, not opened.",
           body:
-            "SymbiozAI was designed from scratch to be operated by an AI agent. Not a classic CRM with a model bolted on - a system where the agent is the primary operator.",
+            "Not a classic CRM with a model bolted on. A database, missions, and a data model - all designed to be read and orchestrated by an AI agent. The human interface is the residual layer.",
         },
         {
-          h3: "Runs 24/7",
+          h3: "Runs while you're away.",
           body:
-            "Internal AI agents handle pipeline management, follow-ups, weak signals, and re-activation - continuously, even when you're away.",
+            "Internal AI agents handle pipeline management, follow-ups, and weak signals - continuously, not on demand. You check in for 5 minutes a day to approve what needs your attention.",
         },
         {
-          h3: "One endpoint",
+          h3: "One endpoint. 35 verbal missions.",
           body:
-            "35 missions in natural language. Your Claude Code, Cursor, or Cline agent calls SymbiozAI directly from your toolchain. Zero friction. Zero UI to learn.",
+            "Your Claude Code, Cursor, or Cline agent calls SymbiozAI directly from your toolchain in natural language. No plugin, no interface to open, no API patchwork to manage.",
         },
         {
-          h3: "Sharpens over time",
+          h3: "Sharpens with every cycle.",
           body:
-            "Every interaction enriches what the system knows about your customers, your sales patterns, your signals. The longer it runs, the sharper its reads become.",
+            "Every call, every deal, every email analyzed - absorbed into the system, not just logged. Sharper scoring, earlier detection of stalled deals, richer prospect profiles before every meeting.",
         },
       ],
       visualAlt:
@@ -142,54 +145,58 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
     },
     problem: {
       eyebrow: "THE PROBLEM",
-      h2: "What you lose every week without knowing",
+      h2: "What you lose every week.",
       cards: [
         {
-          title: "Your time goes to data entry",
+          title: "2 hours a day not spent selling.",
           stat: "2h/day",
           body:
-            "Two hours per rep per day filling a CRM nobody wants to open. This is not a discipline problem - it's an architecture problem.",
-          pilier: "Pillar Autonomous - the agent fills in for you, continuously.",
+            "Two hours per rep per day filling fields that an agent can handle on its own, continuously, from the end of every call.",
+          pilier:
+            "Pillar Autonomous - the agent fills, enriches, and updates the pipeline without waiting for input.",
         },
         {
-          title: "Deals slip with no warning",
-          stat: "37% of opportunities",
+          title: "37% of opportunities slip without warning.",
+          stat: "37%",
           body:
-            "Stalled deals, ignored weak signals, cooling accounts. The CRM records. It does not learn. It does not watch.",
-          pilier: "Pillar Self-learning - the system monitors signals and sharpens its read each cycle.",
+            "Stalled deals, cooling accounts, ignored weak signals. The CRM records. It does not watch. It does not learn.",
+          pilier:
+            "Pillar Self-learning - the system monitors continuously and sharpens its read each cycle.",
         },
         {
-          title: "Follow-ups don't happen",
-          stat: "5 missed follow-ups per week",
+          title: "5 missed follow-ups per week.",
+          stat: "5/week",
           body:
-            "Not from forgetting - because nothing prioritises, nothing alerts, nothing triggers automatically. An orchestrating agent changes that.",
-          pilier: "Pillar MCP-first - your agent drives from your editor, without opening a single interface.",
+            "Not from neglect. Because nothing prioritises, nothing alerts, nothing fires automatically. A missed follow-up is a deal waiting for its competitor.",
+          pilier:
+            "Pillar MCP-first - your agent drives follow-ups from your editor, without opening a single interface.",
         },
       ],
     },
     autonome: {
-      eyebrow: "LAYER 1 - INTERNAL AGENTS",
+      eyebrow: "PILLAR AUTONOMOUS",
       h2: "Your agent operates. You supervise.",
       intro:
-        "SymbiozAI's agents run in the background, continuously. Not on demand - all the time.",
+        "SymbiozAI's agents run in the background - all the time, not on demand. They qualify incoming leads, enrich records across 23 data providers, detect deals with no recent activity, and reactivate dormant prospects when a timing signal appears.",
       bullets: [
         "Pipeline management: automatic qualification of incoming leads, multi-signal scoring, status updates.",
         "Continuous enrichment: 23 data providers orchestrated, no manual intervention.",
-        "Automatic follow-ups: detection of deals with no recent activity, follow-up prioritisation based on Momentum Score.",
+        "Automatic follow-ups: detection of deals with no recent activity, prioritised by Momentum Score.",
         "Weak signals: re-activation of dormant prospects as soon as a timing signal appears.",
       ],
       closing:
-        "You check in for 5 minutes a day: you validate what requires your attention. Everything else has already moved.",
-      visualAlt: "Supervision console mockup showing the daily queue of items that need your approval.",
+        "You check in for 5 minutes a day: the queue of actions that need your attention is waiting. Everything else has already moved.",
+      visualAlt:
+        "Live activity feed showing internal agents at work across a single day: pipeline, signals, follow-ups, enrichment, re-activation.",
     },
     mcpFirst: {
-      eyebrow: "LAYER 2 - MCP INFRASTRUCTURE",
-      h2: "One endpoint. Every agent. Zero friction.",
+      eyebrow: "PILLAR MCP-FIRST",
+      h2: "Not an MCP server added. A CRM built around one.",
       intro1:
-        "Other CRMs add an MCP server on top of an existing interface. That is MCP-retrofitted - one more layer on an architecture designed for mouse clicks.",
-      intro2: "We removed the interface.",
+        "Other CRMs added an MCP server on top of an existing interface. That is MCP-retrofitted - one more layer on an architecture designed for mouse clicks.",
+      intro2: "SymbiozAI is headless by design: the MCP server is not a feature, it is the product.",
       intro3:
-        "SymbiozAI is headless by design. The MCP server is not a feature - it is the product. Your agent becomes the primary operator. You do not change tools, you do not train your team on new software: your agent calls SymbiozAI from the environment you already use.",
+        "Your agent calls 35 missions in natural language from your toolchain. No training. No parallel interface. Installation in under 5 minutes via npx @symbiozai/mcp-setup.",
       bullets: [
         "35 missions in natural language - not 100+ CRUD endpoints.",
         "Installation in under 5 minutes via npx @symbiozai/mcp-setup.",
@@ -197,7 +204,8 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
         "Your agent says \"target 50 ICP-fit leads, qualify the top 10, prep meeting briefs\" - SymbiozAI executes.",
       ],
       closing: "That is the difference between \"your CRM has AI\" and \"your AI has a CRM\".",
-      visualAlt: "Wrap-first architecture diagram: 23 data providers through SymbiozAI MCP server to your AI agent.",
+      visualAlt:
+        "Convergence diagram: six AI agent clients on the left connect through a single MCP endpoint to 23 data providers behind it.",
     },
     aiNativeLearn: {
       eyebrow: "ARCHITECTURE AND LEARNING",
@@ -205,41 +213,40 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
       sub1: {
         h3: "Not a chatbot bolted on. A CRM designed to be invoked.",
         paragraphs: [
-          "The difference between \"AI-native\" and \"AI-assisted\" is not a marketing question - it is a design question.",
-          "An AI-assisted CRM starts from a relational database built for humans. AI is added after: a sidebar assistant, a \"draft with AI\" button, an auto-summary. The architecture stays centred on the human interface.",
-          "SymbiozAI starts from the opposite premise: the agent is the primary operator. The database, the missions, the data model - everything was designed to be read, written, and orchestrated by a language model. The human interface (the supervision console) is the residual layer, not the central one.",
-          "This architectural choice changes everything: missions are verbal, context is structured to be consumed by an LLM, and sensitive actions are exposed as gates, not as forms.",
+          "The difference between AI-native and AI-assisted is not a marketing question - it is a design question.",
+          "An AI-assisted CRM starts from a relational database built for humans, then adds AI after: a sidebar assistant, a \"draft with AI\" button. The architecture stays centred on the human interface.",
+          "SymbiozAI starts from the opposite premise: the agent is the primary operator. The database, the missions, the data model - all designed to be read, written, and orchestrated by an LLM. The supervision console is the residual layer, not the central one.",
         ],
       },
       sub2: {
         h3: "Your CRM knows what it has already done for you.",
         paragraphs: [
-          "Because SymbiozAI is built AI-native, every interaction feeds the system - not just as a log, but as a layer of knowledge.",
-          "Every prospect call remembered. Every email sent, analysed, attached to the profile. Every closed deal, its signals documented. Every follow-up triggered, its response or silence archived.",
-          "Across cycles, the system sharpens its reads: more accurate scoring, earlier detection of stalling deals, richer prospect profiles before every meeting. Not because a rule was programmed in - because it has operated alongside you.",
-          "Your CRM never starts from scratch. It starts from where you left off.",
+          "Every interaction feeds the system - not as a log, but as a layer of knowledge. Every call remembered, every email analysed, every closed deal with its signals documented.",
+          "Across cycles: sharper scoring, earlier detection of stalling deals, richer prospect profiles before every meeting. Not because a rule was programmed in - because it has operated alongside you.",
+          "Your CRM never starts from scratch.",
         ],
       },
       visualAlt: "Self-learning timeline: Day 1, Day 30, Day 180 - the system sharpens its reads over time.",
     },
     infra: {
-      eyebrow: "BUILT TO LAST",
-      h2: "An MCP-only infrastructure. Not a chatbot bolted on a CRM.",
+      eyebrow: "INFRASTRUCTURE",
+      h2: "Infrastructure that does not cut corners.",
       metrics: [
         { value: "35", label: "verbal MCP missions", live: true },
-        { value: "23", label: "integrated data sources" },
-        { value: "< 5 min", label: "setup" },
+        { value: "23", label: "integrated data providers" },
+        { value: "< 5 min", label: "to connect your agent" },
         { value: "5 min/d", label: "daily supervision" },
       ],
       badges: [
         {
           title: "EU-hosted (Frankfurt)",
-          body: "DigitalOcean FRA1 infrastructure. Your pipeline data stays in the EU.",
+          body:
+            "DigitalOcean FRA1 infrastructure. Your pipeline data never leaves European jurisdiction.",
         },
         {
-          title: "AI Act native",
+          title: "AI Act article 14 native",
           body:
-            "Immutable HMAC-signed audit log, 7-year retention, 3-class HITL policy, tenant kill-switch in under 1 second.",
+            "Immutable HMAC-signed audit log, 7-year retention. 3-class HITL policy (Green / Orange / Red). Tenant kill-switch in under 1 second.",
         },
         {
           title: "LLM-agnostic",
@@ -248,22 +255,22 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
         },
         {
           title: "GDPR article 15 native",
-          body: "/audit/my-data endpoint, export on demand, zero vendor lock-in.",
+          body: "/audit/my-data endpoint. Export on demand. Zero vendor lock-in.",
         },
       ],
       quoteAuthor: "Laurent Bouzon, founder of SymbiozAI",
     },
     integrations: {
-      h2: "Your AI agent commands. Your tools execute.",
-      agentsLabel: "Your AI agent",
-      toolsLabel: "Your tools",
+      h2: "Your agent drives. Your tools execute.",
+      agentsLabel: "Works with your agent",
+      toolsLabel: "Connected to your tools",
       microcopy:
-        "35 MCP missions. One connection. Your AI agent orchestrates - tools execute beneath it.",
+        "SymbiozAI fits into the environment you already use. Nothing to migrate. Nothing to learn. One MCP connection.",
     },
     ctaFinal: {
-      h2: "Ready to connect your agent?",
+      h2: "Connect your agent. Now.",
       lede: [
-        "No onboarding. No migration. No 3-month IT project.",
+        "No training. No migration. No IT project.",
         "Your Claude Code or Cursor agent is live on SymbiozAI in under 5 minutes.",
       ],
       reassurance: [
@@ -285,34 +292,34 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
   },
   fr: {
     ruptureBanner: {
-      claim: "L'IA n'est plus dans votre CRM. Votre CRM est dans votre IA.",
+      claim: "Votre CRM attendait qu'on l'ouvre. Le nôtre s'exécute.",
       subclaim:
-        "Les CRM ont été construits pour que les humains les opèrent. Nous avons pris le pari inverse.",
+        "Les CRM ont été construits pour des humains qui saisissent. Puis l'industrie a collé un assistant IA sur le côté. Nous avons pris le problème à l'envers.",
     },
     pillarsHub: {
       eyebrow: "POURQUOI C'EST DIFFERENT",
       h2: "L'architecture qui change tout",
-      intro: "Quatre choix d'architecture. Pas quatre fonctionnalités.",
+      intro: "Quatre choix d'architecture. Chacun est une rupture, pas une feature.",
       cards: [
         {
-          h3: "Conçu pour l'IA",
+          h3: "Conçu pour être invoqué, pas ouvert.",
           body:
-            "SymbiozAI a été conçu depuis zéro pour être opéré par un agent IA. Pas un CRM classique avec un modèle greffé dessus - un système dont l'agent est l'utilisateur principal.",
+            "Pas un CRM classique avec un modèle greffé dessus. Une base de données, des missions, un modèle de données - tout conçu pour être lu et orchestré par un agent IA. L'interface humaine est la couche résiduelle.",
         },
         {
-          h3: "Opère 24/7",
+          h3: "Opère quand vous n'êtes pas là.",
           body:
-            "Des agents IA internes gèrent le pipeline, les relances, les signaux faibles et la réactivation - en continu, même quand vous n'êtes pas là.",
+            "Des agents IA internes gèrent pipeline, relances et signaux faibles - en continu, pas à la demande. Vous revenez 5 minutes par jour pour valider ce qui requiert votre attention.",
         },
         {
-          h3: "Un seul endpoint",
+          h3: "Un seul endpoint. 35 missions verbales.",
           body:
-            "35 missions en langage naturel. Votre agent Claude Code, Cursor ou Cline appelle SymbiozAI directement depuis votre toolchain. Zéro friction. Zéro UI à apprendre.",
+            "Votre agent Claude Code, Cursor ou Cline appelle SymbiozAI directement depuis votre toolchain en langage naturel. Pas de plugin, pas d'interface à ouvrir, pas d'API patchwork à maintenir.",
         },
         {
-          h3: "S'affine avec le temps",
+          h3: "S'affine à chaque cycle.",
           body:
-            "Chaque interaction enrichit ce que le système sait de vos clients, vos patterns de vente, vos signaux. Plus il opère, plus ses lectures deviennent précises.",
+            "Chaque appel, chaque deal, chaque email analysé - intégré au système, pas juste archivé. Scoring plus précis, détection plus précoce des stagnations, profils prospects plus riches avant chaque réunion.",
         },
       ],
       visualAlt:
@@ -320,56 +327,59 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
     },
     problem: {
       eyebrow: "LE PROBLEME",
-      h2: "Ce que vous perdez chaque semaine sans le savoir",
+      h2: "Ce que vous perdez chaque semaine.",
       cards: [
         {
-          title: "Votre temps part en saisie",
+          title: "2h/jour qui ne servent pas à vendre.",
           stat: "2h/jour",
           body:
-            "Deux heures par commercial par jour à renseigner un CRM que personne n'a envie d'ouvrir. Ce n'est pas un problème de discipline - c'est un problème d'architecture.",
-          pilier: "Pilier Autonome - l'agent saisit à votre place, en continu.",
+            "Deux heures par commercial par jour à renseigner des champs qu'un agent peut remplir seul, en continu, depuis la fin de chaque appel.",
+          pilier:
+            "Pilier Autonome - l'agent saisit, enrichit et met à jour le pipeline sans attendre d'instruction.",
         },
         {
-          title: "Les deals glissent sans alerte",
-          stat: "37% des opportunités",
+          title: "37% des opportunités glissent sans alerte.",
+          stat: "37%",
           body:
-            "Deals qui stagnent, signaux faibles ignorés, comptes qui refroidissent. Le CRM enregistre. Il n'apprend pas. Il ne surveille pas.",
+            "Deals qui stagnent, comptes qui refroidissent, signaux faibles ignorés. Le CRM enregistre. Il ne surveille pas. Il n'apprend pas.",
           pilier:
-            "Pilier Auto-apprenant - le système surveille les signaux et affine sa lecture à chaque cycle.",
+            "Pilier Auto-apprenant - le système surveille en continu et affine sa lecture à chaque cycle.",
         },
         {
-          title: "Les relances ne se font pas",
-          stat: "5 follow-ups oubliés par semaine",
+          title: "5 relances oubliées par semaine.",
+          stat: "5/sem",
           body:
-            "Pas par oubli - parce que rien ne priorise, rien n'alerte, rien ne déclenche automatiquement. Un agent qui orchestre change ça.",
+            "Pas par négligence. Parce que rien ne priorise, rien n'alerte, rien ne déclenche automatiquement. Une relance oubliée, c'est un deal qui attend son concurrent.",
           pilier:
-            "Pilier MCP-first - votre agent pilote depuis votre éditeur, sans ouvrir une seule interface.",
+            "Pilier MCP-first - votre agent pilote les relances depuis votre éditeur, sans ouvrir une seule interface.",
         },
       ],
     },
     autonome: {
-      eyebrow: "COUCHE 1 - AGENTS INTERNES",
+      eyebrow: "PILIER AUTONOME",
       h2: "Votre agent opère. Vous supervisez.",
       intro:
-        "Les agents SymbiozAI opèrent en fond, en permanence. Pas à la demande - en continu.",
+        "Les agents SymbiozAI tournent en fond - tout le temps, pas sur demande. Ils qualifient les leads entrants, enrichissent les fiches via 23 fournisseurs de données, détectent les deals sans activité récente, et réactivent les prospects dormants dès qu'un signal de timing apparaît.",
       bullets: [
         "Pipeline management : qualification automatique des leads entrants, scoring multi-signaux, mise à jour des statuts.",
         "Enrichissement continu : 23 fournisseurs de données orchestrés, sans intervention manuelle.",
-        "Follow-ups automatiques : détection des deals sans activité récente, priorisation des relances selon le Momentum Score.",
+        "Follow-ups automatiques : détection des deals sans activité récente, priorisés selon le Momentum Score.",
         "Signaux faibles : réactivation de prospects dormants dès qu'un signal de timing apparaît.",
       ],
       closing:
-        "Vous revenez 5 minutes par jour : vous validez ce qui requiert votre attention. Tout le reste a déjà avancé.",
-      visualAlt: "Maquette de la console de supervision : la file quotidienne de ce qui requiert votre approbation.",
+        "Vous revenez 5 minutes par jour : la file des actions qui requièrent votre attention vous attend. Tout le reste a déjà avancé.",
+      visualAlt:
+        "Flux d'activité temps réel : les agents internes au travail sur une journée - pipeline, signaux, relances, enrichissement, réactivation.",
     },
     mcpFirst: {
-      eyebrow: "COUCHE 2 - INFRASTRUCTURE MCP",
-      h2: "Un seul endpoint. Tous vos agents. Zéro friction.",
+      eyebrow: "PILIER MCP-FIRST",
+      h2: "Pas un serveur MCP ajouté. Un CRM construit autour.",
       intro1:
-        "Les autres CRM ajoutent un serveur MCP à une interface existante. C'est du MCP retrofitted - une couche de plus sur une architecture pensée pour la souris.",
-      intro2: "Nous avons retiré l'interface.",
+        "Les autres CRM ont ajouté un serveur MCP à une interface existante. C'est du MCP-retrofitted - une couche de plus sur une architecture conçue pour la souris.",
+      intro2:
+        "SymbiozAI est headless par conception : le serveur MCP n'est pas une feature, c'est le produit.",
       intro3:
-        "SymbiozAI est headless par conception. Le serveur MCP n'est pas une feature - c'est le produit. Votre agent devient l'opérateur principal. Vous ne changez pas d'outil, vous ne formez pas votre équipe à un nouveau logiciel : votre agent appelle SymbiozAI depuis l'environnement que vous utilisez déjà.",
+        "Votre agent appelle 35 missions en langage naturel depuis votre toolchain. Pas de formation. Pas d'interface parallèle. Installation en moins de 5 minutes via npx @symbiozai/mcp-setup.",
       bullets: [
         "35 missions en langage naturel - pas 100+ endpoints CRUD.",
         "Installation en moins de 5 minutes via npx @symbiozai/mcp-setup.",
@@ -377,7 +387,8 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
         "Votre agent dit \"cible 50 leads ICP, qualifie les 10 meilleurs, prépare les briefs réunion\" - SymbiozAI exécute.",
       ],
       closing: "C'est la différence entre \"votre CRM a une IA\" et \"votre IA a un CRM\".",
-      visualAlt: "Schéma d'architecture wrap-first : 23 fournisseurs de données connectés à votre agent via le serveur MCP SymbiozAI.",
+      visualAlt:
+        "Diagramme de convergence : six clients agents IA à gauche, connectés via un seul endpoint MCP à 23 fournisseurs de données derrière.",
     },
     aiNativeLearn: {
       eyebrow: "ARCHITECTURE ET APPRENTISSAGE",
@@ -385,66 +396,65 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
       sub1: {
         h3: "Pas un chatbot greffé. Un CRM conçu pour être invoqué.",
         paragraphs: [
-          "La différence entre \"AI-native\" et \"AI-assisted\" n'est pas une question de marketing - c'est une question de conception.",
-          "Un CRM AI-assisted part d'une base de données relationnelle pensée pour des humains. L'IA est ajoutée après : un assistant sur le côté, un bouton \"rédiger avec IA\", un résumé automatique. L'architecture reste centrée sur l'interface humaine.",
-          "SymbiozAI part du principe inverse : l'agent est l'opérateur principal. La base de données, les missions, le modèle de données - tout a été conçu pour être lu, écrit et orchestré par un modèle de langage. L'interface humaine (la console de supervision) est la couche résiduelle, pas la couche centrale.",
-          "Ce choix d'architecture change tout : les missions sont verbales, le contexte est structuré pour être consommé par un LLM, et les actions sensibles sont exposées comme des gates, pas comme des formulaires.",
+          "La différence entre AI-native et AI-assisted n'est pas marketing - c'est une décision d'architecture.",
+          "Un CRM AI-assisted part d'une base relationnelle construite pour des humains et ajoute l'IA après : un assistant sur le côté, un bouton \"rédiger avec IA\". L'architecture reste centrée sur l'interface humaine.",
+          "SymbiozAI part du principe inverse : l'agent est l'opérateur principal. La base de données, les missions, le modèle de données - tout conçu pour être lu, écrit et orchestré par un LLM. La console de supervision est la couche résiduelle, pas la couche centrale.",
         ],
       },
       sub2: {
         h3: "Votre CRM sait ce qu'il a déjà fait pour vous.",
         paragraphs: [
-          "Parce que SymbiozAI est conçu AI-native, chaque interaction alimente le système - pas seulement comme un log, mais comme une strate de connaissance.",
-          "Chaque appel de prospect mémorisé. Chaque email envoyé, analysé, rattaché au profil. Chaque deal clôturé, ses signaux documentés. Chaque relance déclenchée, sa réponse ou son silence archivés.",
-          "Au fil des cycles, le système affine ses lectures : meilleure précision sur le scoring, détection plus précoce des deals qui stagnent, profils prospects plus riches avant chaque réunion. Pas parce qu'on lui a appris une règle - parce qu'il a opéré avec vous.",
-          "Votre CRM ne repart jamais de zéro. Il repart de là où vous en êtes.",
+          "Chaque interaction alimente le système - pas comme un log, comme une strate de connaissance. Chaque appel mémorisé, chaque email analysé, chaque deal clos avec ses signaux documentés.",
+          "Au fil des cycles : scoring plus précis, détection plus précoce des deals qui stagnent, profils prospects plus riches avant chaque réunion. Pas parce qu'une règle a été programmée - parce qu'il a opéré avec vous.",
+          "Votre CRM ne repart jamais de zéro.",
         ],
       },
       visualAlt: "Chronologie auto-apprenante : Jour 1, Jour 30, Jour 180 - le système affine ses lectures dans le temps.",
     },
     infra: {
-      eyebrow: "CONSTRUIT POUR DURER",
-      h2: "Une infrastructure MCP-only. Pas un chatbot collé sur un CRM.",
+      eyebrow: "INFRASTRUCTURE",
+      h2: "Infrastructure qui ne transige pas.",
       metrics: [
-        { value: "35", label: "missions verbales", live: true },
-        { value: "23", label: "sources intégrées" },
-        { value: "< 5 min", label: "setup" },
+        { value: "35", label: "missions MCP verbales", live: true },
+        { value: "23", label: "fournisseurs de données" },
+        { value: "< 5 min", label: "pour connecter votre agent" },
         { value: "5 min/j", label: "supervision quotidienne" },
       ],
       badges: [
         {
-          title: "Hébergé en EU (Frankfurt)",
-          body: "Infrastructure DigitalOcean FRA1. Vos données pipeline restent en EU.",
+          title: "Hébergé en EU (Francfort)",
+          body:
+            "Infrastructure DigitalOcean FRA1. Vos données pipeline ne quittent pas la juridiction européenne.",
         },
         {
-          title: "AI Act natif",
+          title: "Conforme AI Act article 14",
           body:
-            "Audit log immuable signé HMAC, rétention 7 ans, politique HITL 3 classes, kill-switch tenant en moins d'1 seconde.",
+            "Audit log immuable signé HMAC, rétention 7 ans. Politique HITL 3 classes (Vert / Orange / Rouge). Kill-switch tenant en moins d'1 seconde.",
         },
         {
           title: "LLM-agnostic",
           body:
-            "UnifiedLLMClient multi-provider. Pas de fine-tuning sur vos données. Pas de rétention par les providers LLM.",
+            "UnifiedLLMClient multi-provider. Aucun fine-tuning sur vos données. Aucune rétention par les providers LLM.",
         },
         {
           title: "RGPD article 15 natif",
-          body: "Endpoint /audit/my-data, export à la demande, zéro vendor lock-in.",
+          body: "Endpoint /audit/my-data. Export à la demande. Zéro vendor lock-in.",
         },
       ],
       quoteAuthor: "Laurent Bouzon, fondateur de SymbiozAI",
     },
     integrations: {
-      h2: "Votre agent IA pilote. Vos outils exécutent.",
-      agentsLabel: "Votre agent IA",
-      toolsLabel: "Vos outils",
+      h2: "Votre agent pilote. Vos outils exécutent.",
+      agentsLabel: "Compatible avec votre agent",
+      toolsLabel: "Connecté à vos outils",
       microcopy:
-        "35 missions MCP. Une connexion. Votre agent IA orchestre - les outils exécutent en dessous.",
+        "SymbiozAI s'insère dans l'environnement que vous utilisez déjà. Rien à migrer. Rien à apprendre. Une connexion MCP.",
     },
     ctaFinal: {
-      h2: "Prêt à connecter votre agent ?",
+      h2: "Connectez votre agent. Maintenant.",
       lede: [
-        "Pas de formation. Pas de migration. Pas de projet IT de 3 mois.",
-        "Votre agent Claude Code ou Cursor est opérationnel sur SymbiozAI en moins de 5 minutes.",
+        "Pas de formation. Pas de migration. Pas de projet IT.",
+        "Votre Claude Code ou Cursor est opérationnel sur SymbiozAI en moins de 5 minutes.",
       ],
       reassurance: [
         "Sans engagement",

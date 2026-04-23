@@ -10,7 +10,7 @@ import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Section } from "@/components/site/section"
-import { AgentsStackVisual } from "@/components/site/agents-stack-visual"
+import { AgentActivityFeed } from "@/components/site/agent-activity-feed"
 import { McpConvergenceDiagram } from "@/components/site/mcp-convergence-diagram"
 import { LearningTimeline } from "@/components/site/learning-timeline"
 
@@ -156,17 +156,28 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
           {/* =====================================================================
               SECTION 1 - Banner rupture (claim doctrinal)
+              Canonical structure: eyebrow + H2 + description.
               Copy: L'IA n'est plus dans votre CRM. Votre CRM est dans votre IA.
               ===================================================================== */}
-          <section className="bg-white px-4 py-14 sm:px-6 md:py-20">
-            <ScrollReveal className="max-w-3xl mx-auto text-center">
-              <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.2] text-gray-950">
-                {copy.ruptureBanner.claim}
-              </p>
-              <p className="mt-5 text-base md:text-lg leading-relaxed text-gray-600">
-                {copy.ruptureBanner.subclaim}
-              </p>
-            </ScrollReveal>
+          <section className="relative overflow-hidden bg-white">
+            {/* Subtle radial accent to rhythm the scroll transition from hero */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"
+            />
+            <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 md:py-28">
+              <ScrollReveal>
+                <p className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0d47a1]">
+                  01 {isFr ? "· LA RUPTURE" : "· THE RUPTURE"}
+                </p>
+                <h2 className="text-3xl font-semibold leading-[1.1] tracking-tight text-gray-950 sm:text-4xl md:text-[44px] md:leading-[1.05] lg:text-5xl">
+                  {copy.ruptureBanner.claim}
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl sm:leading-[1.55]">
+                  {copy.ruptureBanner.subclaim}
+                </p>
+              </ScrollReveal>
+            </div>
           </section>
 
           {/* =====================================================================
@@ -177,7 +188,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             id="pillars"
             tone="gray"
             container="default"
-            eyebrow={copy.pillarsHub.eyebrow}
+            eyebrow={`02 · ${copy.pillarsHub.eyebrow}`}
             title={copy.pillarsHub.h2}
             lede={copy.pillarsHub.intro}
           >
@@ -185,10 +196,18 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               {copy.pillarsHub.cards.map((card, idx) => (
                 <article
                   key={card.h3}
-                  className="group relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.2)] md:p-7"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8"
                 >
+                  {/* Numeral marker (01..04) - quiet mono eyebrow */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-300"
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+
                   <div className="mb-5">{pillarIcons[idx]}</div>
-                  <h3 className="text-lg font-semibold tracking-tight text-gray-900">
+                  <h3 className="text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
                     {card.h3}
                   </h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-gray-600">
@@ -206,20 +225,25 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           <Section
             tone="white"
             container="default"
-            eyebrow={copy.problem.eyebrow}
+            eyebrow={`03 · ${copy.problem.eyebrow}`}
             title={copy.problem.h2}
+            lede={
+              isFr
+                ? "Pas d'hypothèques sur vos commerciaux. C'est l'architecture qui produit ces résultats - pas les gens."
+                : "Not a people problem. An architecture problem - and these are the numbers it produces."
+            }
           >
             <ScrollReveal stagger className="grid gap-6 md:grid-cols-3 lg:gap-8">
               {copy.problem.cards.map((pain, idx) => (
                 <div
                   key={pain.title}
-                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.2)] md:p-7"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8"
                 >
                   <div className="mb-5">{painIcons[idx]}</div>
-                  <h3 className="text-base font-semibold tracking-tight text-gray-900">
+                  <h3 className="text-base font-semibold tracking-tight text-gray-900 md:text-lg">
                     {pain.title}
                   </h3>
-                  <p className="mt-2 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-2xl font-bold text-transparent">
+                  <p className="mt-3 bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-2xl font-bold leading-none text-transparent md:text-[28px]">
                     {pain.stat}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-gray-600">{pain.body}</p>
@@ -232,77 +256,87 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           </Section>
 
           {/* =====================================================================
-              SECTION 4 - Pilier Autonome (Layer 1: internal agents)
-              H2 locked: "Your agent operates. You supervise."
-              Visual: native React component <AgentsStackVisual /> (supervision
-              console mockup in pure Tailwind + inline SVG, 2026-04-23).
-              Replaces /images/pivot-mcp/pilier-autonome-<lang>.png.
+              SECTION 4 - Pilier Autonome
+              Concept rework 2026-04-23 (Laurent feedback): previous "layers/
+              stack" framing rejected. New approach is a "day in the operation"
+              activity feed rendered by <AgentActivityFeed />. The eyebrow is
+              overridden to drop "COUCHE 1 / LAYER 1" phrasing.
+              Canonical structure: eyebrow + H2 + lede + visual.
               ===================================================================== */}
           <Section
             id="autonome"
             tone="gray"
             container="default"
-            eyebrow={copy.autonome.eyebrow}
+            eyebrow={`04 · ${copy.autonome.eyebrow}`}
             title={copy.autonome.h2}
+            lede={copy.autonome.intro}
           >
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
               <ScrollReveal>
-                <p className="text-base md:text-lg leading-relaxed text-gray-700">{copy.autonome.intro}</p>
-                <ul className="mt-6 space-y-3">
+                <AgentActivityFeed lang={isFr ? "fr" : "en"} />
+              </ScrollReveal>
+              <ScrollReveal>
+                <ul className="space-y-3.5">
                   {copy.autonome.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                    <li
+                      key={bullet}
+                      className="flex gap-3 text-[15px] leading-relaxed text-gray-700 md:text-base"
+                    >
                       <span
                         aria-hidden="true"
-                        className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
+                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
                       />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 rounded-xl border border-gray-200 bg-white p-5 text-sm md:text-base font-medium text-gray-900 leading-relaxed">
+                <p className="mt-8 rounded-xl border border-gray-200 bg-white p-5 text-[15px] font-medium leading-relaxed text-gray-900 md:p-6 md:text-base">
                   {copy.autonome.closing}
                 </p>
-              </ScrollReveal>
-              <ScrollReveal>
-                <AgentsStackVisual lang={isFr ? "fr" : "en"} />
               </ScrollReveal>
             </div>
           </Section>
 
           {/* =====================================================================
-              SECTION 5 - Pilier MCP-first (Layer 2: MCP infrastructure)
+              SECTION 5 - Pilier MCP-first
               Category rupture: we removed the interface.
-              Visual: native React component <McpConvergenceDiagram /> (6 AI
-              client pills converging via inline SVG to the MCP endpoint hub,
-              2026-04-23). Replaces /images/pivot-mcp/pilier-mcp-first-<lang>.png.
+              Eyebrow overridden to drop "COUCHE 2 / LAYER 2" phrasing (stack
+              concept rejected 2026-04-23). Visual: <McpConvergenceDiagram />.
               ===================================================================== */}
           <Section
             id="mcp-first"
             tone="white"
             container="default"
-            eyebrow={copy.mcpFirst.eyebrow}
+            eyebrow={`05 · ${copy.mcpFirst.eyebrow}`}
             title={copy.mcpFirst.h2}
+            lede={copy.mcpFirst.intro1}
           >
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
               <ScrollReveal>
                 <McpConvergenceDiagram lang={isFr ? "fr" : "en"} />
               </ScrollReveal>
               <ScrollReveal>
-                <p className="text-base md:text-lg leading-relaxed text-gray-700">{copy.mcpFirst.intro1}</p>
-                <p className="mt-4 text-lg md:text-xl font-semibold text-gray-950">{copy.mcpFirst.intro2}</p>
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-gray-700">{copy.mcpFirst.intro3}</p>
-                <ul className="mt-6 space-y-3">
+                <p className="text-xl font-semibold leading-snug text-gray-950 md:text-2xl">
+                  {copy.mcpFirst.intro2}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-gray-700 md:text-base">
+                  {copy.mcpFirst.intro3}
+                </p>
+                <ul className="mt-7 space-y-3.5">
                   {copy.mcpFirst.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                    <li
+                      key={bullet}
+                      className="flex gap-3 text-[15px] leading-relaxed text-gray-700 md:text-base"
+                    >
                       <span
                         aria-hidden="true"
-                        className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
+                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d47a1]"
                       />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-5 text-sm md:text-base italic text-gray-800 leading-relaxed">
+                <p className="mt-8 rounded-xl border border-gray-200 bg-gray-50 p-5 text-[15px] italic leading-relaxed text-gray-800 md:p-6 md:text-base">
                   {copy.mcpFirst.closing}
                 </p>
               </ScrollReveal>
@@ -312,28 +346,37 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 6 - AI-Native + Auto-apprenant (architecture and learning)
               Two sub-sections fused under one pillar.
-              Visual: native React component <LearningTimeline /> (Day 1 / 30
-              / 180 horizontal timeline with context progression, 2026-04-23).
-              Replaces /images/pivot-mcp/auto-apprenant-<lang>.png.
+              Visual: <LearningTimeline /> Day 1 / 30 / 180 progression.
+              Canonical structure: eyebrow + H2 + lede + visual + two cards.
               ===================================================================== */}
           <Section
             id="ai-native-learning"
             tone="gray"
             container="default"
-            eyebrow={copy.aiNativeLearn.eyebrow}
+            eyebrow={`06 · ${copy.aiNativeLearn.eyebrow}`}
             title={copy.aiNativeLearn.h2}
+            lede={
+              isFr
+                ? "La conception décide de ce qu'un CRM peut faire. L'usage décide de la précision avec laquelle il le fait."
+                : "Design decides what a CRM can do. Usage decides how precisely it does it."
+            }
           >
-            <ScrollReveal className="mx-auto mb-14 max-w-5xl">
+            <ScrollReveal className="mx-auto mb-16 max-w-5xl md:mb-20">
               <LearningTimeline lang={isFr ? "fr" : "en"} />
             </ScrollReveal>
 
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
               <ScrollReveal>
-                <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
-                  <h3 className="text-xl font-semibold text-gray-900">{copy.aiNativeLearn.sub1.h3}</h3>
-                  <div className="mt-4 space-y-4">
+                <article className="group h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8">
+                  <h3 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
+                    {copy.aiNativeLearn.sub1.h3}
+                  </h3>
+                  <div className="mt-5 space-y-4">
                     {copy.aiNativeLearn.sub1.paragraphs.map((para, idx) => (
-                      <p key={idx} className="text-sm md:text-base leading-relaxed text-gray-700">
+                      <p
+                        key={idx}
+                        className="text-[15px] leading-relaxed text-gray-700 md:text-base"
+                      >
                         {para}
                       </p>
                     ))}
@@ -341,11 +384,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </article>
               </ScrollReveal>
               <ScrollReveal>
-                <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
-                  <h3 className="text-xl font-semibold text-gray-900">{copy.aiNativeLearn.sub2.h3}</h3>
-                  <div className="mt-4 space-y-4">
+                <article className="group h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8">
+                  <h3 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
+                    {copy.aiNativeLearn.sub2.h3}
+                  </h3>
+                  <div className="mt-5 space-y-4">
                     {copy.aiNativeLearn.sub2.paragraphs.map((para, idx) => (
-                      <p key={idx} className="text-sm md:text-base leading-relaxed text-gray-700">
+                      <p
+                        key={idx}
+                        className="text-[15px] leading-relaxed text-gray-700 md:text-base"
+                      >
                         {para}
                       </p>
                     ))}
@@ -358,79 +406,113 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 7 - Infrastructure + trust (metrics + badges + quote)
               Quote fondateur locked by Laurent 2026-04-23.
+              Canonical structure: eyebrow + H2 + lede + visual grid.
               ===================================================================== */}
           <Section
             tone="white"
             container="default"
-            eyebrow={copy.infra.eyebrow}
+            eyebrow={`07 · ${copy.infra.eyebrow}`}
             title={copy.infra.h2}
+            lede={
+              isFr
+                ? "Quatre faits vérifiables. Pas de marketing de conformité."
+                : "Four verifiable facts. Not compliance marketing."
+            }
           >
             {/* Metrics row */}
-            <ScrollReveal stagger className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <ScrollReveal stagger className="mb-14 grid grid-cols-2 gap-6 md:mb-16 md:grid-cols-4">
               {copy.infra.metrics.map((metric) => (
-                <div key={metric.label} className="text-center">
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-gray-50/60 p-5 text-center md:p-6"
+                >
                   <div className="flex items-center justify-center gap-2">
-                    <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-transparent">
+                    <p className="bg-gradient-to-r from-[#0d47a1] to-[#00e5ff] bg-clip-text text-3xl font-bold leading-none tracking-tight text-transparent md:text-4xl">
                       {metric.value}
                     </p>
                     {metric.live && (
-                      <span className="relative flex h-2.5 w-2.5 mt-1">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                      <span className="relative mt-1 flex h-2.5 w-2.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">{metric.label}</p>
+                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-gray-500">
+                    {metric.label}
+                  </p>
                 </div>
               ))}
             </ScrollReveal>
 
             {/* Trust badges */}
-            <ScrollReveal stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <ScrollReveal
+              stagger
+              className="mb-14 grid gap-5 sm:grid-cols-2 md:mb-16 lg:grid-cols-4 lg:gap-6"
+            >
               {copy.infra.badges.map((badge, idx) => (
                 <div
                   key={badge.title}
-                  className="flex h-full flex-col items-center rounded-2xl border border-gray-200 bg-white p-5 text-center transition-colors hover:border-[#0d47a1]/30"
+                  className="flex h-full flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
                 >
-                  <div className="mb-3 flex justify-center">{badgeIcons[idx]}</div>
+                  <div className="mb-4 flex justify-center">{badgeIcons[idx]}</div>
                   <h3 className="text-sm font-semibold tracking-tight text-gray-900">
                     {badge.title}
                   </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{badge.body}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-gray-600">{badge.body}</p>
                 </div>
               ))}
             </ScrollReveal>
 
             {/* Founder quote - locked verbatim */}
-            <ScrollReveal className="max-w-3xl mx-auto">
-              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-                <blockquote className="italic text-gray-700 text-base md:text-lg leading-relaxed">
+            <ScrollReveal className="mx-auto max-w-3xl">
+              <figure className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-white p-8 md:p-10">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="absolute left-6 top-6 h-8 w-8 text-[#0d47a1]/15"
+                >
+                  <path
+                    d="M7 7h4v4H8c0 2.2 1.3 3 3 3v3c-3.9 0-6-2.5-6-6V7zm9 0h4v4h-3c0 2.2 1.3 3 3 3v3c-3.9 0-6-2.5-6-6V7z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <blockquote className="relative pl-6 text-base italic leading-relaxed text-gray-700 md:pl-10 md:text-lg">
                   &ldquo;{dictionary.quote}&rdquo;
                 </blockquote>
-                <p className="mt-4 text-sm font-semibold text-gray-900">{copy.infra.quoteAuthor}</p>
-              </div>
+                <figcaption className="relative mt-5 pl-6 text-sm font-semibold text-gray-900 md:pl-10">
+                  {copy.infra.quoteAuthor}
+                </figcaption>
+              </figure>
             </ScrollReveal>
           </Section>
 
           {/* =====================================================================
               SECTION 8 - Integrations (H2 retitled, 2 rows kept)
               Row 1: AI agents (text-only). Row 2: tools (logos).
+              Canonical structure: eyebrow + H2 + description + visual rows.
               ===================================================================== */}
-          <Section tone="gray" container="default" title={copy.integrations.h2}>
+          <Section
+            tone="gray"
+            container="default"
+            eyebrow={`08 · ${isFr ? "ECOSYSTEME" : "ECOSYSTEM"}`}
+            title={copy.integrations.h2}
+            lede={copy.integrations.microcopy}
+          >
             {/* Row 1: AI agents (text-only pills, R11-safe) */}
-            <ScrollReveal className="mb-10">
-              <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+            <ScrollReveal className="mb-12">
+              <p className="mb-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-[#0d47a1]">
                 {copy.integrations.agentsLabel}
               </p>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-3.5">
                 {homeAgents.map((agent) => (
                   <div
                     key={agent}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                    className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-md"
                   >
                     <span
                       aria-hidden="true"
-                      className="inline-flex h-5 w-5 items-center justify-center rounded border border-gray-300 font-mono text-[11px] font-semibold text-gray-700"
+                      className="inline-flex h-5 w-5 items-center justify-center rounded border border-gray-200 bg-gray-50 font-mono text-[11px] font-semibold text-gray-700"
                     >
                       {agent.charAt(0)}
                     </span>
@@ -442,22 +524,22 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
             {/* Row 2: Tools (logo pills) */}
             <ScrollReveal>
-              <p className="text-xs font-medium text-[#0d47a1] uppercase tracking-widest text-center mb-4">
+              <p className="mb-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-[#0d47a1]">
                 {copy.integrations.toolsLabel}
               </p>
-              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
                 {homeIntegrations.map((integration) => (
                   <div
                     key={integration.name}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                    className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-md"
                   >
-                    <div className="w-5 h-5 relative flex-shrink-0">
+                    <div className="relative h-5 w-5 flex-shrink-0">
                       <Image
                         src={integration.logo || "/placeholder.svg"}
                         alt={`${integration.name} logo`}
                         width={20}
                         height={20}
-                        className="object-contain w-5 h-5"
+                        className="h-5 w-5 object-contain"
                         loading="lazy"
                         unoptimized
                       />
@@ -467,54 +549,72 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 ))}
               </div>
             </ScrollReveal>
-
-            <ScrollReveal>
-              <p className="mt-10 text-center text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                {copy.integrations.microcopy}
-              </p>
-            </ScrollReveal>
           </Section>
 
           {/* =====================================================================
               SECTION 9 - CTA Final (ICP founder-tech sharpened)
-              Primary: WaitlistForm. Secondary: Calendly Book a meeting.
+              Primary: WaitlistForm. Secondary: Calendly book a meeting.
               Microcopy link: reroute toward /for-sales-teams.
+              Canonical structure: eyebrow + H2 + description + action block.
               ===================================================================== */}
           <section
             id="cta-final"
-            className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#0d47a1] to-[#1a237e] text-white"
+            className="relative overflow-hidden bg-gradient-to-br from-[#0d47a1] to-[#1a237e] px-4 py-24 text-white sm:px-6 md:py-32"
           >
-            <div className="max-w-3xl mx-auto text-center">
-              <ScrollReveal>
-                <h2 className="text-3xl md:text-4xl font-semibold mb-6">{copy.ctaFinal.h2}</h2>
-                {copy.ctaFinal.lede.map((line, idx) => (
-                  <p
-                    key={idx}
-                    className={`${idx === 0 ? "text-white/85 text-lg" : "text-white/70 text-base"} ${
-                      idx === 0 ? "mb-2" : "mb-8"
-                    }`}
-                  >
-                    {line}
-                  </p>
-                ))}
+            {/* Subtle grid backdrop for depth (mono, no new accent color) */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+              }}
+            />
+            {/* Radial glow - mirrors hero visual register */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/3 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(0,229,255,0.18) 0%, rgba(13,71,161,0.05) 40%, transparent 70%)",
+              }}
+            />
 
-                <div className="max-w-md mx-auto">
+            <div className="relative mx-auto max-w-3xl text-center">
+              <ScrollReveal>
+                <p className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#6ddcff]">
+                  09 {isFr ? "· CONNECTEZ-VOUS" : "· CONNECT"}
+                </p>
+                <h2 className="text-3xl font-semibold leading-[1.08] tracking-tight sm:text-4xl md:text-[44px] md:leading-[1.05] lg:text-5xl">
+                  {copy.ctaFinal.h2}
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-white/85 sm:text-xl sm:leading-[1.55]">
+                  {copy.ctaFinal.lede[0]}
+                </p>
+                {copy.ctaFinal.lede[1] && (
+                  <p className="mt-2 text-base leading-relaxed text-white/70">
+                    {copy.ctaFinal.lede[1]}
+                  </p>
+                )}
+
+                <div className="mx-auto mt-10 max-w-md">
                   <WaitlistForm form={dictionary.form} lang={lang} />
                 </div>
 
-                <p className="mt-4">
+                <p className="mt-5">
                   <a
                     href={copy.ctaFinal.secondaryCta.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/80 hover:text-white transition-colors underline underline-offset-4"
+                    className="text-sm text-white/80 underline underline-offset-4 transition-colors hover:text-white"
                   >
                     {isFr ? "ou " : "or "}
                     {copy.ctaFinal.secondaryCta.label.toLowerCase()} →
                   </a>
                 </p>
 
-                <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/70 text-xs md:text-sm">
+                <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-white/70 md:text-sm">
                   {copy.ctaFinal.reassurance.map((item) => (
                     <li key={item} className="flex items-center gap-2">
                       <span aria-hidden="true" className="h-1 w-1 rounded-full bg-white/40" />
@@ -523,11 +623,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   ))}
                 </ul>
 
-                <p className="mt-10 text-white/60 text-sm">
+                <p className="mt-12 text-sm text-white/60">
                   {copy.ctaFinal.microcopyPrefix}{" "}
                   <Link
                     href={copy.ctaFinal.microcopyLink.href}
-                    className="underline underline-offset-4 hover:text-white transition-colors"
+                    className="underline underline-offset-4 transition-colors hover:text-white"
                   >
                     {copy.ctaFinal.microcopyLink.label}
                   </Link>
