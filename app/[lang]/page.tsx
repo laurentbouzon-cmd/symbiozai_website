@@ -56,6 +56,12 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     },
   ]
 
+  // Lang-aware image suffix for home pillar visuals.
+  // Pattern: each localised visual lives at /images/pivot-mcp/<name>-<suffix>.png.
+  // Kept inline (vs. embedding in home-page-copy.ts) because paths are asset
+  // concerns, not copy concerns, and page.tsx already resolves `lang` here.
+  const imgSuffix = isFr ? "fr" : "en"
+
   // Icons per pillar card (Section 2) - keeps visual consistency with existing GlassIcon library.
   const pillarIcons = [
     <GlassIcon key="ai" type="cpu" size={40} />,
@@ -194,7 +200,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               <ScrollReveal>
                 <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
                   <Image
-                    src="/images/pivot-mcp/comparison-mcp-retrofitted-vs-mcp-only.png"
+                    src={`/images/pivot-mcp/comparison-mcp-retrofitted-vs-mcp-only-${imgSuffix}.png`}
                     alt={copy.pillarsHub.visualAlt}
                     width={1200}
                     height={720}
@@ -239,7 +245,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 4 - Pilier Autonome (Layer 1: internal agents)
               H2 locked: "Your agent operates. You supervise."
-              Visual: supervision console mockup (already live on /for-sales-teams).
+              Visual: pilier-autonome-<lang>.png (lang-aware, delivered
+              2026-04-23 - replaces generic supervision-console-mockup).
               ===================================================================== */}
           <Section
             id="autonome"
@@ -269,7 +276,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               <ScrollReveal>
                 <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
                   <Image
-                    src="/images/pivot-mcp/supervision-console-mockup.png"
+                    src={`/images/pivot-mcp/pilier-autonome-${imgSuffix}.png`}
                     alt={copy.autonome.visualAlt}
                     width={1200}
                     height={720}
@@ -284,7 +291,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 5 - Pilier MCP-first (Layer 2: MCP infrastructure)
               Category rupture: we removed the interface.
-              Visual: architecture-diagram-wrap-first.
+              Visual: pilier-mcp-first-<lang>.png (lang-aware, delivered
+              2026-04-23 - replaces architecture-diagram-wrap-first).
               ===================================================================== */}
           <Section
             id="mcp-first"
@@ -297,7 +305,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               <ScrollReveal>
                 <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
                   <Image
-                    src="/images/pivot-mcp/architecture-diagram-wrap-first.png"
+                    src={`/images/pivot-mcp/pilier-mcp-first-${imgSuffix}.png`}
                     alt={copy.mcpFirst.visualAlt}
                     width={1200}
                     height={720}
@@ -331,7 +339,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           {/* =====================================================================
               SECTION 6 - AI-Native + Auto-apprenant (architecture and learning)
               Two sub-sections fused under one pillar.
-              Visual: auto-apprenant.png (new asset produced by visual-designer).
+              Visual: auto-apprenant-<lang>.png (lang-aware).
               ===================================================================== */}
           <Section
             id="ai-native-learning"
@@ -343,7 +351,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
             <ScrollReveal className="mb-12">
               <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gray-200 bg-white p-3">
                 <Image
-                  src="/images/pivot-mcp/auto-apprenant.png"
+                  src={`/images/pivot-mcp/auto-apprenant-${imgSuffix}.png`}
                   alt={copy.aiNativeLearn.visualAlt}
                   width={1600}
                   height={900}
