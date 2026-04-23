@@ -639,7 +639,7 @@ npx @symbiozai/mcp-setup`,
     },
     ctaFinal: {
       title: "Livrez l'appel CRM d'ouverture de votre agent.",
-      lede: "Installez le MCP ou réservez une démo guidée.",
+      lede: "Installez le MCP ou demandez une présentation en live.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
     },

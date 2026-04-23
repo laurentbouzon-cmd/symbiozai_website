@@ -28,7 +28,7 @@ export const salesTeamsCopy = {
       lede:
         "Your AI agents target 50 prospects by ICP, score the top 20, draft 10 personalized emails, and surface the 3 deals at risk in your pipeline overnight. Each morning you open the supervision console: a short queue of decisions that need your judgment. You approve, you edit, you block. The agents ship the rest.",
       caption:
-        "Supervision console preview. Book a demo to walk through it on your own pipeline.",
+        "Supervision console preview. Book a meeting to walk through it on your own pipeline.",
     },
     pains: {
       eyebrow: "The pains we solve",
@@ -148,7 +148,7 @@ export const salesTeamsCopy = {
     },
     faqSection: {
       eyebrow: "FAQ",
-      title: "Before you book a demo.",
+      title: "Before you book a meeting.",
     },
     ctaFinal: {
       title: "Run a leaner, faster sales motion. Starting now.",
@@ -196,7 +196,7 @@ export const salesTeamsCopy = {
       lede:
         "Vos agents IA ciblent 50 prospects par ICP, scorent le top 20, rédigent 10 emails personnalisés et remontent les 3 deals à risque dans votre pipeline, pendant la nuit. Chaque matin vous ouvrez la console de supervision : une file courte de décisions qui demandent votre jugement. Vous approuvez, vous éditez, vous bloquez. Les agents envoient le reste.",
       caption:
-        "Aperçu de la console de supervision. Réservez une démo pour la parcourir sur votre propre pipeline.",
+        "Aperçu de la console de supervision. Prenez rendez-vous pour la parcourir sur votre propre pipeline.",
     },
     pains: {
       eyebrow: "Les douleurs qu'on résout",
@@ -316,7 +316,7 @@ export const salesTeamsCopy = {
     },
     faqSection: {
       eyebrow: "FAQ",
-      title: "Avant de réserver une démo.",
+      title: "Avant de prendre rendez-vous.",
     },
     ctaFinal: {
       title: "Faites tourner un cycle commercial plus lean, plus rapide. Dès maintenant.",
