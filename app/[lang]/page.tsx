@@ -266,7 +266,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   rel="noopener noreferrer"
                   className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
                 >
-                  {isFr ? "ou réserver une démo →" : "or book a demo →"}
+                  {isFr ? "ou prendre rendez-vous →" : "or book a meeting →"}
                 </a>
               </div>
             </div>
@@ -567,7 +567,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                     rel="noopener noreferrer"
                     className="text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4"
                   >
-                    {isFr ? "ou réserver une démo →" : "or book a demo →"}
+                    {isFr ? "ou prendre rendez-vous →" : "or book a meeting →"}
                   </a>
                 </p>
                 <p className="text-white/40 text-xs mt-4">

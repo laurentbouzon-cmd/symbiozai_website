@@ -155,7 +155,7 @@ export const mcpCopy = {
         "Headless by design. Operated by your AI agent via MCP. Claude Code, Cursor, GPT. It's all native.",
       primary: { label: "Install the MCP in 5 min", href: "#quickstart" },
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
-      tertiary: { label: "Book a demo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      tertiary: { label: "Book a meeting", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
     },
     quickstart: {
       eyebrow: "5-minute quickstart",
@@ -433,7 +433,7 @@ npx @symbiozai/mcp-setup`,
         "Headless par design. Piloté par votre agent IA via MCP. Claude Code, Cursor, GPT. Tout est natif.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
-      tertiary: { label: "Réserver une démo", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      tertiary: { label: "Prendre rendez-vous", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
     },
     quickstart: {
       eyebrow: "Quickstart 5 minutes",
