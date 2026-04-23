@@ -5,11 +5,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const isEnglish = lang === "en"
 
   const title = isEnglish
-    ? "SymbiozAI Manifesto | The headless AI CRM vision"
-    : "Manifeste SymbiozAI | La vision du CRM headless"
+    ? "SymbiozAI Manifesto | The MCP-only CRM. Operated by your agent."
+    : "Manifeste SymbiozAI | Le CRM MCP-only. Opéré par votre agent."
   const description = isEnglish
-    ? "SymbiozAI is the headless AI CRM — operated by your AI agent via MCP. This is the long-form thesis behind the product."
-    : "SymbiozAI est le CRM headless piloté par votre agent IA via MCP. Voici la thèse long format derrière le produit."
+    ? "For 25 years, we asked humans to open their CRM. In 2026, the AI agent operates it. SymbiozAI is MCP-only by design. Not by option."
+    : "Pendant 25 ans, on a demandé aux humains d'ouvrir leur CRM. En 2026, l'agent IA l'opère. SymbiozAI est MCP-only by design. Pas by option."
 
   return {
     title,
