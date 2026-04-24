@@ -21,26 +21,36 @@ export function getAllPosts(lang: string): BlogPostMeta[] {
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"))
 
-  const posts = files.map((filename) => {
-    const filePath = path.join(dir, filename)
-    const fileContent = fs.readFileSync(filePath, "utf-8")
-    const { data } = matter(fileContent)
+  const posts = files
+    .map((filename) => {
+      const filePath = path.join(dir, filename)
+      const fileContent = fs.readFileSync(filePath, "utf-8")
+      const { data } = matter(fileContent)
 
-    return {
-      title: data.title as string,
-      description: data.description as string,
-      date: data.date as string,
-      category: data.category as BlogCategory,
-      author: (data.author as string) || "SymbiozAI",
-      readingTime: (data.readingTime as number) || 5,
-      slug: filename.replace(/\.mdx$/, ""),
-      featured: (data.featured as boolean) || false,
-    }
-  })
+      // Support both `date` (original editorial articles) and `publishedAt`
+      // (Content Engine generated articles). Skip articles with neither so
+      // they do not silently land at the bottom due to NaN sort.
+      const rawDate = (data.date as string | undefined) ?? (data.publishedAt as string | undefined)
+      if (!rawDate) {
+        return null
+      }
+
+      return {
+        title: data.title as string,
+        description: data.description as string,
+        date: rawDate,
+        category: data.category as BlogCategory,
+        author: (data.author as string) || "SymbiozAI",
+        readingTime: (data.readingTime as number) || 5,
+        slug: filename.replace(/\.mdx$/, ""),
+        featured: (data.featured as boolean) || false,
+      }
+    })
+    .filter((p): p is BlogPostMeta => p !== null)
 
   return posts.sort((a, b) => {
-    if (a.featured && !b.featured) return -1
-    if (!a.featured && b.featured) return 1
+    // Pure date desc (most recent first). The `featured` flag only drives
+    // visual treatment in article-card.tsx (badge + larger title), not order.
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 }
@@ -59,11 +69,13 @@ export function getPostBySlug(lang: string, slug: string): BlogPost | null {
   const fileContent = fs.readFileSync(filePath, "utf-8")
   const { data, content } = matter(fileContent)
 
+  const rawDate = (data.date as string | undefined) ?? (data.publishedAt as string | undefined) ?? ""
+
   return {
     meta: {
       title: data.title as string,
       description: data.description as string,
-      date: data.date as string,
+      date: rawDate,
       category: data.category as BlogCategory,
       author: (data.author as string) || "SymbiozAI",
       readingTime: (data.readingTime as number) || 5,
