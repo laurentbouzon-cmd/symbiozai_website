@@ -508,7 +508,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       {
         question: "Can I test before paying?",
         answer:
-          "Yes. The public sandbox at /playground gives you a demo tenant with 200 prospects, rate-limited to 20 calls/IP/day. No signup required.",
+          "Book a meeting to see a live walkthrough on your pipeline. Claude Code + SymbiozAI up and running in under 30 minutes, no commitment required.",
       },
       {
         question: "How does authentication work?",
@@ -888,7 +888,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       {
         question: "Puis-je tester avant de payer ?",
         answer:
-          "Oui. La sandbox publique sur /playground vous donne un tenant démo avec 200 prospects, limité à 20 appels/IP/jour. Pas d'inscription requise.",
+          "Prenez rendez-vous pour voir un walkthrough en direct sur votre pipeline. Claude Code + SymbiozAI opérationnels en moins de 30 minutes, sans engagement.",
       },
       {
         question: "Comment fonctionne l'authentification ?",
