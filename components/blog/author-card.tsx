@@ -8,8 +8,8 @@ export function AuthorCard({ lang }: AuthorCardProps) {
   const isFr = lang === "fr"
 
   const bio = isFr
-    ? "Fondateur de SymbiozAI, le premier AI Native CRM europeen. 15 ans de terrain commercial. Construit le CRM ou les agents IA decident, agissent et apprennent."
-    : "Founder of SymbiozAI, the first European AI Native CRM. 15 years in sales operations. Building the CRM where AI agents decide, act and learn."
+    ? "Fondateur de SymbiozAI, le CRM headless pilote par votre agent IA via MCP. 15 ans de terrain commercial. Construit le CRM ou les agents IA decident, agissent et apprennent."
+    : "Founder of SymbiozAI, the headless AI CRM operated by your AI agent via MCP. 15 years in sales operations. Building the CRM where AI agents decide, act and learn."
 
   return (
     <div className="not-prose mt-12 mb-4 p-6 bg-gray-50 rounded-xl border border-gray-100">

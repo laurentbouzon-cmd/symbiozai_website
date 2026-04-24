@@ -3,6 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { Inter } from "next/font/google"
+import { headers } from "next/headers"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,34 +11,47 @@ const inter = Inter({
   display: "swap",
 })
 
+// Locales supportées pour déclarer <html lang> dynamiquement (SEO P0-2).
+// Le middleware injecte le header `x-locale` selon le segment /[lang]/ détecté.
+// Fallback "en" pour les routes hors /[lang]/ (ex: /status, /not-found).
+const SUPPORTED_LOCALES = ["en", "fr"] as const
+type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
+const DEFAULT_LOCALE: SupportedLocale = "en"
+
+function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
+  return value !== null && value !== undefined && (SUPPORTED_LOCALES as readonly string[]).includes(value)
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://symbioz.ai"),
-  title: "SymbiozAI | Le premier CRM AI-Native européen",
+  title: "The headless AI CRM | SymbiozAI",
   description:
-    "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés, pilotés depuis WhatsApp et Slack, avec un agent IA intégré.",
-  keywords: "CRM, IA-Native, intelligence artificielle, automatisation, prospection, suivi client, WhatsApp, Slack",
+    "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
+  keywords:
+    "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, CRM MCP server, Model Context Protocol CRM, Claude Code CRM, Cursor CRM",
   openGraph: {
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
+    title: "The headless AI CRM | SymbiozAI",
     description:
-      "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés, pilotés depuis WhatsApp et Slack.",
+      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
     url: "https://symbioz.ai",
     siteName: "SymbiozAI",
     images: [
       {
-        url: "/og",
+        url: "/images/pivot-mcp/og-image-symbiozai.png",
         width: 1200,
         height: 630,
-        alt: "SymbiozAI | Le premier CRM AI-Native européen",
+        alt: "SymbiozAI: the headless AI CRM",
       },
     ],
-    locale: "fr_FR",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
-    description: "Votre prospection, votre suivi client et vos mises à jour CRM sont complètement automatisés.",
-    images: ["/og"],
+    title: "The headless AI CRM | SymbiozAI",
+    description:
+      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes.",
+    images: ["/images/pivot-mcp/og-image-symbiozai.png"],
   },
   robots: {
     index: true,
@@ -66,13 +80,22 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // Lire la locale détectée par le middleware (injectée via header `x-locale`).
+  // Ce pattern permet à <html lang={...}> d'être dynamique sans restructurer
+  // l'arbre App Router en route groups multiples. Voir middleware.ts pour
+  // l'injection. Les meta tags sont synchronisés dans <head> pour les crawlers
+  // SEO via `htmlLimitedBots` dans next.config.js (P0-3).
+  const headersList = await headers()
+  const headerLocale = headersList.get("x-locale")
+  const locale: SupportedLocale = isSupportedLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE
+
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <head>
         {/* Preconnect to third-party origins for faster resource fetching */}
         <link rel="preconnect" href="https://static.axept.io" crossOrigin="anonymous" />
@@ -84,7 +107,7 @@ export default function RootLayout({
         {children}
 
         {/*
-          Google Consent Mode v2 defaults — MUST run before GA4 fires.
+          Google Consent Mode v2 defaults: MUST run before GA4 fires.
           This inline script is tiny (~200 bytes) and sets denied defaults
           so GA4 respects consent from the start, even before Axeptio loads.
         */}
@@ -102,7 +125,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Google tag (gtag.js) — Consent Mode v2 gated by defaults above + Axeptio */}
+        {/* Google tag (gtag.js): Consent Mode v2 gated by defaults above + Axeptio */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-1P585GSSEQ" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -113,7 +136,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Axeptio — Cookie consent SDK (lazy loaded, updates consent mode when user interacts) */}
+        {/* Axeptio: Cookie consent SDK (lazy loaded, updates consent mode when user interacts) */}
         <Script id="axeptio-settings" strategy="lazyOnload">
           {`
             window.axeptioSettings = {

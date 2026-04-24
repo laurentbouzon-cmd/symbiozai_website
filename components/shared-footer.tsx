@@ -29,8 +29,8 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed">
               {isFr
-                ? "Le premier CRM AI-Native européen. Zéro saisie. Pipeline piloté par l'IA."
-                : "The first European AI-Native CRM. Zero data entry. AI-piloted pipeline."}
+                ? "Le CRM headless piloté par votre agent IA via MCP."
+                : "The headless AI CRM. Operated by your AI agent via MCP."}
             </p>
           </div>
 
@@ -40,6 +40,16 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
               {isFr ? "Produit" : "Product"}
             </h4>
             <ul className="space-y-3">
+              <li>
+                <Link href={`/${lang}/mcp`} className="text-sm hover:text-white transition-colors duration-200">
+                  MCP
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/for-sales-teams`} className="text-sm hover:text-white transition-colors duration-200">
+                  {isFr ? "Équipes commerciales" : "For sales teams"}
+                </Link>
+              </li>
               <li>
                 <Link href={`/${lang}#cta-final`} className="text-sm hover:text-white transition-colors duration-200">
                   {isFr ? "Rejoindre la beta" : "Join the beta"}

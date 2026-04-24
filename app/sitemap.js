@@ -54,11 +54,18 @@ export default function sitemap() {
   const base = "https://symbioz.ai"
 
   // Use a fixed date for static pages (last known content update)
-  const staticLastMod = new Date("2026-03-31")
+  const staticLastMod = new Date("2026-04-23")
 
   const staticPages = [
     {
       url: `${base}/`,
+      lastModified: staticLastMod,
+      changeFrequency: "weekly",
+      priority: 1.0,
+      alternates: { languages: { fr: `${base}/fr`, en: `${base}/en` } },
+    },
+    {
+      url: `${base}/en`,
       lastModified: staticLastMod,
       changeFrequency: "weekly",
       priority: 1.0,
@@ -71,12 +78,45 @@ export default function sitemap() {
       priority: 0.9,
       alternates: { languages: { fr: `${base}/fr`, en: `${base}/en` } },
     },
+    // MCP: P0 priority post-pivot
     {
-      url: `${base}/en`,
+      url: `${base}/en/mcp`,
+      lastModified: staticLastMod,
+      changeFrequency: "weekly",
+      priority: 0.95,
+      alternates: { languages: { fr: `${base}/fr/mcp`, en: `${base}/en/mcp` } },
+    },
+    {
+      url: `${base}/fr/mcp`,
       lastModified: staticLastMod,
       changeFrequency: "weekly",
       priority: 0.9,
-      alternates: { languages: { fr: `${base}/fr`, en: `${base}/en` } },
+      alternates: { languages: { fr: `${base}/fr/mcp`, en: `${base}/en/mcp` } },
+    },
+    // For sales teams: secondary ICP page
+    {
+      url: `${base}/en/for-sales-teams`,
+      lastModified: staticLastMod,
+      changeFrequency: "weekly",
+      priority: 0.85,
+      alternates: {
+        languages: {
+          fr: `${base}/fr/for-sales-teams`,
+          en: `${base}/en/for-sales-teams`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/for-sales-teams`,
+      lastModified: staticLastMod,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fr: `${base}/fr/for-sales-teams`,
+          en: `${base}/en/for-sales-teams`,
+        },
+      },
     },
     {
       url: `${base}/fr/manifeste`,
@@ -165,7 +205,7 @@ export default function sitemap() {
     },
   ]
 
-  // Blog articles — deduplicate: only emit one entry per article pair, with correct alternates
+  // Blog articles: deduplicate, only emit one entry per article pair, with correct alternates
   const seenPairs = new Set()
   const blogPages = []
 

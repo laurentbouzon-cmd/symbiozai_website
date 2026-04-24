@@ -18,8 +18,16 @@ export function middleware(request: NextRequest) {
   // Vérifier si le chemin a déjà une locale
   const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
 
-  // Si le chemin a déjà une locale, ne rien faire
-  if (pathnameHasLocale) return NextResponse.next()
+  // Si le chemin a déjà une locale, injecter un header x-locale sur la
+  // requête forwardée vers Next pour que le root layout (app/layout.tsx)
+  // puisse l'exploiter via `headers()` et appliquer <html lang={locale}>
+  // de manière dynamique (SEO P0-2, hreflang + a11y + GEO NLP extraction).
+  if (pathnameHasLocale) {
+    const detectedLocale = locales.find((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) || defaultLocale
+    const requestHeaders = new Headers(request.headers)
+    requestHeaders.set("x-locale", detectedLocale)
+    return NextResponse.next({ request: { headers: requestHeaders } })
+  }
 
   // Si le chemin est la racine, rediriger vers la locale par défaut
   if (pathname === "/") {

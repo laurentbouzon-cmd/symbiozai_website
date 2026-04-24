@@ -6,7 +6,7 @@ import type { Dictionary } from "@/lib/dictionary"
 interface SharedHeaderProps {
   lang: string
   dictionary: Dictionary
-  activePage?: "home" | "manifeste" | "blog" | "contact"
+  activePage?: "home" | "mcp" | "for-sales-teams" | "manifeste" | "blog" | "contact"
   showLogo?: boolean
 }
 
@@ -15,12 +15,14 @@ export function SharedHeader({ lang, dictionary, activePage, showLogo = true }: 
 
   const navItems = [
     { key: "home", href: `/${lang}`, label: isFr ? "Accueil" : "Home" },
+    { key: "mcp", href: `/${lang}/mcp`, label: "MCP" },
+    { key: "for-sales-teams", href: `/${lang}/for-sales-teams`, label: isFr ? "Équipes commerciales" : "For sales teams" },
     { key: "manifeste", href: `/${lang}/manifeste`, label: isFr ? "Manifeste" : "Manifesto" },
     { key: "blog", href: `/${lang}/blog`, label: "Blog" },
   ]
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-10">
+    <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className={`flex items-center ${showLogo ? "justify-between" : "justify-end"}`}>
           {showLogo && (

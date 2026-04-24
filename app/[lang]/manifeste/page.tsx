@@ -13,7 +13,6 @@ export async function generateStaticParams() {
 export default async function ManifestePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   const dictionary = getDictionary(lang)
-  const currentYear = new Date().getFullYear()
   const isFr = lang === "fr"
 
   // Safe: jsonLd is built from our own static strings, not user input
@@ -24,8 +23,8 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
       ? "Manifeste SymbiozAI. L'entreprise de demain sera AI-Native"
       : "SymbiozAI Manifesto. Tomorrow's company will be AI-Native",
     description: isFr
-      ? "Notre vision de l'entreprise AI-Native et du CRM de nouvelle génération."
-      : "Our vision for the AI-Native company and next-generation CRM.",
+      ? "Notre vision de l'entreprise AI-Native et du CRM MCP-only opéré par votre agent."
+      : "Our vision for the AI-Native company and the MCP-only CRM operated by your agent.",
     url: `https://symbioz.ai/${lang}/manifeste`,
     inLanguage: isFr ? "fr-FR" : "en-US",
     publisher: {
@@ -57,7 +56,7 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
           </h1>
 
           {/* ═══════════════════════════════════════════════════════ */}
-          {/* PARTIE 1 — L'AI-Native Company : on l'a construite */}
+          {/* PARTIE 1 - L'AI-Native Company : on l'a construite */}
           {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
@@ -128,57 +127,138 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
             </p>
           </div>
 
-          {/* ═══════════════════════════════════════════════════ */}
-          {/* PARTIE 2 — Le CRM AI-Native : le premier produit */}
-          {/* ═══════════════════════════════════════════════════ */}
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* PARTIE 2 - Le CRM MCP-only : le produit pivot           */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.1 - Thèse 25 ans                              */}
+          {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
             <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
-                ? "Votre CRM vous coûte des deals. Chaque jour."
-                : "Your CRM is costing you deals. Every single day."}
+                ? "Pendant 25 ans, on a demandé aux humains d'ouvrir leur CRM. Ils ne devraient plus avoir à l'ouvrir. Ni à l'opérer."
+                : "For 25 years, we asked humans to open their CRM. They shouldn't have to open it. Or operate it."}
             </h2>
             <p>
               {isFr
-                ? "Vos commerciaux passent plus de temps à remplir des champs qu'à parler à des clients. Vos managers reconstruisent le pipeline à la main chaque lundi matin. Vos données sont obsolètes avant d'être saisies. Et pendant ce temps, des opportunités passent entre les mailles du filet."
-                : "Your sales reps spend more time filling in fields than talking to clients. Your managers manually rebuild the pipeline every Monday morning. Your data is obsolete before it's entered. And meanwhile, opportunities slip through the cracks."}
+                ? "15 ans à demander aux commerciaux d'ouvrir un CRM. Ils n'ont jamais voulu. Ils avaient raison."
+                : "15 years asking sales reps to open a CRM. They never wanted to. They were right."}
             </p>
             <p>
               {isFr
-                ? "Le problème n'est pas votre équipe. Le problème, c'est que le CRM a été conçu il y a 25 ans pour enregistrer. Pas pour opérer."
-                : "The problem isn't your team. The problem is that the CRM was designed 25 years ago to record. Not to operate."}
+                ? "Le problème n'était pas leur discipline. Le problème, c'est que le CRM a été conçu il y a 25 ans pour enregistrer. Pas pour opérer. Salesforce, 1999 : une base de données derrière un formulaire. Les couches IA ajoutées depuis 2020 n'ont pas changé le fond. Elles ont habillé la contrainte."
+                : "The problem was never their discipline. The problem is that the CRM was designed 25 years ago to record. Not to operate. Salesforce, 1999: a database behind a form. The AI layers added since 2020 didn't change the fundamentals. They dressed up the constraint."}
+            </p>
+            <p>
+              {isFr
+                ? "Les commerciaux continuent de reconstruire le pipeline à la main chaque lundi. Les managers continuent de courir après des données obsolètes avant d'être saisies. Les opportunités continuent de passer entre les mailles du filet. Pas parce que les équipes sont mauvaises. Parce que personne n'a jamais conçu un CRM qui ne nécessite pas d'être ouvert."
+                : "Sales reps still rebuild the pipeline by hand every Monday morning. Managers still chase data that's obsolete before it's entered. Opportunities still slip through the cracks. Not because teams are failing. Because nobody built a CRM that doesn't need to be opened."}
+            </p>
+            <p className="font-semibold text-gray-900">
+              {isFr
+                ? "Les logiciels ne sont plus faits pour les humains."
+                : "Software is no longer made for humans to operate."}
             </p>
           </div>
 
-          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
-            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
-              {isFr
-                ? "Le premier CRM qui travaille pendant que vous vendez."
-                : "The first CRM that works while you sell."}
-            </h2>
-            <p>
-              {isFr
-                ? "SymbiozAI vit là où vos décisions se prennent vraiment : dans vos conversations. Sur Slack. Par email. En réunion. Il écoute, comprend, et agit. Il capture l'information en temps réel, qualifie vos opportunités, orchestre les relances, met à jour le pipeline. Tout seul."
-                : "SymbiozAI lives where your decisions are actually made: in your conversations. On Slack. Via email. In meetings. It listens, understands, and acts. It captures information in real time, qualifies your opportunities, orchestrates follow-ups, updates the pipeline. All by itself."}
-            </p>
-            <p>
-              {isFr
-                ? "Zéro formulaire. Zéro saisie manuelle. Zéro friction. Vous vous concentrez sur ce que vous faites le mieux : créer de la relation et closer."
-                : "Zero forms. Zero manual data entry. Zero friction. You focus on what you do best: building relationships and closing."}
-            </p>
-          </div>
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.2 - La bascule 2026                           */}
+          {/* ═══════════════════════════════════════════════════════ */}
 
           <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
             <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
               {isFr
-                ? "Pas un prototype. Pas une démo. Un système qui tourne."
-                : "Not a prototype. Not a demo. A system that runs."}
+                ? "En 2026, les humains n'opèrent plus les logiciels. Les agents le font."
+                : "In 2026, humans don't operate software. Agents do."}
+            </h2>
+            <blockquote className="border-l-4 border-[#0088C2] pl-4 italic text-gray-600 my-6">
+              {isFr
+                ? "Nous venons d'écrire la dernière génération de logiciels faits pour être opérés par des humains."
+                : "We just wrote the last generation of software made for humans to operate."}
+            </blockquote>
+            <p>
+              {isFr
+                ? "Le commerce B2B va passer de human-operated à agent-operated avec supervision humaine. Comme le trading haute fréquence pour la finance il y a 20 ans."
+                : "B2B commerce is moving from human-operated to agent-operated with human supervision. The same shift high-frequency trading made for finance 20 years ago."}
+            </p>
+            <p>
+              {isFr
+                ? "Ce n'est pas une prophétie. C'est une bascule déjà observable pour ceux qui utilisent Claude Code ou Cursor au quotidien. Un agent IA peut lire un pipeline, qualifier un lead, rédiger un email adapté au profil DISC du destinataire. Il peut faire tout ça pendant que vous êtes en réunion. Il lui manquait seulement un CRM conçu pour qu'il en soit l'opérateur."
+                : "This isn't a prophecy. It's a shift already visible to anyone using Claude Code or Cursor daily. An AI agent can read a pipeline, qualify a lead, draft an email calibrated to the recipient's DISC profile. It can do all of this while you're in a meeting. The only thing missing was a CRM built for the agent to operate. Not adapted to accommodate it."}
+            </p>
+            <p>
+              {isFr
+                ? "Les outils sont là. Le protocole est là : MCP, spécification officielle Anthropic 2025. Ce qui restait à construire, c'est le CRM conçu d'emblée pour ça. Pas pour accommoder ça."
+                : "The tools exist. The protocol exists: MCP, Anthropic's official specification, 2025. What remained was a CRM designed for this from the ground up. Not retrofitted for it."}
+            </p>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.3 - Headless by design                        */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
+              {isFr
+                ? "On n'a pas ajouté un agent sur un CRM. On a construit le CRM autour de l'agent."
+                : "We didn't add an agent to a CRM. We built the CRM around the agent."}
             </h2>
             <p>
               {isFr
-                ? "38 agents IA coordonnés. Un pipeline commercial piloté par la conversation. Plus de 95% de précision sur nos benchmarks internes. SymbiozAI est en production. Aujourd'hui."
-                : "38 coordinated AI agents. A sales pipeline driven by conversation. Over 95% accuracy on our internal benchmarks. SymbiozAI is in production. Today."}
+                ? "En 2026, tous les CRM sérieux exposent un serveur MCP. Octolane, HubSpot, Zoho, Salesforce Headless 360. Chacun a son implémentation. Pour tous, MCP est une couche ajoutée à côté d'une interface humaine historique. L'UI reste le produit principal. MCP est une option."
+                : "In 2026, every serious CRM exposes an MCP server. Octolane, HubSpot, Zoho, Salesforce Headless 360. Each has an implementation. For all of them, MCP is a layer added alongside a legacy human interface. The UI remains the main product. MCP is an option."}
             </p>
+            <p>
+              {isFr
+                ? "SymbiozAI a fait le chemin inverse. Zéro interface humaine principale. Le serveur MCP est le produit. La console de supervision, cinq minutes par jour, sur les actions sensibles, est une porte de contrôle, pas une interface d'opération."
+                : "SymbiozAI went the other way. No primary human interface. The MCP server is the product. The supervision console, five minutes a day, for sensitive actions, is a control gate, not an operating interface."}
+            </p>
+            <p>
+              {isFr
+                ? "Ce n'est pas une nuance technique. C'est une décision architecturale qui détermine ce que le produit peut faire. Quand l'agent est une surcouche, il est contraint par l'interface qu'il surmonte. Quand l'agent est l'opérateur natif, le produit est conçu pour lui depuis le premier octet."
+                : "This is not a technical nuance. It's an architectural decision that determines what the product can do. When the agent is a layer on top, it's constrained by the interface it sits above. When the agent is the native operator, the product is designed for it from the first byte."}
+            </p>
+            <blockquote className="border-l-4 border-[#0088C2] pl-4 italic text-gray-600 my-6">
+              {isFr
+                ? "Un monde où les CRM ne s'ouvrent plus. Ils s'exécutent."
+                : "A world where CRMs are no longer opened. They're executed."}
+            </blockquote>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.4 - Ce que ça change concrètement             */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          <div className="space-y-4 mb-12 text-base md:text-lg text-gray-700 leading-relaxed">
+            <h2 className="font-bold text-gray-900 text-xl md:text-2xl">
+              {isFr ? "Ce que ça change concrètement." : "What this changes, concretely."}
+            </h2>
+            <ul className="space-y-4 list-none pl-0">
+              <li>
+                {isFr
+                  ? "35 missions MCP exposées à l'agent du client : ciblage, enrichissement, qualification, scoring, email DISC-aware, préparation de réunion, état du pipeline."
+                  : "35 MCP missions exposed to the client's agent: targeting, enrichment, qualification, scoring, DISC-aware email drafting, meeting preparation, pipeline snapshot."}
+              </li>
+              <li>
+                {isFr
+                  ? "23 sources de données wrappées derrière un endpoint unique. L'agent appelle, les données arrivent."
+                  : "23 data sources wrapped behind a single endpoint. The agent calls, the data arrives."}
+              </li>
+              <li>
+                {isFr
+                  ? "5 minutes de supervision par jour pour l'humain. Sur les actions sensibles uniquement. L'agent exécute. Vous supervisez. C'est le deal."
+                  : "5 minutes of human supervision per day. For sensitive actions only. The agent executes. You supervise. That's the deal."}
+              </li>
+            </ul>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════ */}
+          {/* SECTION 2.5 - Chute doctrinale                          */}
+          {/* ═══════════════════════════════════════════════════════ */}
+
+          <div className="space-y-6 mb-12">
             <p className="font-bold text-gray-900 text-lg md:text-xl">
               {isFr
                 ? "Le CRM tel que vous le connaissez est mort. SymbiozAI est ce qui vient après."
@@ -192,11 +272,6 @@ export default async function ManifestePage({ params }: { params: Promise<{ lang
               Laurent Bouzon
               <br />
               <span className="text-gray-500">{isFr ? "Fondateur, SymbiozAI" : "Founder, SymbiozAI"}</span>
-            </p>
-            <p className="text-sm text-gray-400 italic">
-              {isFr
-                ? "Rédigé par Iris, AI Content Manager, pilotée par Laurent ♡"
-                : "Written by Iris, AI Content Manager, directed by Laurent ♡"}
             </p>
           </div>
 

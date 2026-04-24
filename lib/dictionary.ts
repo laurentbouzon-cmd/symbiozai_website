@@ -59,13 +59,6 @@ export type Dictionary = {
     title: string
     backToHome: string
   }
-  playground: {
-    welcome: string
-    tryAnother: string
-    ctaText: string
-    ctaButton: string
-    inputPlaceholder: string
-  }
   privacy: {
     title: string
     lastUpdated: string
@@ -95,13 +88,13 @@ export type FormDictionary = Dictionary["form"]
 
 const dictionaries: Record<Locale, Dictionary> = {
   en: {
-    title: "SymbiozAI | The First European AI-Native CRM",
-    h1: "SymbiozAI - AI-Native CRM for European Scaleups",
-    subtitle: ["The 1st European AI-Native CRM.", "Zero data entry. Auto-piloted pipeline. Recovered deals."],
+    title: "The headless AI CRM | SymbiozAI",
+    h1: "SymbiozAI | The headless AI CRM",
+    subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
     description:
-      "SymbiozAI is the first European AI-Native CRM. Zero data entry, auto-piloted pipeline, recovered deals. The system that understands, decides and acts.",
+      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse. They'll pilot with their AI workforce.",
     quote:
-      "We believe the next generation of companies won't just use AI, they'll be built with it. Natively. Structurally. Intelligently.",
+      "Tomorrow's companies won't just use AI. They'll be built with it. Natively. Structurally.",
     form: {
       placeholder: "Enter your email",
       button: "Join the waitlist",
@@ -111,7 +104,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "Email is required",
         invalid: "Please enter a valid email address",
-        professional: "Please use your work email — personal addresses (Gmail, Yahoo, Outlook…) are not accepted.",
+        professional: "Please use your work email. Personal addresses (Gmail, Yahoo, Outlook…) are not accepted.",
       },
     },
     footer: {
@@ -150,13 +143,6 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "Manifesto",
       backToHome: "Back to Home",
     },
-    playground: {
-      welcome: "Hey! I'm Maya, the AI that runs your CRM. Try it yourself",
-      tryAnother: "Want to see something else?",
-      ctaText: "That's just a preview. The real Maya does this on YOUR data.",
-      ctaButton: "Join the beta",
-      inputPlaceholder: "Ask Maya...",
-    },
     privacy: {
       title: "Privacy Policy",
       lastUpdated: "Last updated:",
@@ -185,7 +171,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     blog: {
       title: "Blog",
-      subtitle: "Ideas behind the AI-Native CRM.",
+      subtitle: "Ideas behind the headless AI CRM.",
       allPosts: "All",
       categories: {
         produit: "Product",
@@ -196,19 +182,19 @@ const dictionaries: Record<Locale, Dictionary> = {
       readingTime: "min read",
       backToBlog: "Back to blog",
       ctaTitle: "Ready to try?",
-      ctaDescription: "Join the beta and discover the first European AI-Native CRM.",
+      ctaDescription: "Join the beta and connect your AI agent to the headless AI CRM.",
       previousArticle: "Previous article",
       nextArticle: "Next article",
     },
   },
   fr: {
-    title: "SymbiozAI | Le premier CRM AI-Native européen",
-    h1: "SymbiozAI - CRM AI-Native pour scaleups européennes",
-    subtitle: ["Le CRM qui comprend, décide et agit.", "Zéro saisie. Pipeline piloté. Deals récupérés."],
+    title: "Le CRM headless pour agents IA | SymbiozAI",
+    h1: "SymbiozAI | Le CRM headless piloté par votre agent IA",
+    subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
     description:
-      "SymbiozAI est le premier CRM AI-Native européen. Zéro saisie, pipeline auto-piloté, deals récupérés. Le système qui comprend, décide et agit.",
+      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris. Elle pilotera avec sa workforce IA.",
     quote:
-      "Les entreprises de demain ne se contenteront pas d'utiliser l'IA — elles seront construites avec. Nativement. Structurellement. C'est la conviction qui guide SymbiozAI : un système commercial qui ne documente plus la vente, mais qui la pilote. L'IA n'est pas une couche ajoutée. C'est l'infrastructure. C'est ce que j'aurais voulu avoir quand je vendais.",
+      "Les entreprises de demain ne se contenteront pas d'utiliser l'IA. Elles seront construites avec. Nativement. Structurellement.",
     form: {
       placeholder: "Entrez votre email",
       button: "Rejoindre la liste",
@@ -218,7 +204,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       validation: {
         required: "L'email est requis",
         invalid: "Veuillez entrer une adresse email valide",
-        professional: "Merci d'utiliser votre email professionnel — les adresses personnelles (Gmail, Yahoo, Outlook…) ne sont pas acceptées.",
+        professional: "Merci d'utiliser votre email professionnel. Les adresses personnelles (Gmail, Yahoo, Outlook…) ne sont pas acceptées.",
       },
     },
     footer: {
@@ -257,13 +243,6 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "Manifeste",
       backToHome: "Retour à l'accueil",
     },
-    playground: {
-      welcome: "Salut ! Je suis Maya, l'IA qui pilote ton CRM. Essaie par toi-m\u00eame",
-      tryAnother: "Tu veux voir autre chose ?",
-      ctaText: "\u00c7a, c'est juste un aper\u00e7u. La vraie Maya fait \u00e7a sur TES donn\u00e9es.",
-      ctaButton: "Rejoindre la beta",
-      inputPlaceholder: "Demande \u00e0 Maya...",
-    },
     privacy: {
       title: "Politique de confidentialit\u00e9",
       lastUpdated: "Dernière mise à jour :",
@@ -293,7 +272,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     blog: {
       title: "Blog",
-      subtitle: "Les id\u00e9es derri\u00e8re le CRM AI-Native.",
+      subtitle: "Les id\u00e9es derri\u00e8re le CRM headless pour agents IA.",
       allPosts: "Tous",
       categories: {
         produit: "Produit",
@@ -304,7 +283,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       readingTime: "min de lecture",
       backToBlog: "Retour au blog",
       ctaTitle: "Pr\u00eat \u00e0 essayer ?",
-      ctaDescription: "Rejoignez la beta et d\u00e9couvrez le premier CRM AI-Native europ\u00e9en.",
+      ctaDescription: "Rejoignez la beta et connectez votre agent IA au CRM headless.",
       previousArticle: "Article pr\u00e9c\u00e9dent",
       nextArticle: "Article suivant",
     },
