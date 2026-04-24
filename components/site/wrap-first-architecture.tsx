@@ -208,7 +208,11 @@ export function WrapFirstArchitecture({ lang }: WrapFirstArchitectureProps) {
           </div>
         </div>
 
-        {/* SVG connector layer - lg+ only, behind cards */}
+        {/* SVG connector layer - lg+ only, behind cards. preserveAspectRatio=
+            "none" is required: curve endpoints must land at the left-card and
+            hub x-coordinates regardless of grid ratio. Keeping halos in SVG
+            would turn them into stretched ellipses; they are rendered below
+            as absolute rounded CSS divs so they stay pixel-perfect circles. */}
         <svg
           aria-hidden="true"
           viewBox="0 0 400 400"
@@ -232,19 +236,27 @@ export function WrapFirstArchitecture({ lang }: WrapFirstArchitectureProps) {
               strokeLinecap="round"
             />
           ))}
-          {/* Hub halo */}
-          <circle cx="330" cy="200" r="28" fill="#0d47a1" fillOpacity="0.06" />
-          <circle cx="330" cy="200" r="16" fill="#0d47a1" fillOpacity="0.12" />
         </svg>
 
         {/* RIGHT - MCP endpoint hub */}
         <div className="relative z-10 flex lg:pl-12">
-          <div className="mx-auto flex w-full max-w-sm flex-col gap-4 self-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
+          <div className="relative mx-auto flex w-full max-w-sm flex-col gap-4 self-center">
+            {/* Halos - absolute CSS circles pinned behind the hub card so they
+                stay perfectly round regardless of grid ratio (the SVG layer
+                uses preserveAspectRatio="none" for correct curve endpoints). */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[120px] w-[120px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d47a1]/[0.06] lg:block"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[72px] w-[72px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d47a1]/[0.12] lg:block"
+            />
+            <p className="relative font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
               {mcpLabel}
             </p>
 
-            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]">
+            <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]">
               <div className="relative bg-gradient-to-br from-[#0d47a1] to-[#1a237e] px-5 py-5 text-white">
                 <div className="flex items-center gap-2">
                   <svg

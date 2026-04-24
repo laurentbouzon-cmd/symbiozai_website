@@ -6,6 +6,8 @@
  * R11-compliant (verified grep 0 match by content-creator). Zero em dash.
  */
 
+import { CALENDLY_URL } from "./constants"
+
 type CtaLink = {
   label: string
   href: string
@@ -280,7 +282,7 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
       ],
       secondaryCta: {
         label: "Book a meeting",
-        href: "https://calendly.com/laurent-bouzon-symbioz/30min",
+        href: CALENDLY_URL,
         external: true,
       },
       microcopyPrefix: "For teams not yet running their own agent -",
@@ -463,7 +465,7 @@ export const homeCopy: Record<"en" | "fr", HomePageCopy> = {
       ],
       secondaryCta: {
         label: "Prendre rendez-vous",
-        href: "https://calendly.com/laurent-bouzon-symbioz/30min",
+        href: CALENDLY_URL,
         external: true,
       },
       microcopyPrefix: "Pour les équipes qui n'ont pas encore leur propre agent -",

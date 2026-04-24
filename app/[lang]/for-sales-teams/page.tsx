@@ -12,6 +12,7 @@ import { StructuredData } from "@/components/site/structured-data"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { SupervisionConsolePreview } from "@/components/site/supervision-console-preview"
 import { AgentCompatibilityStrip } from "@/components/site/agent-compatibility-strip"
+import { Card } from "@/components/site/card"
 
 type SiteLang = "en" | "fr"
 
@@ -169,9 +170,10 @@ export default async function ForSalesTeamsPage({
           >
             <ScrollReveal stagger className="grid gap-5 md:grid-cols-2 md:gap-6">
               {copy.pains.items.map((item, idx) => (
-                <article
+                <Card
+                  as="article"
                   key={idx}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
+                  className="group relative flex h-full flex-col overflow-hidden md:p-7"
                 >
                   <span
                     aria-hidden="true"
@@ -183,7 +185,7 @@ export default async function ForSalesTeamsPage({
                     {item.heading}
                   </h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-gray-600">{item.body}</p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -237,9 +239,10 @@ export default async function ForSalesTeamsPage({
           >
             <ScrollReveal stagger className="grid gap-5 md:grid-cols-3 md:gap-6">
               {copy.pillars.items.map((item, idx) => (
-                <article
+                <Card
+                  as="article"
                   key={idx}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="group relative flex h-full flex-col overflow-hidden p-7"
                 >
                   <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0d47a1]">
                     {String(idx + 1).padStart(2, "0")}
@@ -248,7 +251,7 @@ export default async function ForSalesTeamsPage({
                     {item.heading}
                   </h3>
                   <p className="mt-4 text-[15px] leading-relaxed text-gray-600">{item.body}</p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -266,7 +269,7 @@ export default async function ForSalesTeamsPage({
             lede={copy.whatStays.lede}
           >
             <ScrollReveal className="grid gap-5 md:grid-cols-2 md:gap-6">
-              <article className="rounded-2xl border border-gray-200 bg-white p-6 md:p-7">
+              <Card as="article" hoverable={false} className="md:p-7">
                 <div className="mb-5 flex items-center gap-2.5">
                   <span className="h-2 w-2 rounded-full bg-[#0d47a1]" aria-hidden="true" />
                   <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0d47a1]">
@@ -284,8 +287,8 @@ export default async function ForSalesTeamsPage({
                     </li>
                   ))}
                 </ul>
-              </article>
-              <article className="rounded-2xl border border-gray-200 bg-white p-6 md:p-7">
+              </Card>
+              <Card as="article" hoverable={false} className="md:p-7">
                 <div className="mb-5 flex items-center gap-2.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
                   <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-700">
@@ -303,7 +306,7 @@ export default async function ForSalesTeamsPage({
                     </li>
                   ))}
                 </ul>
-              </article>
+              </Card>
             </ScrollReveal>
             <p className="mx-auto mt-10 max-w-3xl text-center text-lg font-medium leading-relaxed text-gray-900 md:text-xl">
               {copy.whatStays.outcome}

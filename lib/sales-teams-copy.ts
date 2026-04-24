@@ -17,6 +17,7 @@
  */
 
 import type { FAQItem } from "./site-types"
+import { CALENDLY_URL, LINKEDIN_FOUNDER_URL } from "./constants"
 
 export const salesTeamsCopy = {
   en: {
@@ -30,7 +31,7 @@ export const salesTeamsCopy = {
       headline: "Your team sells. The agents do everything else.",
       subhead:
         "Your AI agents handle targeting, enrichment, qualification, and follow-up while you sleep. Every morning, a 5-minute queue of what needs your call. Nothing ships without your approval.",
-      primary: { label: "Book a meeting", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      primary: { label: "Book a meeting", href: CALENDLY_URL, external: true },
       secondary: { label: "See the supervision console", href: "#demo" },
       tertiary: { label: "Read the MCP docs", href: "/en/mcp" },
     },
@@ -193,9 +194,9 @@ export const salesTeamsCopy = {
     ctaFinal: {
       title: "Your pipeline is either accurate or useless. Make your choice.",
       lede: "Walk through a live agent-operated pipeline on your own data.",
-      primary: { label: "Book a meeting", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      primary: { label: "Book a meeting", href: CALENDLY_URL, external: true },
       linkedinLabel: "Reach Laurent directly on LinkedIn",
-      linkedinUrl: "https://www.linkedin.com/in/laurent-bouzon-150237108",
+      linkedinUrl: LINKEDIN_FOUNDER_URL,
     },
     faq: [
       {
@@ -226,7 +227,7 @@ export const salesTeamsCopy = {
       headline: "Votre équipe vend. Les agents font tout le reste.",
       subhead:
         "Vos agents IA gèrent le ciblage, l'enrichissement, la qualification et les relances pendant que vous dormez. Chaque matin, 5 minutes de décisions qui demandent votre jugement. Rien ne part sans votre validation.",
-      primary: { label: "Prendre rendez-vous", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      primary: { label: "Prendre rendez-vous", href: CALENDLY_URL, external: true },
       secondary: { label: "Voir la console de supervision", href: "#demo" },
       tertiary: { label: "Lire la documentation MCP", href: "/fr/mcp" },
     },
@@ -389,9 +390,9 @@ export const salesTeamsCopy = {
     ctaFinal: {
       title: "Votre pipeline est soit exact, soit inutile. Le choix est fait.",
       lede: "Parcourez un pipeline agent-operated sur vos propres données, en live.",
-      primary: { label: "Prendre rendez-vous", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      primary: { label: "Prendre rendez-vous", href: CALENDLY_URL, external: true },
       linkedinLabel: "Contactez Laurent directement sur LinkedIn",
-      linkedinUrl: "https://www.linkedin.com/in/laurent-bouzon-150237108",
+      linkedinUrl: LINKEDIN_FOUNDER_URL,
     },
     faq: [
       {

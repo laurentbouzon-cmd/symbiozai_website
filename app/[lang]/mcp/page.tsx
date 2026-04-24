@@ -13,6 +13,7 @@ import { HITLExplainer } from "@/components/site/hitl-explainer"
 import { FAQSchema } from "@/components/site/faq-schema"
 import { StructuredData } from "@/components/site/structured-data"
 import { WrapFirstArchitecture } from "@/components/site/wrap-first-architecture"
+import { Card } from "@/components/site/card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
 type SiteLang = "en" | "fr"
@@ -169,9 +170,9 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
           >
             <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.quickstart.steps.map((step, idx) => (
-                <div
+                <Card
                   key={idx}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
+                  className="group relative flex h-full flex-col overflow-hidden md:p-7"
                 >
                   <span
                     aria-hidden="true"
@@ -191,7 +192,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                       <CodeBlock code={step.code} language="bash" />
                     </div>
                   )}
-                </div>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -314,9 +315,10 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
           >
             <ScrollReveal stagger className="grid gap-5 lg:grid-cols-3 lg:gap-6">
               {copy.differentiators.items.map((item) => (
-                <article
+                <Card
+                  as="article"
                   key={item.code}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
+                  className="group relative flex h-full flex-col overflow-hidden md:p-7"
                 >
                   <code className="inline-block w-fit rounded bg-gray-900 px-2 py-0.5 font-mono text-xs text-white">
                     {item.code}
@@ -341,7 +343,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                       {item.expected}
                     </p>
                   </div>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -359,15 +361,16 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
           >
             <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:gap-5">
               {copy.supervision.items.map((item) => (
-                <article
+                <Card
+                  as="article"
                   key={item.heading}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="group flex h-full flex-col"
                 >
                   <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
                     {item.heading}
                   </h3>
                   <p className="mt-2 text-[14.5px] leading-relaxed text-gray-600">{item.body}</p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
             <p className="mx-auto mt-12 max-w-3xl text-center text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
@@ -389,15 +392,16 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
           >
             <ScrollReveal stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
               {copy.compliance.items.map((item) => (
-                <article
+                <Card
+                  as="article"
                   key={item.heading}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="group flex h-full flex-col"
                 >
                   <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
                     {item.heading}
                   </h3>
                   <p className="mt-2 text-[14.5px] leading-relaxed text-gray-600">{item.body}</p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -446,9 +450,10 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
           >
             <ScrollReveal stagger className="grid gap-5 md:grid-cols-3 lg:gap-6">
               {copy.pricing.blocks.map((block) => (
-                <article
+                <Card
+                  as="article"
                   key={block.heading}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-7"
+                  className="group flex h-full flex-col md:p-7"
                 >
                   <h3 className="text-[16px] font-semibold tracking-tight text-gray-900">
                     {block.heading}
@@ -456,7 +461,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
                   <p className="mt-3 text-[14.5px] leading-relaxed text-gray-600">
                     {block.body}
                   </p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
             <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-gray-600 md:text-[15px]">

@@ -20,6 +20,7 @@
  */
 
 import type { FAQItem } from "./site-types"
+import { CALENDLY_URL } from "./constants"
 
 export type SiteLang = "en" | "fr"
 
@@ -171,7 +172,7 @@ export const mcpCopy = {
         "Headless by design. Operated by your AI agent via MCP. Claude Code, Cursor, GPT. It's all native.",
       primary: { label: "Install the MCP in 5 min", href: "#quickstart" },
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
-      tertiary: { label: "Book a meeting", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      tertiary: { label: "Book a meeting", href: CALENDLY_URL, external: true },
     },
     // S2 - QUICKSTART (v2: Stripe pattern, step 3 natural-language prompt).
     quickstart: {
@@ -469,7 +470,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       ],
       footerNote: "Questions about pricing for larger volumes:",
       footerLinkLabel: "Book a meeting",
-      footerLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+      footerLinkHref: CALENDLY_URL,
     },
     // S13 - CTA FINAL (v2: "Connect your agent. Now." injunction).
     ctaFinal: {
@@ -480,7 +481,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
       walkthroughNote: "Or request a live walkthrough:",
       walkthroughLinkLabel: "Book a meeting",
-      walkthroughLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+      walkthroughLinkHref: CALENDLY_URL,
     },
     docsLink: "Full docs at docs.symbioz.ai/mcp",
     // S12 - FAQ (v2: expanded to 10 Q/A, adds data cancel + token rotation).
@@ -551,7 +552,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
         "Headless par design. Piloté par votre agent IA via MCP. Claude Code, Cursor, GPT. Tout est natif.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
-      tertiary: { label: "Prendre rendez-vous", href: "https://calendly.com/laurent-bouzon-symbioz/30min", external: true },
+      tertiary: { label: "Prendre rendez-vous", href: CALENDLY_URL, external: true },
     },
     // S2 - QUICKSTART (v2: "premier appel" = ordinal temporel Stripe-pattern, exception R11 legitime).
     quickstart: {
@@ -849,7 +850,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       ],
       footerNote: "Questions sur le pricing pour des volumes plus importants :",
       footerLinkLabel: "Prendre rendez-vous",
-      footerLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+      footerLinkHref: CALENDLY_URL,
     },
     // S13 - CTA FINAL (v2: "Connectez votre agent. Maintenant." injonction).
     ctaFinal: {
@@ -860,7 +861,7 @@ curl -H "Authorization: Bearer $TOKEN" \\
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
       walkthroughNote: "Ou demandez une présentation en live :",
       walkthroughLinkLabel: "Prendre rendez-vous",
-      walkthroughLinkHref: "https://calendly.com/laurent-bouzon-symbioz/30min",
+      walkthroughLinkHref: CALENDLY_URL,
     },
     docsLink: "Documentation complète sur docs.symbioz.ai/mcp",
     // S12 - FAQ (v2: 10 Q/A, ajoute data cancel + token rotation).

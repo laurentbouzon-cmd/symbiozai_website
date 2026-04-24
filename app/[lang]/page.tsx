@@ -10,6 +10,8 @@ import { Logo } from "@/components/ui/logo"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { ScrollIndicator } from "@/components/scroll-indicator"
 import { ScrollReveal } from "@/components/scroll-reveal"
+import { CALENDLY_URL } from "@/lib/constants"
+import { Card } from "@/components/site/card"
 import { Section } from "@/components/site/section"
 import { AgentActivityFeed } from "@/components/site/agent-activity-feed"
 import { McpConvergenceDiagram } from "@/components/site/mcp-convergence-diagram"
@@ -195,7 +197,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
               <div className="hero-item mt-4" style={{ animationDelay: "400ms" }}>
                 <a
-                  href="https://calendly.com/laurent-bouzon-symbioz/30min"
+                  href={CALENDLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
@@ -248,9 +250,10 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           >
             <ScrollReveal stagger className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2 lg:gap-6">
               {copy.pillarsHub.cards.map((card, idx) => (
-                <article
+                <Card
+                  as="article"
                   key={card.h3}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8"
+                  className="group relative flex h-full flex-col overflow-hidden md:p-8"
                 >
                   {/* Numeral marker (01..04) - quiet mono eyebrow */}
                   <span
@@ -267,7 +270,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   <p className="mt-3 text-[15px] leading-relaxed text-gray-600">
                     {card.body}
                   </p>
-                </article>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -289,9 +292,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           >
             <ScrollReveal stagger className="grid gap-6 md:grid-cols-3 lg:gap-8">
               {copy.problem.cards.map((pain, idx) => (
-                <div
+                <Card
                   key={pain.title}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8"
+                  className="group relative flex h-full flex-col overflow-hidden md:p-8"
                 >
                   <div className="mb-5">{painIcons[idx]}</div>
                   <h3 className="text-base font-semibold tracking-tight text-gray-900 md:text-lg">
@@ -304,7 +307,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   <p className="mt-5 border-t border-gray-100 pt-4 text-xs font-medium leading-relaxed text-[#0d47a1]">
                     {pain.pilier}
                   </p>
-                </div>
+                </Card>
               ))}
             </ScrollReveal>
           </Section>
@@ -421,7 +424,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
             <div className="grid gap-6 md:grid-cols-2 md:gap-8">
               <ScrollReveal>
-                <article className="group h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8">
+                <Card as="article" className="group h-full md:p-8">
                   <h3 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
                     {copy.aiNativeLearn.sub1.h3}
                   </h3>
@@ -435,10 +438,10 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       </p>
                     ))}
                   </div>
-                </article>
+                </Card>
               </ScrollReveal>
               <ScrollReveal>
-                <article className="group h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)] md:p-8">
+                <Card as="article" className="group h-full md:p-8">
                   <h3 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
                     {copy.aiNativeLearn.sub2.h3}
                   </h3>
@@ -452,7 +455,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       </p>
                     ))}
                   </div>
-                </article>
+                </Card>
               </ScrollReveal>
             </div>
           </Section>
@@ -504,16 +507,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
               className="mb-14 grid gap-5 sm:grid-cols-2 md:mb-16 lg:grid-cols-4 lg:gap-6"
             >
               {copy.infra.badges.map((badge, idx) => (
-                <div
+                <Card
                   key={badge.title}
-                  className="flex h-full flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0d47a1]/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_16px_40px_-18px_rgba(13,71,161,0.22)]"
+                  className="flex h-full flex-col items-center text-center"
                 >
                   <div className="mb-4 flex justify-center">{badgeIcons[idx]}</div>
                   <h3 className="text-sm font-semibold tracking-tight text-gray-900">
                     {badge.title}
                   </h3>
                   <p className="mt-2 text-xs leading-relaxed text-gray-600">{badge.body}</p>
-                </div>
+                </Card>
               ))}
             </ScrollReveal>
 

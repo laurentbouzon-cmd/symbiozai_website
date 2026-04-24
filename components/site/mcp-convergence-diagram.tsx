@@ -70,7 +70,10 @@ export function McpConvergenceDiagram({ lang }: McpConvergenceDiagramProps) {
           </ul>
         </div>
 
-        {/* SVG connector layer - only on lg+. Sits behind pills and hub. */}
+        {/* SVG connector layer - only on lg+. Sits behind pills and hub.
+            preserveAspectRatio="none" is required so curve endpoints land at
+            the pill x (165) and hub x (340) regardless of grid ratio. Halos
+            are rendered below as absolute CSS circles to stay perfectly round. */}
         <svg
           aria-hidden="true"
           viewBox="0 0 400 400"
@@ -94,26 +97,22 @@ export function McpConvergenceDiagram({ lang }: McpConvergenceDiagramProps) {
               strokeLinecap="round"
             />
           ))}
-          {/* Hub halo */}
-          <circle
-            cx="340"
-            cy="200"
-            r="26"
-            fill="#0d47a1"
-            fillOpacity="0.06"
-          />
-          <circle
-            cx="340"
-            cy="200"
-            r="14"
-            fill="#0d47a1"
-            fillOpacity="0.12"
-          />
         </svg>
 
         {/* Right column - MCP endpoint hub */}
         <div className="relative z-10 lg:col-span-7 lg:pl-16">
-          <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.25)]">
+          <div className="relative mx-auto max-w-sm">
+            {/* Halos - absolute CSS circles pinned behind the hub card so they
+                stay perfectly round regardless of grid ratio. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[112px] w-[112px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d47a1]/[0.06] lg:block"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d47a1]/[0.12] lg:block"
+            />
+            <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_12px_32px_-16px_rgba(13,71,161,0.25)]">
             <div className="relative bg-gradient-to-br from-[#0d47a1] to-[#1a237e] px-5 py-5 text-white">
               <div className="flex items-center gap-2">
                 <svg
@@ -160,6 +159,7 @@ export function McpConvergenceDiagram({ lang }: McpConvergenceDiagramProps) {
                 <dd className="mt-1 text-2xl font-semibold text-gray-950">1</dd>
               </div>
             </dl>
+          </div>
           </div>
         </div>
       </div>
