@@ -25,3 +25,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# macOS Finder duplicate artifacts (created by drag/drop into existing folders)
+* 2.*
+* 2
