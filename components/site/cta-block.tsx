@@ -43,7 +43,7 @@ export function CTABlock({ primary, secondary, tertiary, align = "center", size 
 
       {tertiary && (
         <CTALink href={tertiary.href} external={tertiary.external}>
-          <span className="group inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition hover:text-[#0d47a1]">
+          <span className="group inline-flex min-h-[44px] items-center gap-1.5 px-2 py-2 text-sm font-medium text-gray-700 transition hover:text-[#0d47a1]">
             {tertiary.label}
             <Arrow />
           </span>
