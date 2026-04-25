@@ -54,7 +54,6 @@ export function WaitlistForm({ form, lang }: { form: FormDictionary; lang: strin
         setMessage("")
       }, 5000)
     } catch (error) {
-      console.error("Error:", error)
       setStatus("error")
       setMessage(error instanceof Error && error.message ? error.message : form.error)
     }
