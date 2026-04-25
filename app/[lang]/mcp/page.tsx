@@ -213,7 +213,7 @@ export default async function MCPPage({ params }: { params: Promise<{ lang: stri
               {copy.agentConfigs.clients.map((client) => (
                 <article
                   key={client.name}
-                  className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-200 hover:border-white/20"
+                  className="flex h-full min-w-0 flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-200 hover:border-white/20"
                 >
                   <h3 className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#6ddcff]">
                     {client.name}
