@@ -15,6 +15,16 @@
  *   gray stroke elsewhere. No new accent introduced.
  * - Static (no animated flow). Linear/Vercel register: calm, considered,
  *   no dopamine-chasing motion loops.
+ *
+ * Mobile fix (2026-04-25):
+ * - Below lg (1024px), the desktop horizontal grid breaks the convergence
+ *   metaphor: pills sit at 176px hugging the left edge while the SVG layer
+ *   is hidden, so connections to the hub are lost.
+ * - Mobile layout is now an explicit top-to-bottom stack:
+ *   eyebrow + pills (centered, narrow max-w) -> vertical convergence
+ *   connector (SVG) -> hub card -> KPI grid. Reproduces the L->R reading
+ *   order of the desktop layout in vertical form.
+ * - Desktop layout (>= lg) is preserved bit-for-bit.
  */
 
 interface McpConvergenceDiagramProps {
@@ -44,17 +54,19 @@ export function McpConvergenceDiagram({ lang }: McpConvergenceDiagramProps) {
   return (
     <div className="relative w-full">
       {/* Mobile-only: stacked vertical layout. On lg+, grid 12 cols with SVG layer. */}
-      <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-0">
-        {/* Left column - client agent pills */}
+      <div className="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-0">
+        {/* Left column - client agent pills.
+            Mobile: centered column, pills stretched to a readable max-w-xs.
+            Desktop (lg+): unchanged - left-aligned pills with min-w 11rem. */}
         <div className="lg:col-span-5">
-          <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500 lg:text-left">
+          <p className="mb-4 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500 lg:text-left">
             {clientsEyebrow}
           </p>
-          <ul className="flex flex-col gap-2.5">
+          <ul className="mx-auto flex max-w-xs flex-col gap-2.5 lg:mx-0 lg:max-w-none">
             {AGENTS.map((agent, idx) => (
               <li
                 key={agent}
-                className="relative z-10 inline-flex items-center gap-3 self-start rounded-lg border border-gray-200 bg-white px-3.5 py-2 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow hover:shadow-[0_4px_12px_-4px_rgba(13,71,161,0.18)]"
+                className="relative z-10 inline-flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-white px-3.5 py-2 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow hover:shadow-[0_4px_12px_-4px_rgba(13,71,161,0.18)] lg:w-auto lg:self-start"
                 style={{ minWidth: "11rem" }}
                 data-idx={idx}
               >
@@ -70,7 +82,47 @@ export function McpConvergenceDiagram({ lang }: McpConvergenceDiagramProps) {
           </ul>
         </div>
 
-        {/* SVG connector layer - only on lg+. Sits behind pills and hub.
+        {/* Mobile-only vertical convergence connector.
+            6 curves fanning from spread-out top points to a single bottom
+            point - mirrors the desktop horizontal convergence in vertical
+            form. Hidden on lg+ where the absolute SVG layer takes over. */}
+        <div
+          aria-hidden="true"
+          className="relative -my-1 flex h-12 w-full items-center justify-center lg:hidden"
+        >
+          <svg
+            viewBox="0 0 240 48"
+            preserveAspectRatio="none"
+            className="h-full w-full max-w-xs"
+          >
+            <defs>
+              <linearGradient
+                id="mcp-line-gradient-mobile"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop offset="0%" stopColor="#cbd5e1" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#0d47a1" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+            {/* 6 top x-positions spread across the pill column width,
+                converging to (120, 48) - center-bottom of the connector. */}
+            {[20, 60, 100, 140, 180, 220].map((x, i) => (
+              <path
+                key={i}
+                d={`M ${x} 0 C ${x} 24, 120 24, 120 48`}
+                fill="none"
+                stroke="url(#mcp-line-gradient-mobile)"
+                strokeWidth="1.25"
+                strokeLinecap="round"
+              />
+            ))}
+          </svg>
+        </div>
+
+        {/* SVG connector layer (desktop) - only on lg+. Sits behind pills and hub.
             preserveAspectRatio="none" is required so curve endpoints land at
             the pill x (165) and hub x (340) regardless of grid ratio. Halos
             are rendered below as absolute CSS circles to stay perfectly round. */}
