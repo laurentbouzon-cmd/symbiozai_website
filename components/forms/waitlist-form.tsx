@@ -57,7 +57,6 @@ export function WaitlistForm() {
         setMessage("")
       }, 5000)
     } catch (error) {
-      console.error("Error:", error)
       setStatus("error")
       setMessage(error instanceof Error ? error.message : "An error occurred. Please try again.")
     }
