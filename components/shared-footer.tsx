@@ -39,24 +39,24 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               {isFr ? "Produit" : "Product"}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1 sm:space-y-3">
               <li>
-                <Link href={`/${lang}/mcp`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/mcp`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   MCP
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/for-sales-teams`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/for-sales-teams`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "Équipes commerciales" : "For sales teams"}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}#cta-final`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}#cta-final`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "Rejoindre la beta" : "Join the beta"}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/manifeste`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/manifeste`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "Manifeste" : "Manifesto"}
                 </Link>
               </li>
@@ -68,14 +68,14 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               {isFr ? "Ressources" : "Resources"}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1 sm:space-y-3">
               <li>
-                <Link href={`/${lang}/blog`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/blog`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/contact`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/contact`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   Contact
                 </Link>
               </li>
@@ -87,19 +87,19 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               {isFr ? "Légal" : "Legal"}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1 sm:space-y-3">
               <li>
-                <Link href={`/${lang}/privacy`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/privacy`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "Politique de confidentialité" : "Privacy Policy"}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/mentions-legales`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/mentions-legales`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "Mentions légales" : "Legal Notice"}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/cgu`} className="text-sm hover:text-white transition-colors duration-200">
+                <Link href={`/${lang}/cgu`} className="block text-sm hover:text-white transition-colors duration-200 py-2 sm:py-0 -my-0.5 sm:my-0">
                   {isFr ? "CGU" : "Terms of Service"}
                 </Link>
               </li>
@@ -119,18 +119,18 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
           <p className="text-xs text-gray-600">
             &copy; {currentYear} SymbiozAI. {dictionary.footer.copyright}
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-1 text-xs">
               <Link
                 href="/fr"
-                className={`px-2 py-1 rounded transition-colors duration-200 ${lang === "fr" ? "text-white" : "text-gray-600 hover:text-gray-400"}`}
+                className={`inline-flex items-center justify-center min-h-[32px] min-w-[40px] px-2 py-1 rounded transition-colors duration-200 ${lang === "fr" ? "text-white" : "text-gray-600 hover:text-gray-400"}`}
               >
                 FR
               </Link>
               <span className="text-gray-700">/</span>
               <Link
                 href="/en"
-                className={`px-2 py-1 rounded transition-colors duration-200 ${lang === "en" ? "text-white" : "text-gray-600 hover:text-gray-400"}`}
+                className={`inline-flex items-center justify-center min-h-[32px] min-w-[40px] px-2 py-1 rounded transition-colors duration-200 ${lang === "en" ? "text-white" : "text-gray-600 hover:text-gray-400"}`}
               >
                 EN
               </Link>
@@ -138,7 +138,7 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             <span className="text-gray-800">·</span>
             <a
               href="mailto:contact@symbioz.ai"
-              className="text-xs text-gray-600 hover:text-white transition-colors duration-200"
+              className="inline-flex items-center min-h-[32px] text-xs text-gray-600 hover:text-white transition-colors duration-200"
             >
               contact@symbioz.ai
             </a>
