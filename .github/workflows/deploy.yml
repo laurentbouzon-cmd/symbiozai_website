@@ -1,7 +1,6 @@
-name: Deploy to OVH
+name: Deploy to DO (DEPRECATED — use scripts/deploy-prod.sh)
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
