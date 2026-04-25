@@ -54,7 +54,7 @@ function MobileMenuPortal({ lang, isOpen, onClose }: { lang: string; isOpen: boo
         <div className="flex justify-end p-4">
           <button
             onClick={onClose}
-            className="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none"
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none"
             aria-label="Fermer le menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,20 +77,20 @@ function MobileMenuPortal({ lang, isOpen, onClose }: { lang: string; isOpen: boo
 
           <div className="w-16 h-0.5 bg-gray-200 my-6" />
 
-          <nav className="flex flex-col items-center space-y-6 flex-grow justify-center">
-            <Link href={`/${lang}`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+          <nav className="flex flex-col items-center space-y-2 flex-grow justify-center">
+            <Link href={`/${lang}`} className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Accueil" : "Home"}
             </Link>
-            <Link href={`/${lang}/mcp`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+            <Link href={`/${lang}/mcp`} className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               MCP
             </Link>
-            <Link href={`/${lang}/for-sales-teams`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+            <Link href={`/${lang}/for-sales-teams`} className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Équipes commerciales" : "For sales teams"}
             </Link>
-            <Link href={`/${lang}/manifeste`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+            <Link href={`/${lang}/manifeste`} className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               {isFr ? "Manifeste" : "Manifesto"}
             </Link>
-            <Link href={`/${lang}/blog`} className="text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
+            <Link href={`/${lang}/blog`} className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 text-xl font-medium text-gray-800 hover:text-[#0d47a1] transition-colors" onClick={onClose}>
               Blog
             </Link>
           </nav>
@@ -98,10 +98,10 @@ function MobileMenuPortal({ lang, isOpen, onClose }: { lang: string; isOpen: boo
           <div className="w-16 h-0.5 bg-gray-200 my-6" />
 
           <div className="mt-auto flex items-center gap-2 text-sm">
-            <Link href="/fr" onClick={onClose} className={`px-3 py-1.5 rounded-lg transition-colors ${lang === "fr" ? "bg-[#0d47a1] text-white" : "text-gray-600 hover:text-gray-900"}`}>
+            <Link href="/fr" onClick={onClose} className={`inline-flex items-center justify-center min-h-[44px] min-w-[56px] px-4 py-2 rounded-lg transition-colors ${lang === "fr" ? "bg-[#0d47a1] text-white" : "text-gray-600 hover:text-gray-900"}`}>
               FR
             </Link>
-            <Link href="/en" onClick={onClose} className={`px-3 py-1.5 rounded-lg transition-colors ${lang === "en" ? "bg-[#0d47a1] text-white" : "text-gray-600 hover:text-gray-900"}`}>
+            <Link href="/en" onClick={onClose} className={`inline-flex items-center justify-center min-h-[44px] min-w-[56px] px-4 py-2 rounded-lg transition-colors ${lang === "en" ? "bg-[#0d47a1] text-white" : "text-gray-600 hover:text-gray-900"}`}>
               EN
             </Link>
           </div>
@@ -119,7 +119,7 @@ export function MobileMenu({ lang, dictionary }: MobileMenuProps) {
     <div className="md:hidden">
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center p-2 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm text-gray-700 hover:text-gray-900 hover:bg-white focus:outline-none transition-colors"
+        className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] p-2 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm text-gray-700 hover:text-gray-900 hover:bg-white focus:outline-none transition-colors"
         aria-label="Ouvrir le menu"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
