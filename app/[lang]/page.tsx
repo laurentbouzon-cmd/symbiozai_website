@@ -200,7 +200,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   href={CALENDLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
+                  className="inline-flex items-center min-h-[44px] py-2 text-sm text-gray-500 hover:text-[#0d47a1] transition-colors underline underline-offset-4"
                 >
                   {isFr ? "ou prendre rendez-vous →" : "or book a meeting →"}
                 </a>
