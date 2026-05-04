@@ -31,23 +31,34 @@ export async function generateMetadata({
   const dictionary = getDictionary(lang)
   const isEnglish = lang === "en"
 
+  // Baseline title post-pivot Revenue Brain (2026-05-04). Format `[brand] — [tagline]`
+  // pour préserver le branding dans les onglets navigateur + previews sociaux LinkedIn/Twitter.
+  // L'ancien titre `dictionary.title` est conservé dans le dictionnaire i18n pour usage interne
+  // (sr-only h1, blog title fallback) — ne pas confondre avec ce metadata title.
+  const brandTitle = isEnglish
+    ? "SymbiozAI — The 1st agentic Revenue Brain. MCP by design."
+    : "SymbiozAI — Le 1er Revenue Brain agentique. MCP by design."
+
+  // OG image i18n par langue. Assets statiques pre-rendered dans /public/og/ (1200x630 PNG).
+  const ogImage = `/og/og-${isEnglish ? "en" : "fr"}.png`
+
   return {
-    title: dictionary.title,
+    title: brandTitle,
     description: dictionary.description,
     keywords: isEnglish
       ? "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, Model Context Protocol CRM, Claude Code CRM, Cursor CRM, EU CRM"
       : "CRM headless, CRM MCP, CRM IA-native, CRM pour agents IA, CRM agent-native, Model Context Protocol, Claude Code, Cursor, CRM européen",
     openGraph: {
-      title: dictionary.title,
+      title: brandTitle,
       description: dictionary.description,
       url: `https://symbioz.ai/${lang}`,
       siteName: "SymbiozAI",
       images: [
         {
-          url: "/images/pivot-mcp/og-image-symbiozai.png",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: dictionary.title,
+          alt: brandTitle,
         },
       ],
       locale: isEnglish ? "en_US" : "fr_FR",
@@ -55,9 +66,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: dictionary.title,
+      title: brandTitle,
       description: dictionary.description,
-      images: ["/images/pivot-mcp/og-image-symbiozai.png"],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://symbioz.ai/${lang}`,

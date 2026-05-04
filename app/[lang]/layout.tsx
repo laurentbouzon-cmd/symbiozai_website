@@ -15,23 +15,32 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const dictionary = getDictionary(lang)
   const isEnglish = lang === "en"
 
+  // Baseline title post-pivot Revenue Brain (2026-05-04). Mirror de
+  // `app/[lang]/page.tsx`. Cette metadata sert de fallback aux sous-routes
+  // de `/[lang]/` qui n'overrident pas leur propre `generateMetadata`.
+  const brandTitle = isEnglish
+    ? "SymbiozAI — The 1st agentic Revenue Brain. MCP by design."
+    : "SymbiozAI — Le 1er Revenue Brain agentique. MCP by design."
+
+  const ogImage = `/og/og-${isEnglish ? "en" : "fr"}.png`
+
   return {
-    title: dictionary.title,
+    title: brandTitle,
     description: dictionary.description,
     keywords: isEnglish
       ? "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, Model Context Protocol CRM, Claude Code CRM, Cursor CRM, EU CRM"
       : "CRM headless, CRM MCP, CRM IA-native, CRM pour agents IA, CRM agent-native, Model Context Protocol, Claude Code, Cursor, CRM européen",
     openGraph: {
-      title: dictionary.title,
+      title: brandTitle,
       description: dictionary.description,
       url: `https://symbioz.ai/${lang}`,
       siteName: "SymbiozAI",
       images: [
         {
-          url: "/images/pivot-mcp/og-image-symbiozai.png",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: dictionary.title,
+          alt: brandTitle,
         },
       ],
       locale: isEnglish ? "en_US" : "fr_FR",
@@ -39,9 +48,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     twitter: {
       card: "summary_large_image",
-      title: dictionary.title,
+      title: brandTitle,
       description: dictionary.description,
-      images: ["/images/pivot-mcp/og-image-symbiozai.png"],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://symbioz.ai/${lang}`,
