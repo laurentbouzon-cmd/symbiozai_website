@@ -29,8 +29,8 @@ export function SharedFooter({ lang, dictionary }: SharedFooterProps) {
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed">
               {isFr
-                ? "Le CRM headless piloté par votre agent IA via MCP."
-                : "The headless AI CRM. Operated by your AI agent via MCP."}
+                ? "Le 1er Revenue Brain agentique. MCP by design."
+                : "The 1st agentic Revenue Brain. MCP by design."}
             </p>
           </div>
 

@@ -90,9 +90,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   en: {
     title: "The headless AI CRM | SymbiozAI",
     h1: "SymbiozAI | The headless AI CRM",
-    subtitle: ["The first AI-Native CRM headless.", "Designed for AI agents."],
+    subtitle: ["The 1st agentic Revenue Brain.", "MCP by design."],
     description:
-      "We are building the CRM for a new generation of companies. AI-native, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse. They'll pilot with their AI workforce.",
+      "We are building the agentic Revenue Brain — an AI-native CRM, autonomous, self-learning, fully operable by your AI agents via a best-in-class MCP server. The next wave of founders won't pilot with a mouse. They'll pilot with their AI workforce.",
     quote:
       "Tomorrow's companies won't just use AI. They'll be built with it. Natively. Structurally.",
     form: {
@@ -190,9 +190,9 @@ const dictionaries: Record<Locale, Dictionary> = {
   fr: {
     title: "Le CRM headless pour agents IA | SymbiozAI",
     h1: "SymbiozAI | Le CRM headless piloté par votre agent IA",
-    subtitle: ["Le premier CRM AI-Native headless.", "Conçu pour les agents IA."],
+    subtitle: ["Le 1er Revenue Brain agentique.", "MCP by design."],
     description:
-      "Nous construisons le CRM dédié à une nouvelle génération d'entreprise. AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris. Elle pilotera avec sa workforce IA.",
+      "Nous construisons le Revenue Brain agentique — un CRM AI-natif, autonome, auto-apprenant, entièrement pilotable par vos agents IA via un MCP de référence. La prochaine vague de fondateurs ne pilotera plus avec une souris. Elle pilotera avec sa workforce IA.",
     quote:
       "Les entreprises de demain ne se contenteront pas d'utiliser l'IA. Elles seront construites avec. Nativement. Structurellement.",
     form: {

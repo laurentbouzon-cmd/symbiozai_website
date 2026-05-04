@@ -5,12 +5,12 @@ export const runtime = "edge"
 
 const content = {
   fr: {
-    subtitle: "Le 1er CRM AI-Natif Europeen.",
+    subtitle: "Le 1er Revenue Brain agentique. MCP by design.",
     tagline: "L'intelligence ultime qui opere votre croissance.",
     badge: "Rejoignez la liste d'attente",
   },
   en: {
-    subtitle: "The 1st European AI-Native CRM.",
+    subtitle: "The 1st agentic Revenue Brain. MCP by design.",
     tagline: "The ultimate intelligence driving your growth.",
     badge: "Join the waitlist",
   },
@@ -55,30 +55,44 @@ export async function GET(request: NextRequest) {
             }}
           />
 
-          {/* Logo + name */}
+          {/* Logo + name — cube SymbiozAI officiel (charte cos-data) */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <svg width="48" height="48" viewBox="0 0 180 180" fill="none">
-              <rect width="180" height="180" rx="37" fill="#0a0a0a" />
-              <path
-                d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z"
-                fill="white"
-              />
-              <path
-                d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z"
-                fill="white"
-              />
+            <svg width="56" height="56" viewBox="40 40 120 130" fill="none">
+              <defs>
+                <linearGradient id="gradDarkBlogA" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#000000" />
+                  <stop offset="100%" stopColor="#0A0A0A" />
+                </linearGradient>
+                <linearGradient id="gradDarkBlogB" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#0A0A0A" />
+                  <stop offset="100%" stopColor="#000000" />
+                </linearGradient>
+                <linearGradient id="gradDarkBlogC" x1="100%" y1="0%" x2="0%" y2="0%">
+                  <stop offset="0%" stopColor="#050505" />
+                  <stop offset="100%" stopColor="#000000" />
+                </linearGradient>
+              </defs>
+              <g transform="translate(0, -10)">
+                <path d="M 100 50 L 50 80 L 50 140 L 100 170 Z" fill="url(#gradDarkBlogA)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.5" />
+                <path d="M 100 50 L 150 80 L 150 140 L 100 170 Z" fill="url(#gradDarkBlogB)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.6" />
+                <path d="M 100 50 L 50 80 L 100 110 L 150 80 Z" fill="url(#gradDarkBlogC)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.7" />
+                <circle cx="100" cy="110" r="11" fill="#0088C2" fillOpacity="0.9" />
+                <circle cx="100" cy="110" r="6" fill="#00A8E8" />
+              </g>
             </svg>
 
-            <span
+            <div
               style={{
-                fontSize: "24px",
-                fontWeight: 700,
+                display: "flex",
+                fontSize: "28px",
+                fontWeight: 500,
                 color: "#0a0a0a",
                 letterSpacing: "-0.5px",
               }}
             >
-              SymbiozAI
-            </span>
+              <span>Symbioz</span>
+              <span style={{ color: "#0088C2" }}>AI</span>
+            </div>
 
             <div
               style={{
@@ -173,31 +187,47 @@ export async function GET(request: NextRequest) {
           }}
         />
 
-        {/* Logo + name */}
+        {/* Logo + name — cube SymbiozAI officiel (charte cos-data) */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          {/* Cube icon */}
-          <svg width="48" height="48" viewBox="0 0 180 180" fill="none">
-            <rect width="180" height="180" rx="37" fill="#0a0a0a" />
-            <path
-              d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z"
-              fill="white"
-            />
-            <path
-              d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z"
-              fill="white"
-            />
+          {/* Cube 3-facettes : reproduit logo_horizontal_color.svg
+             (gradients foncés + arêtes cyan #0088C2 + centre cyan).
+             viewBox cropped à la zone du cube (x:40-160, y:40-170). */}
+          <svg width="64" height="64" viewBox="40 40 120 130" fill="none">
+            <defs>
+              <linearGradient id="gradDarkA" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#0A0A0A" />
+              </linearGradient>
+              <linearGradient id="gradDarkB" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#0A0A0A" />
+                <stop offset="100%" stopColor="#000000" />
+              </linearGradient>
+              <linearGradient id="gradDarkC" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#050505" />
+                <stop offset="100%" stopColor="#000000" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(0, -10)">
+              <path d="M 100 50 L 50 80 L 50 140 L 100 170 Z" fill="url(#gradDarkA)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.5" />
+              <path d="M 100 50 L 150 80 L 150 140 L 100 170 Z" fill="url(#gradDarkB)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.6" />
+              <path d="M 100 50 L 50 80 L 100 110 L 150 80 Z" fill="url(#gradDarkC)" stroke="#0088C2" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.7" />
+              <circle cx="100" cy="110" r="11" fill="#0088C2" fillOpacity="0.9" />
+              <circle cx="100" cy="110" r="6" fill="#00A8E8" />
+            </g>
           </svg>
 
-          <span
+          <div
             style={{
-              fontSize: "28px",
-              fontWeight: 700,
+              display: "flex",
+              fontSize: "32px",
+              fontWeight: 500,
               color: "#0a0a0a",
               letterSpacing: "-0.5px",
             }}
           >
-            SymbiozAI
-          </span>
+            <span>Symbioz</span>
+            <span style={{ color: "#0088C2" }}>AI</span>
+          </div>
         </div>
 
         {/* Main content */}

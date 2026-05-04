@@ -26,21 +26,25 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://symbioz.ai"),
   title: "The headless AI CRM | SymbiozAI",
   description:
-    "SymbiozAI is the MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
+    "SymbiozAI is the agentic Revenue Brain — an MCP-only CRM your AI agent operates. Connect Claude Code, Cursor, or any MCP-compatible agent. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
   keywords:
     "headless AI CRM, MCP CRM, AI-native CRM, CRM for AI agents, agent-native CRM, CRM MCP server, Model Context Protocol CRM, Claude Code CRM, Cursor CRM",
   openGraph: {
     title: "The headless AI CRM | SymbiozAI",
     description:
-      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
+      "SymbiozAI is the agentic Revenue Brain — an MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes. EU-hosted, AI Act native.",
     url: "https://symbioz.ai",
     siteName: "SymbiozAI",
+    // Static branded OG (premium gpt-image-2 render, 2026-05-04). Default = EN.
+    // FR variant (`/og/og-fr.png`) doit être servie par locale via generateMetadata
+    // par segment /[lang]/ — TODO frontend-builder pour i18n complète.
+    // Fallback dynamique disponible via /og?lang=en|fr (route Satori).
     images: [
       {
-        url: "/images/pivot-mcp/og-image-symbiozai.png",
+        url: "/og/og-en.png",
         width: 1200,
         height: 630,
-        alt: "SymbiozAI: the headless AI CRM",
+        alt: "SymbiozAI — The 1st agentic Revenue Brain. MCP by design.",
       },
     ],
     locale: "en_US",
@@ -50,8 +54,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The headless AI CRM | SymbiozAI",
     description:
-      "SymbiozAI is the MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes.",
-    images: ["/images/pivot-mcp/og-image-symbiozai.png"],
+      "SymbiozAI is the agentic Revenue Brain — an MCP-only CRM your AI agent operates. 35 missions. You supervise, it executes.",
+    images: ["/og/og-en.png"],
   },
   robots: {
     index: true,

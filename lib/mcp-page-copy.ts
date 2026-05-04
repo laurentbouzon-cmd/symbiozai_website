@@ -162,14 +162,14 @@ export const mcpCopy = {
     meta: {
       title: "The MCP-only CRM | SymbiozAI MCP Server",
       description:
-        "SymbiozAI exposes 35 CRM missions via MCP. Headless by design. Connect Claude Code, Cursor, or any MCP-compatible agent. Setup in under 5 minutes.",
+        "The agentic Revenue Brain — SymbiozAI exposes 35 CRM missions via MCP. Headless by design. Connect Claude Code, Cursor, or any MCP-compatible agent. Setup in under 5 minutes.",
     },
-    // S1 - HERO: LOCKED (do not modify, directive Laurent).
+    // S1 - HERO: updated 2026-05-04 (directive Laurent, pivot Revenue Brain positioning).
     hero: {
       eyebrow: "MCP Server",
-      headline: "The MCP-only CRM.",
+      headline: "The agent runs the CRM. The human runs the agent.",
       subhead:
-        "Headless by design. Operated by your AI agent via MCP. Claude Code, Cursor, GPT. It's all native.",
+        "Sales work shifts up a layer. The Revenue Brain executes — fetch, score, draft, log. You define policy, watch HITL gates, ship the calls that matter. MCP by design.",
       primary: { label: "Install the MCP in 5 min", href: "#quickstart" },
       secondary: { label: "Try the live sandbox", href: "#quickstart" },
       tertiary: { label: "Book a meeting", href: CALENDLY_URL, external: true },
@@ -542,14 +542,14 @@ curl -H "Authorization: Bearer $TOKEN" \\
     meta: {
       title: "Le CRM MCP-only | Serveur MCP SymbiozAI",
       description:
-        "SymbiozAI expose 35 missions CRM via MCP. Headless par design. Connectez Claude Code, Cursor ou tout agent compatible MCP. Installation en moins de 5 minutes.",
+        "Le Revenue Brain agentique — SymbiozAI expose 35 missions CRM via MCP. Headless par design. Connectez Claude Code, Cursor ou tout agent compatible MCP. Installation en moins de 5 minutes.",
     },
-    // S1 - HERO: VERROUILLE (ne pas modifier, directive Laurent).
+    // S1 - HERO: mis à jour 2026-05-04 (directive Laurent, pivot positioning Revenue Brain).
     hero: {
       eyebrow: "Serveur MCP",
-      headline: "Le CRM MCP-only.",
+      headline: "L'agent pilote le CRM. L'humain pilote l'agent.",
       subhead:
-        "Headless par design. Piloté par votre agent IA via MCP. Claude Code, Cursor, GPT. Tout est natif.",
+        "Le travail des équipes de vente évolue. Le Revenue Brain exécute — analyse, score, rédige, logge. Vous définissez les règles, surveillez les gates HITL, traitez les appels qui comptent. MCP by design.",
       primary: { label: "Installer le MCP en 5 min", href: "#quickstart" },
       secondary: { label: "Tester la sandbox", href: "#quickstart" },
       tertiary: { label: "Prendre rendez-vous", href: CALENDLY_URL, external: true },

@@ -51,7 +51,8 @@ export function middleware(request: NextRequest) {
 export const config = {
   // Matcher pour les routes qui doivent être traitées par le middleware
   matcher: [
-    // Ignorer les fichiers statiques et les API
-    "/((?!api|_next/static|_next/image|favicon\\.ico|favicon\\.svg|sitemap\\.xml|robots\\.txt|images|.*\\.png$|.*\\.svg$).*)",
+    // Ignorer les fichiers statiques, les API et la route OG (image dynamique
+    // rendue à la racine `/og`, hors segment `[lang]`).
+    "/((?!api|og|_next/static|_next/image|favicon\\.ico|favicon\\.svg|sitemap\\.xml|robots\\.txt|images|.*\\.png$|.*\\.svg$).*)",
   ],
 }
