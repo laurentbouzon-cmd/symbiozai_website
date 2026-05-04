@@ -65,22 +65,36 @@ export async function generateMetadata({
   const copy = mcpCopy[lang]
   const isEnglish = lang === "en"
 
+  // Baseline title post-pivot Revenue Brain (2026-05-04). Mirror du pattern
+  // homepage `app/[lang]/page.tsx`. Format `[brand] — [tagline]` pour cohérence
+  // brand sur previews sociaux LinkedIn/Twitter et onglets navigateur. Le titre
+  // spécifique /mcp `copy.meta.title` ("The MCP-only CRM | SymbiozAI MCP Server")
+  // reste défini dans `lib/mcp-page-copy.ts` pour usage interne futur (breadcrumbs,
+  // sub-headers) mais n'est plus rendu en `<title>` ni `og:title`.
+  const brandTitle = isEnglish
+    ? "SymbiozAI — The 1st agentic Revenue Brain. MCP by design."
+    : "SymbiozAI — Le 1er Revenue Brain agentique. MCP by design."
+
+  // OG image i18n par langue. Assets statiques pre-rendered dans /public/og/ —
+  // baseline pivot globale, pas d'OG dédiée /mcp (cohérence brand).
+  const ogImage = `/og/og-${isEnglish ? "en" : "fr"}.png`
+
   return {
-    title: copy.meta.title,
+    title: brandTitle,
     description: copy.meta.description,
     keywords:
       "MCP CRM, CRM MCP server, Model Context Protocol CRM, CRM for AI agents, headless AI CRM, Claude Code MCP, Cursor MCP",
     openGraph: {
-      title: copy.meta.title,
+      title: brandTitle,
       description: copy.meta.description,
       url: `https://symbioz.ai/${lang}/mcp`,
       siteName: "SymbiozAI",
       images: [
         {
-          url: "/images/pivot-mcp/og-image-symbiozai.png",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: copy.meta.title,
+          alt: brandTitle,
         },
       ],
       locale: isEnglish ? "en_US" : "fr_FR",
@@ -88,9 +102,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: copy.meta.title,
+      title: brandTitle,
       description: copy.meta.description,
-      images: ["/images/pivot-mcp/og-image-symbiozai.png"],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://symbioz.ai/${lang}/mcp`,
