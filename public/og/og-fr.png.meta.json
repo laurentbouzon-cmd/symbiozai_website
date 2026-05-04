@@ -1,17 +1,20 @@
 {
   "ts": "2026-05-04",
   "lang": "fr",
-  "method": "round_3_pure_html_css",
-  "round": 3,
+  "method": "round_3_v2_retina_2x",
+  "round": "3-v2",
   "tagline": "Le 1er Revenue Brain agentique. MCP by design.",
-  "size": [1200, 630],
+  "size_logical": [1200, 630],
+  "size_physical_bitmap": [2400, 1260],
+  "device_scale_factor": 2,
   "mode": "RGB",
   "background": "white #FFFFFF + radial-gradient dots #D1D5DB 1.2px / 24px spacing + subtle cyan glow top-right rgba(0,136,194,0.08)",
   "background_cost_usd": 0.0,
   "openai_calls": 0,
   "overlay_template": "symbiozai-cos/cos-data/scripts/og_overlay_light.html",
-  "overlay_renderer": "Playwright Chromium viewport 1200x630 device_scale_factor=2 (resized to 1200x630)",
+  "overlay_renderer": "Playwright Chromium viewport CSS=1200x630 + device_scale_factor=2 -> bitmap 2400x1260 (no downscale)",
   "logo_source": "symbiozai-cos/cos-data/content/visuels-reference/Logo SymbiozAI/logo_horizontal_color.svg (inlined, dark gradients + cyan stroke + cyan center, wordmark BLACK + AI cyan #0088C2 — version fond clair)",
   "tagline_typo": "system-ui (SF Pro Display / Inter), 64pt weight 700, letter-spacing -0.025em, color #0A0A14, MCP accent #0088C2",
-  "previous_rounds_obsolete": "round 1 Option A rejected (logo non-conform), round 2 Option B rejected (background sombre navy refuse)"
+  "fix": "Bug round 3 v1 = downscale 2400x1260 -> 1200x630 force = pixellise sur Retina LinkedIn. Fix v2 = keep native 2x bitmap.",
+  "previous_rounds_obsolete": "round 1 Option A rejected (logo non-conform), round 2 Option B rejected (fond sombre refuse), round 3 v1 rejected (DPR 1x = pixellise)"
 }
